@@ -16,6 +16,8 @@
     <link type="text/css" href="{{ asset('css/app.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('vendors/perfect-scrollbar/css/perfect-scrollbar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css')}}">
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
         #demo {
             position: relative;

@@ -42,7 +42,7 @@ Dashboard @parent
             <div class="bg-white dashboard-col pl-15 pb-15 pt-15">
                 <i class="im im-icon-Eye-Scan im-icon-set float-right bg-success"></i>
                 <h3>10K</h3>
-                <p>Page Views</p>
+                <p class="text">Page Views</p>
                 <div class="progress mr-15">
                     <div id="progress-success"
                         class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar"
