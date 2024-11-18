@@ -1,9 +1,6 @@
 @php
 $members = DB::table('members')->get();
 @endphp
-
-
-
 <!-- Member Id Field -->
 <div class="form-group">
     <div class="row">
