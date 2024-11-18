@@ -13,12 +13,12 @@
             </a>
         </li>
 
-        <li {!! (Request::is('builder') ? 'class="active"' : '' ) !!}>
+        {{-- <li {!! (Request::is('builder') ? 'class="active"' : '' ) !!}>
             <a href="{{ URL::to('builder') }}">
                 <span class="mm-text ">Crud Builder</span>
                 <span class="menu-icon"><i class="im im-icon-Gift-Box"></i></span>
             </a>
-        </li>
+        </li> --}}
 
         {{-- <li {!! (Request::is('typography') ? 'class="active"' : '' ) !!}>
             <a href="{{ URL::to('typography') }}">
