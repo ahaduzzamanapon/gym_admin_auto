@@ -50,40 +50,6 @@
 
             <div class="navbar-right ml-auto">
                 <ul class="navbar-nav nav">
-
-                    {{-- <li class="dropdown notifications-menu nav-item dropdown">
-                        <a href="javascript:void(0)" class="dropdown-toggle nav-link dropdown-toggle"
-                            data-toggle="dropdown" id="navbarDropdown">
-                            <i class="im im-icon-Bell-2 fs-16"></i>
-
-
-                        </a>
-                        <ul class="dropdown-menu dropdown-notifications table-striped" aria-labelledby="navbarDropdown">
-                            @isset($notifications)
-                            @foreach($notifications as $notification)
-                            <li>
-                                <a href="{{ URL::to('emails/'.$notification->id ) }}"
-                    class="notification dropdown-item striped-col">
-                    @if($notification->senderName->pic)
-                    <img src="{!! $notification->senderName->pic !!}" alt="img" class="notif-image rounded-circle" />
-                    @else
-                    <img src="{{  Gravatar::src($notification->senderName->email)}}" class="notif-image  rounded-circle"
-                        alt="User Image" />
-                    @endif
-                    <div class="notif-body"><strong>{{ $notification->senderName->first_name }}</strong>
-                        shared post from
-                        <strong>{{ $notification->subject }}</strong>.
-                        <br>
-                        <small>{{ $notification->created_at->diffForHumans() }}</small>
-                    </div>
-                    <span class="badge badge-success label-mini msg-lable">New</span>
-                    </a>
-                    </li>
-                    @endforeach
-                    @endisset
-                    <li class="dropdown-footer"><a href="{{ url('emails/inbox') }}">View All messages</a></li>
-                </ul>
-                </li> --}}
                 <li class="dropdown notifications-menu nav-item dropdown">
                     <a href="javascript:void(0)" class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown"
                         id="navbarDropdown">
@@ -105,57 +71,7 @@
                         </li>
                     </ul>
                 </li>
-                <!-- User Account: style can be found in dropdown-->
-                {{--<li class="dropdown user user-menu nav-item dropdown">--}}
-                {{--<a href="javascript:void(0)" class="dropdown-toggle padding-user nav-link dropdown-toggle" data-toggle="dropdown" id="userDropdown">--}}
-                {{--@if(Auth::user()->pic)--}}
-                {{--<span class="userActivity online"></span>--}}
-                {{--<img src="{!! Auth::user()->pic !!}" alt="img"--}}
-                {{--class="rounded-circle img-fluid pull-left"/>--}}
-                {{--@else--}}
-                {{--<span class="userActivity online"></span>--}}
-                {{--<img src="{{  Gravatar::src(Auth::user()->email)}}" width="35" alt="User Image"
-                class="rounded-circle img-fluid pull-left" />--}}
-                {{--@endif--}}
-                {{--<div class="riot">--}}
-                {{--<span class="fa fa-sort-down caret"></span>--}}
-                {{--</div>--}}
-                {{--</a>--}}
-                {{--<ul class="dropdown-menu " aria-labelledby="navbarDropdown">--}}
-                {{--<!-- User name-->--}}
-                {{--@guest--}}
-                {{--@else--}}
-                {{--<li class="user-name text-center text-primary">--}}
-                {{--<span>{{ Auth::user()->first_name }}</span>--}}
-                {{--</li>--}}
-                {{--<!-- Menu Body -->--}}
-                {{--<li class="p-t-3">--}}
-                {{--<a href="{{ URL::route('users.show',Auth::user()->id) }}" class="dropdown-item">--}}
-                {{--Profile<i class="im im-icon-User float-right mt-1"></i>--}}
-                {{--</a>--}}
-                {{--</li>--}}
-                {{--<li>--}}
-                {{--<a href="{{ URL::route('users.edit', Auth::user()->id) }}" class="dropdown-item">--}}
-                {{--Settings <i class="im im-icon-Gear float-right  mt-1"></i>--}}
-                {{--</a>--}}
-                {{--</li>--}}
-                {{--<li>--}}
-                {{--<a href="{{ URL::route('lockscreen') }}" class="dropdown-item">--}}
-                {{--Lock <i class="im im-icon-Unlock-2 float-right  mt-1"></i>--}}
-                {{--</a>--}}
-                {{--</li>--}}
-                {{--<li>--}}
-                {{--<a href="{{ route('logout') }}" onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();" class="dropdown-item">--}}
-                {{--Logout <i class="im im-icon-Power-2 float-right  "></i>--}}
-                {{--</a>--}}
-                {{--<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
-                {{--{{ csrf_field() }}--}}
-                {{--</form>--}}
-                {{--</li>--}}
-                {{--@endguest--}}
-                {{--</ul>--}}
-                {{--</li>--}}
+              
                 </ul>
             </div>
         </nav>

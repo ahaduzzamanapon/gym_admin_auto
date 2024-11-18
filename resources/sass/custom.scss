@@ -85,13 +85,13 @@ a:hover
 }
 #menu .navigation a:hover span:nth-child(2),#menu .navigation li.active a span:nth-child(2)
 {
-  //border:1px solid #727CF5;
+  //border:1px solid #00bd5bc7;
   position:relative;
   top:-5px;
 }
 #menu .navigation a:hover i
 {
-  color:#727CF5;
+  color:#00bd5bc7;
 }
 #menu .navigation a i
 {
@@ -138,7 +138,7 @@ ol.breadcrumb .breadcrumb-item + .breadcrumb-item::before
 }
 .breadcrumb-item.active
 {
-  color:#727CF5;
+  color:#00bd5bc7;
 }
 .card-breadcrumb
 {

@@ -23,6 +23,17 @@ Route::view('login3', 'auth.login3');
 Route::view('register2', 'auth.register2');
 Route::view('register3', 'auth.register3');
 
+
+
+
+// Route::view('welcome', 'auth.register3');
+
+
+
+
+
+
+
 Route::get('/', function () {
     return view('index');
 })->middleware('auth');

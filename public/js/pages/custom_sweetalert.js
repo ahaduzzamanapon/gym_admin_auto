@@ -55,7 +55,7 @@
                       text: "You won't be able to revert this!",
                       type: 'warning',
                       showCancelButton: true,
-                      confirmButtonColor: '#727cf5',    
+                      confirmButtonColor: '#00bd5bc7',    
                       confirmButtonText: 'Yes, delete it!',
                       customClass: {
                         confirmButton: 'btn btn-primary',
@@ -87,7 +87,7 @@
                       showCancelButton: true,
                       showConfirmButton: true,
 
-                      confirmButtonColor: '#727cf5',    
+                      confirmButtonColor: '#00bd5bc7',    
                       confirmButtonText: 'Yes',
                       cancelButtonText: 'No'
                             })

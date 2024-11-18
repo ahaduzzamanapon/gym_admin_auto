@@ -32,9 +32,10 @@ body {
 /******  2.HEADER STYLES   ******/
 body > .header .navbar {
   margin-bottom: 0;
-  background-color: #fff;
+  background-color: #00bd5b;
   box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
   border-width: 0;
+  /* z-index: 999999999; */
 }
 .navbar-expand-lg .navbar-nav .nav-link {
   padding: 13px 15px 14px 15px;
@@ -80,7 +81,7 @@ body > .header .navbar {
 /****** 3.LEFT SIDEBAR ******/
 .left-aside {
   width: 240px;
-  background: #f1f3fa;
+  background: #ffffff;
   border-right: 5px solid #EEE; }
 
 .content-header h1 {
@@ -94,15 +95,15 @@ body > .header .navbar {
 
 #menu li.active > a {
   padding: 11px 20px 11px 17px;
-  color: #727CF5;
-  border-left: 3px solid #727CF5;
+  color: #00bd5bc7;
+  border-left: 3px solid #00bd5bc7;
   transition: none; }
 
 #menu li > a:hover {
-  color:#727CF5;
+  color:#00bd5bc7;
 }
 #menu li.active > a i {
-  color: #727CF5;
+  color: #00bd5bc7;
   font-weight: 700;
 }
 #menu li > a i
