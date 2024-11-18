@@ -1,4 +1,4 @@
-# merilsoft_admin
+# Admin
 
 A simple admin panel for Laravel 9.x
 
