@@ -6,7 +6,7 @@
             {!! Form::text('title', null, ['class' => 'form-control']) !!}
         </div>
     </div>
-</div
+</div>
 
 
 <!-- Amount Field -->

@@ -21,7 +21,7 @@ Requisitions @parent
     @include('flash::message')
 
     <div class="clearfix"></div>
-    <div class="card">
+    <div class="card" style="width: 88vw;">
         <section class="card-header">
             <h5 class="card-title d-inline">Requisitions</h5>
             <span class="float-right">

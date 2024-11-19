@@ -18,6 +18,15 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css')}}">
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js"></script>
+    
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    
+    
     <style>
         #demo {
             position: relative;
@@ -43,12 +52,11 @@
             <a href="javascript:void(0)" class="ml-100 toggle-right d-xl-none d-lg-block">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 <img src="{{ asset('img/images/toggle.png')}}" alt="logo" />
-
-
             </a>
             <!-- Header Navbar: style can be found in header-->
             <!-- Sidebar toggle button-->
             <!-- Sidebar toggle button-->
+            <h3 style="display: flex;width: -webkit-fill-available;place-content: center;font-size: x-large;"> <span style="font-weight: bold;">Gym Master</span> - Gym Management System </h3>
 
             <div class="navbar-right ml-auto">
                 <ul class="navbar-nav nav">
@@ -81,7 +89,7 @@
     <div class="wrapper">
 
         <!-- Left side column. contains the logo and sidebar -->
-        <aside class="left-aside">
+        <aside class="left-aside" style="min-height: 100vh;height: 100vh;">
             <!-- sidebar: style can be found in sidebar-->
             <section class="sidebar metismenu sidebar-res">
                 @include("layouts/leftmenu")
@@ -89,6 +97,7 @@
             </section>
             <!-- /.sidebar -->
         </aside>
+      
 
 
         <!--            right side bar ----------->
@@ -100,7 +109,7 @@
     <!-- Footer end -->
     <!-- SCRIPTS -->
     <!-- global js -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
@@ -148,6 +157,21 @@
         //     });
         // }
     </script>
+<script>
+    document.body.style.zoom = "90%";
+</script>
+
+{{-- <script>
+    $(document).ready(function() {
+        // get all input type date
+        $('input[type="date"]').each(function() {
+            $(this).attr('type', 'text');
+            $(this).datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+        });
+    });
+</script> --}}
 
 
 </body>

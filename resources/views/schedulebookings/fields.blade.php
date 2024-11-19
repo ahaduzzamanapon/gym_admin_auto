@@ -1,5 +1,10 @@
 @php
-$members = DB::table('members')->get();
+if(if_can('show_all_data')){
+    $members = DB::table('members')->get();
+}else {
+    $members = DB::table('members')->where('id', Auth::user()->member_id)->get();
+
+}
 @endphp
 <!-- Member Id Field -->
 <div class="form-group">
@@ -45,7 +50,7 @@ $members = DB::table('members')->get();
 
 
 <!-- Status Field -->
-<div class="form-group">
+<div class="form-group" style="display: @if(!if_can('show_all_data')) none @endif;">
     <div class="row">
         {!! Form::label('status', 'Status:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
