@@ -92,3 +92,24 @@
     </a>
 </li>
 
+<li class="{!! (Request::is('groups*') ? 'active' : '' ) !!}">
+    <a href="{{ route('groups.index') }}">
+        <span class="mm-text ">Roll Permissions</span>
+        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+    </a>
+</li>
+
+{{-- <li class="{!! (Request::is('permissions*') ? 'active' : '' ) !!}">
+    <a href="{{ route('permissions.index') }}">
+        <span class="mm-text ">Permissions</span>
+        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+    </a>
+</li> --}}
+
+{{-- <li class="{!! (Request::is('groupPermitions*') ? 'active' : '' ) !!}">
+    <a href="{{ route('groupPermitions.index') }}">
+        <span class="mm-text ">Group Permitions</span>
+        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+    </a>
+</li> --}}
+

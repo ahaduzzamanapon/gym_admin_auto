@@ -19,3 +19,9 @@ Route::resource('incomes', 'IncomeController');
 Route::resource('schedulebookings', 'SchedulebookingController');
 
 Route::resource('coupons', 'CouponController');
+
+Route::resource('groups', 'GroupController');
+
+Route::resource('permissions', 'PermissionController');
+
+Route::resource('groupPermitions', 'GroupPermitionController');

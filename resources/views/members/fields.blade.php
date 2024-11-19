@@ -60,7 +60,7 @@
             {!! Form::text('mem_cell', null, ['class' => 'form-control']) !!}
         </div>
     </div>
-</div
+</div>
 
 
 <!-- Mem Email Field -->
@@ -71,7 +71,7 @@
             {!! Form::text('mem_email', null, ['class' => 'form-control']) !!}
         </div>
     </div>
-</div
+</div>
 
 
 <!-- Mem Img Url Field -->
@@ -82,7 +82,7 @@
             {!! Form::file('mem_img_url', null, ['class' => 'form-control']) !!}
         </div>
     </div>
-</div
+</div>
 
 
 <!-- Submit Field -->
