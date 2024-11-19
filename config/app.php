@@ -181,6 +181,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Brian2694\Toastr\ToastrServiceProvider::class,
+
 
         /*
          * Package Service Providers...
@@ -212,6 +214,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Toastr' => Brian2694\Toastr\Facades\Toastr::class,
     ])->toArray(),
 
 ];

@@ -48,12 +48,12 @@
 </div>
 <div class="bg-color-scroll navbar w-full h-auto px-4 lg:px-14 py-3 flex items-center justify-between bg-white">
     <div>
-        <a href="{{ url('/') }}"><img class="w-14"  src="{{ asset('frontend/assets/images/logo.png') }}" alt="HRsheba logo"></a>
+        <a href="{{ url('/welcome') }}"><img class="w-14"  src="{{ asset('frontend/assets/images/logo.png') }}" alt="HRsheba logo"></a>
     </div>
     <div class="hidden lg:flex items-center gap-10">
         <ul class="flex items-center gap-8">
             <li>
-                <a href="{{ url('/') }}" class="text-[#006BA3] lg:text-16 font-bold font-poppins  leading-[19px]  hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('/') ? '!text-[#41b5f3] !font-[600]' : '' }}">Home</a>
+                <a href="{{ url('/welcome') }}" class="text-[#006BA3] lg:text-16 font-bold font-poppins  leading-[19px]  hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('/') ? '!text-[#41b5f3] !font-[600]' : '' }}">Home</a>
             </li>
             <li>
                 <a onclick="redirectFeatures()" class="text-[#006BA3] lg:text-16 font-bold font-poppins  leading-[19px] cursor-pointer  hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('#hrShebaFeatures') ? '!text-[#41b5f3] !font-[600]' : '' }}">Features</a>
@@ -71,10 +71,16 @@
                 <a href="{{ url('/contact_us') }}" class="text-[#006BA3] lg:text-16 font-bold font-poppins leading-[19px]  hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('contact_us') ? '!text-[#41b5f3] !font-[600]' : '' }}">Contact Us</a>
             </li>
         </ul>
-        <a href="{{ route('demu_request') }}" class="bg-[#006BA3] rounded-[24px] px-3 lg:py-1  text-white flex items-center gap-2 hover:bg-[#41b5f3] duration-300 ease-in-out hover:text-15">
-            <span class="font-poppins lg:text-16 xl:text-18 font-[500]">Get Started</span>
-            <img class="lg:w-[14px] lg:h-[14px] xl:w-[16px] xl:h-[16px]" src="{{ asset('frontend/assets/images/arrow.png') }}" alt="arrow icon">
-        </a>
+        <div class="flex items-center gap-4">
+            <a href="{{ route('login') }}" class="bg-[#006BA3] rounded-[24px] px-3 lg:py-1  text-white flex items-center gap-2 hover:bg-[#41b5f3] duration-300 ease-in-out hover:text-15">
+                <span class="font-poppins lg:text-16 xl:text-18 font-[500]">Login</span>
+                {{-- <img class="lg:w-[14px] lg:h-[14px] xl:w-[16px] xl:h-[16px]" src="{{ asset('frontend/assets/images/arrow.png') }}" alt="arrow icon"> --}}
+            </a>
+            <a href="{{ route('register') }}" class="bg-[#006BA3] rounded-[24px] px-3 lg:py-1  text-white flex items-center gap-2 hover:bg-[#41b5f3] duration-300 ease-in-out hover:text-15">
+                <span class="font-poppins lg:text-16 xl:text-18 font-[500]">Register</span>
+                <img class="lg:w-[14px] lg:h-[14px] xl:w-[16px] xl:h-[16px]" src="{{ asset('frontend/assets/images/arrow.png') }}" alt="arrow icon">
+            </a>
+        </div>
     </div>
     <div onclick="openDrawer()" class="block lg:hidden">
         <i class="fa fa-solid fa-bars-staggered" style="color: #006BA3"></i>
@@ -104,8 +110,12 @@
                 </li>
             </ul>
             <div class="flex items-center justify-center mt-4">
-                <a href="{{ route('demu_request') }}" class="bg-[#006BA3] rounded-[24px] px-3 py-1   text-white flex items-center gap-2">
-                    <span class="font-poppins text-12 font-[500]">Get Started</span>
+                <a href="{{ route('login') }}" class="bg-[#006BA3] rounded-[24px] px-3 py-1   text-white flex items-center gap-2">
+                    <span class="font-poppins text-12 font-[500]">Login</span>
+                    <img class="w-[12px] h-[12px]" src="{{ asset('frontend/assets/images/arrow.png') }}" alt="arrow icon">
+                </a>
+                <a href="{{ route('register') }}" class="bg-[#006BA3] rounded-[24px] px-3 py-1   text-white flex items-center gap-2">
+                    <span class="font-poppins text-12 font-[500]">Register</span>
                     <img class="w-[12px] h-[12px]" src="{{ asset('frontend/assets/images/arrow.png') }}" alt="arrow icon">
                 </a>
             </div>

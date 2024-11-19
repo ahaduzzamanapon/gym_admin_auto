@@ -1,19 +1,18 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\AboutController;
+use App\Http\Controllers\Frontend\DeviceController;
+use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Frontend\DemuRequestController;
 
 include 'web_builder.php';
 include 'demo.php';
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
+
 
 Auth::routes();
 
@@ -23,13 +22,19 @@ Route::view('login3', 'auth.login3');
 Route::view('register2', 'auth.register2');
 Route::view('register3', 'auth.register3');
 
-
-
-
-// Route::view('welcome', 'auth.register3');
-
-
-
+Route::get('/welcome', [HomeController::class, 'index'])->name('home');
+Route::get('/privacy', [HomeController::class, 'privacy'])->name('privacy');
+Route::get('/terms_conditions', [HomeController::class, 'terms_conditions'])->name('terms_conditions');
+Route::get('/solutions', [DeviceController::class, 'index'])->name('solutions');
+// Route::get('/pricing', [PricingController::class, 'index'])->name('pricing');
+Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
+Route::get('/blog_details/{slug}', [BlogController::class, 'details'])->name('blog_details');
+Route::get('/contact_us', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact_us', [ContactController::class, 'request_sent'])->name('contact.sent');
+Route::get('/demo/request', [DemuRequestController::class, 'index'])->name('demu_request');
+Route::post('/demo/request', [DemuRequestController::class, 'request_sent'])->name('demu_request.sent');
+Route::get('/about_us', [AboutController::class, 'index'])->name('about');
+Route::get('/no_access_page', [HomeController::class, 'no_access'])->name('no_access'); // No access page
 
 
 

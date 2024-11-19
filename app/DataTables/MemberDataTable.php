@@ -8,6 +8,7 @@ use Yajra\DataTables\EloquentDataTable;
 
 class MemberDataTable extends DataTable
 {
+    
     /**
      * Build DataTable class.
      *
