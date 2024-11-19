@@ -17,3 +17,5 @@ Route::resource('expenses', 'ExpensesController');
 Route::resource('incomes', 'IncomeController');
 
 Route::resource('schedulebookings', 'SchedulebookingController');
+
+Route::resource('coupons', 'CouponController');

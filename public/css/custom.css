@@ -32,7 +32,7 @@ body {
 /******  2.HEADER STYLES   ******/
 body > .header .navbar {
   margin-bottom: 0;
-  background-color: #00bd5b;
+  background-color: #fff;
   box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
   border-width: 0;
   /* z-index: 999999999; */

@@ -43,12 +43,11 @@
             <a href="javascript:void(0)" class="ml-100 toggle-right d-xl-none d-lg-block">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 <img src="{{ asset('img/images/toggle.png')}}" alt="logo" />
-
-
             </a>
             <!-- Header Navbar: style can be found in header-->
             <!-- Sidebar toggle button-->
             <!-- Sidebar toggle button-->
+            <h3 style="display: flex;width: -webkit-fill-available;place-content: center;font-size: x-large;"> <span style="font-weight: bold;">Gym Master</span> - Gym Management System </h3>
 
             <div class="navbar-right ml-auto">
                 <ul class="navbar-nav nav">
@@ -148,6 +147,9 @@
         //     });
         // }
     </script>
+<script>
+    document.body.style.zoom = "90%";
+</script>
 
 
 </body>

@@ -85,3 +85,10 @@
     </a>
 </li>
 
+<li class="{!! (Request::is('coupons*') ? 'active' : '' ) !!}">
+    <a href="{{ route('coupons.index') }}">
+        <span class="mm-text ">Coupons</span>
+        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+    </a>
+</li>
+

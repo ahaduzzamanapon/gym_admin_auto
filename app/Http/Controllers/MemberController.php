@@ -60,10 +60,13 @@ class MemberController extends AppBaseController
         /** @var Member $member */
         $member = Member::create($input);
 
+        $input['user_id'] = $member->id;
+
         User::create(
             [
                 'name' => $input['mem_name'],
                 'email' => $input['mem_email'],
+                'member_id' => $input['user_id'],
                 'password' => Hash::make('12345678'),
             ]
         );
