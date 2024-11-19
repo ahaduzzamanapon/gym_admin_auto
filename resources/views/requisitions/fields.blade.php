@@ -57,7 +57,6 @@ $products = DB::table('products')->get();
 </div>
 
 
-
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
