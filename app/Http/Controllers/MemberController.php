@@ -96,6 +96,19 @@ class MemberController extends AppBaseController
 
         return view('members.show')->with('member', $member);
     }
+    public function details($id)
+    {
+        /** @var Member $member */
+        $member = Member::find($id);
+
+        if (empty($member)) {
+            Flash::error('Member not found');
+
+            return redirect(route('members.index'));
+        }
+
+        return view('members.show')->with('member', $member);
+    }
 
     /**
      * Show the form for editing the specified Member.

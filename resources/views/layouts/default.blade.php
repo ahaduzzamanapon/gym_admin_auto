@@ -3,7 +3,7 @@
 
 <head>
     <title>
-        @section('title')| Josh Admin Template @show
+        @section('title')| Gym Master - Gym Management System @show
     </title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -64,12 +64,16 @@
                     <a href="javascript:void(0)" class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown"
                         id="navbarDropdown">
                         <i class="im im-icon-Boy fs-16"></i>
-
-
                     </a>
                     <ul class="dropdown-menu dropdown-notifications table-striped" aria-labelledby="navbarDropdown">
-
+                        
                         <li class="dropdown-footer">
+                            
+                            @if(Auth::user()->member_id!=null)
+                            <a class="dropdown-item" href="{{ route('members.details', ['id' => Auth::user()->member_id]) }}">
+                                Profile
+                            </a>
+                            @endif
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}

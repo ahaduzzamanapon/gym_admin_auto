@@ -134,6 +134,18 @@
 </li>
 @endif
 
+@if(Auth::user()->member_id != null)
+    <li class="">
+        <a href="{{ route('members.details', ['id' => Auth::user()->member_id]) }}">
+            <span class="mm-text ">Profile</span>
+            <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+        </a>
+    </li>
+@endif
+
+
+
+
 {{-- <li class="{!! (Request::is('permissions*') ? 'active' : '' ) !!}">
     <a href="{{ route('permissions.index') }}">
         <span class="mm-text ">Permissions</span>
