@@ -32,7 +32,8 @@ class Member extends Model
         'mem_admission_date',
         'mem_cell',
         'mem_email',
-        'mem_img_url'
+        'mem_img_url',
+        'group_id',
     ];
 
     /**
@@ -48,7 +49,8 @@ class Member extends Model
         'mem_admission_date' => 'date',
         'mem_cell' => 'string',
         'mem_email' => 'string',
-        'mem_img_url' => 'string'
+        'mem_img_url' => 'string',
+        'group_id' => 'integer'
     ];
 
     /**

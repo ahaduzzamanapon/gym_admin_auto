@@ -36,7 +36,9 @@ class GroupController extends AppBaseController
      */
     public function create()
     {
-        return view('groups.create');
+        $permission_data = array();
+
+        return view('groups.create')->with('permission_data', $permission_data);
     }
 
     /**

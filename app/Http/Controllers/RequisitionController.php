@@ -22,10 +22,18 @@ class RequisitionController extends AppBaseController
     public function index(Request $request)
     {
         /** @var Requisition $requisitions */
-        $requisitions = Requisition::select('requisitions.*', 'products.product_name', 'members.mem_name as member_name')
-            ->join('products', 'products.id', '=', 'requisitions.product_id')
-            ->join('members', 'members.id', '=', 'requisitions.member_id')
-            ->paginate(10);
+        if(if_can('show_all_data')){
+            $requisitions = Requisition::select('requisitions.*', 'products.product_name', 'members.mem_name as member_name')
+                ->join('products', 'products.id', '=', 'requisitions.product_id')
+                ->join('members', 'members.id', '=', 'requisitions.member_id')
+                ->paginate(10);
+        }else{
+            $requisitions = Requisition::select('requisitions.*', 'products.product_name', 'members.mem_name as member_name')
+                ->join('products', 'products.id', '=', 'requisitions.product_id')
+                ->join('members', 'members.id', '=', 'requisitions.member_id')
+                ->where('members.id', auth()->user()->member_id)
+                ->paginate(10);
+        }
 
         return view('requisitions.index')
             ->with('requisitions', $requisitions);

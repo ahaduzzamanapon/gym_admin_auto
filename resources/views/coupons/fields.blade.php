@@ -6,7 +6,7 @@
             {!! Form::text('title', null, ['class' => 'form-control']) !!}
         </div>
     </div>
-</div
+</div>
 
 
 <!-- Coupon Code Field -->
@@ -17,7 +17,7 @@
             {!! Form::text('coupon_code', null, ['class' => 'form-control']) !!}
         </div>
     </div>
-</div
+</div>
 
 
 <!-- Expire Date Field -->
@@ -25,20 +25,20 @@
     <div class="row">
         {!! Form::label('expire_date', 'Expire Date:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::text('expire_date', null, ['class' => 'form-control','id'=>'expire_date']) !!}
+            {!! Form::date('expire_date', null, ['class' => 'form-control','id'=>'expire_date']) !!}
         </div>
     </div>
 </div>
 
-@section('footer_scripts')
+{{-- @section('footer_scripts')
 <script type="text/javascript">
-    $('#expire_date').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm:ss',
+    $('#expire_date').datepicker({
+            format: 'YYYY-MM-DD',
             useCurrent: true,
             sideBySide: true
         })
 </script>
-@endsection
+@endsection --}}
 
 
 <!-- Amount Field -->

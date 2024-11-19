@@ -6,7 +6,7 @@
             {!! Form::text('pack_name', null, ['class' => 'form-control']) !!}
         </div>
     </div>
-</div
+</div>
 
 
 <!-- Pack Admission Fee Field -->
@@ -28,7 +28,7 @@
             {!! Form::text('pack_duration', null, ['class' => 'form-control']) !!}
         </div>
     </div>
-</div
+</div>
 
 
 <!-- Pack Status Field -->

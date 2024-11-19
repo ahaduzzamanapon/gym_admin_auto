@@ -6,7 +6,7 @@
             {!! Form::text('product_name', null, ['class' => 'form-control']) !!}
         </div>
     </div>
-</div
+</div>
 
 
 <!-- Product Price Field -->

@@ -18,7 +18,11 @@ class MemberDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'members.datatables_actions');
+        return $dataTable
+            ->addColumn('group_name', function ($row) {
+                return $row->group_name ?? 'N/A';
+            })
+            ->addColumn('action', 'members.datatables_actions');
     }
 
     /**
@@ -29,7 +33,13 @@ class MemberDataTable extends DataTable
      */
     public function query(Member $model)
     {
-        return $model->newQuery();
+        // Join with groups table and select relevant columns
+        return $model->newQuery()
+            ->leftJoin('groups', 'members.group_id', '=', 'groups.id')
+            ->select([
+                'members.*', // Select all member columns
+                'groups.name as group_name' // Include the group name
+            ]);
     }
 
     /**
@@ -48,11 +58,11 @@ class MemberDataTable extends DataTable
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
-                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
+                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner'],
+                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner'],
+                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner'],
+                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner'],
+                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner'],
                 ],
             ]);
     }
@@ -67,13 +77,11 @@ class MemberDataTable extends DataTable
         return [
             'id',
             'mem_name',
+            'group_name' => ['title' => 'Role'],
             'mem_father',
             'mem_address',
-            'mem_admission_date',
             'mem_cell',
-            'mem_email'
-            // 'created_at' => ['searchable' => false],
-            // 'updated_at' => ['searchable' => false]
+            'mem_email',
         ];
     }
 
@@ -84,6 +92,6 @@ class MemberDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return '$MODEL_NAME_PLURAL_SNAKE_$datatable_' . time();
+        return 'members_' . time();
     }
 }

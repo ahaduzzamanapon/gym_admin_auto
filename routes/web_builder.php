@@ -25,3 +25,5 @@ Route::resource('groups', 'GroupController');
 Route::resource('permissions', 'PermissionController');
 
 Route::resource('groupPermitions', 'GroupPermitionController');
+
+Route::resource('purchasePackages', 'PurchasePackageController');

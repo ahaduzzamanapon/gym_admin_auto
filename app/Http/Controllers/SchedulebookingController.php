@@ -22,8 +22,11 @@ class SchedulebookingController extends AppBaseController
     public function index(Request $request)
     {
         /** @var Schedulebooking $schedulebookings */
+        if(if_can('show_all_data')){
         $schedulebookings = Schedulebooking::select('schedulebookings.*','schedulebookings.id as schedulebooking_id', 'members.mem_name as mem_name')->join('members', 'members.id', '=', 'schedulebookings.member_id')->paginate(10);
-
+        }else{
+            $schedulebookings = Schedulebooking::select('schedulebookings.*','schedulebookings.id as schedulebooking_id', 'members.mem_name as mem_name')->join('members', 'members.id', '=', 'schedulebookings.member_id')->where('members.id', auth()->user()->member_id)->paginate(10);
+        }
         return view('schedulebookings.index')
             ->with('schedulebookings', $schedulebookings);
     }
@@ -48,12 +51,9 @@ class SchedulebookingController extends AppBaseController
     public function store(CreateSchedulebookingRequest $request)
     {
         $input = $request->all();
-
         /** @var Schedulebooking $schedulebooking */
         $schedulebooking = Schedulebooking::create($input);
-
         Flash::success('Schedulebooking saved successfully.');
-
         return redirect(route('schedulebookings.index'));
     }
 

@@ -10,7 +10,13 @@
 
 
 @php
-$members = DB::table('members')->get();
+if(if_can('show_all_data')){
+    $members = DB::table('members')->get();
+}else {
+    $members = DB::table('members')->where('id', Auth::user()->member_id)->get();
+
+}
+
 $products = DB::table('products')->get();
 @endphp
 
@@ -40,7 +46,7 @@ $products = DB::table('products')->get();
 
 
 <!-- Status Field -->
-<div class="form-group">
+<div class="form-group" style="display: @if(if_can('show_all_data')) block @else none @endif;">
     <div class="row">
         {!! Form::label('status', 'Status:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
@@ -49,6 +55,7 @@ $products = DB::table('products')->get();
         </div>
     </div>
 </div>
+
 
 
 <!-- Submit Field -->

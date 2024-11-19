@@ -6,7 +6,7 @@
             {!! Form::text('mem_name', null, ['class' => 'form-control']) !!}
         </div>
     </div>
-</div
+</div>
 
 
 <!-- Mem Father Field -->
@@ -17,7 +17,7 @@
             {!! Form::text('mem_father', null, ['class' => 'form-control']) !!}
         </div>
     </div>
-</div
+</div>
 
 
 <!-- Mem Address Field -->
@@ -28,7 +28,7 @@
             {!! Form::text('mem_address', null, ['class' => 'form-control']) !!}
         </div>
     </div>
-</div
+</div>
 
 
 <!-- Mem Admission Date Field -->
@@ -80,6 +80,20 @@
         {!! Form::label('mem_img_url', 'Mem Img Url:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
             {!! Form::file('mem_img_url', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+
+@php
+$groups = DB::table('groups')->get();
+@endphp
+
+<!-- group Img Url Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('group_id', 'Group:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::select('group_id', $groups->pluck('name', 'id')->prepend('Select Group', ''), null, ['class' => 'form-control']) !!}
         </div>
     </div>
 </div>
