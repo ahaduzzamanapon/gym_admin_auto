@@ -59,6 +59,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Model checking
     Route::post('tableCheck', 'AppBaseController@tableCheck');
+
+
+    route::post('couponsCheck', 'CouponController@couponsCheck')->name('coupons.check');
+    route::post('packageCheck', 'PackageController@packageCheck')->name('packages.check');
+
+
+
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

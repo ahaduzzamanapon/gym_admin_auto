@@ -10,6 +10,8 @@ use App\Models\Coupon;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class CouponController extends AppBaseController
 {
@@ -147,5 +149,23 @@ class CouponController extends AppBaseController
         Flash::success('Coupon deleted successfully.');
 
         return redirect(route('coupons.index'));
+    }
+    public function couponsCheck(Request $request){
+        $data = $request->all();
+        //dd($data);
+        $coupon = Coupon::where('coupon_code', $data['coupons_id'])
+            ->whereDate('expire_date', '>=', Carbon::today())
+            ->first();
+        if ($coupon instanceof Coupon) {
+            return response()->json([
+                'status' => true,
+                'data' => $coupon,
+            ]);    
+        }else{
+            return response()->json([
+                'status' => false,
+                'data' => null,
+            ]);
+        }
     }
 }

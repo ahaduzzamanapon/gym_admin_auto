@@ -22,7 +22,19 @@ class PurchasePackageController extends AppBaseController
     public function index(Request $request)
     {
         /** @var PurchasePackage $purchasePackages */
-        $purchasePackages = PurchasePackage::paginate(10);
+        if(if_can('show_all_data')){
+            $purchasePackages = PurchasePackage::select('purchasepackages.*', 'packages.pack_name as pack_name', 'members.mem_name as member_name')
+            ->join('packages', 'packages.id', '=', 'purchasepackages.package_id')
+            ->join('members', 'members.id', '=', 'purchasepackages.member_id')
+            ->paginate(10);
+        }else
+        {
+            $purchasePackages = PurchasePackage::select('purchasepackages.*', 'packages.pack_name as pack_name', 'members.mem_name as member_name')
+            ->join('packages', 'packages.id', '=', 'purchasepackages.package_id')
+            ->join('members', 'members.id', '=', 'purchasepackages.member_id')
+            ->where('members.id', auth()->user()->member_id)
+            ->paginate(10);
+        }
 
         return view('purchase_packages.index')
             ->with('purchasePackages', $purchasePackages);
@@ -48,6 +60,7 @@ class PurchasePackageController extends AppBaseController
     public function store(CreatePurchasePackageRequest $request)
     {
         $input = $request->all();
+        
 
         /** @var PurchasePackage $purchasePackage */
         $purchasePackage = PurchasePackage::create($input);

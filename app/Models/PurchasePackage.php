@@ -44,7 +44,7 @@ class PurchasePackage extends Model
         'id' => 'integer',
         'member_id' => 'integer',
         'package_id' => 'integer',
-        'coupons_id' => 'integer',
+        'coupons_id' => 'string',
         'amount' => 'integer',
         'tax' => 'integer',
         'coupon_amount' => 'integer',

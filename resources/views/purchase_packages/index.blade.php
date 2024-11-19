@@ -25,7 +25,9 @@ Purchase Packages @parent
         <section class="card-header">
             <h5 class="card-title d-inline">Purchase Packages</h5>
             <span class="float-right">
-                <a class="btn btn-primary pull-right" href="{{ route('purchasePackages.create') }}">Add New</a>
+                @if(if_can('show_all_data'))
+                    <a class="btn btn-primary pull-right" href="{{ route('purchasePackages.create') }}">Add New</a>
+                @endif
             </span>
         </section>
         <div class="card-body">

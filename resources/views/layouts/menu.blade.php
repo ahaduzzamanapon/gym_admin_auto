@@ -39,6 +39,16 @@
 </li>
 @endif
 
+@if(if_can('purchase_packages'))
+<li class="{!! (Request::is('purchasePackages*') ? 'active' : '' ) !!}">
+    <a href="{{ route('purchasePackages.index') }}">
+        <span class="mm-text ">Purchase Packages</span>
+        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+    </a>
+</li>
+@endif
+
+
 
 @if(if_can('manage_inventory'))
 
@@ -137,11 +147,4 @@
         <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
     </a>
 </li> --}}
-
-<li class="{!! (Request::is('purchasePackages*') ? 'active' : '' ) !!}">
-    <a href="{{ route('purchasePackages.index') }}">
-        <span class="mm-text ">Purchase Packages</span>
-        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
-    </a>
-</li>
 
