@@ -50,11 +50,11 @@
 
 
 
-@if(if_can('manage_inventory'))
+@if(if_can('store_management'))
 
 <li {!! (Request::is('products') || Request::is('requisitions*')  ? 'class="menu-dropdown active"': "class='menu-dropdown'" ) !!}>
     <a href="#">
-        <span class="mm-text ">Inventory</span>
+        <span class="mm-text ">Store Manage</span>
         <span class="menu-icon "> <i class="im im-icon-Window-2"></i></span>
         <span class="im im-icon-Arrow-Right imicon"></span>
     </a>
