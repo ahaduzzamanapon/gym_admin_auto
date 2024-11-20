@@ -209,7 +209,7 @@
         </div>
     </div>
 
-    <div class="w-full px-4 lg:px-10  py-4 ">
+    <div class="w-full px-4 lg:px-10  py-4 " id="feature-content">
         <div class="w-full my-3 text-center">
             <h1 class="font-poppins text-28 lg:text-[30px] xl:text-40  leading-[62px] font-bold text-black"><span class="text-cayan">Gym Master</span>   Software Features</h1>
         </div>

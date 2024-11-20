@@ -72,6 +72,12 @@
             style="display:none;visibility:hidden"></iframe>
     </noscript>
 
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+
 
 </head>
 
