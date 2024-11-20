@@ -73,7 +73,7 @@
                         <figure>
                             <img src="{{ asset('frontend/assets/images/blogs/blog.png') }}" alt="Shoes" />
                         </figure>
-                        <div class="card-body">
+                        <div class="p-5 card-body">
                             <h2 class="card-title text-cayan text-14"> 1 November 2024</h2>
                             <h1 class=" my-2 font-poppins font-bold text-block text-16 lg:text-20"> Utilities management
                             </h1>
@@ -91,7 +91,7 @@
                         <figure>
                             <img src="{{ asset('frontend/assets/images/blogs/blog-1.png') }}" alt="Shoes" />
                         </figure>
-                        <div class="card-body">
+                        <div class="p-5 card-body">
                             <h2 class="card-title text-cayan text-14"> 1 November 2024</h2>
                             <h1 class=" my-2 font-poppins font-bold text-block text-16 lg:text-20"> Smart Educare System
                                 settings</h1>
@@ -111,7 +111,7 @@
                         <figure>
                             <img src="{{ asset('frontend/assets/images/blogs/blog-2.png') }}" alt="Shoes" />
                         </figure>
-                        <div class="card-body">
+                        <div class="p-5 card-body">
                             <h2 class="card-title text-cayan text-14"> 1 November 2024</h2>
                             <h1 class=" my-2 font-poppins font-bold text-block text-16 lg:text-20"> What is Accounts
                                 Management?</h1>
@@ -129,7 +129,7 @@
                         <figure>
                             <img src="{{ asset('frontend/assets/images/blogs/blog.png') }}" alt="Shoes" />
                         </figure>
-                        <div class="card-body">
+                        <div class="p-5 card-body">
                             <h2 class="card-title text-cayan text-14"> 1 November 2024</h2>
                             <h1 class=" my-2 font-poppins font-bold text-block text-16 lg:text-20"> Utilities management
                             </h1>
@@ -147,7 +147,7 @@
                         <figure>
                             <img src="{{ asset('frontend/assets/images/blogs/blog-1.png') }}" alt="Shoes" />
                         </figure>
-                        <div class="card-body">
+                        <div class="p-5 card-body">
                             <h2 class="card-title text-cayan text-14"> 1 November 2024</h2>
                             <h1 class=" my-2 font-poppins font-bold text-block text-16 lg:text-20"> Smart Educare System
                                 settings</h1>
@@ -167,7 +167,7 @@
                         <figure>
                             <img src="{{ asset('frontend/assets/images/blogs/blog-2.png') }}" alt="Shoes" />
                         </figure>
-                        <div class="card-body">
+                        <div class="p-5 card-body">
                             <h2 class="card-title text-cayan text-14"> 1 November 2024</h2>
                             <h1 class=" my-2 font-poppins font-bold text-block text-16 lg:text-20"> What is Accounts
                                 Management?</h1>

@@ -46,7 +46,7 @@ Gym Master | Blog Details
           </div>
 
           <div class="flex items-center justify-between px-4 py-3">
-              <a href="{{ route('blog_details',$item->title_slug) }}" class="font-poppins lg:text-[11px] xl:text-12 leading-3 text-[#006BA3] cursor-pointer">Read more</a>
+              <a href="{{ route('blog_details',$item->title_slug) }}" class="font-poppins lg:text-[11px] xl:text-12 leading-3 text-cayan cursor-pointer">Read more</a>
 
               <span class="font-poppins lg:text-[11px] xl:text-12 leading-3">{{ formatDateTime($dateTime, 'M-d-Y') }}</span>
           </div>
@@ -93,7 +93,7 @@ Gym Master | Blog Details
     <div>
         <div class="w-[90%] lg:w-[60%] mx-auto" style="box-shadow: 0 1px 10px rgb(0 0 0 / 0.2);">
             <div class="w-full px-4 pt-5 pb-7 lg:px-20 lg:pt-14 lg:pb-20 z-20">
-                <h1 class="text-26 lg:text-36 xl:text-40 font-poppins leading-[40px] lg:leading-[48px] text-center text-[#006BA3]">something to say?</h1>
+                <h1 class="text-26 lg:text-36 xl:text-40 font-poppins leading-[40px] lg:leading-[48px] text-center text-cayan">something to say?</h1>
                 
     
             <form action="{{ route('contact.sent') }}" method="POST">

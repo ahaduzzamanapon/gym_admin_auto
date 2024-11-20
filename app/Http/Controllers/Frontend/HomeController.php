@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Feature;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 
 class HomeController extends Controller
@@ -17,8 +18,10 @@ class HomeController extends Controller
         $total_clients = Setting::first()->total_clients ?? 0;
         $rmg_sector = Setting::first()->rmg_sector  ?? 0;
         $hr_pdf = Setting::first()->hr_pdf ?? '';
+
+        $features = Feature::where('status', 1)->get();
         
-        return view('welcome', compact('years_of_exprience', 'total_clients', 'rmg_sector', 'hr_pdf'));
+        return view('welcome', compact('years_of_exprience', 'total_clients', 'rmg_sector', 'hr_pdf', 'features'));
     }
 
     public function privacy()

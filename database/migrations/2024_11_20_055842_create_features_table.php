@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateExpensessTable extends Migration
+return new class extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -13,11 +13,11 @@ class CreateExpensessTable extends Migration
      */
     public function up()
     {
-        Schema::create('expensess', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('features', function (Blueprint $table) {
+            $table->id();
             $table->string('title');
-            $table->integer('amount');
-            $table->text('description');
+            $table->string('image');
+            $table->tinyInteger('status')->comment('0: hide, 1: show');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateExpensessTable extends Migration
      */
     public function down()
     {
-        Schema::drop('expensess');
+        Schema::dropIfExists('features');
     }
-}
+};

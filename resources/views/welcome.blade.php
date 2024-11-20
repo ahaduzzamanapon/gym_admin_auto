@@ -87,21 +87,21 @@
                     </div>
                     <div class="mt-5 flex items-center justify-between lg:justify-normal  lg:gap-20">
                         <div class="border-r border-dashed border-[#006FD6] pr-5">
-                            <h1 class="font-poppins text-26 lg:text-36 xl:text-40 text-[#006FD6] font-bold counter_value">
+                            <h1 class="font-poppins text-26 lg:text-36 xl:text-40 text-cayan font-bold counter_value">
                                 {{ $years_of_exprience }}+</h1>
-                            <p class="text-[#006FD6] text-13 lg:text-16  xl:text-20 font-bold leading-7">
+                            <p class="text-cayan text-13 lg:text-16  xl:text-20 font-bold leading-7">
                                 Gym
                             </p>
                         </div>
                         <div class="border-r border-dashed border-[#006FD6] pr-5">
-                            <h1 class="font-poppins text-28 lg:text-36 xl:text-40 text-[#006FD6] font-bold counter_value">
+                            <h1 class="font-poppins text-28 lg:text-36 xl:text-40 text-cayan font-bold counter_value">
                                 {{ $total_clients }}+</h1>
-                            <p class="text-[#006FD6] text-13 lg:text-16  xl:text-20 font-bold leading-7">Members </p>
+                            <p class="text-cayan text-13 lg:text-16  xl:text-20 font-bold leading-7">Members </p>
                         </div>
                         <div class="border-r border-dashed border-[#006FD6] pr-5">
-                            <h1 class="font-poppins text-28 lg:text-36 xl:text-40 text-[#006FD6] font-bold counter_value">
+                            <h1 class="font-poppins text-28 lg:text-36 xl:text-40 text-cayan font-bold counter_value">
                                 {{ $rmg_sector }}+</h1>
-                            <p class="text-[#006FD6] text-13 lg:text-16  xl:text-20 font-bold leading-7">Divisions In Bd</p>
+                            <p class="text-cayan text-13 lg:text-16  xl:text-20 font-bold leading-7">Divisions In Bd</p>
                         </div>
                     </div>
                 </div>
@@ -213,114 +213,131 @@
         <div class="w-full my-3 text-center">
             <h1 class="font-poppins text-28 lg:text-[30px] xl:text-40  leading-[62px] font-bold text-black"><span class="text-cayan">Gym Master</span>   Software Features</h1>
         </div>
-        <div class="w-full flex flex-wrap justify-center">
-            <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-gradient-to-l from-[#D1EEEF] via-blue-50 to-[#D1EEEF] shadow-lg">
-                <div class="flex items-center gap-5">
-                    <div><img src="{{ asset('frontend/assets/images/Gym-feature/info.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
-                    <div>
-                        <h2 class="font-poppins text-16 xl:text-18 font-semibold">Employee Information
-                            Management System</h2>
+        @if ($features->count() == 3)
+            <div class="w-full flex flex-wrap justify-center">
+                @forelse ($features as $feature)
+                    <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-gradient-to-l from-[#D1EEEF] via-blue-50 to-[#D1EEEF] shadow-lg">
+                        <div class="flex items-center gap-5">
+                            <div><img src="{{ asset($feature->image) }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
+                            <div>
+                                <h2 class="font-poppins text-16 xl:text-18 font-semibold">{{ $feature->title }}</h2>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    
+                @endforelse
+            </div>
+        @else
+            <div class="w-full flex flex-wrap justify-center">
+                <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-gradient-to-l from-[#D1EEEF] via-blue-50 to-[#D1EEEF] shadow-lg">
+                    <div class="flex items-center gap-5">
+                        <div><img src="{{ asset('frontend/assets/images/Gym-feature/info.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
+                        <div>
+                            <h2 class="font-poppins text-16 xl:text-18 font-semibold">Employee Information
+                                Management System</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-[#F3F6E6] shadow-lg">
+                    <div class="flex items-center gap-5">
+                        <div><img src="{{ asset('frontend/assets/images/Gym-feature/receipt.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
+                        <div>
+                            <h2 class="font-poppins text-16 xl:text-18 font-semibold">Pricing, Package and
+                                Coupon Management</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-gradient-to-l from-[#D1EEEF] via-blue-50 to-[#D1EEEF] shadow-lg">
+                    <div class="flex items-center gap-5">
+                        <div><img src="{{ asset('frontend/assets/images/Gym-feature/report.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
+                        <div>
+                            <h2 class="font-poppins text-16 xl:text-18 font-semibold">Workout Tracking and
+                                Fitness Plans</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-gradient-to-l from-[#D1EEEF] via-blue-50 to-[#D1EEEF] shadow-lg">
+                    <div class="flex items-center gap-5">
+                        <div><img src="{{ asset('frontend/assets/images/Gym-feature/immigration.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
+                        <div>
+                            <h2 class="font-poppins text-16 xl:text-18 font-semibold">Daily Attendance & health
+                                update Management</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-gradient-to-l from-[#D1EEEF] via-blue-50 to-[#D1EEEF] shadow-lg">
+                    <div class="flex items-center gap-5">
+                        <div><img src="{{ asset('frontend/assets/images/Gym-feature/dashboard.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
+                        <div>
+                            <h2 class="font-poppins text-16 xl:text-18 font-semibold">Member Profile & 
+                                Dashboard</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-[#F3F6E6] shadow-lg">
+                    <div class="flex items-center gap-5">
+                        <div><img src="{{ asset('frontend/assets/images/Gym-feature/g3385.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
+                        <div>
+                            <h2 class="font-poppins text-16 xl:text-18 font-semibold">Membership Payment
+                                Management</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-[#F3F6E6] shadow-lg">
+                    <div class="flex items-center gap-5">
+                        <div><img src="{{ asset('frontend/assets/images/Gym-feature/financial-statement.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
+                        <div>
+                            <h2 class="font-poppins text-16 xl:text-18 font-semibold">Income & Expense 
+                                Management</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-gradient-to-l from-[#D1EEEF] via-blue-50 to-[#D1EEEF] shadow-lg">
+                    <div class="flex items-center gap-5">
+                        <div><img src="{{ asset('frontend/assets/images/Gym-feature/inventory.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
+                        <div>
+                            <h2 class="font-poppins text-16 xl:text-18 font-semibold">Inventory 
+                                Management</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-[#F3F6E6] shadow-lg">
+                    <div class="flex items-center gap-5">
+                        <div><img src="{{ asset('frontend/assets/images/Gym-feature/teamwork.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
+                        <div>
+                            <h2 class="font-poppins text-16 xl:text-18 font-semibold">Staff Role and 
+                                Permission Management</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-gradient-to-l from-[#D1EEEF] via-blue-50 to-[#D1EEEF] shadow-lg">
+                    <div class="flex items-center gap-5">
+                        <div><img src="{{ asset('frontend/assets/images/Gym-feature/g3726.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
+                        <div>
+                            <h2 class="font-poppins text-16 xl:text-18 font-semibold">Report Management</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-[#F3F6E6] shadow-lg">
+                    <div class="flex items-center gap-5">
+                        <div><img src="{{ asset('frontend/assets/images/Gym-feature/smartphone.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
+                        <div>
+                            <h2 class="font-poppins text-16 xl:text-18 font-semibold">SMS gateway with SMS</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-gradient-to-l from-[#D1EEEF] via-blue-50 to-[#D1EEEF] shadow-lg">
+                    <div class="flex items-center gap-5">
+                        <div><img src="{{ asset('frontend/assets/images/Gym-feature/Group.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
+                        <div>
+                            <h2 class="font-poppins text-16 xl:text-18 font-semibold">Support / Contact 
+                                Management</h2>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-[#F3F6E6] shadow-lg">
-                <div class="flex items-center gap-5">
-                    <div><img src="{{ asset('frontend/assets/images/Gym-feature/receipt.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
-                    <div>
-                        <h2 class="font-poppins text-16 xl:text-18 font-semibold">Pricing, Package and
-                            Coupon Management</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-gradient-to-l from-[#D1EEEF] via-blue-50 to-[#D1EEEF] shadow-lg">
-                <div class="flex items-center gap-5">
-                    <div><img src="{{ asset('frontend/assets/images/Gym-feature/report.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
-                    <div>
-                        <h2 class="font-poppins text-16 xl:text-18 font-semibold">Workout Tracking and
-                            Fitness Plans</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-gradient-to-l from-[#D1EEEF] via-blue-50 to-[#D1EEEF] shadow-lg">
-                <div class="flex items-center gap-5">
-                    <div><img src="{{ asset('frontend/assets/images/Gym-feature/immigration.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
-                    <div>
-                        <h2 class="font-poppins text-16 xl:text-18 font-semibold">Daily Attendance & health
-                            update Management</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-gradient-to-l from-[#D1EEEF] via-blue-50 to-[#D1EEEF] shadow-lg">
-                <div class="flex items-center gap-5">
-                    <div><img src="{{ asset('frontend/assets/images/Gym-feature/dashboard.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
-                    <div>
-                        <h2 class="font-poppins text-16 xl:text-18 font-semibold">Member Profile & 
-                            Dashboard</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-[#F3F6E6] shadow-lg">
-                <div class="flex items-center gap-5">
-                    <div><img src="{{ asset('frontend/assets/images/Gym-feature/g3385.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
-                    <div>
-                        <h2 class="font-poppins text-16 xl:text-18 font-semibold">Membership Payment
-                            Management</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-[#F3F6E6] shadow-lg">
-                <div class="flex items-center gap-5">
-                    <div><img src="{{ asset('frontend/assets/images/Gym-feature/financial-statement.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
-                    <div>
-                        <h2 class="font-poppins text-16 xl:text-18 font-semibold">Income & Expense 
-                            Management</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-gradient-to-l from-[#D1EEEF] via-blue-50 to-[#D1EEEF] shadow-lg">
-                <div class="flex items-center gap-5">
-                    <div><img src="{{ asset('frontend/assets/images/Gym-feature/inventory.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
-                    <div>
-                        <h2 class="font-poppins text-16 xl:text-18 font-semibold">Inventory 
-                            Management</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-[#F3F6E6] shadow-lg">
-                <div class="flex items-center gap-5">
-                    <div><img src="{{ asset('frontend/assets/images/Gym-feature/teamwork.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
-                    <div>
-                        <h2 class="font-poppins text-16 xl:text-18 font-semibold">Staff Role and 
-                            Permission Management</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-gradient-to-l from-[#D1EEEF] via-blue-50 to-[#D1EEEF] shadow-lg">
-                <div class="flex items-center gap-5">
-                    <div><img src="{{ asset('frontend/assets/images/Gym-feature/g3726.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
-                    <div>
-                        <h2 class="font-poppins text-16 xl:text-18 font-semibold">Report Management</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-[#F3F6E6] shadow-lg">
-                <div class="flex items-center gap-5">
-                    <div><img src="{{ asset('frontend/assets/images/Gym-feature/smartphone.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
-                    <div>
-                        <h2 class="font-poppins text-16 xl:text-18 font-semibold">SMS gateway with SMS</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full lg:w-[31%] pl-5 py-5 m-2  bg-gradient-to-l from-[#D1EEEF] via-blue-50 to-[#D1EEEF] shadow-lg">
-                <div class="flex items-center gap-5">
-                    <div><img src="{{ asset('frontend/assets/images/Gym-feature/Group.png') }}" class="w-32 lg:w-12 xl:w-28" alt="Sheba img"></div>
-                    <div>
-                        <h2 class="font-poppins text-16 xl:text-18 font-semibold">Support / Contact 
-                            Management</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endif
 
     </div>
 

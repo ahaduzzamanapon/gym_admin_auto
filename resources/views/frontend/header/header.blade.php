@@ -1,4 +1,4 @@
-<div class="w-full h-auto bg-[#006BA3] flex items-center justify-between px-2 lg:px-14 py-[8px]">
+<div class="w-full h-auto bg-cayan flex items-center justify-between px-2 lg:px-14 py-[8px]">
 
     <div class="lg:flex items-center justify-between lg:justify-normal gap-3">
         <div class="flex items-center text-white gap-2">
@@ -53,30 +53,30 @@
     <div class="hidden lg:flex items-center gap-10">
         <ul class="flex items-center gap-8">
             <li>
-                <a href="{{ url('/welcome') }}" class="text-[#006BA3] lg:text-16 font-bold font-poppins  leading-[19px]  hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('/') ? '!text-[#41b5f3] !font-[600]' : '' }}">Home</a>
+                <a href="{{ url('/welcome') }}" class="text-cayan lg:text-16 font-bold font-poppins  leading-[19px]  hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('/') ? '!text-[#41b5f3] !font-[600]' : '' }}">Home</a>
             </li>
             <li>
-                <a onclick="redirectFeatures()" class="text-[#006BA3] lg:text-16 font-bold font-poppins  leading-[19px] cursor-pointer  hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('#hrShebaFeatures') ? '!text-[#41b5f3] !font-[600]' : '' }}">Features</a>
+                <a onclick="redirectFeatures()" class="text-cayan lg:text-16 font-bold font-poppins  leading-[19px] cursor-pointer  hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('#hrShebaFeatures') ? '!text-[#41b5f3] !font-[600]' : '' }}">Features</a>
             </li>
             {{-- <li>
-                <a href="{{ url('/pricing') }}" class="text-[#006BA3] lg:text-16 font-bold font-poppins  leading-[19px]  hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('pricing') ? '!text-[#41b5f3] !font-[600]' : '' }}">Pricing</a>
+                <a href="{{ url('/pricing') }}" class="text-cayan lg:text-16 font-bold font-poppins  leading-[19px]  hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('pricing') ? '!text-[#41b5f3] !font-[600]' : '' }}">Pricing</a>
             </li> --}}
             <li>
-                <a href="{{ url('/solutions') }}" class="text-[#006BA3] lg:text-16 font-bold font-poppins  leading-[19px]  hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('devices') ? '!text-[#41b5f3] !font-[600]' : '' }}">Solutions</a>
+                <a href="{{ url('/solutions') }}" class="text-cayan lg:text-16 font-bold font-poppins  leading-[19px]  hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('devices') ? '!text-[#41b5f3] !font-[600]' : '' }}">Packages</a>
             </li>
             <li>
-                <a href="{{ url('/blogs') }}" class="text-[#006BA3] lg:text-16 font-bold font-poppins  leading-[19px] hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('blogs') ? '!text-[#41b5f3] !font-[600]' : '' }}">Blog</a>
+                <a href="{{ url('/blogs') }}" class="text-cayan lg:text-16 font-bold font-poppins  leading-[19px] hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('blogs') ? '!text-[#41b5f3] !font-[600]' : '' }}">Blog</a>
             </li>
-            <li>
-                <a href="{{ url('/contact_us') }}" class="text-[#006BA3] lg:text-16 font-bold font-poppins leading-[19px]  hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('contact_us') ? '!text-[#41b5f3] !font-[600]' : '' }}">Contact Us</a>
-            </li>
+                {{-- <li>
+                    <a href="{{ url('/contact_us') }}" class="text-cayan lg:text-16 font-bold font-poppins leading-[19px]  hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('contact_us') ? '!text-[#41b5f3] !font-[600]' : '' }}">Contact Us</a>
+                </li> --}}
         </ul>
         <div class="flex items-center gap-4">
-            <a href="{{ route('login') }}" class="bg-[#006BA3] rounded-[24px] px-3 lg:py-1  text-white flex items-center gap-2 hover:bg-[#41b5f3] duration-300 ease-in-out hover:text-15">
+            <a href="{{ route('login') }}" class="bg-cayan rounded-[24px] px-3 lg:py-1  text-white flex items-center gap-2 hover:bg-[#41b5f3] duration-300 ease-in-out hover:text-15">
                 <span class="font-poppins lg:text-16 xl:text-18 font-[500]">Login</span>
                 {{-- <img class="lg:w-[14px] lg:h-[14px] xl:w-[16px] xl:h-[16px]" src="{{ asset('frontend/assets/images/arrow.png') }}" alt="arrow icon"> --}}
             </a>
-            <a href="{{ route('register') }}" class="bg-[#006BA3] rounded-[24px] px-3 lg:py-1  text-white flex items-center gap-2 hover:bg-[#41b5f3] duration-300 ease-in-out hover:text-15">
+            <a href="{{ route('register') }}" class="bg-cayan rounded-[24px] px-3 lg:py-1  text-white flex items-center gap-2 hover:bg-[#41b5f3] duration-300 ease-in-out hover:text-15">
                 <span class="font-poppins lg:text-16 xl:text-18 font-[500]">Register</span>
                 <img class="lg:w-[14px] lg:h-[14px] xl:w-[16px] xl:h-[16px]" src="{{ asset('frontend/assets/images/arrow.png') }}" alt="arrow icon">
             </a>
@@ -91,30 +91,30 @@
             <span onclick="openDrawer()" class="absolute top-[0%] left-[2%]"><i  class="fa fa-light fa-xmark"></i></span>
             <ul class="flex flex-col items-center gap-4">
                 <li>
-                    <a href="{{ url('/') }}" class="text-[#006BA3] text-12 font-bold font-poppins  leading-[19px]">Home</a>
+                    <a href="{{ url('/') }}" class="text-cayan text-12 font-bold font-poppins  leading-[19px]">Home</a>
                 </li>
                 <li>
-                    <a onclick="redirectFeatures()" class="text-[#006BA3] text-12 font-bold font-poppins  leading-[19px] cursor-pointer">Features</a>
+                    <a onclick="redirectFeatures()" class="text-cayan text-12 font-bold font-poppins  leading-[19px] cursor-pointer">Features</a>
                 </li>
                 {{-- <li>
-                    <a href="{{ url('/pricing') }}" class="text-[#006BA3] text-12 font-bold font-poppins  leading-[19px]">Pricing</a>
+                    <a href="{{ url('/pricing') }}" class="text-cayan text-12 font-bold font-poppins  leading-[19px]">Pricing</a>
                 </li> --}}
                 <li>
-                    <a href="{{ url('/solutions') }}" class="text-[#006BA3] text-12 font-bold font-poppins  leading-[19px]">Solutions</a>
+                    <a href="{{ url('/solutions') }}" class="text-cayan text-12 font-bold font-poppins  leading-[19px]">Solutions</a>
                 </li>
                 <li>
-                    <a href="{{ url('/blogs') }}" class="text-[#006BA3] text-12 font-bold font-poppins  leading-[19px]">Blog</a>
+                    <a href="{{ url('/blogs') }}" class="text-cayan text-12 font-bold font-poppins  leading-[19px]">Blog</a>
                 </li>
                 <li>
-                    <a href="{{ url('/contact_us') }}" class="text-[#006BA3] text-12 font-bold font-poppins leading-[19px]">Contact Us</a>
+                    <a href="{{ url('/contact_us') }}" class="text-cayan text-12 font-bold font-poppins leading-[19px]">Contact Us</a>
                 </li>
             </ul>
             <div class="flex items-center justify-center mt-4">
-                <a href="{{ route('login') }}" class="bg-[#006BA3] rounded-[24px] px-3 py-1   text-white flex items-center gap-2">
+                <a href="{{ route('login') }}" class="bg-cayan rounded-[24px] px-3 py-1   text-white flex items-center gap-2">
                     <span class="font-poppins text-12 font-[500]">Login</span>
                     <img class="w-[12px] h-[12px]" src="{{ asset('frontend/assets/images/arrow.png') }}" alt="arrow icon">
                 </a>
-                <a href="{{ route('register') }}" class="bg-[#006BA3] rounded-[24px] px-3 py-1   text-white flex items-center gap-2">
+                <a href="{{ route('register') }}" class="bg-cayan rounded-[24px] px-3 py-1   text-white flex items-center gap-2">
                     <span class="font-poppins text-12 font-[500]">Register</span>
                     <img class="w-[12px] h-[12px]" src="{{ asset('frontend/assets/images/arrow.png') }}" alt="arrow icon">
                 </a>
