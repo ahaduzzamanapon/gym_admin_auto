@@ -5,7 +5,7 @@
 
 
 <tr>
-    <th scopre="row">{!! Form::label('member_id', 'Member Id:') !!}</th>
+    <th scopre="row">{!! Form::label('member_id', 'Member name:') !!}</th>
     <td>{{ $healthmetrics->member_id }}</td>
 </tr>
 

@@ -1,4 +1,4 @@
-<!-- Member Id Field -->
+<!-- Member name Field -->
 
 @php
 $members = DB::table('members')->get();

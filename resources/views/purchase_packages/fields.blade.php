@@ -10,7 +10,7 @@ if(if_can('show_all_data')){
 $packages = DB::table('packages')->get();
 @endphp
 
-<!-- Member Id Field -->
+<!-- Member name Field -->
 <div class="form-group" style="display: @if(if_can('show_all_data'))block @else none @endif;">
     <div class="row">
         {!! Form::label('member_id', 'Member Name:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
