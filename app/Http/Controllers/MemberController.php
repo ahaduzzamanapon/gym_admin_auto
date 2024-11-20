@@ -56,6 +56,8 @@ class MemberController extends AppBaseController
             $file = $request->file('mem_img_url');
             $input['mem_img_url'] = $file->store('images/members', 'public');
         }
+        $member_unique_id='MEM'.time();
+        $input['member_unique_id']=$member_unique_id;
 
         /** @var Member $member */
         $member = Member::create($input);

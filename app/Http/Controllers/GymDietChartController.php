@@ -139,5 +139,8 @@ class GymDietChartController extends Controller
         $mealplans = GymMealPlan::where('diet_chart_id', $dietChart_id)->get();
         return view('diet_charts.show', compact('dietChart','mealplans'));
     }
+
+
+    
     
 }

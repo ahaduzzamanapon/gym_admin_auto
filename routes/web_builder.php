@@ -32,3 +32,5 @@ Route::resource('purchasePackages', 'PurchasePackageController');
 Route::resource('assetsManagements', 'AssetsManagementController');
 
 Route::resource('assetsManagements', 'AssetsManagementController');
+
+Route::resource('assetsCategories', 'AssetsCategoryController');

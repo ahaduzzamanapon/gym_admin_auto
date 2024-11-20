@@ -75,7 +75,8 @@ class MemberDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id',
+           // 'id',
+            'member_unique_id' => ['title' => 'Member ID'],
             'mem_name',
             'group_name' => ['title' => 'Role'],
             'mem_father',

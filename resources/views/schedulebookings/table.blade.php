@@ -5,6 +5,7 @@
                 <th>Id</th>
         <th>Member name</th>
         <th>Booking Date</th>
+        <th>Booking time</th>
         <th>Service Type</th>
         <th>Status</th>
         <th>Note</th>
@@ -18,7 +19,8 @@
             <tr>
                 <td>{{ $schedulebooking->id }}</td>
             <td>{{ $schedulebooking->mem_name}}</td>
-            <td>{{ $schedulebooking->booking_date }}</td>
+            <td>{{ date('Y-m-d', strtotime($schedulebooking->booking_date)) }}</td>
+            <td>{{ $schedulebooking->booking_time }}</td>
             <td>{{ $schedulebooking->service_type }}</td>
             <td>{{ $schedulebooking->status }}</td>
             <td>{{ $schedulebooking->note }}</td>

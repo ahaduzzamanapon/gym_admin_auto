@@ -3,8 +3,8 @@ if(if_can('show_all_data')){
     $members = DB::table('members')->get();
 }else {
     $members = DB::table('members')->where('id', Auth::user()->member_id)->get();
-
 }
+$asset=DB::table('assets_managements')->where('asset_for', 'Staff')->get();
 @endphp
 <!-- Member name Field -->
 <div class="form-group">
@@ -15,14 +15,25 @@ if(if_can('show_all_data')){
         </div>
     </div>
 </div>
+<!-- Member name Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('asset_id', 'Asset name:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::select('asset_id', $asset->pluck('item_name', 'id')->prepend('Select Asset', ''), null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
 
 
 <!-- Booking Date Field -->
 <div class="form-group">
     <div class="row">
-        {!! Form::label('booking_date', 'Booking Date:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
-        <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::date('booking_date', null, ['class' => 'form-control','id'=>'booking_date']) !!}
+        {!! Form::label('booking_date', 'Booking Date Time:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12" style="display: flex;gap: 12px;">
+
+            {!! Form::date('booking_date', (isset($schedulebooking->booking_date)) ? date('Y-m-d', strtotime($schedulebooking->booking_date)) : null, ['class' => 'form-control','id'=>'booking_date','format'=>'Y-m-d']) !!}
+            {!! Form::time('booking_time', null, ['class' => 'form-control','id'=>'booking_time']) !!}
         </div>
     </div>
 </div>

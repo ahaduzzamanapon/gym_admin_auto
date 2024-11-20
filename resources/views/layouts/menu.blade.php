@@ -128,14 +128,41 @@
 </li>
 @endif
 
-@if(if_can('assets_managements'))
-<li class="{!! (Request::is('assetsManagements*') ? 'active' : '' ) !!}">
-    <a href="{{ route('assetsManagements.index') }}">
-        <span class="mm-text ">Assets Managements</span>
-        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+
+
+
+
+
+@if(if_can('manage_inventory'))
+<li {!! (Request::is('assetsManagements*') ? 'class="menu-dropdown active"': "class='menu-dropdown'" ) !!}>
+    <a href="#">
+        <span class="mm-text ">Inventory</span>
+        <span class="menu-icon "> <i class="im im-icon-Window-2"></i></span>
+        <span class="im im-icon-Arrow-Right imicon"></span>
     </a>
+    <ul class="sub-menu list-unstyled">
+        @if(if_can('assetsCategory'))
+            <li {!! (Request::is('assetsCategories*') ? 'class="active"' : '' ) !!}>
+                <a href="{{ route('assetsCategories.index') }}">
+                    <span class="mm-text ">Assets Category</span>
+                </a>
+            </li>
+        @endif
+        @if(if_can('assets_managements'))
+            <li {!! (Request::is('assetsManagements*') ? 'class="active"' : '' ) !!}>
+                <a href="{{ route('assetsManagements.index') }}">
+                    <span class="mm-text ">Assets Managements</span>
+                </a>
+            </li>
+        @endif
+    </ul>
 </li>
 @endif
+
+
+
+
+
 
 
 @if(if_can('role_management'))
@@ -183,4 +210,5 @@
     </a>
 </li>
 @endif
+
 

@@ -17,6 +17,8 @@ class CreateSchedulebookingsTable extends Migration
             $table->increments('id');
             $table->integer('member_id');
             $table->date('booking_date');
+            $table->time('booking_time');
+            $table->integer('asset_id');
             $table->string('service_type');
             $table->integer('status');
             $table->text('note');

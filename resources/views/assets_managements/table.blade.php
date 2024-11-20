@@ -3,12 +3,14 @@
         <thead>
             <tr>
                 <th>Id</th>
-        <th>Item Name</th>
-        <th>Item Description</th>
-        <th>Location</th>
-        <th>Status</th>
-        <th>Created At</th>
-        <th>Updated At</th>
+                <th>Item Name</th>
+                <th>Category</th>
+                <th>Asset for</th>
+                <th>Item Description</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Created At</th>
+                <th>Updated At</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -17,6 +19,8 @@
             <tr>
                 <td>{{ $assetsManagement->id }}</td>
             <td>{{ $assetsManagement->item_name }}</td>
+            <td>{{ $assetsManagement->assets_category_name }}</td>
+            <td>{{ $assetsManagement->asset_for }}</td>
             <td>{{ $assetsManagement->item_description }}</td>
             <td>{{ $assetsManagement->location }}</td>
             <td>{{ $assetsManagement->status }}</td>

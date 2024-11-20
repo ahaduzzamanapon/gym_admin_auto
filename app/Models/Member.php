@@ -26,6 +26,7 @@ class Member extends Model
 
 
     public $fillable = [
+        'member_unique_id',
         'mem_name',
         'mem_father',
         'mem_address',
@@ -43,6 +44,7 @@ class Member extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'member_unique_id' => 'string',
         'mem_name' => 'string',
         'mem_father' => 'string',
         'mem_address' => 'string',

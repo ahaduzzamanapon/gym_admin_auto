@@ -6,6 +6,7 @@ use App\Http\Requests\CreateAssetsManagementRequest;
 use App\Http\Requests\UpdateAssetsManagementRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Models\AssetsManagement;
+use App\Models\AssetsCategory;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -22,7 +23,9 @@ class AssetsManagementController extends AppBaseController
     public function index(Request $request)
     {
         /** @var AssetsManagement $assetsManagements */
-        $assetsManagements = AssetsManagement::paginate(10);
+        $assetsManagements = AssetsManagement::join('assets_categorys', 'assets_managements.assets_categories_id', '=', 'assets_categorys.id')
+        ->select('assets_managements.*', 'assets_categorys.category_name as assets_category_name')
+        ->paginate(10);
 
         return view('assets_managements.index')
             ->with('assetsManagements', $assetsManagements);

@@ -24,6 +24,8 @@ class AssetsManagement extends Model
 
     public $fillable = [
         'item_name',
+        'assets_categories_id',
+        'asset_for',
         'item_description',
         'location',
         'status'

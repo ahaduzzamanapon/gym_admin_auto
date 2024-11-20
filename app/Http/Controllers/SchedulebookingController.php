@@ -23,9 +23,16 @@ class SchedulebookingController extends AppBaseController
     {
         /** @var Schedulebooking $schedulebookings */
         if(if_can('show_all_data')){
-        $schedulebookings = Schedulebooking::select('schedulebookings.*','schedulebookings.id as schedulebooking_id', 'members.mem_name as mem_name')->join('members', 'members.id', '=', 'schedulebookings.member_id')->paginate(10);
+            $schedulebookings = Schedulebooking::select('schedulebookings.*','schedulebookings.id as schedulebooking_id', 'members.mem_name as mem_name', 'assets_managements.item_name as item_name')
+            ->join('members', 'members.id', '=', 'schedulebookings.member_id')
+            ->join('assets_managements', 'assets_managements.id', '=', 'schedulebookings.asset_id')
+            ->paginate(10);
         }else{
-            $schedulebookings = Schedulebooking::select('schedulebookings.*','schedulebookings.id as schedulebooking_id', 'members.mem_name as mem_name')->join('members', 'members.id', '=', 'schedulebookings.member_id')->where('members.id', auth()->user()->member_id)->paginate(10);
+            $schedulebookings = Schedulebooking::select('schedulebookings.*','schedulebookings.id as schedulebooking_id', 'members.mem_name as mem_name', 'assets_managements.item_name as item_name')
+            ->join('members', 'members.id', '=', 'schedulebookings.member_id')
+            ->join('assets_managements', 'assets_managements.id', '=', 'schedulebookings.asset_id')
+            ->where('members.id', auth()->user()->member_id)
+            ->paginate(10);
         }
         return view('schedulebookings.index')
             ->with('schedulebookings', $schedulebookings);

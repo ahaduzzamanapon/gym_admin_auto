@@ -8,6 +8,30 @@
     </div>
 </div>
 
+@php
+$assets_categorys = DB::table('assets_categorys')->get();
+@endphp
+
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('assets_categories_id', 'Categories:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::select('assets_categories_id', $assets_categorys->pluck('category_name', 'id')->prepend('Select categories', ''), null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+
+
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('asset_for', 'Asset For:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::select('asset_for', ['Staff' => 'Staff','Member' => 'Member'], null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+
+
 
 <!-- Item Description Field -->
 <div class="form-group ">
