@@ -76,7 +76,7 @@ Edit Diet Chart @parent
 
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label>Goal</label>
+                            <label>Target</label>
                             <select name="goal" class="form-control" required>
                                 <option {{ $dietChart->goal == 'Weight Loss' ? 'selected' : ''}} value="Weight Loss">Weight Loss</option>
                                 <option {{ $dietChart->goal == 'Muscle Gain' ? 'selected' : ''}} value="Muscle Gain">Muscle Gain</option>

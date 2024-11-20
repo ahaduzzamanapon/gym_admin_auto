@@ -75,7 +75,7 @@ Add Diet Chart @parent
 
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label>Goal</label>
+                            <label>Target</label>
                             <select name="goal" class="form-control" required>
                                 <option value="Weight Loss">Weight Loss</option>
                                 <option value="Muscle Gain">Muscle Gain</option>

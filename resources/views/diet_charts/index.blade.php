@@ -39,7 +39,7 @@ Diet Charts @parent
                         <th>Member Name</th>
                         <th>Age</th>
                         <th>Gender</th>
-                        <th>Goal</th>
+                        <th>Target</th>
                         <th>Action</th>
                     </tr>
                 </thead>
