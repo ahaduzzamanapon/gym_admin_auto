@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\Models\GymDietChart;
+// use App\Models\GymmealPlan;
 use App\Models\MealPlan;
 use App\Models\FoodPlan;
 
@@ -24,7 +24,7 @@ class MealPlanController extends Controller
     
     public function create()
     {
-        return view('diet_charts.create');
+        return view('meal_plans.create');
     }
     
     public function store(Request $request)
@@ -38,11 +38,11 @@ class MealPlanController extends Controller
             'meal_name' => $request->meal_name,
             'description' => $request->description,
         );
-        $dietChart=MealPlan::create($data_array);
+        $mealPlan=MealPlan::create($data_array);
         $input=$request->all();
         foreach ($input['meal_name'] as $key => $value) {
             $data_array2 = array(
-                'meal_plan_id' => $dietChart->id,
+                'meal_plan_id' => $mealPlan->id,
                 'meal_name' => $input['meal_name'][$key],
                 'meal_time' => $input['meal_time'][$key],
                 'food_items' => $input['food_items'][$key],

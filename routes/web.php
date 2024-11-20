@@ -89,6 +89,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::resource('diet_charts', GymDietChartController::class);
+    Route::resource('meal_plans', MealPlanController::class);
 
 
 
