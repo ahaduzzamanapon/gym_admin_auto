@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\DeviceController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\DemuRequestController;
+use App\Http\Controllers\GymDietChartController;
 
 include 'web_builder.php';
 include 'demo.php';
@@ -85,6 +86,9 @@ Route::group(['middleware' => 'auth'], function () {
     route::post('couponsCheck', 'CouponController@couponsCheck')->name('coupons.check');
     route::post('packageCheck', 'PackageController@packageCheck')->name('packages.check');
     route::get('details/{id}', 'MemberController@details')->name('members.details');
+
+
+    Route::resource('diet_charts', GymDietChartController::class);
 
 
 

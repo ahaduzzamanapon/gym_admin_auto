@@ -9,7 +9,7 @@
 @if(if_can('member_manage'))
 
 
-<li {!! (Request::is('members') || Request::is('healthmetrics') ? 'class="menu-dropdown active"': "class='menu-dropdown'" ) !!}>
+<li {!! (Request::is('members') || Request::is('healthmetrics') || Request::is('diet_charts') ? 'class="menu-dropdown active"': "class='menu-dropdown'" ) !!}>
     <a href="#">
         <span class="mm-text ">Member Manage</span>
         <span class="menu-icon "> <i class="im im-icon-Window-2"></i></span>
@@ -26,6 +26,12 @@
                 <span class="mm-text ">Health Metrics <i class="im im-icon-Structure"></i></span>
             </a>
         </li>
+        <li {!! (Request::is('diet_charts*') ? 'class="active"' : '' ) !!}>
+            <a href="{{ route('diet_charts.index') }}">
+                <span class="mm-text ">Diet Charts <i class="im im-icon-Structure"></i></span>
+            </a>
+        </li>
+        
     </ul>
 </li>
 @endif
@@ -122,7 +128,14 @@
 </li>
 @endif
 
-
+@if(if_can('assets_managements'))
+<li class="{!! (Request::is('assetsManagements*') ? 'active' : '' ) !!}">
+    <a href="{{ route('assetsManagements.index') }}">
+        <span class="mm-text ">Assets Managements</span>
+        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+    </a>
+</li>
+@endif
 
 
 @if(if_can('role_management'))
@@ -159,4 +172,15 @@
         <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
     </a>
 </li> --}}
+
+
+
+@if(if_can('own_diet_charts'))
+<li class="{!! (Request::is('diet_charts*') ? 'active' : '' ) !!}">
+    <a href="{{ route('diet_charts.index') }}">
+        <span class="mm-text ">Diet Charts</span>
+        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+    </a>
+</li>
+@endif
 
