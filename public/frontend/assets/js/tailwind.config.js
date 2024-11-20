@@ -21,7 +21,7 @@ tailwind.config = {
               '48': '3em',
           },
           colors: {
-              cayan: '#006BA3',
+              cayan: '#36be4f',
               primary: '#12633D',
               secondary: '#69AB1D',
               lightyellow: '#F6C515', // Removed the semicolon

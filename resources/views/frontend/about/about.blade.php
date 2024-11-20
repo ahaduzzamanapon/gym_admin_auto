@@ -126,7 +126,7 @@
             <h1 class="text-[#01669B] font-poppins text-22 lg:text-28 xl:text-36 font-[600] pb-4">Looking for more
                 information?</h1>
             <a href="{{ route('contact') }}"
-                class="bg-[#006BA3] text-white text-20 px-3 py-2 rounded font-poppins font-[500] hover:bg-[#41b5f3] duration-300 ease-in-out hover:text-16">Contact
+                class="bg-cayan text-white text-20 px-3 py-2 rounded font-poppins font-[500] hover:bg-[#41b5f3] duration-300 ease-in-out hover:text-16">Contact
                 us</a>
         </div>
     </div>

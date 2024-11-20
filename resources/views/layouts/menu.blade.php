@@ -1,5 +1,3 @@
-
-
 <style>
     .sub-menu {
         margin-left: 22px;
@@ -36,22 +34,22 @@
 </li>
 @endif
 
-@if(if_can('manage_package'))
-<li class="{!! (Request::is('packages*') ? 'active' : '' ) !!}">
-    <a href="{{ route('packages.index') }}">
-        <span class="mm-text ">Packages</span>
-        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
-    </a>
-</li>
+@if (if_can('manage_package'))
+    <li class="{!! Request::is('packages*') ? 'active' : '' !!}">
+        <a href="{{ route('packages.index') }}">
+            <span class="mm-text ">Packages</span>
+            <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+        </a>
+    </li>
 @endif
 
-@if(if_can('purchase_packages'))
-<li class="{!! (Request::is('purchasePackages*') ? 'active' : '' ) !!}">
-    <a href="{{ route('purchasePackages.index') }}">
-        <span class="mm-text ">Purchase Packages</span>
-        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
-    </a>
-</li>
+@if (if_can('purchase_packages'))
+    <li class="{!! Request::is('purchasePackages*') ? 'active' : '' !!}">
+        <a href="{{ route('purchasePackages.index') }}">
+            <span class="mm-text ">Purchase Packages</span>
+            <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+        </a>
+    </li>
 @endif
 
 
@@ -84,94 +82,90 @@
 @endif
 
 
-@if(if_can('account'))
-<li {!! (Request::is('expenses*') || Request::is('incomes*')? 'class="menu-dropdown active"': "class='menu-dropdown'" ) !!}>
-    <a href="#">
-        <span class="mm-text ">Account</span>
-        <span class="menu-icon "> <i class="im im-icon-Window-2"></i></span>
-        <span class="im im-icon-Arrow-Right imicon"></span>
-    </a>
-    <ul class="sub-menu list-unstyled">
-        @if(if_can('expenses'))
-        <li {!! (Request::is('expenses*') ? 'class="active"' : '' ) !!}>
-            <a href="{{ route('expenses.index') }}">
-                <span class="mm-text ">Expenses</span>
-            </a>
-        </li>
-        @endif
-        @if(if_can('income'))
-        <li {!! (Request::is('incomes*') ? 'class="active"' : '' ) !!}>
-            <a href="{{ route('incomes.index') }}">
-                <span class="mm-text ">Incomes</span>
-            </a>
-        </li>
-        @endif
-    </ul>
-</li>
+@if (if_can('account'))
+    <li {!! Request::is('expenses*') || Request::is('incomes*')
+        ? 'class="menu-dropdown active"'
+        : "class='menu-dropdown'" !!}>
+        <a href="#">
+            <span class="mm-text ">Account</span>
+            <span class="menu-icon "> <i class="im im-icon-Window-2"></i></span>
+            <span class="im im-icon-Arrow-Right imicon"></span>
+        </a>
+        <ul class="sub-menu list-unstyled">
+            @if (if_can('expenses'))
+                <li {!! Request::is('expenses*') ? 'class="active"' : '' !!}>
+                    <a href="{{ route('expenses.index') }}">
+                        <span class="mm-text ">Expenses</span>
+                    </a>
+                </li>
+            @endif
+            @if (if_can('income'))
+                <li {!! Request::is('incomes*') ? 'class="active"' : '' !!}>
+                    <a href="{{ route('incomes.index') }}">
+                        <span class="mm-text ">Incomes</span>
+                    </a>
+                </li>
+            @endif
+        </ul>
+    </li>
 @endif
 
-@if(if_can('schedule_booking'))
-<li class="{!! (Request::is('schedulebookings*') ? 'active' : '' ) !!}">
-    <a href="{{ route('schedulebookings.index') }}">
-        <span class="mm-text ">Schedule bookings</span>
-        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
-    </a>
-</li>
+@if (if_can('frontend'))
+    <li {!! Request::is('expenses*') || Request::is('incomes*')
+        ? 'class="menu-dropdown active"'
+        : "class='menu-dropdown'" !!}>
+        <a href="#">
+            <span class="mm-text ">Frontend</span>
+            <span class="menu-icon "> <i class="im im-icon-Window-2"></i></span>
+            <span class="im im-icon-Arrow-Right imicon"></span>
+        </a>
+        <ul class="sub-menu list-unstyled">
+            @if (if_can('features'))
+                <li {!! Request::is('features*') ? 'class="active"' : '' !!}>
+                    <a href="{{ route('features.index') }}">
+                        <span class="mm-text ">Features</span>
+                    </a>
+                </li>
+            @endif
+            {{-- @if (if_can('income'))
+                <li {!! Request::is('incomes*') ? 'class="active"' : '' !!}>
+                    <a href="{{ route('incomes.index') }}">
+                        <span class="mm-text ">Incomes</span>
+                    </a>
+                </li>
+            @endif --}}
+        </ul>
+    </li>
 @endif
 
-@if(if_can('manage_coupon'))
-<li class="{!! (Request::is('coupons*') ? 'active' : '' ) !!}">
-    <a href="{{ route('coupons.index') }}">
-        <span class="mm-text ">Coupons</span>
-        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
-    </a>
-</li>
+@if (if_can('schedule_booking'))
+    <li class="{!! Request::is('schedulebookings*') ? 'active' : '' !!}">
+        <a href="{{ route('schedulebookings.index') }}">
+            <span class="mm-text ">Schedule bookings</span>
+            <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+        </a>
+    </li>
 @endif
 
-
-
-
-
-
-@if(if_can('manage_inventory'))
-<li {!! (Request::is('assetsManagements*') ? 'class="menu-dropdown active"': "class='menu-dropdown'" ) !!}>
-    <a href="#">
-        <span class="mm-text ">Inventory</span>
-        <span class="menu-icon "> <i class="im im-icon-Window-2"></i></span>
-        <span class="im im-icon-Arrow-Right imicon"></span>
-    </a>
-    <ul class="sub-menu list-unstyled">
-        @if(if_can('assetsCategory'))
-            <li {!! (Request::is('assetsCategories*') ? 'class="active"' : '' ) !!}>
-                <a href="{{ route('assetsCategories.index') }}">
-                    <span class="mm-text ">Assets Category</span>
-                </a>
-            </li>
-        @endif
-        @if(if_can('assets_managements'))
-            <li {!! (Request::is('assetsManagements*') ? 'class="active"' : '' ) !!}>
-                <a href="{{ route('assetsManagements.index') }}">
-                    <span class="mm-text ">Assets Managements</span>
-                </a>
-            </li>
-        @endif
-    </ul>
-</li>
+@if (if_can('manage_coupon'))
+    <li class="{!! Request::is('coupons*') ? 'active' : '' !!}">
+        <a href="{{ route('coupons.index') }}">
+            <span class="mm-text ">Coupons</span>
+            <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+        </a>
+    </li>
 @endif
 
 
 
 
-
-
-
-@if(if_can('role_management'))
-<li class="{!! (Request::is('groups*') ? 'active' : '' ) !!}">
-    <a href="{{ route('groups.index') }}">
-        <span class="mm-text ">Role Permissions</span>
-        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
-    </a>
-</li>
+@if (if_can('role_management'))
+    <li class="{!! Request::is('groups*') ? 'active' : '' !!}">
+        <a href="{{ route('groups.index') }}">
+            <span class="mm-text ">Role Permissions</span>
+            <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+        </a>
+    </li>
 @endif
 
 @if(Auth::user()->member_id != null)

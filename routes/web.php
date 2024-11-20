@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\FeaturesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\BlogController;
@@ -90,6 +91,17 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('diet_charts', GymDietChartController::class);
     Route::resource('meal_plans', MealPlanController::class);
+
+
+
+    // backend routes for frontend content
+
+        Route::get('features', [FeaturesController::class, 'index'])->name('features.index');
+        Route::get('features/create', [FeaturesController::class, 'create'])->name('features.create');
+        Route::post('features/store', [FeaturesController::class, 'store'])->name('features.store');
+        Route::get('features/edit/{id}', [FeaturesController::class, 'edit'])->name('features.edit');
+        Route::post('features/update/{id}', [FeaturesController::class, 'update'])->name('features.update');
+        Route::delete('features/delete/{id}', [FeaturesController::class, 'destroy'])->name('features.destroy');
 
 
 

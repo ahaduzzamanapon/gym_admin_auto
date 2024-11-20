@@ -77,7 +77,7 @@
 
             <div class="w-full lg:w-[50%]  px-4 lg:px-7 pt-14 pb-20 z-20">
                 <h1
-                    class="text-32 lg:text-36 xl:text-40 font-poppins leading-[40px] lg:leading-[48px] text-center text-[#006BA3]">
+                    class="text-32 lg:text-36 xl:text-40 font-poppins leading-[40px] lg:leading-[48px] text-center text-cayan">
                     Get in Touch</h1>
                 <p class="text-16 lg:text-20 font-poppins leading-5 text-center py-4">We are here for you! How can we help?
                 </p>
