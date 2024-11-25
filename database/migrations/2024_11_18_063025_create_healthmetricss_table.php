@@ -23,6 +23,16 @@ class CreateHealthmetricssTable extends Migration
             $table->string('body_fat_percentage');
             $table->string('muscle_mass');
             $table->string('hydration_level');
+            $table->string('chest');
+            $table->string('waist');
+            $table->string('hips');
+            $table->string('thighs');
+            $table->string('arms');
+            $table->string('forearms');
+            $table->string('neck');
+            $table->string('shoulders');
+            $table->string('calves');
+            $table->string('resting_heart_rate');
             $table->timestamps();
             // $table->foreign('member_id')->references('id')->on('members.id');
         });

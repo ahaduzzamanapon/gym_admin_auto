@@ -30,6 +30,9 @@ return new class extends Migration
                 $table->float('fats_grams')->nullable();
                 $table->float('water_intake')->nullable();
                 $table->text('special_instructions')->nullable();
+                $table->integer('meal_plan_id')->nullable();
+                $table->date('from_date')->nullable();
+                $table->date('to_date')->nullable();
                 $table->timestamps();
             });
         }

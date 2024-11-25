@@ -7,7 +7,7 @@
 @if(if_can('member_manage'))
 
 
-<li {!! (Request::is('members') || Request::is('healthmetrics') || Request::is('diet_charts') ? 'class="menu-dropdown active"': "class='menu-dropdown'" ) !!}>
+<li {!! (Request::is('members') || Request::is('healthmetrics') || Request::is('diet_charts') || Request::is('meal_plans') ? 'class="menu-dropdown active"': "class='menu-dropdown'" ) !!}>
     <a href="#">
         <span class="mm-text ">Member Manage</span>
         <span class="menu-icon "> <i class="im im-icon-Window-2"></i></span>
@@ -22,6 +22,11 @@
         <li {!! (Request::is('healthmetrics*') ? 'class="active"' : '' ) !!}>
             <a href="{{ route('healthmetrics.index') }}">
                 <span class="mm-text ">Health Metrics <i class="im im-icon-Structure"></i></span>
+            </a>
+        </li>
+        <li {!! (Request::is('meal_plans*') ? 'class="active"' : '' ) !!}>
+            <a href="{{ route('meal_plans.index') }}">
+                <span class="mm-text ">Meal Plans <i class="im im-icon-Structure"></i></span>
             </a>
         </li>
         <li {!! (Request::is('diet_charts*') ? 'class="active"' : '' ) !!}>
@@ -205,4 +210,18 @@
 </li>
 @endif
 
+
+<li class="{!! (Request::is('attendences*') ? 'active' : '' ) !!}">
+    <a href="{{ route('attendences.index') }}">
+        <span class="mm-text ">Attendences</span>
+        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+    </a>
+</li>
+
+<li class="{!! (Request::is('siteSettings*') ? 'active' : '' ) !!}">
+    <a href="{{ route('siteSettings.index') }}">
+        <span class="mm-text ">Site Settings</span>
+        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+    </a>
+</li>
 

@@ -14,6 +14,7 @@ class CouponDataTable extends DataTable
      * @param mixed $query Results from query() method.
      * @return \Yajra\DataTables\DataTableAbstract
      */
+    
     public function dataTable($query)
     {
         $dataTable = new EloquentDataTable($query);

@@ -21,7 +21,7 @@ Edit Meal Chart @parent
                 @method('PUT')
 
                 <div class="row">
-                    <div>
+                    <div class="col-md-12">
                         <div class="form-group">
                             <label>Meal Name</label>
                             <input type="text" name="meal_name" value="{{ $mealPlan->meal_name }}" class="form-control" placeholder="Enter customer name">
@@ -65,7 +65,7 @@ Edit Meal Chart @parent
                                         <tr>
                                             <td>
                                                 <div class="form-group">
-                                                    <input type="text" name="meal_name[]" value="{{$foodplans[$sl]->meal_name}}" class="form-control" readonly>
+                                                    <input type="text" name="meal_name_f[]" value="{{$foodplans[$sl]->meal_name}}" class="form-control" readonly>
                                                 </div>
                                             </td>
                                             <td>

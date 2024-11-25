@@ -134,6 +134,36 @@ Edit Diet Chart @parent
                         </div>
                     </div>
 
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Meal Plan</label>
+                            <select name="meal_plan_id" class="form-control" required>
+
+                                <option value="" >Select Meal Plan</option>
+                                @php
+                                    $meal_plans = DB::table('meal_plans')->get();
+                                @endphp
+                                @foreach ($meal_plans as $meal_plan)
+                                    <option {{ $dietChart->meal_plan_id == $meal_plan->id ? 'selected' : ''}} value="{{ $meal_plan->id }}">{{ $meal_plan->meal_name }}</option>
+                                @endforeach
+                               
+                            </select>
+                           
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>From date</label>
+                            <input type="date" value="{{ $dietChart->from_date }}" name="from_date" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>To date</label>
+                            <input type="date" value="{{ $dietChart->to_date }}" name="to_date" class="form-control">
+                        </div>
+                    </div>
+
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Special Instructions</label>
@@ -141,7 +171,7 @@ Edit Diet Chart @parent
                         </div>
                     </div>
 
-                    <div class="col-md-12">
+                    {{-- <div class="col-md-12">
                         <h1>Meal Plan</h1>
                         <div class="row">
                             <table class="table table-bordered">
@@ -205,7 +235,7 @@ Edit Diet Chart @parent
                                 
                             </table>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-md-12" style="text-align-last: right;">
                     <button type="submit" class="btn btn-success">Update</button>

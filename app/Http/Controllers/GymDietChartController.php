@@ -56,30 +56,21 @@ class GymDietChartController extends Controller
             'carbs_grams' => $request->carbs_grams,
             'fats_grams' => $request->fats_grams,
             'water_intake' => $request->water_intake,
+            'meal_plan_id' => $request->meal_plan_id,
+            'from_date' => $request->from_date,
+            'to_date' => $request->to_date,
             'special_instructions' => $request->special_instructions,
         );
         $dietChart=GymDietChart::create($data_array);
-        $input=$request->all();
-        // dd($input['meal_name']);
-        foreach ($input['meal_name'] as $key => $value) {
-            $data_array2 = array(
-                'diet_chart_id' => $dietChart->id,
-                'meal_name' => $input['meal_name'][$key],
-                'meal_time' => $input['meal_time'][$key],
-                'food_items' => $input['food_items'][$key],
-                'quantity' => $input['quantity'][$key],
-                'calories' => $input['calories'][$key],
-            );
-            GymMealPlan::insert($data_array2);
-        }
+       
         return redirect()->route('diet_charts.index')->with('success', 'Diet chart created successfully!');
     }
     
     public function edit(GymDietChart $dietChart)
     {
         $dietChart_id=$dietChart->id;
-        $mealplans = GymMealPlan::where('diet_chart_id', $dietChart_id)->get();
-        return view('diet_charts.edit', compact('dietChart','mealplans'));
+        // $mealplans = GymMealPlan::where('diet_chart_id', $dietChart_id)->get();
+        return view('diet_charts.edit', compact('dietChart'));
     }
     
     public function update(Request $request, GymDietChart $dietChart)
@@ -108,22 +99,13 @@ class GymDietChartController extends Controller
             'carbs_grams' => $request->carbs_grams,
             'fats_grams' => $request->fats_grams,
             'water_intake' => $request->water_intake,
+            'meal_plan_id' => $request->meal_plan_id,
+            'from_date' => $request->from_date,
+            'to_date' => $request->to_date,
             'special_instructions' => $request->special_instructions,
         );
         $dietChart->update($data_array);
-        GymMealPlan::where('diet_chart_id', $dietChart->id)->delete();
-        $input=$request->all();
-        foreach ($input['meal_name'] as $key => $value) {
-            $data_array2 = array(
-                'diet_chart_id' => $dietChart->id,
-                'meal_name' => $input['meal_name'][$key],
-                'meal_time' => $input['meal_time'][$key],
-                'food_items' => $input['food_items'][$key],
-                'quantity' => $input['quantity'][$key],
-                'calories' => $input['calories'][$key],
-            );
-            GymMealPlan::insert($data_array2);
-        }
+       
         return redirect()->route('diet_charts.index')->with('success', 'Diet chart updated successfully!');
     }
     
@@ -136,8 +118,7 @@ class GymDietChartController extends Controller
     public function show(GymDietChart $dietChart)
     {
         $dietChart_id=$dietChart->id;
-        $mealplans = GymMealPlan::where('diet_chart_id', $dietChart_id)->get();
-        return view('diet_charts.show', compact('dietChart','mealplans'));
+        return view('diet_charts.show', compact('dietChart'));
     }
 
 

@@ -132,6 +132,35 @@ Add Diet Chart @parent
                             <input type="number" name="water_intake" class="form-control" step="0.01">
                         </div>
                     </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Meal Plan</label>
+                            <select name="meal_plan_id" class="form-control" required>
+
+                                <option value="" >Select Meal Plan</option>
+                                @php
+                                    $meal_plans = DB::table('meal_plans')->get();
+                                @endphp
+                                @foreach ($meal_plans as $meal_plan)
+                                    <option value="{{ $meal_plan->id }}">{{ $meal_plan->meal_name }}</option>
+                                @endforeach
+                               
+                            </select>
+                           
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>From date</label>
+                            <input type="date" name="from_date" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>To date</label>
+                            <input type="date" name="to_date" class="form-control">
+                        </div>
+                    </div>
 
                     <div class="col-md-12">
                         <div class="form-group">
@@ -140,7 +169,7 @@ Add Diet Chart @parent
                         </div>
                     </div>
 
-                    <div class="col-md-12">
+                    {{-- <div class="col-md-12">u
                         <h1>Meal Plan</h1>
                         <div class="row">
                             <table class="table table-bordered">
@@ -200,7 +229,7 @@ Add Diet Chart @parent
                                 
                             </table>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-md-12" style="text-align-last: right;">
                     <button type="submit" class="btn btn-success">Submit</button>

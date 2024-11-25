@@ -20,10 +20,10 @@ Add MealChart @parent
                 @csrf
 
                 <div class="row">
-                    <div>
+                    <div class="col-md-12">
                         <div class="form-group">
                             <label>Meal Name</label>
-                            <input type="text" name="meal_name" class="form-control" placeholder="Enter customer name">
+                            <input type="text" name="meal_name" class="form-control" placeholder="Enter meal name">
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -63,7 +63,7 @@ Add MealChart @parent
                                         <tr>
                                             <td>
                                                 <div class="form-group">
-                                                    <input type="text" name="meal_name[]" value="{{ $day }}" class="form-control" readonly>
+                                                    <input type="text" name="meal_name_f[]" value="{{ $day }}" class="form-control" readonly>
                                                 </div>
                                             </td>
                                             <td>

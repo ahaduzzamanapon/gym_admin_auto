@@ -40,10 +40,10 @@ class MealPlanController extends Controller
         );
         $mealPlan=MealPlan::create($data_array);
         $input=$request->all();
-        foreach ($input['meal_name'] as $key => $value) {
+        foreach ($input['meal_name_f'] as $key => $value) {
             $data_array2 = array(
                 'meal_plan_id' => $mealPlan->id,
-                'meal_name' => $input['meal_name'][$key],
+                'meal_name' => $input['meal_name_f'][$key],
                 'meal_time' => $input['meal_time'][$key],
                 'food_items' => $input['food_items'][$key],
                 'quantity' => $input['quantity'][$key],
@@ -75,10 +75,10 @@ class MealPlanController extends Controller
         $mealPlan->update($data_array);
         FoodPlan::where('meal_plan_id', $mealPlan->id)->delete();
         $input=$request->all();
-        foreach ($input['meal_name'] as $key => $value) {
+        foreach ($input['meal_name_f'] as $key => $value) {
             $data_array2 = array(
                 'meal_plan_id' => $mealPlan->id,
-                'meal_name' => $input['meal_name'][$key],
+                'meal_name' => $input['meal_name_f'][$key],
                 'meal_time' => $input['meal_time'][$key],
                 'food_items' => $input['food_items'][$key],
                 'quantity' => $input['quantity'][$key],

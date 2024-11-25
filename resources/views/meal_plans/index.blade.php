@@ -27,7 +27,7 @@ Meal Charts @parent
             <span class="float-right">
                 @if(if_can('member_manage'))
 
-                <a class="btn btn-primary pull-right" href="{{ route('diet_charts.create') }}">Add New</a>
+                <a class="btn btn-primary pull-right" href="{{ route('meal_plans.create') }}">Add New</a>
                 @endif
             </span>
         </section>
@@ -36,32 +36,27 @@ Meal Charts @parent
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Member Name</th>
-                        <th>Age</th>
-                        <th>Gender</th>
-                        <th>Target</th>
+                        <th>Meal Name</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($dietCharts as $dietChart)
+                    @foreach ($mealPlans as $dietChart)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $dietChart->member_name }}</td>
-                            <td>{{ $dietChart->age }}</td>
-                            <td>{{ $dietChart->gender }}</td>
-                            <td>{{ $dietChart->goal }}</td>
+                            <td>{{ $dietChart->meal_name }}</td>
+                          
                             <td>
                                 @if(if_can('member_manage'))
 
-                                <a href="{{ route('diet_charts.edit', $dietChart->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                <form action="{{ route('diet_charts.destroy', $dietChart->id) }}" method="POST" style="display:inline;">
+                                <a href="{{ route('meal_plans.edit', $dietChart->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <form action="{{ route('meal_plans.destroy', $dietChart->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
                                 </form>
                                 @endif
-                                <a href="{{ route('diet_charts.show',$dietChart->id) }}" class="btn btn-info btn-sm">View Details</a>
+                                {{-- //<a href="{{ route('meal_plans.show',$dietChart->id) }}" class="btn btn-info btn-sm">View Details</a> --}}
                             </td>
                         </tr>
                     @endforeach
@@ -70,7 +65,7 @@ Meal Charts @parent
         </div>
     </div>
     <div class="text-center">
-        {{ $dietCharts->links() }}
+        {{ $mealPlans->links() }}
     </div>
 </div>
 @endsection
