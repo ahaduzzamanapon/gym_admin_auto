@@ -2,7 +2,10 @@
 <html lang="en-US">
 
 <head>
-    <title>Josh SignUp</title>
+    <title>@php
+        $setting = DB::table('sitesettings')->first();
+    @endphp
+    {{(!empty($setting))?$setting->name:'Gym Master'}} - {{(!empty($setting))?$setting->slogan:'Gym Master'}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{ asset('img/favicon.ico')}}" />
     <!--page level css -->
@@ -25,7 +28,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h2 class="text-center">
-                                            <span>JOSH</span>
+                                            <span>
+                                            {{(!empty($setting))?$setting->name:'Gym Master'}} - {{(!empty($setting))?$setting->slogan:'Gym Master'}}</span>
                                         </h2>
                                     </div>
                                 </div>

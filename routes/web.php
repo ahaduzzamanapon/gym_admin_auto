@@ -33,7 +33,7 @@ Route::view('login3', 'auth.login3');
 Route::view('register2', 'auth.register2');
 Route::view('register3', 'auth.register3');
 
-Route::get('/welcome', [HomeController::class, 'index'])->name('home');
+Route::get('/welcome', [HomeController::class, 'index'])->name('welcome');
 Route::get('/privacy', [HomeController::class, 'privacy'])->name('privacy');
 Route::get('/terms_conditions', [HomeController::class, 'terms_conditions'])->name('terms_conditions');
 Route::get('/solutions', [DeviceController::class, 'index'])->name('solutions');
@@ -50,6 +50,9 @@ Route::get('/no_access_page', [HomeController::class, 'no_access'])->name('no_ac
 
 
 // Route::view('welcome', 'auth.register3');
+
+// Route::get('/welcome', [HomeController::class, 'index'])->name('home');
+
 
 
 

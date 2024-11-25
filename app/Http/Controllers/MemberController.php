@@ -24,6 +24,13 @@ class MemberController extends AppBaseController
      */
     public function index(MemberDataTable $memberDataTable)
     {
+        // echo '<pre>';
+        // print_r($memberDataTable);
+        // echo '</pre>';
+        // exit;
+
+
+        //dd($memberDataTable);
         return $memberDataTable->render('members.index');
     }
 

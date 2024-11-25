@@ -9,6 +9,7 @@ use App\Models\SiteSetting;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use File;
 
 class SiteSettingController extends AppBaseController
 {
@@ -48,6 +49,19 @@ class SiteSettingController extends AppBaseController
     public function store(CreateSiteSettingRequest $request)
     {
         $input = $request->all();
+
+
+        if ($request->hasFile('logo')) {
+            $path = storage_path('app/public/images/site');
+            if (!File::exists($path)) {
+                File::makeDirectory($path, 0775, true, true);
+            }
+            $file = $request->file('logo');
+            $input['logo'] = $file->store('images/site', 'public');
+        }
+
+
+
 
         /** @var SiteSetting $siteSetting */
         $siteSetting = SiteSetting::create($input);
@@ -117,8 +131,22 @@ class SiteSettingController extends AppBaseController
 
             return redirect(route('siteSettings.index'));
         }
+        $input = $request->all();
 
-        $siteSetting->fill($request->all());
+        if ($request->hasFile('logo')) {
+            $path = storage_path('app/public/images/site');
+            if (!File::exists($path)) {
+                File::makeDirectory($path, 0775, true, true);
+            }
+            $file = $request->file('logo');
+            $input['logo'] = $file->store('images/site', 'public');
+        }else{
+            unset($input['logo']);
+        }
+
+
+
+        $siteSetting->fill($input);
         $siteSetting->save();
 
         Flash::success('Site Setting updated successfully.');
@@ -140,11 +168,17 @@ class SiteSettingController extends AppBaseController
         /** @var SiteSetting $siteSetting */
         $siteSetting = SiteSetting::find($id);
 
+
+
         if (empty($siteSetting)) {
             Flash::error('Site Setting not found');
 
             return redirect(route('siteSettings.index'));
         }
+
+        
+
+
 
         $siteSetting->delete();
 

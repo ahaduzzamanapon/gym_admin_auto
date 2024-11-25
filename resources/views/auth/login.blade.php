@@ -23,7 +23,12 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h2 class="text-center">
-                                            <span>GYM MASTER - Gym Management System</span>
+                                            <span>
+                                                @php
+            $setting = DB::table('sitesettings')->first();
+        @endphp
+        {{(!empty($setting))?$setting->name:'Gym Master'}} - {{(!empty($setting))?$setting->slogan:'Gym Master'}}
+                                            </span>
                                         </h2>
                                     </div>
                                 </div>

@@ -173,7 +173,7 @@
     </li>
 @endif
 
-@if(Auth::user()->member_id != null)
+@if(!empty(Auth::user()) &&Auth::user()->member_id != null)
     <li class="">
         <a href="{{ route('members.details', ['id' => Auth::user()->member_id]) }}">
             <span class="mm-text ">Profile</span>
@@ -210,6 +210,7 @@
 </li>
 @endif
 
+@if (if_can('attendence'))
 
 <li class="{!! (Request::is('attendences*') ? 'active' : '' ) !!}">
     <a href="{{ route('attendences.index') }}">
@@ -217,6 +218,10 @@
         <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
     </a>
 </li>
+@endif
+
+@if (if_can('site_settings'))
+
 
 <li class="{!! (Request::is('siteSettings*') ? 'active' : '' ) !!}">
     <a href="{{ route('siteSettings.index') }}">
@@ -224,4 +229,5 @@
         <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
     </a>
 </li>
+@endif
 

@@ -3,7 +3,14 @@
 
 <head>
     <title>
-        @section('title')| Gym Master - Gym Management System @show
+        @php
+        if (!Auth::check()) {
+            // dd("Please login first");
+            // redirect(route('welcome'));
+        }
+            $setting = DB::table('sitesettings')->first();
+        @endphp
+        @section('title')| {{(!empty($setting))?$setting->name:'Gym Master'}} - {{(!empty($setting))?$setting->slogan:'Gym Master'}} @show
     </title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -58,7 +65,7 @@
             <!-- Header Navbar: style can be found in header-->
             <!-- Sidebar toggle button-->
             <!-- Sidebar toggle button-->
-            <h3 style="display: flex;width: -webkit-fill-available;place-content: center;font-size: x-large;"> <span style="font-weight: bold;">Gym Master</span> - Gym Management System </h3>
+            <h3 style="display: flex;width: -webkit-fill-available;place-content: center;font-size: x-large;"> {{(!empty($setting))?$setting->name:'Gym Master'}} - {{(!empty($setting))?$setting->slogan:'Gym Master'}} </h3>
 
             <div class="navbar-right ml-auto">
                 <ul class="navbar-nav nav">
@@ -71,7 +78,8 @@
                         
                         <li class="dropdown-footer">
                             
-                            @if(Auth::user()->member_id!=null)
+                            @if(!empty(Auth::user()) &&Auth::user()->member_id != null)
+
                             <a class="dropdown-item" href="{{ route('members.details', ['id' => Auth::user()->member_id]) }}">
                                 Profile
                             </a>

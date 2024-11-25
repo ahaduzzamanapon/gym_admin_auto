@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Member;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -69,6 +70,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        Member::create(
+            [
+                'mem_name' => $data['name'],
+                'mem_father' => '',
+                'mem_address' => '',
+                'member_unique_id' => 'MEM'.time(),
+                'mem_admission_date' => date('Y-m-d'),
+                'mem_cell' => '',
+                'mem_email' => $data['email'],
+                'mem_img_url' =>'',
+            ]
+        );
+
         return User::create(
             [
                 'name' => $data['name'],
@@ -76,5 +91,6 @@ class RegisterController extends Controller
                 'password' => Hash::make($data['password']),
             ]
         );
+
     }
 }
