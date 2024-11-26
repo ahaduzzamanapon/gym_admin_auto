@@ -23,7 +23,7 @@
     <link type="text/css" href="{{ asset('css/app.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('vendors/perfect-scrollbar/css/perfect-scrollbar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css')}}">
-    <script src="https://cdn.tailwindcss.com"></script>
+    {{-- //<script src="https://cdn.tailwindcss.com"></script> --}}
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" />
