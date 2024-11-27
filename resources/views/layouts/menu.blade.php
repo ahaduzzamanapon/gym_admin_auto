@@ -116,7 +116,7 @@
 @endif
 
 @if (if_can('frontend'))
-    <li {!! Request::is('expenses*') || Request::is('incomes*')
+    <li {!! Request::is('siteFeatures*') || Request::is('siteProfiles*')
         ? 'class="menu-dropdown active"'
         : "class='menu-dropdown'" !!}>
         <a href="#">
@@ -124,13 +124,18 @@
             <span class="menu-icon "> <i class="im im-icon-Window-2"></i></span>
             <span class="im im-icon-Arrow-Right imicon"></span>
         </a>
-        {{-- <ul class="sub-menu list-unstyled">
-            <li {!! Request::is('site_profile*') ? 'class="active"' : '' !!}>
-                <a href="{{ route('site_profile.index') }}">
+        <ul class="sub-menu list-unstyled">
+            <li {!! Request::is('siteProfiles*') ? 'class="active"' : '' !!}>
+                <a href="{{ route('siteProfiles.index') }}">
                     <span class="mm-text ">Site Profile</span>
                 </a>
             </li>
-        </ul> --}}
+            <li {!! Request::is('siteFeatures*') ? 'class="active"' : '' !!}>
+                <a href="{{ route('siteFeatures.index') }}">
+                    <span class="mm-text ">Features</span>
+                </a>
+            </li>
+        </ul>
     </li>
 @endif
 
@@ -221,4 +226,6 @@
     </a>
 </li>
 @endif
+
+
 

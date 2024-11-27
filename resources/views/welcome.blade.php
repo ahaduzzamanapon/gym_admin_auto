@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +12,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
-    <title>Gym Master</title>
+    <title>{{ $SiteProfile->title }}</title>
 <!--
 
 TemplateMo 548 Training Studio
@@ -49,13 +52,23 @@ https://templatemo.com/tm-548-training-studio
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="/" class="logo">Gym<em> Master</em></a>
+                        @php
+                        $logo_array = explode(' ',($SiteProfile->logo_name));
+                        @endphp
+                        <a href="/" class="logo">
+                        @foreach ($logo_array as $key => $value)
+                            @if ($key != (count($logo_array) - 1))
+                                {{ $value }} 
+                            @else
+                                <em>{{ $value }}</em>
+                            @endif
+                        @endforeach
+                        </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#features">About</a></li>
-                            <li class="scroll-to-section"><a href="#our-classes">Classes</a></li>
                             <li class="scroll-to-section"><a href="#schedule">Schedules</a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contact</a></li> 
                             <li class="main-button"><a href="{{ route('login') }}">Sign in</a></li>
@@ -73,17 +86,32 @@ https://templatemo.com/tm-548-training-studio
 
     <!-- ***** Main Banner Area Start ***** -->
     <div class="main-banner" id="top">
-        {{-- <video autoplay muted loop id="bg-video">
-            <source src="assets/images/gym-video.mp4" type="video/mp4" />
-        </video> --}}
-        <img id="bg-video" src="assets/images/couple-training-together-gym.jpg" alt="gym video">
+        @if ($SiteProfile->banner_status=='video'):
+        <video autoplay muted loop id="bg-video">
+            <source src="{{ asset('storage/' . $SiteProfile->banner_video) }}" type="video/mp4" />
+        </video>
+        @else
+        <img id="bg-video" src="{{ asset('storage/' . $SiteProfile->banner_image) }}" alt="gym video">
+        @endif
 
         <div class="video-overlay header-text">
             <div class="caption">
-                <h6>work harder, get stronger</h6>
-                <h2>easy with our <em>gym</em></h2>
+                <h6>{{$SiteProfile->small_banner_text}}</h6>
+                <h2>
+                    @php
+                    $logo_array = explode(' ',($SiteProfile->big_banner_text));
+                    @endphp
+                   
+                    @foreach ($logo_array as $key => $value)
+                        @if ($key != (count($logo_array) - 1))
+                            {{ $value }} 
+                        @else
+                            <em>{{ $value }}</em>
+                        @endif
+                    @endforeach
+                </h2>
                 <div class="main-button scroll-to-section">
-                    <a href="{{ route('login') }}">Become a member</a>
+                    <a href="{{ route('register') }}">Become a member</a>
                 </div>
             </div>
         </div>
@@ -96,9 +124,9 @@ https://templatemo.com/tm-548-training-studio
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="section-heading">
-                        <h2>Choose <em>Program</em></h2>
+                        <h2>About <em>Us</em></h2>
                         <img src="assets/images/line-dec.png" alt="waves">
-                        <p>Here you can choose a program that suits your needs. We have prepared a few programs with different goals and levels of intensity.</p>
+                        {{-- <p>{{ $about_us }}</p> --}}
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -110,7 +138,7 @@ https://templatemo.com/tm-548-training-studio
                             <div class="right-content">
                                 <h4>Basic Fitness</h4>
                                 <p>Improve your overall health and well-being with our structured basic fitness routine, designed to fit any lifestyle.</p>
-                                <a href="#" class="text-button">Discover More</a>
+                                
                             </div>
                         </li>
                         <li class="feature-item">
@@ -120,7 +148,7 @@ https://templatemo.com/tm-548-training-studio
                             <div class="right-content">
                                 <h4>New Gym Training</h4>
                                 <p>This program is designed for those who want to try something new and different. It is a combination of basic exercises and weightlifting, which will help you to build strength and muscle mass.</p>
-                                <a href="#" class="text-button">Discover More</a>
+                                
                             </div>
                         </li>
                         <li class="feature-item">
@@ -130,7 +158,7 @@ https://templatemo.com/tm-548-training-studio
                             <div class="right-content">
                                 <h4>Basic Muscle Course</h4>
                                 <p>This program is designed for those who want to gain muscle mass and improve their overall physical fitness. It is a combination of exercises that target different muscle groups and it is a great way to build strength and improve muscle tone. </p>
-                                <a href="#" class="text-button">Discover More</a>
+                                
                             </div>
                         </li>
                     </ul>
@@ -144,7 +172,7 @@ https://templatemo.com/tm-548-training-studio
                             <div class="right-content">
                                 <h4>Advanced Muscle Course</h4>
                                 <p>This program is designed for those who want to gain more muscle mass and improve their overall physical fitness. It is a combination of exercises that target different muscle groups and it is a great way to build strength and improve muscle tone.</p>
-                                <a href="#" class="text-button">Discover More</a>
+                                
                             </div>
                         </li>
                         <li class="feature-item">
@@ -154,7 +182,7 @@ https://templatemo.com/tm-548-training-studio
                             <div class="right-content">
                                 <h4>Yoga Training</h4>
                                 <p>This program is designed for those who want to improve their flexibility, balance and overall physical fitness. It is a combination of exercises that target different muscle groups and it is a great way to improve your overall physical fitness.</p>
-                                <a href="#" class="text-button">Discover More</a>
+                                
                             </div>
                         </li>
                         <li class="feature-item">
@@ -164,7 +192,7 @@ https://templatemo.com/tm-548-training-studio
                             <div class="right-content">
                                 <h4>Body Building Course</h4>
                                 <p>This program is designed for those who want to gain muscle mass and improve their overall physical fitness. It is a combination of exercises that target different muscle groups and it is a great way to build strength and improve muscle tone.</p>
-                                <a href="#" class="text-button">Discover More</a>
+                                
                             </div>
                         </li>
                     </ul>
@@ -175,7 +203,7 @@ https://templatemo.com/tm-548-training-studio
     <!-- ***** Features Item End ***** -->
 
     <!-- ***** Call to Action Start ***** -->
-    <section class="section" id="call-to-action">
+    {{-- <section class="section" id="call-to-action">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
@@ -189,10 +217,10 @@ https://templatemo.com/tm-548-training-studio
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- ***** Call to Action End ***** -->
 
-    <!-- ***** Our Classes Start ***** -->
+    {{-- <!-- ***** Our Classes Start ***** -->
     <section class="section" id="our-classes">
         <div class="container">
             <div class="row">
@@ -254,7 +282,7 @@ https://templatemo.com/tm-548-training-studio
         </div>
     </section>
     <!-- ***** Our Classes End ***** -->
-    
+     --}}
     <section class="section" id="schedule">
         <div class="container">
             <div class="row">

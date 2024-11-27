@@ -105,9 +105,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('features/edit/{id}', [FeaturesController::class, 'edit'])->name('features.edit');
         Route::post('features/update/{id}', [FeaturesController::class, 'update'])->name('features.update');
         Route::delete('features/delete/{id}', [FeaturesController::class, 'destroy'])->name('features.destroy');
-
-
-
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
