@@ -73,9 +73,10 @@ https://templatemo.com/tm-548-training-studio
 
     <!-- ***** Main Banner Area Start ***** -->
     <div class="main-banner" id="top">
-        <video autoplay muted loop id="bg-video">
+        {{-- <video autoplay muted loop id="bg-video">
             <source src="assets/images/gym-video.mp4" type="video/mp4" />
-        </video>
+        </video> --}}
+        <img id="bg-video" src="assets/images/couple-training-together-gym.jpg" alt="gym video">
 
         <div class="video-overlay header-text">
             <div class="caption">

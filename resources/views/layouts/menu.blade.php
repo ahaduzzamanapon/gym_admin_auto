@@ -124,22 +124,13 @@
             <span class="menu-icon "> <i class="im im-icon-Window-2"></i></span>
             <span class="im im-icon-Arrow-Right imicon"></span>
         </a>
-        <ul class="sub-menu list-unstyled">
-            @if (if_can('features'))
-                <li {!! Request::is('features*') ? 'class="active"' : '' !!}>
-                    <a href="{{ route('features.index') }}">
-                        <span class="mm-text ">Features</span>
-                    </a>
-                </li>
-            @endif
-            {{-- @if (if_can('income'))
-                <li {!! Request::is('incomes*') ? 'class="active"' : '' !!}>
-                    <a href="{{ route('incomes.index') }}">
-                        <span class="mm-text ">Incomes</span>
-                    </a>
-                </li>
-            @endif --}}
-        </ul>
+        {{-- <ul class="sub-menu list-unstyled">
+            <li {!! Request::is('site_profile*') ? 'class="active"' : '' !!}>
+                <a href="{{ route('site_profile.index') }}">
+                    <span class="mm-text ">Site Profile</span>
+                </a>
+            </li>
+        </ul> --}}
     </li>
 @endif
 
