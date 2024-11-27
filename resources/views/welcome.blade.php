@@ -71,6 +71,12 @@ https://templatemo.com/tm-548-training-studio
                             <li class="scroll-to-section"><a href="#features">About</a></li>
                             <li class="scroll-to-section"><a href="#schedule">Schedules</a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contact</a></li> 
+                            @if(isset($scrollToBottom)):
+                            @dd($scrollToBottom)
+                            <script>
+                                window.scrollTo(0, document.body.scrollHeight);
+                            </script>
+                            @endif
                             <li class="main-button"><a href="{{ route('login') }}">Sign in</a></li>
                         </ul>        
                         <a class='menu-trigger'>
@@ -126,10 +132,12 @@ https://templatemo.com/tm-548-training-studio
                     <div class="section-heading">
                         <h2>About <em>Us</em></h2>
                         <img src="assets/images/line-dec.png" alt="waves">
-                        {{-- <p>{{ $about_us }}</p> --}}
+                        <p>@php
+                            echo $AboutUs->Text
+                          @endphp</p>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                {{-- <div class="col-lg-6">
                     <ul class="features-items">
                         <li class="feature-item">
                             <div class="left-icon">
@@ -196,93 +204,27 @@ https://templatemo.com/tm-548-training-studio
                             </div>
                         </li>
                     </ul>
+                </div> --}}
+                @foreach ($SiteFeature as $feature)
+                <div class="col-lg-6">
+                    <ul class="features-items">
+                        <li class="feature-item">
+                            <div class="left-icon">
+                                <img src="{{ asset('storage/' . $feature->image) }}" alt="First One">
+                            </div>
+                            <div class="right-content">
+                                <h4>{{ $feature->title }}</h4>
+                                <p>{{ $feature->description }}</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
+                @endforeach
+           
             </div>
         </div>
     </section>
-    <!-- ***** Features Item End ***** -->
-
-    <!-- ***** Call to Action Start ***** -->
-    {{-- <section class="section" id="call-to-action">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 offset-lg-1">
-                    <div class="cta-content">
-                        <h2>Don’t <em>think</em>, begin <em>today</em>!</h2>
-                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula, sit amet dapibus odio augue eget libero. Morbi tempus mauris a nisi luctus imperdiet.</p>
-                        <div class="main-button scroll-to-section">
-                            <a href="#our-classes">Become a member</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    <!-- ***** Call to Action End ***** -->
-
-    {{-- <!-- ***** Our Classes Start ***** -->
-    <section class="section" id="our-classes">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3">
-                    <div class="section-heading">
-                        <h2>Our <em>Classes</em></h2>
-                        <img src="assets/images/line-dec.png" alt="">
-                        <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row" id="tabs">
-              <div class="col-lg-4">
-                <ul>
-                  <li><a href='#tabs-1'><img src="assets/images/tabs-first-icon.png" alt="">First Training Class</a></li>
-                  <li><a href='#tabs-2'><img src="assets/images/tabs-first-icon.png" alt="">Second Training Class</a></a></li>
-                  <li><a href='#tabs-3'><img src="assets/images/tabs-first-icon.png" alt="">Third Training Class</a></a></li>
-                  <li><a href='#tabs-4'><img src="assets/images/tabs-first-icon.png" alt="">Fourth Training Class</a></a></li>
-                  <div class="main-rounded-button"><a href="#">View All Schedules</a></div>
-                </ul>
-              </div>
-              <div class="col-lg-8">
-                <section class='tabs-content'>
-                  <article id='tabs-1'>
-                    <img src="assets/images/training-image-01.jpg" alt="First Class">
-                    <h4>First Training Class</h4>
-                    <p>Phasellus convallis mauris sed elementum vulputate. Donec posuere leo sed dui eleifend hendrerit. Sed suscipit suscipit erat, sed vehicula ligula. Aliquam ut sem fermentum sem tincidunt lacinia gravida aliquam nunc. Morbi quis erat imperdiet, molestie nunc ut, accumsan diam.</p>
-                    <div class="main-button">
-                        <a href="#">View Schedule</a>
-                    </div>
-                  </article>
-                  <article id='tabs-2'>
-                    <img src="assets/images/training-image-02.jpg" alt="Second Training">
-                    <h4>Second Training Class</h4>
-                    <p>Integer dapibus, est vel dapibus mattis, sem mauris luctus leo, ac pulvinar quam tortor a velit. Praesent ultrices erat ante, in ultricies augue ultricies faucibus. Nam tellus nibh, ullamcorper at mattis non, rhoncus sed massa. Cras quis pulvinar eros. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                    <div class="main-button">
-                        <a href="#">View Schedule</a>
-                    </div>
-                  </article>
-                  <article id='tabs-3'>
-                    <img src="assets/images/training-image-03.jpg" alt="Third Class">
-                    <h4>Third Training Class</h4>
-                    <p>Fusce laoreet malesuada rhoncus. Donec ultricies diam tortor, id auctor neque posuere sit amet. Aliquam pharetra, augue vel cursus porta, nisi tortor vulputate sapien, id scelerisque felis magna id felis. Proin neque metus, pellentesque pharetra semper vel, accumsan a neque.</p>
-                    <div class="main-button">
-                        <a href="#">View Schedule</a>
-                    </div>
-                  </article>
-                  <article id='tabs-4'>
-                    <img src="assets/images/training-image-04.jpg" alt="Fourth Training">
-                    <h4>Fourth Training Class</h4>
-                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean ultrices elementum odio ac tempus. Etiam eleifend orci lectus, eget venenatis ipsum commodo et.</p>
-                    <div class="main-button">
-                        <a href="#">View Schedule</a>
-                    </div>
-                  </article>
-                </section>
-              </div>
-            </div>
-        </div>
-    </section>
-    <!-- ***** Our Classes End ***** -->
-     --}}
+{{-- 
     <section class="section" id="schedule">
         <div class="container">
             <div class="row">
@@ -346,75 +288,38 @@ https://templatemo.com/tm-548-training-studio
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- ***** Testimonials Starts ***** -->
     <section class="section" id="trainers">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
-                    <div class="section-heading">
+                    <div class="section-heading" style="margin-top: 9px;">
                         <h2>Expert <em>Trainers</em></h2>
-                        <img src="assets/images/line-dec.png" alt="">
-                        <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>
                     </div>
                 </div>
             </div>
             <div class="row">
+                @foreach ($SiteTrainer as $trainer)
                 <div class="col-lg-4">
                     <div class="trainer-item">
                         <div class="image-thumb">
-                            <img src="assets/images/first-trainer.jpg" alt="">
+                            <img src="{{ asset('storage/' . $trainer->image) }}" alt="{{ $trainer->trainer_name }}">
                         </div>
                         <div class="down-content">
-                            <span>Strength Trainer</span>
-                            <h4>Bret D. Bowers</h4>
-                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
+                            <span>{{ $trainer->trainer_type }}</span>
+                            <h4>{{ $trainer->trainer_name }}</h4>
+                            <p>{{ $trainer->description }}</p>
                             <ul class="social-icons">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                <li><a href="{{ $trainer->facebook_link}}"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="{{ $trainer->twitter}}"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="{{ $trainer->linkedin}}"><i class="fa fa-linkedin"></i></a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="assets/images/second-trainer.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>Muscle Trainer</span>
-                            <h4>Hector T. Daigl</h4>
-                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
-                            <ul class="social-icons">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="assets/images/third-trainer.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>Power Trainer</span>
-                            <h4>Paul D. Newman</h4>
-                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
-                            <ul class="social-icons">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -425,13 +330,16 @@ https://templatemo.com/tm-548-training-studio
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-xs-12">
-                    <div id="map">
+                    <div id="map" style="padding: 18px;">
                       <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="600px" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="contact-form">
-                        <form id="contact" action="" method="post">
+                        @include('flash::message')
+
+                        <form id="contact" action="{{ route('contactMassages.store') }}" method="post">
+                          @csrf
                           <div class="row">
                             <div class="col-md-6 col-sm-12">
                               <fieldset>
@@ -468,24 +376,20 @@ https://templatemo.com/tm-548-training-studio
     <!-- ***** Contact Us Area Ends ***** -->
     
     <!-- ***** Footer Start ***** -->
-    {{-- <footer>
+    <footer>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; 2020 Training Studio
-                    
-                    - Designed by <a rel="nofollow" href="https://templatemo.com" class="tm-text-link" target="_parent">TemplateMo</a><br>
-
-                Distributed by <a rel="nofollow" href="https://themewagon.com" class="tm-text-link" target="_blank">ThemeWagon</a>
-                
+                <div class="col-lg-12" style="display: flex;justify-content: space-between;">
+                <p>
+                    {{ $SiteProfile->fotter_text }}
                 </p>
-                    
-                    <!-- You shall support us a little via PayPal to info@templatemo.com -->
-                    
+                <p>
+                    Developed by <a href="https://mysoftheaven.com/">Mysoftheaven (BD) Ltd</a>
+                </p>
                 </div>
             </div>
         </div>
-    </footer> --}}
+    </footer>
 
     <!-- jQuery -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>

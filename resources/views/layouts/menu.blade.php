@@ -116,7 +116,7 @@
 @endif
 
 @if (if_can('frontend'))
-    <li {!! Request::is('siteFeatures*') || Request::is('siteProfiles*')
+    <li {!! Request::is('siteFeatures*') || Request::is('siteProfiles*') || Request::is('aboutuses*') || Request::is('contactMassages*') || Request::is('siteTrainers*')
         ? 'class="menu-dropdown active"'
         : "class='menu-dropdown'" !!}>
         <a href="#">
@@ -133,6 +133,22 @@
             <li {!! Request::is('siteFeatures*') ? 'class="active"' : '' !!}>
                 <a href="{{ route('siteFeatures.index') }}">
                     <span class="mm-text ">Features</span>
+                </a>
+            </li>
+            <li {!! Request::is('aboutuses*') ? 'class="active"' : '' !!}>
+                <a href="{{ route('aboutuses.index') }}">
+                    <span class="mm-text ">About Us</span>
+                </a>
+            </li>
+           
+            <li {!! Request::is('siteTrainers*') ? 'class="active"' : '' !!}>
+                <a href="{{ route('siteTrainers.index') }}">
+                    <span class="mm-text ">Trainers</span>
+                </a>
+            </li>
+            <li {!! Request::is('contactMassages*') ? 'class="active"' : '' !!}>
+                <a href="{{ route('contactMassages.index') }}">
+                    <span class="mm-text ">Contact Massage</span>
                 </a>
             </li>
         </ul>
@@ -226,6 +242,5 @@
     </a>
 </li>
 @endif
-
 
 

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Feature;
 use App\Models\Setting;
 use App\Models\SiteProfile;
+use App\Models\SiteFeature;
+use App\Models\SiteTrainer;
+use App\Models\AboutUs;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
@@ -15,7 +18,10 @@ class HomeController extends Controller
     {
         
         $SiteProfile = SiteProfile::first();
-        return view('welcome', compact('SiteProfile'));
+        $AboutUs = AboutUs::first();
+        $SiteFeature = SiteFeature::all();
+        $SiteTrainer = SiteTrainer::all();
+        return view('welcome', compact('SiteProfile', 'AboutUs', 'SiteFeature', 'SiteTrainer'));
     }
 
     public function privacy()

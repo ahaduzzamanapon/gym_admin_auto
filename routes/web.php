@@ -10,6 +10,7 @@ use App\Http\Controllers\Frontend\DeviceController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\DemuRequestController;
 use App\Http\Controllers\GymDietChartController;
+use App\Http\Controllers\ContactMassageController;
 
 include 'web_builder.php';
 include 'demo.php';
@@ -109,3 +110,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('{name?}', 'JoshController@showView');
+Route::post('contactMassages/store', [ContactMassageController::class, 'store'])->name('contactMassages.store');
+
+

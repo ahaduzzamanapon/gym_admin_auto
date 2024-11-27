@@ -666,7 +666,7 @@ features
 */
 
 #features {
-  margin-bottom: 80px;
+  margin-bottom: 10px;
 }
 
 .feature-item {
@@ -947,6 +947,8 @@ trainers
   border-radius: 5px;
   box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
   padding: 40px;
+  height: 560px;
+  overflow: hidden;
 }
 
 #trainers .trainer-item img {

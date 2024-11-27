@@ -42,3 +42,10 @@ Route::resource('siteSettings', 'SiteSettingController');
 Route::resource('siteProfiles', 'SiteProfileController');
 
 Route::resource('siteFeatures', 'SiteFeatureController');
+
+Route::resource('aboutuses', 'AboutUsController');
+
+Route::resource('siteTrainers', 'SiteTrainerController');
+Route::resource('contactMassages', 'ContactMassageController');
+
+
