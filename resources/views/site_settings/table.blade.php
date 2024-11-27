@@ -16,19 +16,16 @@
             <tr>
                 <td>{{ $siteSetting->id }}</td>
             <td>{{ $siteSetting->name }}</td>
-            <td>{{ $siteSetting->logo }}</td>
+            <td><img src="{{Storage::url($siteSetting->logo)}}" alt="" width="100"></td>
             <td>{{ $siteSetting->slogan }}</td>
             <td>{{ $siteSetting->created_at }}</td>
             <td>{{ $siteSetting->updated_at }}</td>
                 <td>
-                    {!! Form::open(['route' => ['siteSettings.destroy', $siteSetting->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
                         <a href="{{ route('siteSettings.show', [$siteSetting->id]) }}" class='btn btn-outline-primary btn-xs'><i class="im im-icon-Information"></i></a>
                         <a href="{{ route('siteSettings.edit', [$siteSetting->id]) }}" class='btn btn-outline-primary btn-xs'><i
                                 class="im im-icon-File-Edit"></i></a>
-                        {!! Form::button('<i class="im im-icon-Remove"></i>', ['type' => 'submit', 'class' => 'btn btn-outline-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
-                    {!! Form::close() !!}
                 </td>
             </tr>
         @endforeach

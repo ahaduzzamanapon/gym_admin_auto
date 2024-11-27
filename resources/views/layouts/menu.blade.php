@@ -140,7 +140,6 @@
                     <span class="mm-text ">About Us</span>
                 </a>
             </li>
-           
             <li {!! Request::is('siteTrainers*') ? 'class="active"' : '' !!}>
                 <a href="{{ route('siteTrainers.index') }}">
                     <span class="mm-text ">Trainers</span>
