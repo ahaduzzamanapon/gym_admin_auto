@@ -23,6 +23,8 @@ class CreateMembersTable extends Migration
             $table->string('mem_cell');
             $table->text('mem_email');
             $table->string('mem_img_url');
+            $table->string('mem_type');
+            $table->string('punch_id');
             $table->timestamps();
         });
     }

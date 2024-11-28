@@ -64,7 +64,7 @@
 <li {!! (Request::is('products') || Request::is('requisitions*')  ? 'class="menu-dropdown active"': "class='menu-dropdown'" ) !!}>
     <a href="#">
         <span class="mm-text ">Store Manage</span>
-        <span class="menu-icon "> <i class="im im-icon-Window-2"></i></span>
+        <span class="menu-icon "> <i class="im im-icon-Shop"></i></span>
         <span class="im im-icon-Arrow-Right imicon"></span>
     </a>
     <ul class="sub-menu list-unstyled">
@@ -93,7 +93,7 @@
         : "class='menu-dropdown'" !!}>
         <a href="#">
             <span class="mm-text ">Account</span>
-            <span class="menu-icon "> <i class="im im-icon-Window-2"></i></span>
+            <span class="menu-icon "> <i class="im im-icon-Dollar"></i></span>
             <span class="im im-icon-Arrow-Right imicon"></span>
         </a>
         <ul class="sub-menu list-unstyled">

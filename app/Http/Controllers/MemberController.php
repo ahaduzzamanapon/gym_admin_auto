@@ -13,6 +13,8 @@ use App\Http\Controllers\AppBaseController;
 use Response;
 use File;
 use Hash;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\YourDataImport;
 
 class MemberController extends AppBaseController
 {
@@ -213,4 +215,13 @@ class MemberController extends AppBaseController
 
         return redirect(route('members.index'));
     }
+
+    public function upload_excel_page()
+    {
+        dd('upload_excel_page');
+        return view('members.upload_excel_page');
+    }
+
+   
+
 }

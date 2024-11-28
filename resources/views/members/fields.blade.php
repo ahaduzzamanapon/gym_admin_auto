@@ -68,12 +68,28 @@
     <div class="row">
         {!! Form::label('mem_email', 'Mem Email:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::text('mem_email', null, ['class' => 'form-control']) !!}
+            {!! Form::email('mem_email', null, ['class' => 'form-control']) !!}
         </div>
     </div>
 </div>
-
-
+<!-- Mem mem type Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('mem_type', 'Mem Type:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::select('mem_type', ['member' => 'member','staff' => 'staff'], null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+<!-- Mem punch id Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('punch_id', 'Mem Punch Id:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::text('punch_id', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
 <!-- Mem Img Url Field -->
 <div class="form-group">
     <div class="row">
@@ -104,3 +120,4 @@ $groups = DB::table('groups')->get();
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
     <a href="{{ route('members.index') }}" class="btn btn-default">Cancel</a>
 </div>
+

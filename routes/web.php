@@ -11,6 +11,8 @@ use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\DemuRequestController;
 use App\Http\Controllers\GymDietChartController;
 use App\Http\Controllers\ContactMassageController;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\UploadController;
 
 include 'web_builder.php';
 include 'demo.php';
@@ -106,6 +108,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('features/edit/{id}', [FeaturesController::class, 'edit'])->name('features.edit');
         Route::post('features/update/{id}', [FeaturesController::class, 'update'])->name('features.update');
         Route::delete('features/delete/{id}', [FeaturesController::class, 'destroy'])->name('features.destroy');
+
+
+        //upload 
+        Route::get('upload/upload_excel_page_member', [UploadController::class, 'excel_upload_member_page'])->name('upload.upload_excel_page');
+        Route::post('upload/upload_excel_member', [UploadController::class, 'upload_excel_member'])->name('upload.upload_excel_member');
+
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -35,6 +35,8 @@ class Member extends Model
         'mem_email',
         'mem_img_url',
         'group_id',
+        'punch_id',
+        'mem_type',
     ];
 
     /**
@@ -52,7 +54,9 @@ class Member extends Model
         'mem_cell' => 'string',
         'mem_email' => 'string',
         'mem_img_url' => 'string',
-        'group_id' => 'integer'
+        'group_id' => 'integer',
+        'mem_type' => 'integer',
+        'punch_id' => 'integer',
     ];
 
     /**
