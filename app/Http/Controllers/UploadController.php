@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Imports\YourDataImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Member;
+use App\Models\Punch_model;
 use App\Models\User;
 use Hash;
 use Flash;
@@ -66,6 +67,33 @@ class UploadController extends Controller
         }
 
         return redirect()->route('members.index');
+    }
+
+
+    public function upload_excel_page_attendance()
+    {
+        return view('upload.upload_excel_page_attendance');
+    }
+    public function upload_excel_attendance(Request $request)
+    {
+        $import = new YourDataImport();
+        Excel::import($import, $request->file('file'));
+        $data = $import->getData();
+        if (count($data) === 0) {
+            Flash::error('Excel file is empty');
+            return redirect()->back();
+        }
+        $duplicateEmails = [];
+        foreach ($data as $key => $row) {
+            //dd($row);
+            $punch = new Punch_model();
+            $punch->punch_id = $row['punch_id'];
+            $punch->punch_time =date('Y-m-d H:i:s', strtotime($row['time'])) ;
+            $punch->process_status = '0';
+            $punch->save();
+        }
+        Flash::success('Excel file uploaded successfully.');
+        return redirect()->route('attendences.index');
     }
 
 

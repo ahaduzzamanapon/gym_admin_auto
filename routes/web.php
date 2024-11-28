@@ -13,6 +13,7 @@ use App\Http\Controllers\GymDietChartController;
 use App\Http\Controllers\ContactMassageController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\AttendenceController;
 
 include 'web_builder.php';
 include 'demo.php';
@@ -110,9 +111,20 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('features/delete/{id}', [FeaturesController::class, 'destroy'])->name('features.destroy');
 
 
-        //upload 
+        //upload member
         Route::get('upload/upload_excel_page_member', [UploadController::class, 'excel_upload_member_page'])->name('upload.upload_excel_page');
         Route::post('upload/upload_excel_member', [UploadController::class, 'upload_excel_member'])->name('upload.upload_excel_member');
+
+
+        //Attendance
+        Route::get('upload/upload_excel_page_attendance', [UploadController::class, 'upload_excel_page_attendance'])->name('upload.upload_excel_page_attendance');
+        Route::post('upload/upload_excel_attendance', [UploadController::class, 'upload_excel_attendance'])->name('upload.upload_excel_attendance');
+        Route::get('attendance/index', [AttendenceController::class, 'index'])->name('attendences.index');
+        Route::get('attendance/process_attendence', [AttendenceController::class, 'process_attendence'])->name('attendences.process_attendence');
+        Route::get('attendance/get_member', [AttendenceController::class, 'get_member'])->name('attendences.get_member');
+        Route::post('attendance/get_daily_attendence', [AttendenceController::class, 'get_daily_attendence'])->name('attendences.get_daily_attendence');
+
+
 
 });
 

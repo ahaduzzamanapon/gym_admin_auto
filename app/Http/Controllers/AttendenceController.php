@@ -6,182 +6,117 @@ use App\Http\Requests\CreateAttendenceRequest;
 use App\Http\Requests\UpdateAttendenceRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Attendence;
+use App\Models\Punch_model;
+use App\Models\Member;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
-// use Request;
+use DB; 
+
+
 
 class AttendenceController extends AppBaseController
 {
-    /**
-     * Display a listing of the Attendence.
-     *
-     * @param Request $request
-     *
-     * @return Response
-     */
-    public function index(Request $request)
+    public function index()
     {
-       
-        $attendenceTotals = Attendence::selectRaw('
-            SUM(CASE WHEN status = "Present" AND member_type = "member" THEN 1 ELSE 0 END) AS present_members,
-            SUM(CASE WHEN status = "Present" AND member_type = "staff" THEN 1 ELSE 0 END) AS present_staff,
-            SUM(CASE WHEN status = "Absent" AND member_type = "member" THEN 1 ELSE 0 END) AS absent_members,
-            SUM(CASE WHEN status = "Absent" AND member_type = "staff" THEN 1 ELSE 0 END) AS absent_staff,
-            date
-
-        ')
-        ->groupBy('date')
-        ->paginate(10);
-
-        return view('attendences.index')
-            ->with('attendences', $attendenceTotals);
+        return view('attendences.index');
     }
-
-    /**
-     * Show the form for creating a new Attendence.
-     *
-     * @return Response
-     */
-    public function create()
+    public function process_attendence(Request $req)
     {
-        return view('attendences.create');
-    }
-
-    /**
-     * Store a newly created Attendence in storage.
-     *
-     * @param CreateAttendenceRequest $request
-     *
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-
-        $input = $request->all();
-
-        Attendence::where('date', $input['date'])->delete();
-
-
-        foreach ($input['member_id'] as $key => $value) {
-            $data_array = array(
-                'date' => $input['date'],
-                'member_id' => $input['member_id'][$key],
-                'member_type' => $input['member_type'][$key],
-                'status' => $input['status'][$key],
-            );
-            Attendence::insert($data_array);
-        }
-        Flash::success('Attendance saved successfully.');
-        return redirect(route('attendences.index'));
-    }
-
-    /**
-     * Display the specified Attendence.
-     *
-     * @param int $id
-     *
-     * @return Response
-     */
-    public function show($date)
-    {
-        /** @var Attendence $attendence */
-        $attendence = Attendence::where('date', $date)->get();
-
-        if (empty($attendence)) {
-            Flash::error('Attendence not found');
-
-            return redirect(route('attendences.index'));
+        $date= date('Y-m-d', strtotime($req->date));
+        $first_date=date('Y-m-d 00:00:00', strtotime($req->date));
+        $last_date=date('Y-m-d 23:59:59', strtotime($req->date));
+        $Member = Member::all();
+        foreach ($Member as $key => $value) {
+            $prev_data= Attendence::where('date',$date)->where('member_id', $value->id)->first();
+            $punch = Punch_model::whereBetween('punch_time', [$first_date, $last_date])
+                ->where('punch_id', $value->punch_id)
+                ->orderBy('punch_time')
+                ->get();
+            $firstPunch = $punch->first();
+            $lastPunch = $punch->last();
+            if (!empty($firstPunch)) {
+                if (!$firstPunch->id==$lastPunch->id) {
+                   $in_time = date('H:i:s', strtotime($firstPunch->punch_time));
+                   $out_time =null;
+                }else{
+                    $in_time = date('H:i:s', strtotime($firstPunch->punch_time));
+                    $out_time = date('H:i:s', strtotime($lastPunch->punch_time));
+                }
+                //dd($punch);
+                if(!empty($prev_data)){
+                    $attendance = Attendence::find($prev_data->id);
+                    $attendance->date = date('Y-m-d', strtotime($date));
+                    $attendance->member_id = $value->id;
+                    $attendance->member_type = $value->mem_type;
+                    $attendance->in_time = $in_time;
+                    $attendance->out_time = $out_time;
+                    $attendance->attendence_status = 'Present';
+                    $attendance->status = 'Present';
+                    $attendance->save();
+                }else{
+                    $attendance = new Attendence();
+                    $attendance->date = date('Y-m-d', strtotime($date));
+                    $attendance->member_id = $value->id;
+                    $attendance->member_type = $value->mem_type;
+                    $attendance->in_time = $in_time;
+                    $attendance->out_time = $out_time;
+                    $attendance->attendence_status = 'Present';
+                    $attendance->status = 'Present';
+                    $attendance->save();
+                }
+            }else{
+                if(empty($prev_data)){
+                    $attendance = new Attendence();
+                    $attendance->date = date('Y-m-d', strtotime($date));
+                    $attendance->member_id = $value->id;
+                    $attendance->member_type = $value->mem_type;
+                    $attendance->in_time = null;
+                    $attendance->out_time = null;
+                    $attendance->attendence_status = 'Absent';
+                    $attendance->status = 'Absent';
+                    $attendance->save();
+                }
+            }
         }
 
-        return view('attendences.show')->with('attendence', $attendence);
+        return response()->json(['message' => 'Attendance Processed Successfully'], 200);
+    }
+    public function get_member(Request $request)
+    {
+        $member = Member::where('mem_type', $request->member_type)->get();
+        return response()->json(['member' => $member], 200);
     }
 
-    /**
-     * Show the form for editing the specified Attendence.
-     *
-     * @param int $id
-     *
-     * @return Response
-     */
-    public function edit($date)
+    public function get_daily_attendence(Request $request)
     {
-        /** @var Attendence $attendence */
 
+        $targetDate = $request->input('from_date');
+        $attendanceStatus = $request->input('status');
+        $memberIds = $request->input('member_id');
 
-        $members = Attendence::select('attendences.id','attendences.date','attendences.member_id','attendences.status','members.mem_name')
-        ->join('members', 'members.id', '=', 'attendences.member_id')
-        ->where('member_type', 'member')
-        ->where('date', $date)
-        ->get();
+        $attendencesQuery = Attendence::whereDate('date', $targetDate)
+            ->join('members', 'attendences.member_id', '=', 'members.id')
+            ->whereIn('members.id', $memberIds);
 
-        $staffMembers = Attendence::select('attendences.id','attendences.date','attendences.member_id','attendences.status','members.mem_name')
-        ->join('members', 'members.id', '=', 'attendences.member_id')
-        ->where('member_type', 'staff')
-        ->where('date', $date)
-        ->get();
-        //dd($staffMembers);
-
-       
-        return view('attendences.edit', compact('members', 'staffMembers', 'date'));
-    }
-
-    /**
-     * Update the specified Attendence in storage.
-     *
-     * @param int $id
-     * @param UpdateAttendenceRequest $request
-     *
-     * @return Response
-     */
-    public function update($date, Request $request)
-    {
-        $input = $request->all();
-        /** @var Attendence $attendence */
-        Attendence::where('date', $date)->delete();
-
-        foreach ($input['member_id'] as $key => $value) {
-            $data_array = array(
-                'date' => $input['date'],
-                'member_id' => $input['member_id'][$key],
-                'member_type' => $input['member_type'][$key],
-                'status' => $input['status'][$key],
-            );
-            Attendence::insert($data_array);
+        if ($attendanceStatus !== 'All') {
+            $attendencesQuery->where('attendences.status', $attendanceStatus);
         }
 
-      
-
-
-        Flash::success('Attendence updated successfully.');
-
-        return redirect(route('attendences.index'));
-    }
-
-    /**
-     * Remove the specified Attendence from storage.
-     *
-     * @param int $id
-     *
-     * @throws \Exception
-     *
-     * @return Response
-     */
-    public function destroy($date)
-    {
-        /** @var Attendence $attendence */
-        $attendence = Attendence::where('date', $date)->get();
-
-        if (empty($attendence)) {
-            Flash::error('Attendence not found');
-
-            return redirect(route('attendences.index'));
+        $attendences = $attendencesQuery->get();
+        if ($attendanceStatus == 'All') {
+            $title = 'Attendence Report';
+        }else{
+            $title = 'Attendence (' . $attendanceStatus . ') Report  ';
         }
 
-        $attendence->delete();
+        $data=[
+            'date'=>$targetDate,
+            'status'=>true,
+            'view'=>view('attendences.report.get_daily_attendence_view',compact('attendences','title','targetDate'))->render()
+        ];
+        
 
-        Flash::success('Attendence deleted successfully.');
-
-        return redirect(route('attendences.index'));
+        return response()->json($data, 200);
     }
 }

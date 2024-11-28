@@ -35,7 +35,7 @@ Route::resource('assetsManagements', 'AssetsManagementController');
 
 Route::resource('assetsCategories', 'AssetsCategoryController');
 
-Route::resource('attendences', 'AttendenceController');
+// Route::resource('attendences', 'AttendenceController');
 
 Route::resource('siteSettings', 'SiteSettingController');
 

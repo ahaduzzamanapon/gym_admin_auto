@@ -25,6 +25,9 @@ class Attendence extends Model
         'date',
         'member_id',
         'member_type',
+        'in_time',
+        'out_time',
+        'attendence_status',
         'status'
     ];
 

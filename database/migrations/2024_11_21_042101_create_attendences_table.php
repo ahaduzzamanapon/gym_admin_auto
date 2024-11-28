@@ -18,6 +18,9 @@ class CreateAttendencesTable extends Migration
             $table->date('date');
             $table->integer('member_id');
             $table->string('member_type');
+            $table->time('in_time')->nullable();
+            $table->time('out_time')->nullable();
+            $table->string('attendence_status');
             $table->string('status');
             $table->timestamps();
         });
