@@ -14,6 +14,8 @@ use App\Http\Controllers\ContactMassageController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\AttendenceController;
+use App\Http\Controllers\SalesProductController;
+
 
 include 'web_builder.php';
 include 'demo.php';
@@ -123,6 +125,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('attendance/process_attendence', [AttendenceController::class, 'process_attendence'])->name('attendences.process_attendence');
         Route::get('attendance/get_member', [AttendenceController::class, 'get_member'])->name('attendences.get_member');
         Route::post('attendance/get_daily_attendence', [AttendenceController::class, 'get_daily_attendence'])->name('attendences.get_daily_attendence');
+
+
+        //sales_product
+
+        Route::resource('sales', SalesProductController::class);
+        Route::get('sales/{sale}/invoice', [SalesProductController::class, 'invoice'])->name('sales.invoice');
+
 
 
 

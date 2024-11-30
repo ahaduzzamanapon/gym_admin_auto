@@ -8,10 +8,10 @@ Attendences @parent
 @section('content')
 
 <style>
-   .box_m {
+.box_m {
     box-shadow: 0px 0px 6px 2px #bfbfbf;
     padding: 0px;
-    height: 466px;
+    height: 61vh;
     overflow-y: scroll;
 }
 </style>
@@ -53,7 +53,7 @@ Attendences @parent
                             <input type="date" name="to_date" id="to_date" class="form-control">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="">Member Type</label>
+                            <label for="">Type</label>
                             <select name="member_type" id="member_type" class="form-control" onchange="get__member()">
                                 <option value="">Please Select Member Type</option>
                                 <option value="member">Member</option>

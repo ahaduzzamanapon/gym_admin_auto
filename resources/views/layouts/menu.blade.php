@@ -75,16 +75,44 @@
             </a>
         </li>
         @endif
-        @if(if_can('requisition_list'))
-        <li {!! (Request::is('requisition_list') ? 'class="active"' : '' ) !!}>
-            <a href="{{ route('requisitions.index') }}">
-                <span class="mm-text ">Requsition List</span>
+        @if(if_can('manage_product'))
+        <li {!! (Request::is('sales') ? 'class="active"' : '' ) !!}>
+            <a href="{{ route('sales.index') }}">
+                <span class="mm-text ">Sales Product</span>
             </a>
         </li>
+        @endif
+ 
+    </ul>
+</li>
+@endif
+
+@if(if_can('manage_inventory'))
+<li {!! (Request::is('assetsManagements*') ? 'class="menu-dropdown active"': "class='menu-dropdown'" ) !!}>
+    <a href="#">
+        <span class="mm-text ">Inventory</span>
+        <span class="menu-icon "> <i class="im im-icon-Window-2"></i></span>
+        <span class="im im-icon-Arrow-Right imicon"></span>
+    </a>
+    <ul class="sub-menu list-unstyled">
+        @if(if_can('assetsCategory'))
+            <li {!! (Request::is('assetsCategories*') ? 'class="active"' : '' ) !!}>
+                <a href="{{ route('assetsCategories.index') }}">
+                    <span class="mm-text ">Assets Category</span>
+                </a>
+            </li>
+        @endif
+        @if(if_can('assets_managements'))
+            <li {!! (Request::is('assetsManagements*') ? 'class="active"' : '' ) !!}>
+                <a href="{{ route('assetsManagements.index') }}">
+                    <span class="mm-text ">Assets Managements</span>
+                </a>
+            </li>
         @endif
     </ul>
 </li>
 @endif
+
 
 
 @if (if_can('account'))
