@@ -49,6 +49,7 @@ Sales @parent
                             <a href="{{ route('sales.edit', $sale->id) }}" class="btn btn-primary">Edit</a>
                             <a target="_blank" href="{{ route('sales.invoice', $sale->id) }}" class="btn btn-success">Invoice</a>
                         </td>
+                        
                     </tr>
                     @endforeach
                 </tbody>
