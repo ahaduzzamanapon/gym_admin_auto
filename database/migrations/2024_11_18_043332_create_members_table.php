@@ -18,6 +18,8 @@ class CreateMembersTable extends Migration
             $table->string('member_unique_id');
             $table->string('mem_name');
             $table->string('mem_father');
+            $table->string('mem_mother');
+            $table->string('mem_gender');
             $table->string('mem_address');
             $table->date('mem_admission_date');
             $table->string('mem_cell');

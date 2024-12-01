@@ -691,7 +691,7 @@ ol.breadcrumb .breadcrumb-item + .breadcrumb-item::before {
 }
 
 .blockquote-acc {
-  border-left: 3px solid #00bd5bc7;
+  border-left: 3px solid #727cf5;
   padding-left: 15px;
 }
 

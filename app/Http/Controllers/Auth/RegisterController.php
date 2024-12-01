@@ -74,7 +74,9 @@ class RegisterController extends Controller
         Member::create(
             [
                 'mem_name' => $data['name'],
-                'mem_father' => '',
+                'mem_father' => $data['father_name'],
+                'mem_mother' => $data['mother_name'],
+                'mem_gender' => $data['gender'],
                 'mem_address' => '',
                 'member_unique_id' => 'MEM'.time(),
                 'mem_admission_date' => date('Y-m-d'),

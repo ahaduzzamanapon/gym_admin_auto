@@ -75,6 +75,11 @@
                         <i class="im im-icon-Boy fs-16"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-notifications table-striped" aria-labelledby="navbarDropdown">
+                        <li class="dropdown-footer">
+                            <a href="{{ route('members.index') }}" class="dropdown-item">
+                             Profile
+                            </a>
+                        </li>
                         
                         <li class="dropdown-footer">
                             
@@ -93,6 +98,7 @@
                                 @csrf
                             </form>
                         </li>
+
                     </ul>
                 </li>
               

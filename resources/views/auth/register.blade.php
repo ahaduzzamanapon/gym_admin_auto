@@ -16,12 +16,22 @@
     <link href="{{ asset('css/auth.css')}}" rel="stylesheet">
     <!--end of page level css-->
 </head>
+<style>
+    #sign-up .card-align {
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 35px 0 rgba(154, 161, 171, 0.15);
+    margin: auto;
+}
+</style>
 
 <body id="sign-up" class="login_backimg">
     <div class="container mt-3rem">
         <div class="card ">
             <div class="row ">
-                <div class="col-lg-6 col-12 card-align bg-white">
+                <div class="col-lg-8 col-12 card-align bg-white">
                     <div class="row">
                         <div class="col-12  signup-form">
                             <div class="card-header border-bottom-0">
@@ -37,7 +47,7 @@
                             <div class="card-body pt-0">
                                 <div class="row">
                                     <div class="col-md-12 signup-header-text">
-                                        <span class="active fs-18">SIGN UP</span>
+                                        <span class="active fs-18">SIGN UP </span>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -46,7 +56,23 @@
                                             class="sign_validator">
                                             @csrf
                                             <div class="row">
-                                                <div class="col-12">
+                                                {{-- <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label for="name">{{ __('Name') }}</label>
+                                                        <input type="text"
+                                                            class="form-control  form-control-lg  @error('name') is-invalid @enderror"
+                                                            id="name" name="name" placeholder="Name"
+                                                            value="{{ old('name') }}" required autocomplete="name"
+                                                            autofocus />
+                                                        @error('name')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+
+                                                    </div>
+                                                </div> --}}
+                                                <div class="col-lg-6 col-12">
                                                     <div class="form-group">
                                                         <label for="name">{{ __('Name') }}</label>
                                                         <input type="text"
@@ -62,45 +88,133 @@
 
                                                     </div>
                                                 </div>
+                                                <div class="col-lg-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="email"> {{ __('E-Mail Address') }}</label>
+                                                        <input type="email"
+                                                            class="form-control  form-control-lg @error('email') is-invalid @enderror"
+                                                            id="email" name="email" placeholder="E-mail"
+                                                            value="{{ old('email') }}" required />
+                                                        @error('email')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="father_name"> {{ __('Father Name') }}</label>
+                                                        <input type="text"
+                                                            class="form-control  form-control-lg @error('father_name') is-invalid @enderror"
+                                                            id="father_name" name="father_name" placeholder="father name"
+                                                            value="{{ old('father_name') }}" required />
+                                                        @error('father_name')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="mother_name"> {{ __('Mother Name') }}</label>
+                                                        <input type="text"
+                                                            class="form-control  form-control-lg @error('mother_name') is-invalid @enderror"
+                                                            id="mother_name" name="mother_name" placeholder="mother name"
+                                                            value="{{ old('mother_name') }}" required />
+                                                        @error('mother_name')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label for="gender">{{ __('Gender') }}</label>
+                                                        <div class="d-flex gap-3">
+                                                            <!-- Male -->
+                                                            <div class="form-check">
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input @error('gender') is-invalid @enderror"
+                                                                    id="gender_male"
+                                                                    name="gender"
+                                                                    value="male"
+                                                                    {{ old('gender') == 'male' ? 'checked' : '' }}
+                                                                    required
+                                                                />
+                                                                <label class="form-check-label" for="gender_male">
+                                                                    {{ __('Male') }}
+                                                                </label>
+                                                            </div>
+                                                    
+                                                            <!-- Female -->
+                                                            <div class="form-check" style="margin-left: 12px;">
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input @error('gender') is-invalid @enderror"
+                                                                    id="gender_female"
+                                                                    name="gender"
+                                                                    value="female"
+                                                                    {{ old('gender') == 'female' ? 'checked' : '' }}
+                                                                    required
+                                                                />
+                                                                <label class="form-check-label" for="gender_female">
+                                                                    {{ __('Female') }}
+                                                                </label>
+                                                            </div>
+                                                    
+                                                            <!-- Other -->
+                                                            <div class="form-check" style="margin-left: 12px;">
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input @error('gender') is-invalid @enderror"
+                                                                    id="gender_other"
+                                                                    name="gender"
+                                                                    value="other"
+                                                                    {{ old('gender') == 'other' ? 'checked' : '' }}
+                                                                    required
+                                                                />
+                                                                <label class="form-check-label" for="gender_other">
+                                                                    {{ __('Other') }}
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    
+                                                        <!-- Validation Error -->
+                                                        @error('gender')
+                                                        <span class="invalid-feedback d-block" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="password">{{ __('Password') }}</label>
+                                                        <input type="password"
+                                                            class="form-control form-control-lg @error('password') is-invalid @enderror"
+                                                            id="password" name="password" placeholder="Password" required />
+        
+                                                        @error('password')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="confirm-password">{{ __('Confirm Password') }}</label>
+                                                        <input type="password" class="form-control form-control-lg"
+                                                            id="confirm-password" name="password_confirmation"
+                                                            placeholder="Confirm Password" required>
+                                                    </div>
+                                                </div>
+                                                
                                             </div>
-
-
-                                            <div class="form-group">
-                                                <label for="email"> {{ __('E-Mail Address') }}</label>
-                                                <input type="email"
-                                                    class="form-control  form-control-lg @error('email') is-invalid @enderror"
-                                                    id="email" name="email" placeholder="E-mail"
-                                                    value="{{ old('email') }}" required />
-                                                @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <label for="password">{{ __('Password') }}</label>
-                                                <input type="password"
-                                                    class="form-control form-control-lg @error('password') is-invalid @enderror"
-                                                    id="password" name="password" placeholder="Password" required />
-
-                                                @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <label for="confirm-password">{{ __('Confirm Password') }}</label>
-                                                <input type="password" class="form-control form-control-lg"
-                                                    id="confirm-password" name="password_confirmation"
-                                                    placeholder="Confirm Password" required>
-                                            </div>
-
-
                                             <div class="form-group checkbox">
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input"
