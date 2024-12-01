@@ -49,3 +49,6 @@ Route::resource('siteTrainers', 'SiteTrainerController');
 Route::resource('contactMassages', 'ContactMassageController');
 
 
+
+
+Route::resource('notices', 'NoticeController');
