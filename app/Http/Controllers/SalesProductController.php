@@ -48,6 +48,14 @@ class SalesProductController extends Controller
         ]);
 
         foreach ($request->product_id as $key => $item) {
+
+            $products = Product::find($item);
+            $products->update([
+                'product_qty' => $products->product_qty - $request->quantity[$key]
+            ]);
+
+
+
             Sales_product_itemModel::create([
                 'sale_id' => $sale->id,
                 'product_id' => $item,
@@ -87,9 +95,21 @@ class SalesProductController extends Controller
             'status' => $request->status,
             'payment_note' => $request->payment_note,
         ]);
+
+        $products = Product::all();
+        foreach ($products as $product) {
+            $product->update([
+                'product_qty' => $product->product_qty + $sale->items->where('product_id', $product->id)->first()->quantity
+            ]);
+        }
         Sales_product_itemModel::where('sale_id', $sale->id)->delete();
 
         foreach ($request->product_id as $key => $item) {
+
+            $products = Product::find($item);
+            $products->update([
+                'product_qty' => $products->product_qty - $request->quantity[$key]
+            ]);
            
                 Sales_product_itemModel::create([
                     'sale_id' => $sale->id,

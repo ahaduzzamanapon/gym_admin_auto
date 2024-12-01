@@ -44,6 +44,14 @@
     <th scopre="row">{!! Form::label('gross_amount', 'Gross Amount:') !!}</th>
     <td>{{ $purchasePackage->gross_amount }}</td>
 </tr>
+<tr>
+    <th scopre="row">{!! Form::label('pay_amount', 'Pay Amount:') !!}</th>
+    <td>{{ $purchasePackage->pay_amount }}</td>
+</tr>
+<tr>
+    <th scopre="row">{!! Form::label('due_amount', 'Due Amount:') !!}</th>
+    <td>{{ $purchasePackage->due_amount }}</td>
+</tr>
 
 
 <tr>

@@ -15,6 +15,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\AttendenceController;
 use App\Http\Controllers\SalesProductController;
+use App\Http\Controllers\PurchasePackageController;
 
 
 include 'web_builder.php';
@@ -131,6 +132,11 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::resource('sales', SalesProductController::class);
         Route::get('sales/{sale}/invoice', [SalesProductController::class, 'invoice'])->name('sales.invoice');
+
+
+        //PurchasePackageController
+        Route::get('purchase_packages/{purchasePackage}/invoice', [PurchasePackageController::class, 'invoice'])->name('purchasePackages.invoice');
+
 
 
 
