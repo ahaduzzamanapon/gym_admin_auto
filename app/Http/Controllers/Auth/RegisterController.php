@@ -55,8 +55,11 @@ class RegisterController extends Controller
             $data,
             [
                 'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'email' => 'required|email|unique:users',
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'father_name' => ['required', 'string', 'max:255'],
+                'mother_name' => ['required', 'string', 'max:255'],
+                'gender' => ['required', 'string', 'max:255'],
             ]
         );
     }
@@ -71,6 +74,22 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
+        $validation = Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => 'required|email|unique:users,email', // Make sure column name is correct
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'father_name' => ['required', 'string', 'max:255'],
+            'mother_name' => ['required', 'string', 'max:255'],
+            'gender' => ['required', 'string', 'max:255'],
+        ]);
+
+        // If validation fails, redirect back with errors
+        if ($validation->fails()) {
+            return redirect()->back()->withErrors($validation)->withInput();
+        }
+
+
+
         Member::create(
             [
                 'mem_name' => $data['name'],
@@ -78,11 +97,11 @@ class RegisterController extends Controller
                 'mem_mother' => $data['mother_name'],
                 'mem_gender' => $data['gender'],
                 'mem_address' => '',
-                'member_unique_id' => 'MEM'.time(),
+                'member_unique_id' => 'MEM' . time(),
                 'mem_admission_date' => date('Y-m-d'),
                 'mem_cell' => '',
                 'mem_email' => $data['email'],
-                'mem_img_url' =>'',
+                'mem_img_url' => '',
             ]
         );
 
@@ -93,6 +112,5 @@ class RegisterController extends Controller
                 'password' => Hash::make($data['password']),
             ]
         );
-
     }
 }

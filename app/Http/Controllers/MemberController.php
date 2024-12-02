@@ -55,8 +55,9 @@ class MemberController extends AppBaseController
      */
     public function store(CreateMemberRequest $request)
     {
-        $input = $request->all();
 
+        $input = $request->all();
+        // dd($input);
         if ($request->hasFile('mem_img_url')) {
             $path = storage_path('app/public/images/members');
             if (!File::exists($path)) {
@@ -67,12 +68,9 @@ class MemberController extends AppBaseController
         }
         $member_unique_id='MEM'.time();
         $input['member_unique_id']=$member_unique_id;
-
         /** @var Member $member */
         $member = Member::create($input);
-
         $input['user_id'] = $member->id;
-
         User::create(
             [
                 'name' => $input['mem_name'],

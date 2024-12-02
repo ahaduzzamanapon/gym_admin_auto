@@ -1,19 +1,18 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+        rel="stylesheet">
 
     <title>{{ $SiteProfile->title }}</title>
-<!--
+    <!--
 
 TemplateMo 548 Training Studio
 
@@ -27,24 +26,57 @@ https://templatemo.com/tm-548-training-studio
 
     <link rel="stylesheet" href="assets/css/templatemo-training-studio.css">
 
-    </head>
-    
-    <body>
-    
+</head>
+<style>
+    .contact-form input {
+        color: #7a7a7a;
+        font-size: 13px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        width: 100%;
+        height: 40px;
+        outline: none;
+        line-height: 40px;
+        padding: 0px 10px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        margin-bottom: 1px;
+    }
+    .contact-form textarea{
+        color: #7a7a7a;
+        font-size: 13px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        width: 100%;
+        height: 150px;
+        max-height: 200px;
+        outline: none;
+        line-height: 40px;
+        padding: 0px 10px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        margin-bottom: 1px;
+    }
+</style>
+
+<body>
+
     <!-- ***** Preloader Start ***** -->
     <div id="js-preloader" class="js-preloader">
-      <div class="preloader-inner">
-        <span class="dot"></span>
-        <div class="dots">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-      </div>
     </div>
     <!-- ***** Preloader End ***** -->
-    
-    
+
+
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
         <div class="container">
@@ -53,16 +85,16 @@ https://templatemo.com/tm-548-training-studio
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         @php
-                        $logo_array = explode(' ',($SiteProfile->logo_name));
+                            $logo_array = explode(' ', $SiteProfile->logo_name);
                         @endphp
                         <a href="/" class="logo">
-                        @foreach ($logo_array as $key => $value)
-                            @if ($key != (count($logo_array) - 1))
-                                {{ $value }} 
-                            @else
-                                <em>{{ $value }}</em>
-                            @endif
-                        @endforeach
+                            @foreach ($logo_array as $key => $value)
+                                @if ($key != count($logo_array) - 1)
+                                    {{ $value }}
+                                @else
+                                    <em>{{ $value }}</em>
+                                @endif
+                            @endforeach
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -70,15 +102,16 @@ https://templatemo.com/tm-548-training-studio
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#features">About</a></li>
                             <li class="scroll-to-section"><a href="#schedule">Schedules</a></li>
-                            <li class="scroll-to-section"><a href="#contact-us">Contact</a></li> 
-                            @if(isset($scrollToBottom)):
-                            @dd($scrollToBottom)
-                            <script>
-                                window.scrollTo(0, document.body.scrollHeight);
-                            </script>
+                            <li class="scroll-to-section"><a href="#contact-us">Contact</a></li>
+                            @if (isset($scrollToBottom))
+                                :
+                                @dd($scrollToBottom)
+                                <script>
+                                    window.scrollTo(0, document.body.scrollHeight);
+                                </script>
                             @endif
                             <li class="main-button"><a href="{{ route('login') }}">Sign in</a></li>
-                        </ul>        
+                        </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
@@ -92,25 +125,26 @@ https://templatemo.com/tm-548-training-studio
 
     <!-- ***** Main Banner Area Start ***** -->
     <div class="main-banner" id="top">
-        @if ($SiteProfile->banner_status=='video'):
-        <video autoplay muted loop id="bg-video">
-            <source src="{{ asset('storage/' . $SiteProfile->banner_video) }}" type="video/mp4" />
-        </video>
+        @if ($SiteProfile->banner_status == 'video')
+            :
+            <video autoplay muted loop id="bg-video">
+                <source src="{{ asset('storage/' . $SiteProfile->banner_video) }}" type="video/mp4" />
+            </video>
         @else
-        <img id="bg-video" src="{{ asset('storage/' . $SiteProfile->banner_image) }}" alt="gym video">
+            <img id="bg-video" src="{{ asset('storage/' . $SiteProfile->banner_image) }}" alt="gym video">
         @endif
 
         <div class="video-overlay header-text">
             <div class="caption">
-                <h6>{{$SiteProfile->small_banner_text}}</h6>
+                <h6>{{ $SiteProfile->small_banner_text }}</h6>
                 <h2>
                     @php
-                    $logo_array = explode(' ',($SiteProfile->big_banner_text));
+                        $logo_array = explode(' ', $SiteProfile->big_banner_text);
                     @endphp
-                   
+
                     @foreach ($logo_array as $key => $value)
-                        @if ($key != (count($logo_array) - 1))
-                            {{ $value }} 
+                        @if ($key != count($logo_array) - 1)
+                            {{ $value }}
                         @else
                             <em>{{ $value }}</em>
                         @endif
@@ -133,8 +167,8 @@ https://templatemo.com/tm-548-training-studio
                         <h2>About <em>Us</em></h2>
                         <img src="assets/images/line-dec.png" alt="waves">
                         <p>@php
-                            echo $AboutUs->Text
-                          @endphp</p>
+                            echo $AboutUs->Text;
+                        @endphp</p>
                     </div>
                 </div>
                 {{-- <div class="col-lg-6">
@@ -206,25 +240,25 @@ https://templatemo.com/tm-548-training-studio
                     </ul>
                 </div> --}}
                 @foreach ($SiteFeature as $feature)
-                <div class="col-lg-6">
-                    <ul class="features-items">
-                        <li class="feature-item">
-                            <div class="left-icon">
-                                <img src="{{ asset('storage/' . $feature->image) }}" alt="First One">
-                            </div>
-                            <div class="right-content">
-                                <h4>{{ $feature->title }}</h4>
-                                <p>{{ $feature->description }}</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                    <div class="col-lg-6">
+                        <ul class="features-items">
+                            <li class="feature-item">
+                                <div class="left-icon">
+                                    <img src="{{ asset('storage/' . $feature->image) }}" alt="First One">
+                                </div>
+                                <div class="right-content">
+                                    <h4>{{ $feature->title }}</h4>
+                                    <p>{{ $feature->description }}</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 @endforeach
-           
+
             </div>
         </div>
     </section>
-{{-- 
+    {{-- 
     <section class="section" id="schedule">
         <div class="container">
             <div class="row">
@@ -302,71 +336,127 @@ https://templatemo.com/tm-548-training-studio
             </div>
             <div class="row">
                 @foreach ($SiteTrainer as $trainer)
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="{{ asset('storage/' . $trainer->image) }}" alt="{{ $trainer->trainer_name }}">
-                        </div>
-                        <div class="down-content">
-                            <span>{{ $trainer->trainer_type }}</span>
-                            <h4>{{ $trainer->trainer_name }}</h4>
-                            <p>{{ $trainer->description }}</p>
-                            <ul class="social-icons">
-                                <li><a href="{{ $trainer->facebook_link}}"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="{{ $trainer->twitter}}"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="{{ $trainer->linkedin}}"><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
+                    <div class="col-lg-4">
+                        <div class="trainer-item">
+                            <div class="image-thumb">
+                                <img src="{{ asset('storage/' . $trainer->image) }}"
+                                    alt="{{ $trainer->trainer_name }}">
+                            </div>
+                            <div class="down-content">
+                                <span>{{ $trainer->trainer_type }}</span>
+                                <h4>{{ $trainer->trainer_name }}</h4>
+                                <p>{{ $trainer->description }}</p>
+                                <ul class="social-icons">
+                                    <li><a href="{{ $trainer->facebook_link }}"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="{{ $trainer->twitter }}"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="{{ $trainer->linkedin }}"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
     </section>
     <!-- ***** Testimonials Ends ***** -->
-    
+
     <!-- ***** Contact Us Area Starts ***** -->
     <section class="section" id="contact-us">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div id="map" style="padding: 18px;">
-                      <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="600px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        <iframe
+                            src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                            width="100%" height="600px" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="contact-form">
                         @include('flash::message')
 
+                        {{-- @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif --}}
+
                         <form id="contact" action="{{ route('contactMassages.store') }}" method="post">
-                          @csrf
-                          <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                              <fieldset>
-                                <input name="name" type="text" id="name" placeholder="Your Name*" required>
-                              </fieldset>
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <input name="name" type="text" id="name"
+                                                placeholder="Your Name*"">
+                                            @if ($errors->has('name'))
+                                                <span class="text-danger"
+                                                    style="font-size: 12px;">{{ $errors->first('name') }}</span>
+                                            @endif
+                                        </div>
+
+                                    </fieldset>
+
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <input name="email" type="email" id="email"
+                                                pattern="[^ @]*@[^ @]*" placeholder="Your Email*">
+                                            @if ($errors->has('email'))
+                                                <span class="text-danger"
+                                                    style="font-size: 12px;">{{ $errors->first('email') }}</span>
+                                            @endif
+
+                                        </div>
+
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <input name="subject" type="text" id="subject"
+                                                placeholder="Subject">
+                                            
+
+                                        </div>
+
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-12 col-sm-12">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <input name="phone" type="text" id="phone" placeholder="Phone">
+                                            @if ($errors->has('phone'))
+                                                <span class="text-danger"
+                                                    style="font-size: 12px;">{{ $errors->first('phone') }}</span>
+                                            @endif
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <textarea name="message" cols="7" rows="6" id="message" placeholder="Message"></textarea>
+                                            @if ($errors->has('message'))
+                                                <span class="text-danger"
+                                                    style="font-size: 12px;">{{ $errors->first('message') }}</span>
+                                            @endif
+
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <button onclick="redirectToSection('contact-us')"   type="submit" id="form-submit" class="main-button">Send
+                                            Message</button>
+                                    </fieldset>
+                                </div>
                             </div>
-                            <div class="col-md-6 col-sm-12">
-                              <fieldset>
-                                <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email*" required>
-                              </fieldset>
-                            </div>
-                            <div class="col-md-12 col-sm-12">
-                              <fieldset>
-                                <input name="subject" type="text" id="subject" placeholder="Subject" required>
-                              </fieldset>
-                            </div>
-                            <div class="col-lg-12">
-                              <fieldset>
-                                <textarea name="message" rows="6" id="message" placeholder="Message" required></textarea>
-                              </fieldset>
-                            </div>
-                            <div class="col-lg-12">
-                              <fieldset>
-                                <button type="submit" id="form-submit" class="main-button">Send Message</button>
-                              </fieldset>
-                            </div>
-                          </div>
                         </form>
                     </div>
                 </div>
@@ -374,23 +464,34 @@ https://templatemo.com/tm-548-training-studio
         </div>
     </section>
     <!-- ***** Contact Us Area Ends ***** -->
-    
+
     <!-- ***** Footer Start ***** -->
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12" style="display: flex;justify-content: space-between;">
-                <p>
-                    {{ $SiteProfile->fotter_text }}
-                </p>
-                <p>
-                    Developed by <a href="https://mysoftheaven.com/">Mysoftheaven (BD) Ltd</a>
-                </p>
+                    <p>
+                        {{ $SiteProfile->fotter_text }}
+                    </p>
+                    <p>
+                        Developed by <a href="https://mysoftheaven.com/">Mysoftheaven (BD) Ltd</a>
+                    </p>
                 </div>
             </div>
         </div>
     </footer>
+    <script>
+        const redirectToSection = (sectionId) => {
+            console.log({sectionId});
+            
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+            }
 
+        }
+        
+    </script>
     <!-- jQuery -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>
 
@@ -402,12 +503,13 @@ https://templatemo.com/tm-548-training-studio
     <script src="assets/js/scrollreveal.min.js"></script>
     <script src="assets/js/waypoints.min.js"></script>
     <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script> 
-    <script src="assets/js/mixitup.js"></script> 
+    <script src="assets/js/imgfix.min.js"></script>
+    <script src="assets/js/mixitup.js"></script>
     <script src="assets/js/accordions.js"></script>
-    
+
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
 
-  </body>
+</body>
+
 </html>

@@ -94,15 +94,10 @@ class MealPlanController extends Controller
         $mealPlan->delete();
         return redirect()->route('meal_plans.index')->with('success', 'Meal plan deleted successfully!');
     }
-    
     public function show(MealPlan $mealPlan)
     {
         $mealPlan_id=$mealPlan->id;
         $foodplans = FoodPlan::where('meal_plan_id', $mealPlan_id)->get();
         return view('meal_plans.show', compact('mealPlan','foodplans'));
     }
-
-
-    
-    
 }

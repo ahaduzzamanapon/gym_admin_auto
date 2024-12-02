@@ -47,11 +47,31 @@ class ContactMassageController extends AppBaseController
      * @return Response
      */
     public function store(CreateContactMassageRequest $request)
+
     {
         $input = $request->all();
+        
+
+        $validation = $request->validate([
+            'name' => 'required',
+            'email' => 'required| email',
+            'phone' => 'required',
+            'message' => 'required',
+        ]);
+        // dd($input);
+
+
 
         /** @var ContactMassage $contactMassage */
-        $contactMassage = ContactMassage::create($input);
+        $contactMassage = ContactMassage::create(
+            [
+                'name' => $input['name'],
+                'email' => $input['email'],
+                'phone' => $input['phone'],
+                'subject' => $input['subject'],
+                'message' => $input['message']
+            ]
+        );
 
         Flash::success('Contact Massage saved successfully.');
 
