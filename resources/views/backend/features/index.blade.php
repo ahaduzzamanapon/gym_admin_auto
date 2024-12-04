@@ -43,9 +43,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($features as $feature)
+                            @foreach ($features as $key => $feature)
                                 <tr>
-                                    <td>{{ $loop->index }}</td>
+                                    <td>{{  ++$key }}</td>
                                     <td>
                                         <img src="{{asset($feature->image)}}" alt="Feature Image" class="img-thumbnail" style="max-width: 120px; max-height: 120px;">
 

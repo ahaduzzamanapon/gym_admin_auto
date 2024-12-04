@@ -51,7 +51,7 @@ class MemberDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->minifiedAjax()
+            ->minifiedAjax(url('members'))
             ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',
@@ -64,7 +64,7 @@ class MemberDataTable extends DataTable
                     ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner'],
                     ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner'],
                 ],
-            ]);
+        ]);
     }
 
     /**
@@ -75,7 +75,8 @@ class MemberDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id',
+           // 'id',
+            'member_unique_id' => ['title' => 'Member ID'],
             'mem_name',
             'group_name' => ['title' => 'Role'],
             'mem_father',

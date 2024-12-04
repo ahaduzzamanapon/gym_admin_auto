@@ -49,7 +49,7 @@ class HealthmetricsDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->minifiedAjax()
+            ->minifiedAjax(url('healthmetrics'))
             ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',
@@ -82,6 +82,16 @@ class HealthmetricsDataTable extends DataTable
             'body_fat_percentage',
             'muscle_mass',
             'hydration_level',
+            'chest',
+            'waist',
+            'hips',
+            'thighs',
+            'arms',
+            'forearms',
+            'neck',
+            'shoulders',
+            'calves',
+            'resting_heart_rate',
             // 'created_at' => ['searchable' => false],
             // 'updated_at' => ['searchable' => false]
         ];

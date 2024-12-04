@@ -35,7 +35,17 @@ class Healthmetrics extends Model
         'bmi',
         'body_fat_percentage',
         'muscle_mass',
-        'hydration_level'
+        'hydration_level',
+        'chest',
+        'waist',
+        'hips',
+        'thighs',
+        'arms',
+        'forearms',
+        'neck',
+        'shoulders',
+        'calves',
+        'resting_heart_rate'
     ];
 
     /**

@@ -28,29 +28,29 @@ Dashboard @parent
         <div class="col-md-6 col-xl-3 col-12 mb-20">
             <div class="  bg-white dashboard-col pl-15 pb-15 pt-15">
                 <i class="im im-icon-Add-Cart im-icon-set float-right bg-primary"></i>
-                <h3>35K</h3>
-                <p>Number of Sales</p>
+                <h3>{{ \DB::table('members')->count() }}</h3>
+                <p>Total Members</p>
                 <div class="progress meter mr-15">
                     <div id="progress-primary"
                         class=" progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar"
                         style="width: 1%" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <p class="mb-0 mt-3 "><span>Gained: 655</span> <span class="float-right pr-15">Lost: 56</span></p>
+                {{-- <p class="mb-0 mt-3 "><span>Gained: 655</span> <span class="float-right pr-15">Lost: 56</span></p> --}}
             </div>
         </div>
 
         <div class="col-md-6 col-xl-3 col-12  mb-20">
             <div class="bg-white dashboard-col pl-15 pb-15 pt-15">
                 <i class="im im-icon-Eye-Scan im-icon-set float-right bg-success"></i>
-                <h3>10K</h3>
-                <p class="text">Page Views</p>
+                <h3>{{ \DB::table('attendences')->where('date', date('Y-m-d'))->where('status', 'Present')->count() }}</h3>
+                <p class="text">Active Member</p>
                 <div class="progress mr-15">
                     <div id="progress-success"
                         class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar"
                         style="width: 1%" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <p class="mb-0 mt-3 "><span>Unique Pageviews: </span> <span class="float-right pr-15">4.7K</span>
-                </p>
+                {{-- <p class="mb-0 mt-3 "><span>Unique Pageviews: </span> <span class="float-right pr-15">4.7K</span>
+                </p> --}}
             </div>
         </div>
 
@@ -58,13 +58,13 @@ Dashboard @parent
             <div class="bg-white dashboard-col pl-15 pb-15 pt-15">
                 <i class="im im-icon-Love-User im-icon-set float-right bg-info"></i>
                 <h3>23K</h3>
-                <p>Number of Fans</p>
+                <p>Total due </p>
                 <div class="progress mr-15">
                     <div id="progress-info" class="progress-bar bg-info progress-bar-striped progress-bar-animated"
                         role="progressbar" style="width: 1%" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100">
                     </div>
                 </div>
-                <p class="mb-0 mt-3 "><span>Gained: 655</span> <span class="float-right pr-15">Lost: 56</span></p>
+                {{-- <p class="mb-0 mt-3 "><span>Gained: 655</span> <span class="float-right pr-15">Lost: 56</span></p> --}}
             </div>
         </div>
 
@@ -72,15 +72,15 @@ Dashboard @parent
         <div class="col-md-6 col-xl-3 col-12  mb-20">
             <div class="bg-white dashboard-col pl-15 pb-15 pt-15">
                 <i class="im im-icon-Checked-User im-icon-set float-right bg-danger"></i>
-                <h3>400</h3>
-                <p>Total Actions</p>
+                <h3>90%</h3>
+                <p>Health Improvement </p>
                 <div class="progress mr-15">
                     <div id="progress-danger" class="progress-bar bg-danger progress-bar-striped progress-bar-animated"
                         role="progressbar" style="width: 1%" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100">
                     </div>
                 </div>
-                <p class="mb-0 mt-3 "><span>To Prev. Period: 655</span> <span class="float-right pr-15">+72%</span>
-                </p>
+                {{-- <p class="mb-0 mt-3 "><span>To Prev. Period: 655</span> <span class="float-right pr-15">+72%</span>
+                </p> --}}
             </div>
         </div>
     </div>

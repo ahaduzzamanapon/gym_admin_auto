@@ -14,6 +14,7 @@ class CouponDataTable extends DataTable
      * @param mixed $query Results from query() method.
      * @return \Yajra\DataTables\DataTableAbstract
      */
+    
     public function dataTable($query)
     {
         $dataTable = new EloquentDataTable($query);
@@ -41,7 +42,7 @@ class CouponDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->minifiedAjax()
+            ->minifiedAjax(url('coupons'))
             ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',

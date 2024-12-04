@@ -9,6 +9,7 @@
         "barryvdh/laravel-snappy": "^1.0",
         "brian2694/laravel-toastr": "^5.59",
         "creativeorange/gravatar": "v1.0.22",
+        "egulias/email-validator": "^4.0",
         "guzzlehttp/guzzle": "^7.2",
         "infyomlabs/adminlte-templates": "v4.0.2",
         "infyomlabs/generator-builder": "v1.0.0",

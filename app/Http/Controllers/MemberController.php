@@ -13,6 +13,8 @@ use App\Http\Controllers\AppBaseController;
 use Response;
 use File;
 use Hash;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\YourDataImport;
 
 class MemberController extends AppBaseController
 {
@@ -24,6 +26,13 @@ class MemberController extends AppBaseController
      */
     public function index(MemberDataTable $memberDataTable)
     {
+        // echo '<pre>';
+        // print_r($memberDataTable);
+        // echo '</pre>';
+        // exit;
+
+
+        //dd($memberDataTable);
         return $memberDataTable->render('members.index');
     }
 
@@ -46,8 +55,9 @@ class MemberController extends AppBaseController
      */
     public function store(CreateMemberRequest $request)
     {
-        $input = $request->all();
 
+        $input = $request->all();
+        // dd($input);
         if ($request->hasFile('mem_img_url')) {
             $path = storage_path('app/public/images/members');
             if (!File::exists($path)) {
@@ -56,12 +66,11 @@ class MemberController extends AppBaseController
             $file = $request->file('mem_img_url');
             $input['mem_img_url'] = $file->store('images/members', 'public');
         }
-
+        $member_unique_id='MEM'.time();
+        $input['member_unique_id']=$member_unique_id;
         /** @var Member $member */
         $member = Member::create($input);
-
         $input['user_id'] = $member->id;
-
         User::create(
             [
                 'name' => $input['mem_name'],
@@ -84,6 +93,19 @@ class MemberController extends AppBaseController
      * @return Response
      */
     public function show($id)
+    {
+        /** @var Member $member */
+        $member = Member::find($id);
+
+        if (empty($member)) {
+            Flash::error('Member not found');
+
+            return redirect(route('members.index'));
+        }
+
+        return view('members.show')->with('member', $member);
+    }
+    public function details($id)
     {
         /** @var Member $member */
         $member = Member::find($id);
@@ -191,4 +213,13 @@ class MemberController extends AppBaseController
 
         return redirect(route('members.index'));
     }
+
+    public function upload_excel_page()
+    {
+        dd('upload_excel_page');
+        return view('members.upload_excel_page');
+    }
+
+   
+
 }

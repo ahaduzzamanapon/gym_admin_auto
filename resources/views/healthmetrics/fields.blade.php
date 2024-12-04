@@ -1,4 +1,4 @@
-<!-- Member Id Field -->
+<!-- Member name Field -->
 
 @php
 $members = DB::table('members')->get();
@@ -92,6 +92,114 @@ $members = DB::table('members')->get();
         </div>
     </div>
 </div>
+<!-- Chest Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('chest', 'Chest:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::text('chest', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+
+
+<!-- Waist Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('waist', 'Waist:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::text('waist', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+
+
+<!-- Hips Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('hips', 'Hips:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::text('hips', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+
+
+<!-- Thighs Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('thighs', 'Thighs:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::text('thighs', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+
+
+<!-- Arms Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('arms', 'Arms:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::text('arms', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+
+
+<!-- Forearms Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('forearms', 'Forearms:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::text('forearms', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+
+
+<!-- Neck Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('neck', 'Neck:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::text('neck', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+
+
+<!-- Shoulders Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('shoulders', 'Shoulders:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::text('shoulders', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+
+
+<!-- Calves Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('calves', 'Calves:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::text('calves', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+
+
+<!-- Resting Heart Rate Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('resting_heart_rate', 'Resting Heart Rate:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::text('resting_heart_rate', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
 
 
 <!-- Submit Field -->
@@ -101,12 +209,4 @@ $members = DB::table('members')->get();
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-{{-- <script>
-    $('.weight, .height').on('keyup', function() {
-        alert('hi');
-        var weight = $('.weight').val();
-        var height = $('.height').val();
-        var bmi = weight / (height * height);
-        $('.bmi').val(bmi);
-    });
-</script> --}}
+

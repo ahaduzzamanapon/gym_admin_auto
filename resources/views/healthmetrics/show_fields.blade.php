@@ -5,7 +5,7 @@
 
 
 <tr>
-    <th scopre="row">{!! Form::label('member_id', 'Member Id:') !!}</th>
+    <th scopre="row">{!! Form::label('member_id', 'Member name:') !!}</th>
     <td>{{ $healthmetrics->member_id }}</td>
 </tr>
 
@@ -61,6 +61,48 @@
 <tr>
     <th scopre="row">{!! Form::label('updated_at', 'Updated At:') !!}</th>
     <td>{{ $healthmetrics->updated_at }}</td>
+</tr>
+
+
+<tr>
+    <th scopre="row">{!! Form::label('chest', 'Chest:') !!}</th>
+    <td>{{ $healthmetrics->chest }}</td>
+</tr>
+<tr>
+    <th scopre="row">{!! Form::label('waist', 'Waist:') !!}</th>
+    <td>{{ $healthmetrics->waist }}</td>
+</tr>
+<tr>
+    <th scopre="row">{!! Form::label('hips', 'Hips:') !!}</th>
+    <td>{{ $healthmetrics->hips }}</td>
+</tr>
+<tr>
+    <th scopre="row">{!! Form::label('thighs', 'Thighs:') !!}</th>
+    <td>{{ $healthmetrics->thighs }}</td>
+</tr>
+<tr>
+    <th scopre="row">{!! Form::label('arms', 'Arms:') !!}</th>
+    <td>{{ $healthmetrics->arms }}</td>
+</tr>
+<tr>
+    <th scopre="row">{!! Form::label('forearms', 'Forearms:') !!}</th>
+    <td>{{ $healthmetrics->forearms }}</td>
+</tr>
+<tr>
+    <th scopre="row">{!! Form::label('neck', 'Neck:') !!}</th>
+    <td>{{ $healthmetrics->neck }}</td>
+</tr>
+<tr>
+    <th scopre="row">{!! Form::label('shoulders', 'Shoulders:') !!}</th>
+    <td>{{ $healthmetrics->shoulders }}</td>
+</tr>
+<tr>
+    <th scopre="row">{!! Form::label('calves', 'Calves:') !!}</th>
+    <td>{{ $healthmetrics->calves }}</td>
+</tr>
+<tr>
+    <th scopre="row">{!! Form::label('resting_heart_rate', 'Resting Heart Rate:') !!}</th>
+    <td>{{ $healthmetrics->resting_heart_rate }}</td>
 </tr>
 
 

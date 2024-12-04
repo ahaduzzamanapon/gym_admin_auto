@@ -3,7 +3,14 @@
 
 <head>
     <title>
-        @section('title')| Josh Admin Template @show
+        @php
+        if (!Auth::check()) {
+            // dd("Please login first");
+            // redirect(route('welcome'));
+        }
+            $setting = DB::table('sitesettings')->first();
+        @endphp
+        @section('title')| {{(!empty($setting))?$setting->name:'Gym Master'}} - {{(!empty($setting))?$setting->slogan:'Gym Master'}} @show
     </title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -16,7 +23,7 @@
     <link type="text/css" href="{{ asset('css/app.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('vendors/perfect-scrollbar/css/perfect-scrollbar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css')}}">
-    <script src="https://cdn.tailwindcss.com"></script>
+    {{-- //<script src="https://cdn.tailwindcss.com"></script> --}}
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" />
@@ -25,6 +32,8 @@
     
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     
     
     <style>
@@ -56,7 +65,7 @@
             <!-- Header Navbar: style can be found in header-->
             <!-- Sidebar toggle button-->
             <!-- Sidebar toggle button-->
-            <h3 style="display: flex;width: -webkit-fill-available;place-content: center;font-size: x-large;"> <span style="font-weight: bold;">Gym Master</span> - Gym Management System </h3>
+            <h3 style="display: flex;width: -webkit-fill-available;place-content: center;font-size: x-large;"> {{(!empty($setting))?$setting->name:'Gym Master'}} - {{(!empty($setting))?$setting->slogan:'Gym Master'}} </h3>
 
             <div class="navbar-right ml-auto">
                 <ul class="navbar-nav nav">
@@ -64,12 +73,22 @@
                     <a href="javascript:void(0)" class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown"
                         id="navbarDropdown">
                         <i class="im im-icon-Boy fs-16"></i>
-
-
                     </a>
                     <ul class="dropdown-menu dropdown-notifications table-striped" aria-labelledby="navbarDropdown">
-
                         <li class="dropdown-footer">
+                            <a href="{{ route('members.index') }}" class="dropdown-item">
+                             Profile
+                            </a>
+                        </li>
+                        
+                        <li class="dropdown-footer">
+                            
+                            @if(!empty(Auth::user()) &&Auth::user()->member_id != null)
+
+                            <a class="dropdown-item" href="{{ route('members.details', ['id' => Auth::user()->member_id]) }}">
+                                Profile
+                            </a>
+                            @endif
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
@@ -79,6 +98,7 @@
                                 @csrf
                             </form>
                         </li>
+
                     </ul>
                 </li>
               
@@ -111,6 +131,9 @@
     <!-- global js -->
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
 
     <script src="{{ asset('js/app.js')}}" type="text/javascript"></script>

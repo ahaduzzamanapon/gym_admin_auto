@@ -26,6 +26,7 @@ Members @parent
             <h5 class="card-title d-inline">Members</h5>
             <span class="float-right">
                 <a class="btn btn-primary pull-right" href="{{ route('members.create') }}">Add New</a>
+                <a class="btn btn-primary pull-right" href="{{ route('upload.upload_excel_page') }}">Upload Excel</a>
             </span>
         </section>
         <div class="card-body table-responsive">

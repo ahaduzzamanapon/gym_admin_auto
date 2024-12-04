@@ -4,7 +4,7 @@
             <tr>
                 <th>Id</th>
         <th>Title</th>
-        <th>Member Id</th>
+        <th>Member name</th>
         <th>Product Id</th>
         <th>Status</th>
         <th>Created At</th>

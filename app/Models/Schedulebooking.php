@@ -28,7 +28,9 @@ class Schedulebooking extends Model
         'booking_date',
         'service_type',
         'status',
-        'note'
+        'note',
+        'asset_id',
+        'booking_time'
     ];
 
     /**

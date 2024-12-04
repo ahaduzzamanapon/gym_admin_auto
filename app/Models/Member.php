@@ -26,6 +26,7 @@ class Member extends Model
 
 
     public $fillable = [
+        'member_unique_id',
         'mem_name',
         'mem_father',
         'mem_address',
@@ -34,6 +35,8 @@ class Member extends Model
         'mem_email',
         'mem_img_url',
         'group_id',
+        'punch_id',
+        'mem_type',
     ];
 
     /**
@@ -43,6 +46,7 @@ class Member extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'member_unique_id' => 'string',
         'mem_name' => 'string',
         'mem_father' => 'string',
         'mem_address' => 'string',
@@ -50,7 +54,9 @@ class Member extends Model
         'mem_cell' => 'string',
         'mem_email' => 'string',
         'mem_img_url' => 'string',
-        'group_id' => 'integer'
+        'group_id' => 'integer',
+        'mem_type' => 'integer',
+        'punch_id' => 'integer',
     ];
 
     /**
