@@ -93,13 +93,17 @@
                                                 </div>
                                                 <div class="col-lg-6 col-12">
                                                     <div class="form-group">
-                                                        <label for="email"> {{ __('E-Mail Address') }}</label>
-                                                        <input type="email"
-                                                            class="form-control  form-control-lg @error('email') is-invalid @enderror"
-                                                            id="email" name="email" placeholder="E-mail"
-                                                            value="{{ old('email') }}"  />
+                                                        <label for="email">{{ __('E-Mail Address') }}</label>
+                                                        <input 
+                                                            type="email"
+                                                            class="form-control form-control-lg @error('email') is-invalid @enderror"
+                                                            id="email"
+                                                            name="email"
+                                                            placeholder="E-mail"
+                                                            value="{{ old('email') }}"
+                                                        />
                                                         @error('email')
-                                                            <span class="invalid-feedback" role="alert">
+                                                            <span class="invalid-feedback" role="alert" id="email-error">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
                                                         @enderror
@@ -359,6 +363,22 @@
     </script>
     <!-- begining of page level js -->
 
+    <script>
+        document.getElementById('email').addEventListener('input', function () {
+            const errorElement = document.getElementById('email-error');
+            const emailField = this;
+    
+            // Hide the error message on input
+            if (errorElement) {
+                errorElement.style.display = 'none';
+            }
+    
+            // Remove invalid class on valid input
+            if (emailField.classList.contains('is-invalid')) {
+                emailField.classList.remove('is-invalid');
+            }
+        });
+    </script>
 
     <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 

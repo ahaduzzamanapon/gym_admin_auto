@@ -32,6 +32,8 @@ class MealPlanController extends Controller
 
         $validated = $request->validate([
             'meal_name' => 'required|string|max:100',
+            'quantity' => 'required',
+            'calories' => 'required',
         ]);
       
         $data_array = array(

@@ -14,9 +14,9 @@ Dashboard @parent
 @section('content')
 
 <!-- Content Header (Page header) -->
-<section class="content-header">
-    <div aria-label="breadcrumb" class="card-breadcrumb">
-        <h1>Dashboard</h1>
+<section class="content-header ">
+    <div aria-label="breadcrumb" class="card-breadcrumb bg-success ">
+        <h1 class="text-white mt-2">Dashboard</h1>
 
     </div>
     <div class="separator-breadcrumb border-top"></div>
@@ -43,7 +43,7 @@ Dashboard @parent
             <div class="bg-white dashboard-col pl-15 pb-15 pt-15">
                 <i class="im im-icon-Eye-Scan im-icon-set float-right bg-success"></i>
                 <h3>{{ \DB::table('attendences')->where('date', date('Y-m-d'))->where('status', 'Present')->count() }}</h3>
-                <p class="text">Active Member</p>
+                <p class="text">Active Members</p>
                 <div class="progress mr-15">
                     <div id="progress-success"
                         class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar"
@@ -91,7 +91,7 @@ Dashboard @parent
         <div class="col-md-12 col-lg-7 mt-20 col-12 ">
             <div class="dashboard-col">
 
-                <h5 class="card-header">Sales Analysis</h5>
+                <h5 class="card-header bg-primary text-white">Sales Analysis</h5>
                 <hr>
                 <div class="row">
                     <div class="col-12">
@@ -105,7 +105,7 @@ Dashboard @parent
         <div class="col-md-12 col-lg-5 mt-20 col-12 ">
             <div class="dashboard-col">
 
-                <h5 class="card-header">Sales Report</h5>
+                <h5 class="card-header bg-info text-white">Sales Report</h5>
                 <hr>
                 <div class="row">
                     <div class="col-12">
@@ -136,7 +136,7 @@ Dashboard @parent
                                     <td>4680</td>
                                 </tr>
                                 <tr>
-                                    <td>Mar</td>
+                                    <td>Apr</td>
                                     <td>13</td>
                                     <td>390</td>
                                     <td>4680</td>
@@ -156,13 +156,13 @@ Dashboard @parent
     <div class="row">
         <div class="col-xl-7 col-12 mt-20 ">
             <div class="bg-white dashboard-col">
-                <h5 class="card-header">Registered Users</h5>
+                <h5 class="card-header bg-info text-white">Registered Users</h5>
                 {{--<div class="card">--}}
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col"> Name</th>
+                                <th scope="col">Name</th>
                                 <th scope="col">Picture</th>
                                 <th scope="col">Email Address</th>
                                 <th scope="col">Data and time</th>

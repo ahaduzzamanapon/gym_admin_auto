@@ -55,7 +55,7 @@ class RegisterController extends Controller
             $data,
             [
                 'name' => ['required', 'string', 'max:255'],
-                'email' => 'required|email|unique:users',
+                'email' => 'required|email|email:dns|unique:users',
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
                 'father_name' => ['required', 'string', 'max:255'],
                 'mother_name' => ['required', 'string', 'max:255'],

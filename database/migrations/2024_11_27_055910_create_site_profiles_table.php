@@ -15,14 +15,14 @@ class CreateSiteProfilesTable extends Migration
     {
         Schema::create('site_profiles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('logo_name');
-            $table->string('banner_status');
-            $table->text('banner_image');
-            $table->text('banner_video');
-            $table->string('title');
-            $table->string('small_banner_text');
-            $table->string('big_banner_text');
-            $table->string('fotter_text');
+            $table->string('logo_name')->nullable();
+            $table->string('banner_status')->nullable();
+            $table->text('banner_image')->nullable();
+            $table->text('banner_video')->nullable();
+            $table->string('title')->nullable();
+            $table->string('small_banner_text')->nullable();
+            $table->string('big_banner_text')->nullable();
+            $table->string('fotter_text')->nullable();
             $table->timestamps();
         });
     }

@@ -32,7 +32,7 @@ class MemberController extends AppBaseController
         // exit;
 
 
-        //dd($memberDataTable);
+        // dd($memberDataTable);
         return $memberDataTable->render('members.index');
     }
 

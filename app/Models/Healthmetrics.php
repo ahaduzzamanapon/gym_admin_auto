@@ -78,7 +78,17 @@ class Healthmetrics extends Model
         'bmi' => 'required',
         'body_fat_percentage' => 'required',
         'muscle_mass' => 'required',
-        'hydration_level' => 'required'
+        'hydration_level' => 'required',
+        'chest' => 'required',
+        'waist' => 'required',
+        'hips' => 'required',
+        'thighs' => 'required',
+        'arms' => 'required',
+        'forearms' => 'required',
+        'neck' => 'required',
+        'shoulders' => 'required',
+        'calves' => 'required',
+        'resting_heart_rate' => 'required'
     ];
 
     /**
