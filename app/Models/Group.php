@@ -43,7 +43,8 @@ class Group extends Model
      */
     public static $rules = [
         'name' => 'required',
-        'key' => 'required'
+        'key' => 'required',
+        'permissions' => 'required'
     ];
 
     

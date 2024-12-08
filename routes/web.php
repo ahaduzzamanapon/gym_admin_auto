@@ -40,6 +40,15 @@ Route::view('login3', 'auth.login3');
 Route::view('register2', 'auth.register2');
 Route::view('register3', 'auth.register3');
 
+use Illuminate\Support\Facades\Password;
+
+Route::get('forgot-password', [\App\Http\Controllers\Auth\ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('forgot-password', [\App\Http\Controllers\Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('reset-password/{token}', [\App\Http\Controllers\Auth\ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('reset-password', [\App\Http\Controllers\Auth\ResetPasswordController::class, 'reset'])->name('password.update');
+
+
+
 Route::get('/welcome', [HomeController::class, 'index'])->name('welcome');
 Route::get('/privacy', [HomeController::class, 'privacy'])->name('privacy');
 Route::get('/terms_conditions', [HomeController::class, 'terms_conditions'])->name('terms_conditions');

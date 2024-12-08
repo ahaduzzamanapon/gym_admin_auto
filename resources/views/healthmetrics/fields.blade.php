@@ -40,50 +40,64 @@
 
 
 
-    <!-- Weight Field -->
-    <div class="form-group">
-        <div class="row">
-            {!! Form::label('weight', 'Weight:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
-            <div class="col-md-9 col-lg-9 col-12">
-                {!! Form::text('weight', null, ['class' => 'form-control', 'placeholder' => 'Enter Weight', 'id' => 'weight']) !!}
-                @error('weight')
-                    <span class="text-danger">{{ $message }}</span>
-                @enderror
-            </div>
+<!-- Weight Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('weight', 'Weight:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::text('weight', null, ['class' => 'form-control', 'placeholder' => 'Enter Weight', 'id' => 'weight']) !!}
+            @error('weight')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
         </div>
     </div>
+</div>
 
-    <!-- Height Field -->
-    <div class="form-group">
-        <div class="row">
-            {!! Form::label('height', 'Height:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
-            <div class="col-md-9 col-lg-9 col-12">
-                {!! Form::text('height', null, ['class' => 'form-control', 'placeholder' => 'Enter Height', 'id' => 'height']) !!}
-                @error('height')
-                    <span class="text-danger">{{ $message }}</span>
-                @enderror
-            </div>
+<!-- Height Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('height', 'Height:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::text('height', null, ['class' => 'form-control', 'placeholder' => 'Enter Height', 'id' => 'height']) !!}
+            @error('height')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
         </div>
     </div>
+</div>
 
-    <!-- BMI Field -->
-    <div class="form-group">
-        <div class="row">
-            {!! Form::label('bmi', 'Bmi:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
-            <div class="col-md-9 col-lg-9 col-12">
-                {!! Form::text('bmi', null, [
-                    'class' => 'form-control',
-                    'placeholder' => 'BMI will be calculated',
-                    'id' => 'bmi',
-                    'readonly',
-                ]) !!}
-                @error('bmi')
-                    <span class="text-danger">{{ $message }}</span>
-                @enderror
-            </div>
+<!-- BMI Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('bmi', 'Bmi:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::text('bmi', null, [
+                'class' => 'form-control',
+                'placeholder' => 'BMI will be calculated',
+                'id' => 'bmi',
+                'readonly',
+            ]) !!}
+            @error('bmi')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
         </div>
     </div>
+</div>
 
+<!-- BMI Status Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('bmi_status', 'BMI Status:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::text('bmi_status', null, [
+                'class' => 'form-control',
+                'placeholder' => 'BMI Status will be displayed',
+                'id' => 'bmi_status',
+                'readonly',
+            ]) !!}
+        </div>
+    </div>
+</div>
 
 
 <!-- Body Fat Percentage Field -->
@@ -285,16 +299,31 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    // Function to calculate BMI
     function calculateBMI() {
         const weight = parseFloat(document.getElementById('weight').value); // Get weight value
         const height = parseFloat(document.getElementById('height').value); // Get height value
+        const statusField = document.getElementById('bmi_status'); // Get the status field
 
         if (!isNaN(weight) && !isNaN(height) && height > 0) {
             const bmi = weight / (height * height); // BMI formula
             document.getElementById('bmi').value = bmi.toFixed(2); // Display BMI with 2 decimal places
+
+            // Determine BMI status based on the value
+            let status = '';
+            if (bmi < 18.5) {
+                status = 'Underweight';
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                status = 'Healthy Weight';
+            } else if (bmi >= 25.0 && bmi <= 29.9) {
+                status = 'Overweight';
+            } else if (bmi >= 30.0) {
+                status = 'Obesity';
+            }
+
+            statusField.value = status; // Update the status field
         } else {
             document.getElementById('bmi').value = ''; // Clear BMI field if inputs are invalid
+            statusField.value = ''; // Clear status field if inputs are invalid
         }
     }
 

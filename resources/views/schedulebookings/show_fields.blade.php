@@ -3,6 +3,7 @@
     <td>{{ $schedulebooking->id }}</td>
 </tr>
 
+{{-- @dd($schedulebooking); --}}
 
 <tr>
     <th scopre="row">{!! Form::label('member_id', 'Member name:') !!}</th>

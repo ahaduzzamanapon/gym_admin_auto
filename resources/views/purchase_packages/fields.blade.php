@@ -27,8 +27,8 @@ $packages = DB::table('packages')->get();
         {!! Form::number('tax', null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group col-md-4">
-        {!! Form::label('coupons_id', 'Coupons code:',['class'=>'control-label']) !!}
-        {!! Form::text('coupons_id', null, ['class' => 'form-control']) !!}
+        {!! Form::label('coupons_id', 'Coupons code:', ['class' => 'control-label']) !!}
+        {!! Form::text('coupons_id', null, ['class' => 'form-control', 'id' => 'coupons_id']) !!}
         <span class="text-danger" id="coupons_id_error"></span>
         <span class="text-success" id="coupons_id_success"></span>
     </div>
@@ -87,6 +87,13 @@ $packages = DB::table('packages')->get();
             
         })
     })
+</script>
+
+<script>
+    // Automatically convert input to lowercase
+    document.getElementById('coupons_id').addEventListener('input', function () {
+        this.value = this.value.toLowerCase();
+    });
 </script>
 
 <script>

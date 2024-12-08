@@ -20,6 +20,7 @@ class CreateHealthmetricssTable extends Migration
             $table->string('weight')->nullable();
             $table->string('height')->nullable();
             $table->string('bmi')->nullable();
+            $table->string('bmi_status')->nullable();
             $table->string('body_fat_percentage')->nullable();
             $table->string('muscle_mass')->nullable();
             $table->string('hydration_level')->nullable();

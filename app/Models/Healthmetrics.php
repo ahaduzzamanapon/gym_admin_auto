@@ -33,6 +33,7 @@ class Healthmetrics extends Model
         'weight',
         'height',
         'bmi',
+        'bmi_status',
         'body_fat_percentage',
         'muscle_mass',
         'hydration_level',
@@ -60,6 +61,7 @@ class Healthmetrics extends Model
         'weight' => 'string',
         'height' => 'string',
         'bmi' => 'string',
+        'bmi_status' => 'string',
         'body_fat_percentage' => 'string',
         'muscle_mass' => 'string',
         'hydration_level' => 'string'
@@ -76,6 +78,7 @@ class Healthmetrics extends Model
         'weight' => 'required',
         'height' => 'required',
         'bmi' => 'required',
+        'bmi_status' => 'required',
         'body_fat_percentage' => 'required',
         'muscle_mass' => 'required',
         'hydration_level' => 'required',
