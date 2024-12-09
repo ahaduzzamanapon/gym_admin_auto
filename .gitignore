@@ -14,3 +14,4 @@ public/mix-manifest.json
 public/mix.js.map
 .idea/
 .vscode/
+.env
