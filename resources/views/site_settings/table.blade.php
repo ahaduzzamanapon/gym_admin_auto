@@ -22,9 +22,9 @@
             <td>{{ $siteSetting->updated_at }}</td>
                 <td>
                     <div class='btn-group'>
-                        <a href="{{ route('siteSettings.show', [$siteSetting->id]) }}" class='btn btn-outline-primary btn-xs'><i class="im im-icon-Information"></i></a>
+                        <a href="{{ route('siteSettings.show', [$siteSetting->id]) }}" class='btn btn-outline-primary btn-xs'><i class="im im-icon-Eye"></i></a>
                         <a href="{{ route('siteSettings.edit', [$siteSetting->id]) }}" class='btn btn-outline-primary btn-xs'><i
-                                class="im im-icon-File-Edit"></i></a>
+                                class="im im-icon-Pen"></i></a>
                     </div>
                 </td>
             </tr>
