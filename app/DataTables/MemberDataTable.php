@@ -35,7 +35,8 @@ class MemberDataTable extends DataTable
     {
         // Join with groups table and select relevant columns
         return $model->newQuery()
-            ->leftJoin('groups', 'members.group_id', '=', 'groups.id')
+            ->leftJoin('users', 'members.id', '=', 'users.member_id')
+            ->leftJoin('groups', 'users.group_id', '=', 'groups.id')
             ->select([
                 'members.*', // Select all member columns
                 'groups.name as group_name' // Include the group name

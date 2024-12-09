@@ -5,8 +5,6 @@
 </style>
 
 @if(if_can('member_manage'))
-
-
 <li {!! (Request::is('members') || Request::is('healthmetrics') || Request::is('diet_charts') || Request::is('meal_plans') ? 'class="menu-dropdown active"': "class='menu-dropdown'" ) !!}>
     <a href="#">
         <span class="mm-text ">Member Manage</span>
@@ -259,16 +257,7 @@
 </li>
 @endif
 
-@if (if_can('site_settings'))
 
-
-<li class="{!! (Request::is('siteSettings*') ? 'active' : '' ) !!}">
-    <a href="{{ route('siteSettings.index') }}">
-        <span class="mm-text ">Site Settings</span>
-        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
-    </a>
-</li>
-@endif
 
 
 <li class="{!! (Request::is('notices*') ? 'active' : '' ) !!}">
@@ -277,4 +266,32 @@
         <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
     </a>
 </li>
+
+
+@if (if_can('site_settings'))
+<li class="{!! (Request::is('termAndConditions*') ? 'active' : '' ) !!}">
+    <a href="{{ route('termAndConditions.index') }}">
+        <span class="mm-text ">Term And Conditions</span>
+        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+    </a>
+</li>
+@endif
+
+@if (if_can('site_settings'))
+<li class="{!! (Request::is('admissionQuestions*') ? 'active' : '' ) !!}">
+    <a href="{{ route('admissionQuestions.index') }}">
+        <span class="mm-text ">Admission Questions</span>
+        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+    </a>
+</li>
+@endif
+
+@if (if_can('site_settings'))
+<li class="{!! (Request::is('siteSettings*') ? 'active' : '' ) !!}">
+    <a href="{{ route('siteSettings.index') }}">
+        <span class="mm-text ">Site Settings</span>
+        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+    </a>
+</li>
+@endif
 

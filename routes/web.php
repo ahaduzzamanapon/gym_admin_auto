@@ -147,6 +147,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('purchase_packages/{purchasePackage}/invoice', [PurchasePackageController::class, 'invoice'])->name('purchasePackages.invoice');
 
 
+        Route::get('members_admission_form', [MemberController::class, 'admission_form'])->name('members.admission_form');
+        Route::post('member_admission_store', [MemberController::class, 'member_admission_store'])->name('admission.store');
 
 
 

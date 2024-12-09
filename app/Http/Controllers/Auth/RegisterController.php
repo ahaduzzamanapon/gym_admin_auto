@@ -109,6 +109,7 @@ class RegisterController extends Controller
             [
                 'name' => $data['name'],
                 'email' => $data['email'],
+                'member_id' => Member::where('mem_email', $data['email'])->first()->id,
                 'password' => Hash::make($data['password']),
             ]
         );

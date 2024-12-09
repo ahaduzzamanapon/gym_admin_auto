@@ -147,6 +147,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
+    @php
+        $member = DB::table('members')->find(Auth::user()->member_id);
+        if ($member && $member->term_con !== 'yes') {
+            echo "<script>
+                Swal.fire({
+                    text: 'Please update your profile and accept terms and conditions',
+                    icon: 'warning',
+                    showCancelButton: false,
+                    confirmButtonText: 'Go to Profile',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '".route('members.admission_form')."';
+                    }
+                });
+            </script>";
+        }
+    @endphp
+
+
 
     <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
     <!-- end of page level js -->

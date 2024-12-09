@@ -62,15 +62,15 @@ body > .header .navbar {
 /*side bar nav */
 .left-aside .sidebar {
   display: block;
-  width: 300px;
-  margin-left: -175px;
-  transition: margin-left 0.3s linear;
-}
-.left-aside .sidebar:hover
-{
+  width: 250px;
   margin-left: 0;
   transition: margin-left 0.3s linear;
 }
+/* .left-aside .sidebar:hover
+{
+  margin-left: 0;
+  transition: margin-left 0.3s linear;
+} */
 
 .content {
   display: block;
@@ -159,7 +159,8 @@ body > .header .navbar {
 .left-aside {
   position: relative;
   top: -70px;
-  z-index: 9999;
+  z-index: 999999999;
+  background: white;
 }
 
 
