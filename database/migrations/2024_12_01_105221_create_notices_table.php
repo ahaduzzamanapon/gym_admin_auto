@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateGroupsTable extends Migration
+class CreateNoticesTable extends Migration
 {
 
     /**
@@ -13,10 +13,10 @@ class CreateGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('groups', function (Blueprint $table) {
+        Schema::create('notices', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('key')->nullable();
+            $table->string('title');
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('groups');
+        Schema::drop('notices');
     }
 }

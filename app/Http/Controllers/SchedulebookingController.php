@@ -74,7 +74,9 @@ class SchedulebookingController extends AppBaseController
     public function show($id)
     {
         /** @var Schedulebooking $schedulebooking */
-        $schedulebooking = Schedulebooking::find($id);
+        $schedulebooking = Schedulebooking::select('schedulebookings.*', 'members.mem_name as mem_name')
+        ->join('members', 'members.id', '=', 'schedulebookings.member_id')->find($id);
+        // dd($schedulebooking);
 
         if (empty($schedulebooking)) {
             Flash::error('Schedulebooking not found');

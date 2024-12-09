@@ -13,7 +13,7 @@ Member @parent
     <div class="separator-breadcrumb border-top"></div>
     </section>
     <div class="content">
-        @include('adminlte-templates::common.errors')
+        {{-- @include('adminlte-templates::common.errors') --}}
         <div class="card">
             <div class="card-body">
                 {!! Form::open(['route' => 'members.store','class' => 'form-horizontal', 'files' => true]) !!}

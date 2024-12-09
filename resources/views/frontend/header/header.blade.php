@@ -56,7 +56,7 @@
                 <a href="{{ url('/welcome') }}" class="text-cayan lg:text-16 font-bold font-poppins  leading-[19px]  hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('/') ? '!text-[#41b5f3] !font-[600]' : '' }}">Home</a>
             </li>
             <li>
-                <a onclick="redirectFeatures()" class="text-cayan lg:text-16 font-bold font-poppins  leading-[19px] cursor-pointer  hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('#hrShebaFeatures') ? '!text-[#41b5f3] !font-[600]' : '' }}">Features</a>
+                <a onclick="redirectFeatures()" href="#feature-content" class="text-cayan lg:text-16 font-bold font-poppins  leading-[19px] cursor-pointer  hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('#hrShebaFeatures') ? '!text-[#41b5f3] !font-[600]' : '' }}">Features</a>
             </li>
             {{-- <li>
                 <a href="{{ url('/pricing') }}" class="text-cayan lg:text-16 font-bold font-poppins  leading-[19px]  hover:text-[#41b5f3] duration-300 ease-in-out hover:text-14 {{ Request::is('pricing') ? '!text-[#41b5f3] !font-[600]' : '' }}">Pricing</a>
@@ -94,7 +94,7 @@
                     <a href="{{ url('/') }}" class="text-cayan text-12 font-bold font-poppins  leading-[19px]">Home</a>
                 </li>
                 <li>
-                    <a onclick="redirectFeatures()" class="text-cayan text-12 font-bold font-poppins  leading-[19px] cursor-pointer">Features</a>
+                    <a onclick="redirectFeatures()" href="#feature-content" class="text-cayan text-12 font-bold font-poppins  leading-[19px] cursor-pointer">Features</a>
                 </li>
                 {{-- <li>
                     <a href="{{ url('/pricing') }}" class="text-cayan text-12 font-bold font-poppins  leading-[19px]">Pricing</a>

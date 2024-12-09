@@ -22,7 +22,13 @@
             <td>{{ date('Y-m-d', strtotime($schedulebooking->booking_date)) }}</td>
             <td>{{ $schedulebooking->booking_time }}</td>
             <td>{{ $schedulebooking->service_type }}</td>
-            <td>{{ $schedulebooking->status }}</td>
+            <td>
+                @if($schedulebooking->status == 2)
+                    <button class="btn btn-primary">Active</button>
+                @else
+                    <span class="btn btn-danger">Inactive</span>
+                @endif
+            </td>
             <td>{{ $schedulebooking->note }}</td>
             <td>{{ $schedulebooking->created_at }}</td>
             <td>{{ $schedulebooking->updated_at }}</td>

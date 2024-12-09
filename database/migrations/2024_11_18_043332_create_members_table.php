@@ -17,14 +17,16 @@ class CreateMembersTable extends Migration
             $table->increments('id');
             $table->string('member_unique_id');
             $table->string('mem_name');
-            $table->string('mem_father');
-            $table->string('mem_address');
-            $table->date('mem_admission_date');
-            $table->string('mem_cell');
-            $table->text('mem_email');
-            $table->string('mem_img_url');
-            $table->string('mem_type');
-            $table->string('punch_id');
+            $table->string('mem_father')->nullable();
+            $table->string('mem_mother')->nullable();
+            $table->string('mem_gender')->nullable();
+            $table->string('mem_address')->nullable();
+            $table->date('mem_admission_date')->nullable();
+            $table->string('mem_cell')->nullable();
+            $table->text('mem_email')->nullable();
+            $table->string('mem_img_url')->nullable();
+            $table->string('mem_type')->nullable();
+            $table->string('punch_id')->nullable();
             $table->timestamps();
         });
     }

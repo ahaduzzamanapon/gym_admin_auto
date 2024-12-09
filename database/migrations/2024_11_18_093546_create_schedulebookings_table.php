@@ -19,7 +19,7 @@ class CreateSchedulebookingsTable extends Migration
             $table->date('booking_date');
             $table->time('booking_time');
             $table->integer('asset_id');
-            $table->string('service_type');
+            $table->string('service_type')->nullable();
             $table->integer('status');
             $table->text('note');
             $table->timestamps();

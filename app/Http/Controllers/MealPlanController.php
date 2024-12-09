@@ -32,6 +32,8 @@ class MealPlanController extends Controller
 
         $validated = $request->validate([
             'meal_name' => 'required|string|max:100',
+            'quantity' => 'required',
+            'calories' => 'required',
         ]);
       
         $data_array = array(
@@ -94,15 +96,10 @@ class MealPlanController extends Controller
         $mealPlan->delete();
         return redirect()->route('meal_plans.index')->with('success', 'Meal plan deleted successfully!');
     }
-    
     public function show(MealPlan $mealPlan)
     {
         $mealPlan_id=$mealPlan->id;
         $foodplans = FoodPlan::where('meal_plan_id', $mealPlan_id)->get();
         return view('meal_plans.show', compact('mealPlan','foodplans'));
     }
-
-
-    
-    
 }

@@ -17,14 +17,14 @@ return new class extends Migration
             $table->id();
             $table->foreignId('sale_id');
             $table->foreignId('member_id');
-            $table->date('sale_date');
-            $table->decimal('subtotal');
-            $table->decimal('discount');
-            $table->decimal('tax');
-            $table->decimal('total_amount');
-            $table->string('payment_method');
-            $table->string('status');
-            $table->text('payment_note');
+            $table->date('sale_date')->nullable();
+            $table->decimal('subtotal')->nullable();
+            $table->decimal('discount')->nullable();
+            $table->decimal('tax')->nullable();
+            $table->decimal('total_amount')->nullable();
+            $table->string('payment_method')->nullable();
+            $table->string('status')->nullable();
+            $table->text('payment_note')->nullable();
             $table->timestamps();
         });
     }

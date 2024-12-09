@@ -26,6 +26,7 @@ class ContactMassage extends Model
         'name',
         'email',
         'subject',
+        'phone',
         'message'
     ];
 
@@ -38,6 +39,7 @@ class ContactMassage extends Model
         'id' => 'integer',
         'name' => 'string',
         'email' => 'string',
+        'phone' => 'string',
         'subject' => 'string',
         'message' => 'string'
     ];

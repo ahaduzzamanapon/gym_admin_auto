@@ -5,24 +5,24 @@ namespace App\Models;
 use Eloquent as Model;
 
 /**
- * Class Group
+ * Class Notice
  * @package App\Models
- * @version November 19, 2024, 3:59 am UTC
+ * @version December 1, 2024, 10:52 am UTC
  *
- * @property string $name
- * @property string $key
+ * @property string $title
+ * @property string $description
  */
-class Group extends Model
+class Notice extends Model
 {
 
-    public $table = 'groups';
+    public $table = 'notices';
     
 
 
 
     public $fillable = [
-        'name',
-        'key'
+        'title',
+        'description'
     ];
 
     /**
@@ -32,8 +32,8 @@ class Group extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name' => 'string',
-        'key' => 'string'
+        'title' => 'string',
+        'description' => 'string'
     ];
 
     /**
@@ -42,9 +42,8 @@ class Group extends Model
      * @var array
      */
     public static $rules = [
-        'name' => 'required',
-        'key' => 'required',
-        'permissions' => 'required'
+        'title' => 'required',
+        'description' => 'required'
     ];
 
     

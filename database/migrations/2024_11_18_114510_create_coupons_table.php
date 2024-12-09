@@ -19,7 +19,7 @@ class CreateCouponsTable extends Migration
             $table->string('coupon_code');
             $table->date('expire_date');
             $table->integer('amount');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }
