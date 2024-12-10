@@ -3,16 +3,16 @@
         <thead>
             <tr>
                 <th>Id</th>
-        <th>Title</th>
-        <th>Created At</th>
-        <th>Updated At</th>
+                <th>Title</th>
+                <th>Created At</th>
+                <th>Updated At</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
         <tbody>
         @foreach($termAndConditions as $termAndCondition)
             <tr>
-                <td>{{ $termAndCondition->id }}</td>
+            <td>{{ $termAndCondition->id }}</td>
             <td>{{ $termAndCondition->title }}</td>
             <td>{{ $termAndCondition->created_at }}</td>
             <td>{{ $termAndCondition->updated_at }}</td>

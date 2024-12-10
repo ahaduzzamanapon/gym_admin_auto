@@ -294,4 +294,12 @@
     </a>
 </li>
 @endif
+@if (if_can('site_settings'))
+<li class="{!! (Request::is('multiBranches*') ? 'active' : '' ) !!}">
+    <a href="{{ route('multiBranches.index') }}">
+        <span class="mm-text ">Multi Branches</span>
+        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+    </a>
+</li>
+@endif
 

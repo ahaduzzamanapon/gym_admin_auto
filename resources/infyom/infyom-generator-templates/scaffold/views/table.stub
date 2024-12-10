@@ -6,7 +6,7 @@
         </tr>
     </thead>
     <tbody>
-    @foreach($$MODEL_NAME_PLURAL_CAMEL$ as $$MODEL_NAME_CAMEL$)
+    @foreach($$MODEL_NAME_PLURAL_CAMEL$ as $key => $$MODEL_NAME_CAMEL$)
         <tr>
             $FIELD_BODY$
             <td>

@@ -56,3 +56,5 @@ Route::resource('notices', 'NoticeController');
 Route::resource('termAndConditions', 'TermAndConditionController');
 
 Route::resource('admissionQuestions', 'AdmissionQuestionsController');
+
+Route::resource('multiBranches', 'MultiBranchController');

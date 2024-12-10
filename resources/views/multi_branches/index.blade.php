@@ -2,14 +2,14 @@
 
 {{-- Page title --}}
 @section('title')
-$MODEL_NAME_PLURAL_HUMAN$ @parent
+Multi Branches @parent
 @stop
 
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div aria-label="breadcrumb" class="card-breadcrumb">
-        <h1>$MODEL_NAME_PLURAL_HUMAN$</h1>
+        <h1>Multi Branches</h1>
     </div>
     <div class="separator-breadcrumb border-top"></div>
 </section>
@@ -21,19 +21,21 @@ $MODEL_NAME_PLURAL_HUMAN$ @parent
     @include('flash::message')
 
     <div class="clearfix"></div>
-    <div class="card" width="88vw;">
+    <div class="card"  style="width: 88vw;">
         <section class="card-header">
-            <h5 class="card-title d-inline">$MODEL_NAME_PLURAL_HUMAN$</h5>
+            <h5 class="card-title d-inline">Multi Branches</h5>
             <span class="float-right">
-                <a class="btn btn-primary pull-right" href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.create') }}">Add New</a>
+                <a class="btn btn-primary pull-right" href="{{ route('multiBranches.create') }}">Add New</a>
             </span>
         </section>
         <div class="card-body">
-            @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.table')
+            @include('multi_branches.table')
         </div>
     </div>
     <div class="text-center">
-        $PAGINATE$
+        
+        @include('adminlte-templates::common.paginate', ['records' => $multiBranches])
+
     </div>
 </div>
 @endsection
