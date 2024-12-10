@@ -29,7 +29,11 @@ class IncomeDataTable extends DataTable
      */
     public function query(Income $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->leftJoin('multi_branchs', 'incomes.branch_id', '=', 'multi_branchs.id')
+        ->select([
+            'incomes.*', // Select all member columns
+            'multi_branchs.branch_name'
+        ]);
     }
 
     /**
@@ -67,6 +71,7 @@ class IncomeDataTable extends DataTable
         return [
             'id',
             'title',
+            'branch_name',
             'amount',
             'description',
             'created_at' => ['searchable' => false],

@@ -58,3 +58,7 @@ Route::resource('termAndConditions', 'TermAndConditionController');
 Route::resource('admissionQuestions', 'AdmissionQuestionsController');
 
 Route::resource('multiBranches', 'MultiBranchController');
+
+Route::resource('workoutCategories', 'WorkoutCategoryController');
+
+Route::resource('dailyWorkouts', 'DailyWorkoutsController');

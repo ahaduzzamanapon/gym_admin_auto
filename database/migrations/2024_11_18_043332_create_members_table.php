@@ -28,10 +28,11 @@ class CreateMembersTable extends Migration
             $table->string('mem_img_url')->nullable();
             $table->string('mem_type')->nullable();
             $table->string('punch_id')->nullable();
-            $table->integer('height')->nullable(); // Height in cm
-            $table->integer('weight')->nullable(); // Weight in kg
-            $table->integer('bmi')->nullable(); // Weight in kg
-            $table->integer('waist')->nullable(); // Weight in kg
+            $table->integer('branch_id')->nullable();
+            $table->string('height')->nullable(); // Height in cm
+            $table->string('weight')->nullable(); // Weight in kg
+            $table->string('bmi')->nullable(); // Weight in kg
+            $table->string('waist')->nullable(); // Weight in kg
             $table->string('blood_group')->nullable(); // Blood Group
             $table->string('blood_pressure')->nullable(); // Blood Group
             $table->string('pulse_rate')->nullable(); // Blood Group

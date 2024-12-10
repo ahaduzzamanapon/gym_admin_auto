@@ -84,7 +84,15 @@ class AttendenceController extends AppBaseController
     }
     public function get_member(Request $request)
     {
-        $member = Member::where('mem_type', $request->member_type)->get();
+        $membersQuery = Member::query();
+        if ($request->member_type !== '' && $request->member_type !== null) {
+            $membersQuery->where('mem_type', $request->member_type);
+        }
+        if ($request->branch_id !== '' && $request->branch_id !== null) {
+           // dd($request->branch_id);
+            $membersQuery->where('branch_id', $request->branch_id);
+        }
+        $member = $membersQuery->get();
         return response()->json(['member' => $member], 200);
     }
 

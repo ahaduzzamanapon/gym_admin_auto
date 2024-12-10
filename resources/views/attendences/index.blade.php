@@ -54,13 +54,26 @@ Attendences @parent
                         </div>
                         <div class="form-group col-md-3">
                             <label for="">Type</label>
-                            <select name="member_type" id="member_type" class="form-control" onchange="get__member()">
+                            <select name="member_type" id="member_type" class="form-control" onchange="get_member()">
                                 <option value="">Please Select Member Type</option>
                                 <option value="member">Member</option>
                                 <option value="staff">Staff</option>
                             </select>
                         </div>
+
                         <div class="form-group col-md-3">
+                            <label for="">Branch</label>
+                            <select name="branch_id" id="branch_id" class="form-control" onchange="get_member()">
+                                <option value="">Please Select Branch Type</option>
+                                @php
+                                $multi_branchs = DB::table('multi_branchs')->get();
+                                @endphp
+                                @foreach ($multi_branchs as $multi_branch)
+                                <option value="{{ $multi_branch->id }}">{{ $multi_branch->branch_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-md-12">
                             <br>
                             <a href="#" id="process_attendence" class="btn btn-primary" onclick="process_attendence()">Process</a>
                         </div>
@@ -172,14 +185,16 @@ Attendences @parent
         });
     }
 
-    function get__member() {
+    function get_member() {
         var member_type = $('#member_type').val();
+        var branch_id = $('#branch_id').val();
         $.ajax({
             url: "{{ route('attendences.get_member') }}",
             type: "GET",
             data: {
                 '_token': "{{ csrf_token() }}",
                 'member_type': member_type,
+                'branch_id': branch_id
             },
             dataType: 'json',
             success: function(response) {

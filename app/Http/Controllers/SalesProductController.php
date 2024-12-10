@@ -15,14 +15,21 @@ class SalesProductController extends Controller
 {
     public function index()
     {
-        $sales = Sales_productModel::with('member')->get();
+        $sales = Sales_productModel::with(['member' => function($q) {
+            $q->leftJoin('multi_branchs', 'members.branch_id', '=', 'multi_branchs.id')
+              ->select('members.*', 'multi_branchs.branch_name');
+        }])->get();
         return view('sales.index', compact('sales'));
     }
 
     public function create()
     {
-        $members = Member::all();
-        $products = Product::all();
+        $members = Member::leftJoin('multi_branchs', 'members.branch_id', '=', 'multi_branchs.id')
+                         ->select('members.*', 'multi_branchs.branch_name')
+                         ->get();
+        $products = Product::leftJoin('multi_branchs', 'products.branch_id', '=', 'multi_branchs.id')
+                           ->select('products.*', 'multi_branchs.branch_name')
+                           ->get();
         return view('sales.create', compact('members', 'products'));
     }
 

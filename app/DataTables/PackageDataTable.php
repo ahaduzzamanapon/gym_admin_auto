@@ -29,7 +29,11 @@ class PackageDataTable extends DataTable
      */
     public function query(Package $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->leftJoin('multi_branchs', 'packages.branch_id', '=', 'multi_branchs.id')
+                                ->select([
+                                    'packages.*', // Select all member columns
+                                    'multi_branchs.branch_name'
+                                ]);
     }
 
     /**
@@ -67,6 +71,7 @@ class PackageDataTable extends DataTable
         return [
             'id',
             'pack_name',
+            'branch_name',
             'pack_admission_fee',
             'pack_duration',
             'pack_status'

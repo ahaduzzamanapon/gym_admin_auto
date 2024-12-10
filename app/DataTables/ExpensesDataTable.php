@@ -29,7 +29,11 @@ class ExpensesDataTable extends DataTable
      */
     public function query(Expenses $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->leftJoin('multi_branchs', 'expensess.branch_id', '=', 'multi_branchs.id')
+        ->select([
+            'expensess.*', // Select all member columns
+            'multi_branchs.branch_name'
+        ]);
     }
 
     /**
@@ -67,6 +71,7 @@ class ExpensesDataTable extends DataTable
         return [
             'id',
             'title',
+            'branch_name',
             'amount',
             'description',
             'created_at' => ['searchable' => false],

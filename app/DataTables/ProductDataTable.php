@@ -29,7 +29,11 @@ class ProductDataTable extends DataTable
      */
     public function query(Product $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->leftJoin('multi_branchs', 'products.branch_id', '=', 'multi_branchs.id')
+        ->select([
+            'products.*', // Select all member columns
+            'multi_branchs.branch_name'
+        ]);
     }
 
     /**
@@ -67,6 +71,7 @@ class ProductDataTable extends DataTable
         return [
             'id',
             'product_name',
+            'branch_name',
             'product_price',
             'product_qty',
             // 'created_at' => ['searchable' => false],

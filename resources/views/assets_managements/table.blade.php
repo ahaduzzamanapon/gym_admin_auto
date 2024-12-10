@@ -4,6 +4,7 @@
             <tr>
                 <th>Id</th>
                 <th>Item Name</th>
+                <th>Branch Name</th>
                 <th>Category</th>
                 <th>Asset for</th>
                 <th>Item Description</th>
@@ -19,6 +20,7 @@
             <tr>
                 <td>{{ $assetsManagement->id }}</td>
             <td>{{ $assetsManagement->item_name }}</td>
+            <td>{{ $assetsManagement->branch_name }}</td>
             <td>{{ $assetsManagement->assets_category_name }}</td>
             <td>{{ $assetsManagement->asset_for }}</td>
             <td>{{ $assetsManagement->item_description }}</td>

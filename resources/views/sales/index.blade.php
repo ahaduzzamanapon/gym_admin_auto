@@ -30,6 +30,7 @@ Sales @parent
                     <tr>
                         <th>#</th>
                         <th>Member</th>
+                        <th>Branch</th>
                         <th>Date</th>
                         <th>Total Amount</th>
                         <th>Status</th>
@@ -41,6 +42,7 @@ Sales @parent
                     <tr>
                         <td>{{ $sale->id }}</td>
                         <td>{{ $sale->member->mem_name }}</td>
+                        <td>{{ $sale->member->branch_name }}</td>
                         <td>{{ $sale->sale_date }}</td>
                         <td>{{ $sale->total_amount }}</td>
                         <td>{{ $sale->status }}</td>

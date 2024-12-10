@@ -44,18 +44,17 @@
         </div>
     </div>
 </div>
-
 <!-- Mem Gender Field -->
 <div class="form-group">
     <div class="row">
         {!! Form::label('gender', 'Gender:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
             <div class="form-check form-check-inline">
-                {!! Form::radio('mem_gender', 'male', false, ['class' => 'form-check-input', 'id' => 'genderMale']) !!}
+                {!! Form::radio('mem_gender', 'Male', false, ['class' => 'form-check-input', 'id' => 'genderMale']) !!}
                 {!! Form::label('genderMale', 'Male', ['class' => 'form-check-label']) !!}
             </div>
             <div class="form-check form-check-inline">
-                {!! Form::radio('mem_gender', 'female', false, ['class' => 'form-check-input', 'id' => 'genderFemale']) !!}
+                {!! Form::radio('mem_gender', 'Female', false, ['class' => 'form-check-input', 'id' => 'genderFemale']) !!}
                 {!! Form::label('genderFemale', 'Female', ['class' => 'form-check-label']) !!}
             </div>
             <div class="form-check form-check-inline">
@@ -95,7 +94,7 @@
             </label>
         </div>
         <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::date('mem_admission_date', null, ['class' => 'form-control', 'id' => 'mem_admission_date']) !!}
+            {!! Form::date('mem_admission_date', isset($member) && $member->mem_admission_date ? date('Y-m-d', strtotime($member->mem_admission_date)) : null, ['class' => 'form-control', 'id' => 'mem_admission_date']) !!}
             @error('mem_admission_date')
                 <span class="text-danger">{{ $message }}</span>
             @enderror
@@ -171,6 +170,8 @@
 
 @php
 $groups = DB::table('groups')->get();
+$multi_branchs = DB::table('multi_branchs')->get();
+// dd($member);
 @endphp
 
 <!-- group Img Url Field -->
@@ -179,6 +180,17 @@ $groups = DB::table('groups')->get();
         {!! Form::label('group_id', 'Group:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
             {!! Form::select('group_id', $groups->pluck('name', 'id')->prepend('Select Group', ''), null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+<!-- group Img Url Field -->
+<div class="form-group">
+    <div class="row">
+        <label for="branch_id" class="control-label col-md-3 col-lg-3 col-12">
+            Branch: <span class="text-danger">*</span>
+        </label>       
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::select('branch_id', $multi_branchs->pluck('branch_name', 'id')->prepend('Select Branch', ''), null, ['class' => 'form-control', 'required' => 'required']) !!}
         </div>
     </div>
 </div>

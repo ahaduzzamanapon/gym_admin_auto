@@ -37,11 +37,12 @@
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js">
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
 
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    {{-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+    
 
 
     <style>
@@ -54,6 +55,10 @@
     <style>
         .dataTables_wrapper {
             overflow-x: scroll;
+        }
+        .chosen-single {
+            padding: 6px !important;
+            height: fit-content !important;
         }
     </style>
     <!-- end of global css -->
@@ -142,10 +147,17 @@
     <!-- SCRIPTS -->
     <!-- global js -->
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+ 
+    <script>
+        var $jq = jQuery.noConflict();
+        $jq(document).ready(function() {
+            $jq('#member_id').chosen();
+            $jq('#product_id').chosen();
+        });
+    </script>
 
     @php
         $member = DB::table('members')->find(Auth::user()->member_id);
@@ -188,11 +200,7 @@
     </script>
 
     <script>
-        function alert(v) {
-            Swal.fire({
-                text: v,
-            });
-        }
+       
 
      
 

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateIncomesTable extends Migration
+class CreateWorkoutCategorysTable extends Migration
 {
 
     /**
@@ -13,12 +13,9 @@ class CreateIncomesTable extends Migration
      */
     public function up()
     {
-        Schema::create('incomes', function (Blueprint $table) {
+        Schema::create('workout_categorys', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->integer('branch_id');
-            $table->integer('amount');
-            $table->text('description');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateIncomesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('incomes');
+        Schema::drop('workout_categorys');
     }
 }

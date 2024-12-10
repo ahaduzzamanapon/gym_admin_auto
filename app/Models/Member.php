@@ -82,6 +82,7 @@ class Member extends Model
         'mem_img_url',
         'mem_type',
         'punch_id',
+        'branch_id',
         'height',
         'weight',
         'bmi',
@@ -129,6 +130,7 @@ class Member extends Model
         'mem_img_url' => 'string',
         'group_id' => 'integer',
         'punch_id' => 'integer',
+        'branch_id' => 'integer',
     ];
 
     /**

@@ -102,15 +102,21 @@ class MemberController extends AppBaseController
     public function show($id)
     {
         /** @var Member $member */
-        $member = Member::find($id);
+        $member = Member::leftJoin('users', 'members.id', '=', 'users.member_id')
+                        ->leftJoin('groups', 'users.group_id', '=', 'groups.id')
+                        ->select('members.*','users.group_id', 'groups.name as group_name, groups.id as groups_id')
+                        ->where('members.id', $id)
+                        ->first();
+        //dd($member->groups_id);
 
         if (empty($member)) {
             Flash::error('Member not found');
 
             return redirect(route('members.index'));
         }
+        $questions=AdmissionQuestions::all();
 
-        return view('members.show')->with('member', $member);
+        return view('members.show')->with('member', $member)->with('questions', $questions);
     }
     public function details($id)
     {
@@ -136,7 +142,12 @@ class MemberController extends AppBaseController
     public function edit($id)
     {
         /** @var Member $member */
-        $member = Member::find($id);
+        $member = Member::leftJoin('users', 'members.id', '=', 'users.member_id')
+                        ->leftJoin('groups', 'users.group_id', '=', 'groups.id')
+                        ->select('members.*','users.group_id', 'groups.name as group_name, groups.id as groups_id')
+                        ->where('members.id', $id)
+                        ->first();
+                        //dd($member);
         if (empty($member)) {
             Flash::error('Member not found');
             return redirect(route('members.index'));

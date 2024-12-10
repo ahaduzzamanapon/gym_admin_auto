@@ -28,7 +28,7 @@ Add Sale @parent
                     <select id="member_id" name="member_id" class="form-control" required>
                         <option value="">Select Member</option>
                         @foreach($members as $member)
-                        <option value="{{ $member->id }}">{{ $member->mem_name }}</option>
+                        <option value="{{ $member->id }}">{{ $member->mem_name }}->{{ $member->branch_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -197,5 +197,8 @@ Add Sale @parent
         productItems.appendChild(tr);
     });
 </script>
+
+
+
 @endsection
 

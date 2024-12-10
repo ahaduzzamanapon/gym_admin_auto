@@ -5,27 +5,22 @@ namespace App\Models;
 use Eloquent as Model;
 
 /**
- * Class Income
+ * Class WorkoutCategory
  * @package App\Models
- * @version November 18, 2024, 9:26 am UTC
+ * @version December 10, 2024, 9:07 am UTC
  *
  * @property string $title
- * @property integer $amount
- * @property string $description
  */
-class Income extends Model
+class WorkoutCategory extends Model
 {
 
-    public $table = 'incomes';
+    public $table = 'workout_categorys';
     
 
 
 
     public $fillable = [
-        'title',
-        'branch_id',
-        'amount',
-        'description'
+        'title'
     ];
 
     /**
@@ -35,9 +30,7 @@ class Income extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'title' => 'string',
-        'amount' => 'integer',
-        'description' => 'string'
+        'title' => 'string'
     ];
 
     /**
@@ -46,8 +39,7 @@ class Income extends Model
      * @var array
      */
     public static $rules = [
-        'title' => 'required',
-        'amount' => 'required'
+        'title' => 'required'
     ];
 
     

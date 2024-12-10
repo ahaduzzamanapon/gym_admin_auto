@@ -16,6 +16,7 @@ class CreateExpensessTable extends Migration
         Schema::create('expensess', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->integer('branch_id');
             $table->integer('amount');
             $table->text('description');
             $table->timestamps();

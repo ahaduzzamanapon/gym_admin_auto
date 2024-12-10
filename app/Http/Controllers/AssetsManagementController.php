@@ -23,8 +23,8 @@ class AssetsManagementController extends AppBaseController
     public function index(Request $request)
     {
         /** @var AssetsManagement $assetsManagements */
-        $assetsManagements = AssetsManagement::join('assets_categorys', 'assets_managements.assets_categories_id', '=', 'assets_categorys.id')
-        ->select('assets_managements.*', 'assets_categorys.category_name as assets_category_name')
+        $assetsManagements = AssetsManagement::join('multi_branchs', 'assets_managements.branch_id', '=', 'multi_branchs.id')
+        ->select('assets_managements.*', 'multi_branchs.branch_name as branch_name')
         ->paginate(10);
 
         return view('assets_managements.index')

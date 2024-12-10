@@ -16,6 +16,7 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\AttendenceController;
 use App\Http\Controllers\SalesProductController;
 use App\Http\Controllers\PurchasePackageController;
+use App\Http\Controllers\DailyWorkoutsController;
 
 
 include 'web_builder.php';
@@ -149,6 +150,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('members_admission_form', [MemberController::class, 'admission_form'])->name('members.admission_form');
         Route::post('member_admission_store', [MemberController::class, 'member_admission_store'])->name('admission.store');
+        Route::get('get_dailyWorkouts', [DailyWorkoutsController::class, 'getDailyWorkouts'])->name('dailyWorkouts.getDailyWorkouts');
 
 
 

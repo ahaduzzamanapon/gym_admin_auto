@@ -37,9 +37,12 @@ class MemberDataTable extends DataTable
         return $model->newQuery()
             ->leftJoin('users', 'members.id', '=', 'users.member_id')
             ->leftJoin('groups', 'users.group_id', '=', 'groups.id')
+            ->leftJoin('multi_branchs', 'members.branch_id', '=', 'multi_branchs.id')
             ->select([
                 'members.*', // Select all member columns
-                'groups.name as group_name' // Include the group name
+                'groups.name as group_name', // Include the group name
+                'multi_branchs.branch_name'
+
             ]);
     }
 
@@ -78,6 +81,7 @@ class MemberDataTable extends DataTable
         return [
             'member_unique_id' => ['title' => 'Member ID'],
             'mem_name' => ['title' => 'Name'],
+            'branch_name' => ['title' => 'Branch'],
             'group_name' => ['title' => 'Role'],
             'mem_father' => ['title' => 'Father Name'],
             'mem_address'  => ['title' => 'Address'],
