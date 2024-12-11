@@ -24,7 +24,6 @@ class SiteSettingController extends AppBaseController
     {
         /** @var SiteSetting $siteSettings */
         $siteSettings = SiteSetting::paginate(10);
-
         return view('site_settings.index')
             ->with('siteSettings', $siteSettings);
     }

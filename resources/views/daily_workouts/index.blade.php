@@ -25,7 +25,9 @@ Daily Workouts @parent
         <section class="card-header">
             <h5 class="card-title d-inline">Daily Workouts</h5>
             <span class="float-right">
+                @if (if_can('show_all_data'))
                 <a class="btn btn-primary pull-right" href="{{ route('dailyWorkouts.create') }}">Add New</a>
+                @endif
             </span>
         </section>
         <div class="card-body">
@@ -140,11 +142,35 @@ Daily Workouts @parent
 </script>
 
 <script>
+
     function print_w() {
-      $("#daily_workouts_table").printThis({
-        importCSS: true,
-        importStyle: true,
-      });
-    }
+            let divContents = document.getElementById("daily_workouts_table").innerHTML;
+            let printWindow = window.open('', '', 'height=500, width=500');
+            printWindow.document.open();
+            printWindow.document.write(`
+                <html>
+                <head>
+                    <title>Print Div Content</title>
+                        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+                    <style>
+
+                        body { font-family: Arial, sans-serif; }
+                        h1 { color: #333; }
+                    </style>
+                </head>
+                <body>
+                    ${divContents}
+                       
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
 </script>
 @endsection
+
+
+
+
+

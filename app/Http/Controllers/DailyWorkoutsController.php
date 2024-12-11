@@ -30,9 +30,17 @@ class DailyWorkoutsController extends AppBaseController
         //     ->groupBy('daily_workouts.day')
         //     ->select('daily_workouts.*', 'members.mem_name as member_name', 'workout_categorys.title as workout_category_name')
         //     ->paginate(10);
-        $member = Member::leftJoin('multi_branchs', 'members.branch_id', '=', 'multi_branchs.id')
-                        ->select('members.*', 'multi_branchs.branch_name')
-                        ->get();
+        if (if_can('show_all_data')){
+            $member = Member::leftJoin('multi_branchs', 'members.branch_id', '=', 'multi_branchs.id')
+                            ->select('members.*', 'multi_branchs.branch_name')
+                            ->get();
+        }else{
+            $member = Member::leftJoin('multi_branchs', 'members.branch_id', '=', 'multi_branchs.id')
+                            ->select('members.*', 'multi_branchs.branch_name')
+                            ->where('members.id',auth()->user()->member_id)
+                            ->get();
+        }
+        
 
         return view('daily_workouts.index')->with('members', $member);
     }

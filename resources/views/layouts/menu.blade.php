@@ -302,13 +302,15 @@
     </a>
 </li>
 @endif
-
+@if (if_can('site_settings'))
 <li class="{!! (Request::is('workoutCategories*') ? 'active' : '' ) !!}">
     <a href="{{ route('workoutCategories.index') }}">
         <span class="mm-text ">Workout Categories</span>
         <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
     </a>
 </li>
+@endif
+
 
 <li class="{!! (Request::is('dailyWorkouts*') ? 'active' : '' ) !!}">
     <a href="{{ route('dailyWorkouts.index') }}">

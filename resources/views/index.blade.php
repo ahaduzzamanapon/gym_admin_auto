@@ -87,7 +87,7 @@ Dashboard @parent
 
 
     {{--<div class="col-12">--}}
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-md-12 col-lg-7 mt-20 col-12 ">
             <div class="dashboard-col">
 
@@ -152,9 +152,9 @@ Dashboard @parent
         </div>
 
 
-    </div>
-    <div class="row">
-        <div class="col-xl-7 col-12 mt-20 ">
+    </div> --}}
+    <!-- <div class="row">
+       <div class="col-xl-7 col-12 mt-20 ">
             <div class="bg-white dashboard-col">
                 <h5 class="card-header bg-info text-white">Registered Users</h5>
                 {{--<div class="card">--}}
@@ -276,11 +276,11 @@ Dashboard @parent
                 </div>
             </div>
         </div>
-    </div>
+    </div>  ----------->
     {{--</div>--}}
 </section>
 @else
-<section class="content">
+{{-- <section class="content">
     <div class="row">
         <div class="col-md-6 col-xl-3 col-12 mb-20">
             <div class="  bg-white dashboard-col pl-15 pb-15 pt-15">
@@ -314,7 +314,7 @@ Dashboard @parent
       
     </div>
 
-</section>
+</section> --}}
 @endif
 
 @stop
@@ -322,6 +322,5 @@ Dashboard @parent
 <!--   page level js ----------->
 <script language="javascript" type="text/javascript" src="{{ asset('vendors/chartjs/js/Chart.js') }}"></script>
 <script src="{{ asset('js/pages/dashboard.js') }}"></script>
-
 <!-- end of page level js -->
 @stop
