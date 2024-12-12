@@ -2,13 +2,11 @@
 <html lang="en-US">
 
 <head>
-    <title>Josh Login</title>
+    <title>Gym Master Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{ asset('img/favicon.ico')}}" />
     <!--page level css -->
     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
-
-
     <link href="{{ asset('vendors/bootstrapvalidator/css/bootstrapValidator.min.css')}}" rel="stylesheet" />
     <link href="{{ asset('css/auth.css')}}" rel="stylesheet">
     <!--end of page level css-->
@@ -25,7 +23,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h2 class="text-center">
-                                            <span>JOSH</span>
+                                            <span>GYM MASTER - Gym Management System</span>
                                         </h2>
                                     </div>
                                 </div>

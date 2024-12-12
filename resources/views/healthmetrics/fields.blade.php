@@ -35,7 +35,7 @@ $members = DB::table('members')->get();
             {!! Form::text('weight', null, ['class' => 'form-control']) !!}
         </div>
     </div>
-</div
+</div>
 
 
 <!-- Height Field -->
@@ -46,7 +46,7 @@ $members = DB::table('members')->get();
             {!! Form::text('height', null, ['class' => 'form-control']) !!}
         </div>
     </div>
-</div
+</div>
 
 
 <!-- Bmi Field -->
@@ -57,7 +57,7 @@ $members = DB::table('members')->get();
             {!! Form::text('bmi', null, ['class' => 'form-control']) !!}
         </div>
     </div>
-</div
+</div>
 
 
 
@@ -69,7 +69,7 @@ $members = DB::table('members')->get();
             {!! Form::text('body_fat_percentage', null, ['class' => 'form-control']) !!}
         </div>
     </div>
-</div
+</div>
 
 
 <!-- Muscle Mass Field -->
@@ -80,7 +80,7 @@ $members = DB::table('members')->get();
             {!! Form::text('muscle_mass', null, ['class' => 'form-control']) !!}
         </div>
     </div>
-</div
+</div>
 
 
 <!-- Hydration Level Field -->
@@ -91,7 +91,7 @@ $members = DB::table('members')->get();
             {!! Form::text('hydration_level', null, ['class' => 'form-control']) !!}
         </div>
     </div>
-</div
+</div>
 
 
 <!-- Submit Field -->

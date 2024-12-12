@@ -122,7 +122,7 @@
                                     </div>
                                     <div class="col-10 bg-white b-a b-grey padding-10">
                                         <p class="no-margin text-black bold text-uppercase fs-12">Normal</p>
-                                        <p class="no-margin fs-12">#727cf5 </p>
+                                        <p class="no-margin fs-12">#00bd5bc7 </p>
                                         <p class="p-t-20 no-margin text-black bold text-uppercase fs-12">Hover</p>
                                         <p class="no-margin fs-12">7.5% white </p>
                                         <p class="p-t-20 no-margin text-black bold text-uppercase fs-12">Active</p>

@@ -10,6 +10,8 @@ use App\Models\Package;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class PackageController extends AppBaseController
 {
@@ -147,5 +149,23 @@ class PackageController extends AppBaseController
         Flash::success('Package deleted successfully.');
 
         return redirect(route('packages.index'));
+    }
+
+    public function packageCheck(Request $request){
+        $data = $request->all();
+        //dd($data);
+        $Package = Package::where('id', $data['package_id'])
+            ->first();
+        if ($Package instanceof Package) {
+            return response()->json([
+                'status' => true,
+                'data' => $Package,
+            ]);    
+        }else{
+            return response()->json([
+                'status' => false,
+                'data' => null,
+            ]);
+        }
     }
 }

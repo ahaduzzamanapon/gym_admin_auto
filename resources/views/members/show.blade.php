@@ -28,7 +28,8 @@ Members @parent
             </table>
         </div>
     </div>
-    <a href="{{ route('members.index') }}"
-                class="btn btn-primary">Back</a>
+    @if(if_can('member_manage'))
+    <a href="{{ route('members.index') }}" class="btn btn-primary">Back</a>
+    @endif
 </div>
 @endsection

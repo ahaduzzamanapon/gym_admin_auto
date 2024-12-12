@@ -23,6 +23,17 @@ Route::view('login3', 'auth.login3');
 Route::view('register2', 'auth.register2');
 Route::view('register3', 'auth.register3');
 
+
+
+
+// Route::view('welcome', 'auth.register3');
+
+
+
+
+
+
+
 Route::get('/', function () {
     return view('index');
 })->middleware('auth');
@@ -48,6 +59,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Model checking
     Route::post('tableCheck', 'AppBaseController@tableCheck');
+
+
+    route::post('couponsCheck', 'CouponController@couponsCheck')->name('coupons.check');
+    route::post('packageCheck', 'PackageController@packageCheck')->name('packages.check');
+    route::get('details/{id}', 'MemberController@details')->name('members.details');
+
+
+
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

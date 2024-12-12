@@ -60,10 +60,14 @@ class MemberController extends AppBaseController
         /** @var Member $member */
         $member = Member::create($input);
 
+        $input['user_id'] = $member->id;
+
         User::create(
             [
                 'name' => $input['mem_name'],
                 'email' => $input['mem_email'],
+                'group_id' => $input['group_id'],
+                'member_id' => $input['user_id'],
                 'password' => Hash::make('12345678'),
             ]
         );
@@ -92,6 +96,19 @@ class MemberController extends AppBaseController
 
         return view('members.show')->with('member', $member);
     }
+    public function details($id)
+    {
+        /** @var Member $member */
+        $member = Member::find($id);
+
+        if (empty($member)) {
+            Flash::error('Member not found');
+
+            return redirect(route('members.index'));
+        }
+
+        return view('members.show')->with('member', $member);
+    }
 
     /**
      * Show the form for editing the specified Member.
@@ -104,14 +121,10 @@ class MemberController extends AppBaseController
     {
         /** @var Member $member */
         $member = Member::find($id);
-
         if (empty($member)) {
             Flash::error('Member not found');
-
             return redirect(route('members.index'));
         }
-
-
         return view('members.edit')->with('member', $member);
     }
 
@@ -148,6 +161,12 @@ class MemberController extends AppBaseController
 
         $member->fill($input);
         $member->save();
+
+        User::where('member_id', $id)->update([
+            'name' => $input['mem_name'],
+            'email' => $input['mem_email'],
+            'group_id' => $input['group_id'],
+        ]);
 
         Flash::success('Member updated successfully.');
 

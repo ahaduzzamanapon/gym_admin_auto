@@ -24,7 +24,7 @@ class CreateHealthmetricssTable extends Migration
             $table->string('muscle_mass');
             $table->string('hydration_level');
             $table->timestamps();
-            $table->foreign('member_id')->references('id')->on('members.id');
+            // $table->foreign('member_id')->references('id')->on('members.id');
         });
     }
 
