@@ -77,6 +77,7 @@ Add Diet Chart @parent
                         <div class="form-group">
                             <label>Target</label>
                             <select name="goal" class="form-control" required>
+                                <option value="" >Select Target</option>
                                 <option value="Weight Loss">Weight Loss</option>
                                 <option value="Muscle Gain">Muscle Gain</option>
                                 <option value="Maintenance">Maintenance</option>
@@ -89,6 +90,8 @@ Add Diet Chart @parent
                         <div class="form-group">
                             <label>Meal Preference</label>
                             <select name="meal_preference" class="form-control" required>
+                                <option value="" >Select Meal Preference</option>
+
                                 <option value="Vegetarian" >Vegetarian</option>
                                 <option value="Non-Vegetarian" >Non-Vegetarian</option>
                                 <option value="Vegan" >Vegan</option>

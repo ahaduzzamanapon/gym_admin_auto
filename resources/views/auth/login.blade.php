@@ -13,10 +13,19 @@
 </head>
 
 <body id="sign-up" class="login_backimg">
+    <style>
+        body {
+            background: url("{{Storage::url('login_background.png')}}") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+    </style>
     <div class="container mt-3rem">
         <div class="card ">
             <div class="row ">
-                <div class="col-lg-6 col-12 card-align bg-white">
+                <div class="col-lg-4 col-12 card-align bg-white">
                     <div class="row">
                         <div class="col-12  signup-form">
                             <div class="card-header border-bottom-0">
@@ -30,6 +39,7 @@
                                                 {{ !empty($setting) ? $setting->name : 'Gym Master' }} -
                                                 {{ !empty($setting) ? $setting->slogan : 'Gym Master' }}
                                             </span>
+                                            
                                         </h2>
                                     </div>
                                 </div>
@@ -150,7 +160,7 @@
     <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 
     <script src="{{ asset('vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}" type="text/javascript"></script>
-    <script type="text/javascript" src="{{ asset('vendors/jquery.backstretch/js/jquery.backstretch.js') }}"></script>
+    {{-- <script type="text/javascript" src="{{ asset('vendors/jquery.backstretch/js/jquery.backstretch.js') }}"></script> --}}
     <script type="text/javascript" src="{{ asset('js/pages/register.js') }}"></script>
 
 </body>

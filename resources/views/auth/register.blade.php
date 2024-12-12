@@ -81,7 +81,7 @@
                                                         <input type="text"
                                                             class="form-control  form-control-lg  @error('name') is-invalid @enderror"
                                                             id="name" name="name" placeholder="Name"
-                                                            value="{{ old('name') }}"  autocomplete="name"
+                                                            value="{{ old('name') }}" maxlength="50" autocomplete="name"
                                                             autofocus />
                                                         @error('name')
                                                             <span class="invalid-feedback" role="alert">
@@ -254,20 +254,7 @@
                                                         </svg>
                                                     </div>
                                                 </div>
-
                                             </div>
-                                            <div class="form-group checkbox">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                        id="customCheck1" required name="terms"
-                                                        {{ old('terms') ? 'checked' : '' }}>
-                                                    <label class="custom-control-label" for="customCheck1">&nbsp;I
-                                                        accept the <a href="javascript:void(0)">terms &amp;
-                                                            Conditions</a></label>
-                                                </div>
-                                            </div>
-
-
                                             <div class="form-group">
                                                 <input type="submit" value="Sign Up"
                                                     class="btn btn-primary btn-block" />
@@ -282,12 +269,8 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
-
-
     </div>
 
     {{-- <script>

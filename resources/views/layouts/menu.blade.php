@@ -5,7 +5,7 @@
 </style>
 
 @if(if_can('member_manage'))
-<li {!! (Request::is('members') || Request::is('healthmetrics') || Request::is('diet_charts') || Request::is('meal_plans') ? 'class="menu-dropdown active"': "class='menu-dropdown'" ) !!}>
+<li {!! (Request::is('members*') || Request::is('healthmetrics*') || Request::is('diet_charts*') || Request::is('meal_plans*') ? 'class="menu-dropdown mm-active active"': "class='menu-dropdown'" ) !!}>
     <a href="#">
         <span class="mm-text ">Member Manage</span>
         <span class="menu-icon "> <i class="im im-icon-Window-2"></i></span>
@@ -59,7 +59,7 @@
 
 @if(if_can('store_management'))
 
-<li {!! (Request::is('products') || Request::is('requisitions*')  ? 'class="menu-dropdown active"': "class='menu-dropdown'" ) !!}>
+<li {!! (Request::is('products*') || Request::is('requisitions*')  ? 'class="menu-dropdown mm-active active"': "class='menu-dropdown'" ) !!}>
     <a href="#">
         <span class="mm-text ">Store Manage</span>
         <span class="menu-icon "> <i class="im im-icon-Shop"></i></span>
@@ -86,7 +86,7 @@
 @endif
 
 @if(if_can('manage_inventory'))
-<li {!! (Request::is('assetsManagements*') ? 'class="menu-dropdown active"': "class='menu-dropdown'" ) !!}>
+<li {!! (Request::is('assetsManagements*') ? 'class="menu-dropdown mm-active active"': "class='menu-dropdown'" ) !!}>
     <a href="#">
         <span class="mm-text ">Inventory</span>
         <span class="menu-icon "> <i class="im im-icon-Window-2"></i></span>
@@ -115,7 +115,7 @@
 
 @if (if_can('account'))
     <li {!! Request::is('expenses*') || Request::is('incomes*')
-        ? 'class="menu-dropdown active"'
+        ? 'class="menu-dropdown mm-active active"'
         : "class='menu-dropdown'" !!}>
         <a href="#">
             <span class="mm-text ">Account</span>
@@ -143,7 +143,7 @@
 
 @if (if_can('frontend'))
     <li {!! Request::is('siteFeatures*') || Request::is('siteProfiles*') || Request::is('aboutuses*') || Request::is('contactMassages*') || Request::is('siteTrainers*')
-        ? 'class="menu-dropdown active"'
+        ? 'class="menu-dropdown mm-active active"'
         : "class='menu-dropdown'" !!}>
         <a href="#">
             <span class="mm-text ">Frontend</span>

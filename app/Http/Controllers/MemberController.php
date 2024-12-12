@@ -128,8 +128,11 @@ class MemberController extends AppBaseController
 
             return redirect(route('members.index'));
         }
+        $questions = AdmissionQuestions::all();
 
-        return view('members.show')->with('member', $member);
+
+
+        return view('members.show')->with('member', $member)->with('questions', $questions);
     }
 
     /**

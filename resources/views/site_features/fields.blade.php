@@ -13,7 +13,9 @@
 <div class="form-group">
     <div class="row">
         {!! Form::label('image', 'image:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
-        <div class="col-md-9 col-lg-9 col-12">{!! Form::file('image') !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            <span class="text-danger">**Upload Image Size Must Be Under 1MB and size must be 100x100 </span><br>
+            {!! Form::file('image') !!}
         </div>
     </div>
 </div <div class="clearfix">

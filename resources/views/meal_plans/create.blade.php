@@ -2,13 +2,13 @@
 
 {{-- Page title --}}
 @section('title')
-Add MealChart @parent
+Add Meal Chart @parent
 @stop
 
 @section('content')
 <section class="content-header">
     <div aria-label="breadcrumb" class="card-breadcrumb">
-        <h1>Add MealChart</h1>
+        <h1>Add Meal Chart</h1>
     </div>
     <div class="separator-breadcrumb border-top"></div>
 </section>

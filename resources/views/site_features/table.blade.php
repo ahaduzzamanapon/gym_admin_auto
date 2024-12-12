@@ -16,7 +16,7 @@
             <tr>
                 <td>{{ $key+1 }}</td>
             <td>{{ $siteFeature->title }}</td>
-            <td><img src="{{ asset('storage/' . $siteFeature->image) }}" alt="image missing" class="rounded-circle img-size"></td>
+            <td><img src="{{ Storage::url($siteFeature->image) }}" alt="image missing" class="rounded-circle img-size"></td>
             <td>{{ $siteFeature->description }}</td>
             <td>{{ $siteFeature->created_at }}</td>
             <td>{{ $siteFeature->updated_at }}</td>

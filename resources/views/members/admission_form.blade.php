@@ -212,15 +212,15 @@
     <div class="row">
         <div class="col-md-3 form-group">
             <label for="height">উচ্চতা (সেমি):</label> <br>
-            <input  class="form-control" type="number" id="height" name="height" value="{{ $members->height }}">
+            <input  class="form-control" type="number" onkeyup="calculateBMI()" onchange="calculateBMI()" id="height" name="height" value="{{ $members->height }}">
         </div>
         <div class="col-md-3 form-group">
             <label for="weight">ওজন (কেজি):</label> <br>
-            <input  class="form-control" type="number" id="weight" name="weight" value="{{ $members->weight }}">
+            <input  class="form-control" type="number" onkeyup="calculateBMI()" onchange="calculateBMI()" id="weight" name="weight" value="{{ $members->weight }}">
         </div>
         <div class="col-md-3 form-group">
             <label for="bmi">বডি মাস ইনডেক্স (BMI):</label> <br>
-            <input  class="form-control" type="number" id="bmi" name="bmi" value="{{ $members->bmi }}">
+            <input  class="form-control" type="text" id="bmi" name="bmi" value="{{ $members->bmi }}">
         </div>
         <div class="col-md-3 form-group">
             <label for="waist">কোমর (সেন্টিমিটার):</label> <br>
@@ -344,6 +344,32 @@
       });
     });
 
+  </script>
+
+  <script>
+    function calculateBMI() {
+      const heightInput = document.getElementById('height');
+      const weightInput = document.getElementById('weight');
+      const bmiInput = document.getElementById('bmi');
+
+
+      if (!heightInput || !weightInput || !bmiInput) {
+        console.error('One or more input elements not found');
+        return;
+      }
+
+      const heightInCm = parseFloat(heightInput.value);
+      const weight = parseFloat(weightInput.value);
+
+      if (isNaN(heightInCm) || isNaN(weight) || heightInCm <= 0) {
+        console.warn('Invalid input for height or weight');
+        bmiInput.value = '';
+        return;
+      }
+
+      const bmi = (weight / ((heightInCm / 100) ** 2)).toFixed(2);
+      bmiInput.value = bmi;
+    }
   </script>
 </body>
 </html>

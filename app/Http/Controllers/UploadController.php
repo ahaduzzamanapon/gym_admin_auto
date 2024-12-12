@@ -30,6 +30,15 @@ class UploadController extends Controller
         }
         $duplicateEmails = [];
         foreach ($data as $key => $row) {
+
+
+            // if (!isset($row['mem_email']) || !isset($row['mem_name']) || isset($row['punch_id'])) {
+            //     continue;
+            // }
+
+
+
+
             $duplicate = Member::where('mem_email', $row['mem_email'])->first();
             if ($duplicate) {
                 $duplicateEmails[] = $row['mem_email'];
@@ -46,7 +55,7 @@ class UploadController extends Controller
             $member->mem_img_url = '';
             $member->mem_type = $row['mem_type'];
             $member->punch_id = $row['punch_id'];
-            $member->group_id = $row['group_id'];
+            //$member->group_id = $row['group_id'];
             $member->save();
             User::create([
                 'name' => $row['mem_name'],

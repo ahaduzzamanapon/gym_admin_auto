@@ -59,6 +59,10 @@ https://templatemo.com/tm-548-training-studio
         appearance: none;
         margin-bottom: 1px;
     }
+    .feature-item {
+    display: flex;
+    margin-bottom: 60px;
+}
 </style>
 
 <body>
@@ -99,10 +103,10 @@ https://templatemo.com/tm-548-training-studio
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#features">About</a></li>
-                            <li class="scroll-to-section"><a href="#schedule">Schedules</a></li>
-                            <li class="scroll-to-section"><a href="#contact-us">Contact</a></li>
+                            <li class="scroll-to-section linkkss"><a href="#top" class="active">Home</a></li>
+                            <li class="scroll-to-section linkkss"><a href="#features">About</a></li>
+                            {{-- <li class="scroll-to-section linkkss"><a href="#schedule">Schedules</a></li> --}}
+                            <li class="scroll-to-section linkkss"><a href="#contact-us">Contact</a></li>
                             @if (isset($scrollToBottom))
                                 :
                                 @dd($scrollToBottom)
@@ -244,7 +248,7 @@ https://templatemo.com/tm-548-training-studio
                         <ul class="features-items">
                             <li class="feature-item">
                                 <div class="left-icon">
-                                    <img src="{{ asset('storage/' . $feature->image) }}" alt="First One">
+                                    <img src="{{ asset('storage/' . $feature->image) }}" alt="First One" style="height: 100px;width: 100px;">
                                 </div>
                                 <div class="right-content">
                                     <h4>{{ $feature->title }}</h4>
@@ -392,7 +396,7 @@ https://templatemo.com/tm-548-training-studio
                                     <fieldset>
                                         <div class="form-group">
                                             <input name="name" type="text" id="name"
-                                                placeholder="Your Name*"">
+                                                placeholder="Your Name*" required>
                                             @if ($errors->has('name'))
                                                 <span class="text-danger"
                                                     style="font-size: 12px;">{{ $errors->first('name') }}</span>
@@ -406,7 +410,7 @@ https://templatemo.com/tm-548-training-studio
                                     <fieldset>
                                         <div class="form-group">
                                             <input name="email" type="email" id="email"
-                                                pattern="[^ @]*@[^ @]*" placeholder="Your Email*">
+                                                pattern="[^ @]*@[^ @]*" placeholder="Your Email*" required>
                                             @if ($errors->has('email'))
                                                 <span class="text-danger"
                                                     style="font-size: 12px;">{{ $errors->first('email') }}</span>
@@ -420,9 +424,7 @@ https://templatemo.com/tm-548-training-studio
                                     <fieldset>
                                         <div class="form-group">
                                             <input name="subject" type="text" id="subject"
-                                                placeholder="Subject">
-                                            
-
+                                                placeholder="Subject" required>
                                         </div>
 
                                     </fieldset>
@@ -430,7 +432,7 @@ https://templatemo.com/tm-548-training-studio
                                 <div class="col-md-12 col-sm-12">
                                     <fieldset>
                                         <div class="form-group">
-                                            <input name="phone" type="text" id="phone" placeholder="Phone">
+                                            <input name="phone" type="text" id="phone" placeholder="Phone" required>
                                             @if ($errors->has('phone'))
                                                 <span class="text-danger"
                                                     style="font-size: 12px;">{{ $errors->first('phone') }}</span>
@@ -441,7 +443,7 @@ https://templatemo.com/tm-548-training-studio
                                 <div class="col-lg-12">
                                     <fieldset>
                                         <div class="form-group">
-                                            <textarea name="message" cols="7" rows="6" id="message" placeholder="Message"></textarea>
+                                            <textarea name="message" cols="7" rows="6" id="message" placeholder="Message" required></textarea>
                                             @if ($errors->has('message'))
                                                 <span class="text-danger"
                                                     style="font-size: 12px;">{{ $errors->first('message') }}</span>
@@ -452,7 +454,7 @@ https://templatemo.com/tm-548-training-studio
                                 </div>
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <button onclick="redirectToSection('contact-us')"   type="submit" id="form-submit" class="main-button">Send
+                                        <button   type="submit" id="form-submit" class="main-button">Send
                                             Message</button>
                                     </fieldset>
                                 </div>
@@ -480,18 +482,17 @@ https://templatemo.com/tm-548-training-studio
             </div>
         </div>
     </footer>
-    <script>
-        const redirectToSection = (sectionId) => {
+    {{-- <script>
+        const redirectToSection = (sectionId,e) => {
             console.log({sectionId});
             
             const section = document.getElementById(sectionId);
             if (section) {
                 section.scrollIntoView({ behavior: "smooth" });
             }
-
         }
         
-    </script>
+    </script> --}}
     <!-- jQuery -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>
 
@@ -509,6 +510,13 @@ https://templatemo.com/tm-548-training-studio
 
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
+
+    <script>
+        $('.linkkss').on('click', function (e) {
+            
+            $('.menu-trigger').addClass('active');
+        })
+    </script>
 
 </body>
 

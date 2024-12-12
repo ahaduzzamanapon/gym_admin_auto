@@ -86,18 +86,12 @@
                 <ul class="navbar-nav nav">
                     <li class="dropdown notifications-menu nav-item dropdown">
                         <a href="javascript:void(0)" class="dropdown-toggle nav-link dropdown-toggle"
-                            data-toggle="dropdown" id="navbarDropdown">
+                            data-toggle="dropdown" id="navbarDropdown" style="border: 1px solid #a9a9a9;padding: 0 17px;border-radius: 7px;">
                             <i class="im im-icon-Boy fs-16"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-notifications table-striped" aria-labelledby="navbarDropdown">
+                          
                             <li class="dropdown-footer">
-                                <a href="{{ route('members.index') }}" class="dropdown-item">
-                                    Profile
-                                </a>
-                            </li>
-
-                            <li class="dropdown-footer">
-
                                 @if (!empty(Auth::user()) && Auth::user()->member_id != null)
                                     <a class="dropdown-item"
                                         href="{{ route('members.details', ['id' => Auth::user()->member_id]) }}">
@@ -151,13 +145,13 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
  
-    <script>
+    {{-- <script>
         var $jq = jQuery.noConflict();
         $jq(document).ready(function() {
             $jq('#member_id').chosen();
             $jq('#product_id').chosen();
         });
-    </script>
+    </script> --}}
 
     @php
         $member = DB::table('members')->find(Auth::user()->member_id);
@@ -187,60 +181,51 @@
     <script src="{{ asset('vendors/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-53569782-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-53569782-1');
-    </script>
-
-    <script>
-       
-
-     
+  
 
 
-        // function confirm(v) {
-
-        //     let isConfirm = false;
-        //     Swal.fire({
-        //         title: v,
-        //         icon: 'warning',
-        //         showCancelButton: true,
-        //         confirmButtonColor: '#3085d6',
-        //         cancelButtonColor: '#d33',
-        //         confirmButtonText: 'Yes, delete it!'
-        //     }).then((result) => {
-        //         if (result.isConfirmed) {
-        //             isConfirm = true;
-        //         }
-        //     }).then(() => {
-        //         if (!isConfirm) {
-        //             event.preventDefault();
-        //         }
-        //     });
-        // }
-    </script>
     <script>
         document.body.style.zoom = "90%";
     </script>
 
-    {{-- <script>
-    $(document).ready(function() {
-        // get all input type date
-        $('input[type="date"]').each(function() {
-            $(this).attr('type', 'text');
-            $(this).datepicker({
-                dateFormat: "yy-mm-dd"
+    <script>
+        $(document).ready(function() {
+            $('input').attr('required', 'required');
+        });
+    </script>
+
+    <style>
+        .top_solver {
+            top: -161px!important;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+            var ww = $(window).width();
+            console.log(ww);
+            $(window).resize(function() {
+                checkWidth();
             });
         });
-    });
-</script> --}}
+
+        function checkWidth() {
+            var ww = $(window).width();
+            console.log(ww);
+                       
+            if(ww < 767) {
+                $('.sidebar-res').css('margin-left', '');
+            }
+
+            if (ww < 992) {
+                console.log('rhb');
+                $('.left-aside').addClass('top_solver');
+            }else{
+                $('.left-aside').removeClass('top_solver');
+            }
+
+        }
+    </script>
 
 
 </body>

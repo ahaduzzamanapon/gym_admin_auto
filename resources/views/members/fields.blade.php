@@ -93,7 +93,7 @@
                 Mem Admission Date: <span class="text-danger">*</span>
             </label>
         </div>
-        <div class="col-md-9 col-lg-9 col-12">
+        <div class="col-md-3 col-lg-3 col-12">
             {!! Form::date('mem_admission_date', isset($member) && $member->mem_admission_date ? date('Y-m-d', strtotime($member->mem_admission_date)) : null, ['class' => 'form-control', 'id' => 'mem_admission_date']) !!}
             @error('mem_admission_date')
                 <span class="text-danger">{{ $message }}</span>

@@ -2,13 +2,13 @@
 
 {{-- Page title --}}
 @section('title')
-Healthmetrics @parent
+Health Metrics @parent
 @stop
 
 @section('content')
    <section class="content-header">
     <div aria-label="breadcrumb" class="card-breadcrumb">
-        <h1>{{ __('Edit') }} Healthmetrics</h1>
+        <h1>{{ __('Edit') }} Health Metrics</h1>
     </div>
     <div class="separator-breadcrumb border-top"></div>
     </section>

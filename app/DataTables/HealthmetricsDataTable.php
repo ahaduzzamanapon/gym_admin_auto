@@ -58,8 +58,6 @@ class HealthmetricsDataTable extends DataTable
                 'buttons'   => [
                     ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
                 ],
             ]);
@@ -78,7 +76,7 @@ class HealthmetricsDataTable extends DataTable
             'measurement_date',
             'weight',
             'height',
-            'bmi',
+            'bmi'=>['title' => 'BMI'],
             'body_fat_percentage',
             'muscle_mass',
             'hydration_level',
