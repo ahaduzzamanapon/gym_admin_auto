@@ -27,6 +27,9 @@ if (!function_exists('in_group')) {
      * @param  string $key
      * @return bool
      */
+
+}
+if (!function_exists('if_can')) {
     function if_can($key)
     {
         $userGroupId = auth()->user()->group_id;
