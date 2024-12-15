@@ -19,10 +19,10 @@
                 <td>
                     {!! Form::open(['route' => ['admissionQuestions.destroy', $admissionQuestions->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('admissionQuestions.show', [$admissionQuestions->id]) }}" class='btn btn-outline-primary btn-xs'><i class="im im-icon-Eye"></i></a>
+                        <a href="{{ route('admissionQuestions.show', [$admissionQuestions->id]) }}" class='btn btn-outline-primary btn-xs'><i class="im im-icon-Eye" data-placement="top" title="View"></i></a>
                         <a href="{{ route('admissionQuestions.edit', [$admissionQuestions->id]) }}" class='btn btn-outline-primary btn-xs'><i
-                                class="im im-icon-Pen"></i></a>
-                        {!! Form::button('<i class="im im-icon-Remove"></i>', ['type' => 'submit', 'class' => 'btn btn-outline-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                                class="im im-icon-Pen"  data-toggle="tooltip" data-placement="top" title="Edit"></i></a>
+                        {!! Form::button('<i class="im im-icon-Remove" data-toggle="tooltip" data-placement="top" title="Delete"></i>', ['type' => 'submit', 'class' => 'btn btn-outline-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}
                 </td>

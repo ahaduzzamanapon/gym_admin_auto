@@ -188,11 +188,11 @@
         document.body.style.zoom = "90%";
     </script>
 
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('input').attr('required', 'required');
         });
-    </script>
+    </script> --}}
 
     <style>
         .top_solver {

@@ -3,7 +3,7 @@
     <div class="row">
         {!! Form::label('pack_name', 'Pack Name:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::text('pack_name', null, ['class' => 'form-control']) !!}
+            {!! Form::text('pack_name', null, ['class' => 'form-control', 'required']) !!}
         </div>
     </div>
 </div>
@@ -15,7 +15,7 @@ $multi_branchs = DB::table('multi_branchs')->get();
     <div class="row">
         {!! Form::label('branch_id', 'Branch:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::select('branch_id', $multi_branchs->pluck('branch_name', 'id')->prepend('Select Branch', ''), null, ['class' => 'form-control']) !!}
+            {!! Form::select('branch_id', $multi_branchs->pluck('branch_name', 'id')->prepend('Select Branch', ''), null, ['class' => 'form-control', 'required']) !!}
         </div>
     </div>
 </div>
@@ -26,7 +26,7 @@ $multi_branchs = DB::table('multi_branchs')->get();
     <div class="row">
         {!! Form::label('pack_admission_fee', 'Pack Admission Fee:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::number('pack_admission_fee', null, ['class' => 'form-control']) !!}
+            {!! Form::number('pack_admission_fee', null, ['class' => 'form-control', 'required']) !!}
         </div>
     </div>
 </div>
@@ -37,7 +37,7 @@ $multi_branchs = DB::table('multi_branchs')->get();
     <div class="row">
         {!! Form::label('pack_duration', 'Pack Duration:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::text('pack_duration', null, ['class' => 'form-control']) !!}
+            {!! Form::text('pack_duration', null, ['class' => 'form-control', 'required']) !!}
         </div>
     </div>
 </div>
@@ -48,7 +48,7 @@ $multi_branchs = DB::table('multi_branchs')->get();
     <div class="row">
         {!! Form::label('pack_status', 'Pack Status:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::select('pack_status', ['2' => 'Inactive', '1' => 'Active'], null, ['class' => 'form-control']) !!}
+            {!! Form::select('pack_status', ['2' => 'Inactive', '1' => 'Active'], null, ['class' => 'form-control', 'required']) !!}
         </div>
     </div>
 </>

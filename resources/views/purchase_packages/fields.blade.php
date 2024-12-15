@@ -1,16 +1,37 @@
 
 @php
-if(if_can('show_all_data')){
-    $members = DB::table('members')->get();
-}else {
-    $members = DB::table('members')->where('id', Auth::user()->member_id)->get();
-}
+    if(if_can('show_all_data')){
+        $members = DB::table('members')
+            ->leftJoin('multi_branchs', 'members.branch_id', '=', 'multi_branchs.id')
+            ->select('members.*', 'multi_branchs.branch_name')
+            ->get()
+            ->map(function ($member) {
+            return [
+                'id' => $member->id,
+                'mem_name' => $member->mem_name . '->' . $member->branch_name,
+            ];
+        })
+        ->pluck('mem_name', 'id');
+    }else {
+        $members = DB::table('members')
+            ->leftJoin('multi_branchs', 'members.branch_id', '=', 'multi_branchs.id')
+            ->select('members.*', 'multi_branchs.branch_name')
+            ->where('members.id', Auth::user()->member_id)
+            ->get()
+            ->map(function ($member) {
+            return [
+                'id' => $member->id,
+                'mem_name' => $member->mem_name . '->' . $member->branch_name,
+            ];
+        })
+        ->pluck('mem_name', 'id');
+    }
 $packages = DB::table('packages')->get();
 @endphp
 <div class="row">
     <div class="form-group col-md-4">
         {!! Form::label('member_id', 'Member Name:',['class'=>'control-label']) !!}
-        {!! Form::select('member_id', $members->pluck('mem_name', 'id')->prepend('Select Member', ''), null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! Form::select('member_id', $members->prepend('Select Member', ''), null, ['class' => 'form-control','required'=>'required']) !!}
     </div>
     <div class="form-group col-md-4">
         {!! Form::label('package_id', 'Package Id:',['class'=>'control-label']) !!}
@@ -24,7 +45,7 @@ $packages = DB::table('packages')->get();
 <div class="row">
     <div class="form-group col-md-4">
         {!! Form::label('tax', 'Tax Percentage:',['class'=>'control-label']) !!}
-        {!! Form::number('tax', null, ['class' => 'form-control']) !!}
+        {!! Form::number('tax', 0, ['class' => 'form-control', 'required']) !!}
     </div>
     <div class="form-group col-md-4">
         {!! Form::label('coupons_id', 'Coupon Code:', ['class' => 'control-label']) !!}

@@ -2,7 +2,7 @@
     <table class="table" id="purchasePackages-table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>SL</th>
         <th>Member Name</th>
         <th>Package Name</th>
         <th>Coupon Code</th>
@@ -17,9 +17,9 @@
             </tr>
         </thead>
         <tbody>
-        @foreach($purchasePackages as $purchasePackage)
+        @foreach($purchasePackages as $key => $purchasePackage)
             <tr>
-                <td>{{ $purchasePackage->id }}</td>
+                <td>{{ ++$key }}</td>
             <td>{{ $purchasePackage->member_name }}</td>
             <td>{{ $purchasePackage->pack_name }}</td>
             <td>{{ $purchasePackage->coupons_id }}</td>
@@ -41,10 +41,10 @@
                 <td>
                     {!! Form::open(['route' => ['purchasePackages.destroy', $purchasePackage->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('purchasePackages.show', [$purchasePackage->id]) }}" class='btn btn-outline-primary btn-xs'><i class="im im-icon-Eye"></i></a>
+                        <a href="{{ route('purchasePackages.show', [$purchasePackage->id]) }}" class='btn btn-outline-primary btn-xs'><i class="im im-icon-Eye" data-placement="top" title="View"></i></a>
                         <a href="{{ route('purchasePackages.edit', [$purchasePackage->id]) }}" class='btn btn-outline-primary btn-xs'><i
-                                class="im im-icon-Pen"></i></a>
-                        {!! Form::button('<i class="im im-icon-Remove"></i>', ['type' => 'submit', 'class' => 'btn btn-outline-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                                class="im im-icon-Pen"  data-toggle="tooltip" data-placement="top" title="Edit"></i></a>
+                        {!! Form::button('<i class="im im-icon-Remove" data-toggle="tooltip" data-placement="top" title="Delete"></i>', ['type' => 'submit', 'class' => 'btn btn-outline-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                         <a target="_blank" href="{{ route('purchasePackages.invoice', $purchasePackage->id) }}" class="btn btn-success">Invoice</a>
                     </div>
                     {!! Form::close() !!}

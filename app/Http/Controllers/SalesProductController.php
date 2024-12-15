@@ -7,6 +7,9 @@ use App\Models\Sales_productModel;
 use App\Models\Sales_product_itemModel;
 use App\Models\Product;
 use App\Models\Member;
+use App\Models\Income;
+use App\Models\MultiBranch;
+
 use App\Models\SiteSetting;
 use Str;
 
@@ -41,28 +44,25 @@ class SalesProductController extends Controller
             'payment_method' => 'required',
             'status' => 'required',
         ]);
-        $sale = Sales_productModel::create([
-            'sale_id' =>  time(),
-            'member_id' => $request->member_id,
-            'sale_date' => $request->sale_date,
-            'subtotal' => $request->sub_total,
-            'discount' => $request->discount,
-            'tax' => $request->tax,
-            'total_amount' => $request->grand_total,
-            'payment_method' => $request->payment_method,
-            'status' => $request->status,
-            'payment_note' => $request->payment_note,
-        ]);
+
+        $sale = new Sales_productModel();
+        $sale->sale_id = time();
+        $sale->member_id = $request->member_id;
+        $sale->sale_date = $request->sale_date;
+        $sale->subtotal = $request->sub_total;
+        $sale->discount = $request->discount;
+        $sale->tax = $request->tax;
+        $sale->total_amount = $request->grand_total;
+        $sale->payment_method = $request->payment_method;
+        $sale->status = $request->status;
+        $sale->payment_note = $request->payment_note;
+        $sale->save();
 
         foreach ($request->product_id as $key => $item) {
-
-            $products = Product::find($item);
-            $products->update([
-                'product_qty' => $products->product_qty - $request->quantity[$key]
+            $product = Product::find($item);
+            $product->update([
+                'product_qty' => $product->product_qty - $request->quantity[$key]
             ]);
-
-
-
             Sales_product_itemModel::create([
                 'sale_id' => $sale->id,
                 'product_id' => $item,
@@ -71,6 +71,23 @@ class SalesProductController extends Controller
                 'unit_price' => $request->price[$key],
             ]);
         }
+
+        $sale_data = Sales_productModel::with(['member' => function($q) {
+            $q->leftJoin('multi_branchs', 'members.branch_id', '=', 'multi_branchs.id')
+              ->select('members.*', 'multi_branchs.branch_name');
+        }])->findOrFail($sale->id);
+
+        $title = $sale_data->member->mem_name . ' (' . $sale_data->member->member_unique_id . ') Purchased Product';
+        $member_details = Member::find($sale_data->member_id);
+        $branch_name = MultiBranch::find($member_details->branch_id)->branch_name;
+        $description = $sale_data->member->mem_name . ' Purchased Product';
+        
+        $income = new Income();
+        $income->title = $title;
+        $income->branch_id = $member_details->branch_id;
+        $income->amount = $sale_data->total_amount;
+        $income->description = $description;
+        $income->save();
 
         return redirect()->route('sales.index')->with('success', 'Sale created successfully.');
     }
@@ -90,6 +107,7 @@ class SalesProductController extends Controller
             'payment_method' => 'required',
             'status' => 'required',
         ]);
+        
         $sale = Sales_productModel::findOrFail($id);
         $sale->update([
             'member_id' => $request->member_id,
@@ -103,29 +121,32 @@ class SalesProductController extends Controller
             'payment_note' => $request->payment_note,
         ]);
 
-        $products = Product::all();
-        foreach ($products as $product) {
-            $product->update([
-                'product_qty' => $product->product_qty + $sale->items->where('product_id', $product->id)->first()->quantity
-            ]);
+        foreach ($sale->items as $item) {
+            $product = Product::find($item->product_id);
+            if ($product) {
+                $product->update([
+                    'product_qty' => $product->product_qty + $item->quantity
+                ]);
+            }
         }
+
         Sales_product_itemModel::where('sale_id', $sale->id)->delete();
 
         foreach ($request->product_id as $key => $item) {
-
-            $products = Product::find($item);
-            $products->update([
-                'product_qty' => $products->product_qty - $request->quantity[$key]
-            ]);
-           
-                Sales_product_itemModel::create([
-                    'sale_id' => $sale->id,
-                    'product_id' => $item,
-                    'product_name' => '',
-                    'quantity' => $request->quantity[$key],
-                    'unit_price' => $request->price[$key],
+            $product = Product::find($item);
+            if ($product) {
+                $product->update([
+                    'product_qty' => $product->product_qty - $request->quantity[$key]
                 ]);
-            
+            }
+
+            Sales_product_itemModel::create([
+                'sale_id' => $sale->id,
+                'product_id' => $item,
+                'product_name' => '',
+                'quantity' => $request->quantity[$key],
+                'unit_price' => $request->price[$key],
+            ]);
         }
 
         return redirect()->route('sales.index')->with('success', 'Sale updated successfully.');

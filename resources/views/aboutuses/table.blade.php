@@ -19,7 +19,7 @@
                   
                     <div class='btn-group'>
                         <a href="{{ route('aboutuses.edit', [$aboutUs->id]) }}" class='btn btn-outline-primary btn-xs'><i
-                                class="im im-icon-Pen"></i></a>
+                                class="im im-icon-Pen"  data-toggle="tooltip" data-placement="top" title="Edit"></i></a>
                     </div>
                    
                 </td>

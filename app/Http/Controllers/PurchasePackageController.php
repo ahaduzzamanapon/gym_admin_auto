@@ -6,6 +6,9 @@ use App\Http\Requests\CreatePurchasePackageRequest;
 use App\Http\Requests\UpdatePurchasePackageRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Models\PurchasePackage;
+use App\Models\Member;
+use App\Models\MultiBranch;
+use App\Models\Income;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -62,13 +65,24 @@ class PurchasePackageController extends AppBaseController
     public function store(CreatePurchasePackageRequest $request)
     {
         $input = $request->all();
-        
-
-        /** @var PurchasePackage $purchasePackage */
         $purchasePackage = PurchasePackage::create($input);
-
+        $purchasePackages_data = PurchasePackage::select('purchasepackages.*', 'packages.pack_name as pack_name', 'members.mem_name as member_name', 'members.member_unique_id as member_unique_id')
+            ->join('packages', 'packages.id', '=', 'purchasepackages.package_id')
+            ->join('members', 'members.id', '=', 'purchasepackages.member_id')
+            ->where('purchasepackages.id',$purchasePackage->id)
+            ->first();
+        $title=$purchasePackages_data->member_name.' Purchased a Package '.$purchasePackages_data->pack_name;"";
+        $member_details=Member::where('id',$purchasePackages_data->member_id)->first();
+        $branch_details=MultiBranch::where('id',$member_details->branch_id)->first();
+        $branch_name=$branch_details->branch_name;
+        $description=$member_details->mem_name.' ( '.$member_details->member_unique_id.' ) '.' Purchased a Package '.$purchasePackages_data->pack_name.' in '.$branch_name;
+        $income=new Income();
+        $income->title=$title;
+        $income->branch_id=$member_details->branch_id;
+        $income->amount=$purchasePackages_data->pay_amount;
+        $income->description=$description;
+        $income->save();
         Flash::success('Purchase Package saved successfully.');
-
         return redirect(route('purchasePackages.index'));
     }
 

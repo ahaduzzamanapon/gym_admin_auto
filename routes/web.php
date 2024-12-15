@@ -17,6 +17,7 @@ use App\Http\Controllers\AttendenceController;
 use App\Http\Controllers\SalesProductController;
 use App\Http\Controllers\PurchasePackageController;
 use App\Http\Controllers\DailyWorkoutsController;
+use App\Http\Controllers\AccountReport;
 
 
 include 'web_builder.php';
@@ -153,6 +154,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('get_dailyWorkouts', [DailyWorkoutsController::class, 'getDailyWorkouts'])->name('dailyWorkouts.getDailyWorkouts');
 
 
+        // account_report
+
+        Route::get('account_report', [AccountReport::class, 'index'])->name('account_report.index');
+        Route::post('account_report/getAccountReportIncome', [AccountReport::class, 'getAccountReportIncome'])->name('account_report.getAccountReportIncome');
+        Route::post('account_report/getAccountReportExpense', [AccountReport::class, 'getAccountReportExpense'])->name('account_report.getAccountReportExpense');
 
 });
 

@@ -114,7 +114,7 @@
 
 
 @if (if_can('account'))
-    <li {!! Request::is('expenses*') || Request::is('incomes*')
+    <li {!! Request::is('expenses*') || Request::is('incomes*') || Request::is('account_report*')
         ? 'class="menu-dropdown mm-active active"'
         : "class='menu-dropdown'" !!}>
         <a href="#">
@@ -134,6 +134,13 @@
                 <li {!! Request::is('incomes*') ? 'class="active"' : '' !!}>
                     <a href="{{ route('incomes.index') }}">
                         <span class="mm-text ">Incomes</span>
+                    </a>
+                </li>
+            @endif
+            @if (if_can('income'))
+                <li {!! Request::is('account_report*') ? 'class="active"' : '' !!}>
+                    <a href="{{ route('account_report.index') }}">
+                        <span class="mm-text ">Account Reports</span>
                     </a>
                 </li>
             @endif
