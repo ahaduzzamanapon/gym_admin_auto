@@ -99,15 +99,10 @@
                                                     </span>
                                                 @enderror
                                             </div>
+                                            <input type="hidden" class="custom-control-input" name="remember"
+                                                        id="remember" checked hide>
 
-                                            <div class="form-group checkbox">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" name="remember"
-                                                        id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                    <label class="custom-control-label" for="remember">Remember
-                                                        Me</label>
-                                                </div>
-                                            </div>
+                                           
 
 
                                             <div class="form-group">
@@ -120,9 +115,6 @@
                                             <a href="{{ route('register') }}">
                                                 <strong>Sign Up</strong>
                                             </a>
-                                            | <small><a href="{{ route('password.request') }}"
-                                                    class="text-decoration-none text-muted">Forgot your
-                                                    password?</a></small>
                                         </div>
                                     </div>
                                 </div>

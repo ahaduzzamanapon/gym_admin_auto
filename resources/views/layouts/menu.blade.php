@@ -8,28 +8,28 @@
 <li {!! (Request::is('members*') || Request::is('healthmetrics*') || Request::is('diet_charts*') || Request::is('meal_plans*') ? 'class="menu-dropdown mm-active active"': "class='menu-dropdown'" ) !!}>
     <a href="#">
         <span class="mm-text ">Member Manage</span>
-        <span class="menu-icon "> <i class="im im-icon-Window-2"></i></span>
+        <span class="menu-icon "><i class=".align-self-center fa-1x fas fa-diagnoses"></i></span>
         <span class="im im-icon-Arrow-Right imicon"></span>
     </a>
     <ul class="sub-menu list-unstyled">
         <li {!! (Request::is('members*') ? 'class="active"' : '' ) !!}>
             <a href="{{ route('members.index') }}">
-                <span class="mm-text ">Members List <i class="im im-icon-Structure"></i></span>
+                <span class="mm-text">Members List</span>
             </a>
         </li>
         <li {!! (Request::is('healthmetrics*') ? 'class="active"' : '' ) !!}>
             <a href="{{ route('healthmetrics.index') }}">
-                <span class="mm-text ">Health Metrics <i class="im im-icon-Structure"></i></span>
+                <span class="mm-text ">Health Metrics</span>
             </a>
         </li>
         <li {!! (Request::is('meal_plans*') ? 'class="active"' : '' ) !!}>
             <a href="{{ route('meal_plans.index') }}">
-                <span class="mm-text ">Meal Plans <i class="im im-icon-Structure"></i></span>
+                <span class="mm-text ">Meal Plans</span>
             </a>
         </li>
         <li {!! (Request::is('diet_charts*') ? 'class="active"' : '' ) !!}>
             <a href="{{ route('diet_charts.index') }}">
-                <span class="mm-text ">Diet Charts <i class="im im-icon-Structure"></i></span>
+                <span class="mm-text ">Diet Charts</span>
             </a>
         </li>
         
@@ -50,7 +50,7 @@
     <li class="{!! Request::is('purchasePackages*') ? 'active' : '' !!}">
         <a href="{{ route('purchasePackages.index') }}">
             <span class="mm-text ">Purchase Packages</span>
-            <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+            <span class="menu-icon"><i class=".align-self-center fa-1x fas fa-money-check-alt"></i></span>
         </a>
     </li>
 @endif
@@ -89,7 +89,7 @@
 <li {!! (Request::is('assetsManagements*') ? 'class="menu-dropdown mm-active active"': "class='menu-dropdown'" ) !!}>
     <a href="#">
         <span class="mm-text ">Inventory</span>
-        <span class="menu-icon "> <i class="im im-icon-Window-2"></i></span>
+        <span class="menu-icon "><i class=".align-self-center fa-1x fas fa-dolly-flatbed"></i></span>
         <span class="im im-icon-Arrow-Right imicon"></span>
     </a>
     <ul class="sub-menu list-unstyled">
@@ -154,7 +154,7 @@
         : "class='menu-dropdown'" !!}>
         <a href="#">
             <span class="mm-text ">Frontend</span>
-            <span class="menu-icon "> <i class="im im-icon-Window-2"></i></span>
+            <span class="menu-icon "><i class=".align-self-center fa-1x fab fa-edge"></i></span>
             <span class="im im-icon-Arrow-Right imicon"></span>
         </a>
         <ul class="sub-menu list-unstyled">
@@ -190,8 +190,8 @@
 @if (if_can('schedule_booking'))
     <li class="{!! Request::is('schedulebookings*') ? 'active' : '' !!}">
         <a href="{{ route('schedulebookings.index') }}">
-            <span class="mm-text ">Schedule Bookings</span>
-            <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+            <span class="mm-text ">Schedule bookings</span>
+            <span class="menu-icon"><i class=".align-self-center fa-1x fas fa-calendar-alt"></i></span>
         </a>
     </li>
 @endif
@@ -200,7 +200,7 @@
     <li class="{!! Request::is('coupons*') ? 'active' : '' !!}">
         <a href="{{ route('coupons.index') }}">
             <span class="mm-text ">Coupons</span>
-            <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+            <span class="menu-icon"><i class=".align-self-center fa-1x fas fa-money-check"></i></span>
         </a>
     </li>
 @endif
@@ -212,7 +212,7 @@
     <li class="{!! Request::is('groups*') ? 'active' : '' !!}">
         <a href="{{ route('groups.index') }}">
             <span class="mm-text ">Role Permissions</span>
-            <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+            <span class="menu-icon"><i class=".align-self-center fa-1x fab fa-expeditedssl"></i></span>
         </a>
     </li>
 @endif
@@ -259,7 +259,7 @@
 <li class="{!! (Request::is('attendance*') ? 'active' : '' ) !!}">
     <a href="{{ route('attendences.index') }}">
         <span class="mm-text ">Attendences</span>
-        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+        <span class="menu-icon"><i class=".align-self-center fa-1x far fa-calendar-check"></i></span>
     </a>
 </li>
 @endif
@@ -270,7 +270,7 @@
 <li class="{!! (Request::is('notices*') ? 'active' : '' ) !!}">
     <a href="{{ route('notices.index') }}">
         <span class="mm-text ">Notices</span>
-        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+        <span class="menu-icon"><i class=".align-self-center fa-1x fas fa-bullhorn"></i></span>
     </a>
 </li>
 
@@ -278,8 +278,8 @@
 @if (if_can('site_settings'))
 <li class="{!! (Request::is('termAndConditions*') ? 'active' : '' ) !!}">
     <a href="{{ route('termAndConditions.index') }}">
-        <span class="mm-text ">Terms And Conditions</span>
-        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+        <span class="mm-text ">Term And Conditions</span>
+        <span class="menu-icon"><i class=".align-self-center fa-1x fas fa-user-shield"></i></span>
     </a>
 </li>
 @endif
@@ -288,7 +288,7 @@
 <li class="{!! (Request::is('admissionQuestions*') ? 'active' : '' ) !!}">
     <a href="{{ route('admissionQuestions.index') }}">
         <span class="mm-text ">Admission Questions</span>
-        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+        <span class="menu-icon"><i class=".align-self-center fa-1x fas fa-question"></i></span>
     </a>
 </li>
 @endif
@@ -297,7 +297,7 @@
 <li class="{!! (Request::is('siteSettings*') ? 'active' : '' ) !!}">
     <a href="{{ route('siteSettings.index') }}">
         <span class="mm-text ">Site Settings</span>
-        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+        <span class="menu-icon"><i class=".align-self-center fa-1x fas fa-sliders-h"></i></span>
     </a>
 </li>
 @endif
@@ -305,7 +305,7 @@
 <li class="{!! (Request::is('multiBranches*') ? 'active' : '' ) !!}">
     <a href="{{ route('multiBranches.index') }}">
         <span class="mm-text ">Multi Branches</span>
-        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+        <span class="menu-icon"><i class=".align-self-center fa-1x fas fa-hospital"></i></span>
     </a>
 </li>
 @endif
@@ -313,7 +313,7 @@
 <li class="{!! (Request::is('workoutCategories*') ? 'active' : '' ) !!}">
     <a href="{{ route('workoutCategories.index') }}">
         <span class="mm-text ">Workout Categories</span>
-        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+        <span class="menu-icon"><i class=".align-self-center fa-1x fas fa-list"></i></span>
     </a>
 </li>
 @endif
@@ -322,7 +322,7 @@
 <li class="{!! (Request::is('dailyWorkouts*') ? 'active' : '' ) !!}">
     <a href="{{ route('dailyWorkouts.index') }}">
         <span class="mm-text ">Daily Workouts</span>
-        <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
+        <span class="menu-icon"><i class=".align-self-center fa-1x fas fa-user-check"></i></span>
     </a>
 </li>
 

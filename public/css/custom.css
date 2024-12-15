@@ -62,7 +62,8 @@ body > .header .navbar {
 /*side bar nav */
 .left-aside .sidebar {
   display: block;
-  width: 250px;
+  width: 235px;
+  /* margin-left: -175px; */
   margin-left: 0;
   transition: margin-left 0.3s linear;
 }
