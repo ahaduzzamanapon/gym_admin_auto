@@ -126,7 +126,9 @@ body > .header .navbar {
   }
 
 #menu .navigation {
-  padding: 0 0 15px 0; }
+  padding: 0 0 15px 0;
+}
+  
 
 #menu .navigation a {
   text-align: left;

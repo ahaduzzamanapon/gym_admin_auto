@@ -7,7 +7,7 @@
             <h1 class="text-center" style="height: 51px;width: 62px;place-self: center;margin-top: 22px;"><img style="height: 60px;"  src="{{Storage::url((!empty($setting))?$setting->logo:'')}}" alt=""></h1>
         </a>
     </div>
-    <ul class="navigation list-unstyled" id="demo" >
+    <ul class="navigation list-unstyled" id="demo">
         <li><span class="close-icon d-xl-none d-lg-block"><img src="{{asset('img/images/input-disabled.png')}}"
                     alt="image missing"></span></li>
         <li {!! (Request::is('') ? 'class="active"' : '' ) !!}>
