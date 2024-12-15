@@ -27,6 +27,14 @@
         box-shadow: 0 0 35px 0 rgba(154, 161, 171, 0.15);
         margin: auto;
     }
+
+    body {
+        background: url("{{Storage::url('login_background.png')}}") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
 </style>
 
 <body id="sign-up" class="login_backimg">
@@ -366,7 +374,6 @@
     <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 
     <script src="{{ asset('vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}" type="text/javascript"></script>
-    <script type="text/javascript" src="{{ asset('vendors/jquery.backstretch/js/jquery.backstretch.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/pages/register.js') }}"></script>
 
 </body>

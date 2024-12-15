@@ -58,7 +58,6 @@
 
 
 @if(if_can('store_management'))
-
 <li {!! (Request::is('products*') || Request::is('requisitions*')  ? 'class="menu-dropdown mm-active active"': "class='menu-dropdown'" ) !!}>
     <a href="#">
         <span class="mm-text ">Store Manage</span>
