@@ -6,7 +6,7 @@ use App\Http\Requests\CreateGroupRequest;
 use App\Http\Requests\UpdateGroupRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Group;
-use App\Models\Grouppermition;
+use App\Models\GroupPermition;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -57,7 +57,7 @@ class GroupController extends AppBaseController
         $group_id=$group->id;
 
         foreach ($input['permissions'] as $permission) {
-            Grouppermition::create([
+            GroupPermition::create([
                 'group_id' => $group_id,
                 'permission_id' => $permission
             ]);
@@ -106,7 +106,7 @@ class GroupController extends AppBaseController
 
             return redirect(route('groups.index'));
         }
-        $permission_data = Grouppermition::where('group_id', $id)->pluck('permission_id')->toArray();
+        $permission_data = GroupPermition::where('group_id', $id)->pluck('permission_id')->toArray();
 
         return view('groups.edit')->with('group', $group)->with('permission_data', $permission_data);
     }
@@ -129,9 +129,9 @@ class GroupController extends AppBaseController
         }
         $group->fill($request->all());
         $group->save();
-        Grouppermition::where('group_id', $id)->delete();
+        GroupPermition::where('group_id', $id)->delete();
         foreach ($request->input('permissions') as $permission) {
-            Grouppermition::create([
+            GroupPermition::create([
                 'group_id' => $id,
                 'permission_id' => $permission
             ]);

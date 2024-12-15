@@ -32,6 +32,13 @@ if (!function_exists('in_group')) {
 if (!function_exists('if_can')) {
     function if_can($key)
     {
+        if(empty(auth()->user())){
+           // dd("Please login first");
+            header('Location: '.route('login'));
+            exit;
+        }
+
+
         $userGroupId = auth()->user()->group_id;
 
         $groupPermissions = DB::table('grouppermitions')

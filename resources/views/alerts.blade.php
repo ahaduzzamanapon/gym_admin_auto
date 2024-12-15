@@ -292,7 +292,7 @@ Alerts @parent
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                <span class="im im-icon-Information mr-3 icon"></span><span
+                                <span class="im im-icon-Eye mr-3 icon"></span><span
                                     class="alert-text"><strong>Secondary!</strong> addClass
                                     &ensp;alert-secondary</span>.
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -302,7 +302,7 @@ Alerts @parent
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                <span class="im im-icon-Information mr-3 icon"></span>
+                                <span class="im im-icon-Eye mr-3 icon"></span>
                                 <span class="alert-text"><strong>Primary!</strong> addClass &ensp;alert-primary</span>.
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -311,7 +311,7 @@ Alerts @parent
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <span class="im im-icon-Information mr-3 icon"></span><span
+                                <span class="im im-icon-Eye mr-3 icon"></span><span
                                     class="alert-text"><strong>Success!</strong> addClass &ensp;alert-success</span>.
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -320,7 +320,7 @@ Alerts @parent
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                <span class="im im-icon-Information mr-3 icon"></span><span
+                                <span class="im im-icon-Eye mr-3 icon"></span><span
                                     class="alert-text"><strong>Warning!</strong> addClass &ensp;alert-warning</span>.
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -329,7 +329,7 @@ Alerts @parent
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="alert alert-info alert-dismissible fade show" role="alert">
-                                <span class="im im-icon-Information mr-3 icon"></span><span
+                                <span class="im im-icon-Eye mr-3 icon"></span><span
                                     class="alert-text"><strong>Info!</strong> addClass &ensp;alert-info</span>.
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -338,7 +338,7 @@ Alerts @parent
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <span class="im im-icon-Information mr-3 icon"></span><span
+                                <span class="im im-icon-Eye mr-3 icon"></span><span
                                     class="alert-text"><strong>Danger!</strong> addClass &ensp;alert-danger</span>.
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -347,7 +347,7 @@ Alerts @parent
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="alert alert-light alert-dismissible fade show" role="alert">
-                                <span class="im im-icon-Information mr-3 icon"></span><span
+                                <span class="im im-icon-Eye mr-3 icon"></span><span
                                     class="alert-text"><strong>Light!</strong> addClass &ensp;alert-light</span>.
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -356,7 +356,7 @@ Alerts @parent
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="alert alert-dark alert-dismissible fade show" role="alert">
-                                <span class="im im-icon-Information mr-3 icon"></span><span
+                                <span class="im im-icon-Eye mr-3 icon"></span><span
                                     class="alert-text"><strong>Dark!</strong> addClass &ensp;alert-dark</span>.
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>

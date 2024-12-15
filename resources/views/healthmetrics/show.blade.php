@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Healthmetrics @parent
+Health Metrics @parent
 @stop
 
 @section('content')

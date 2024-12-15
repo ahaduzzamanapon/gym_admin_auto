@@ -2,14 +2,14 @@
 
 {{-- Page title --}}
 @section('title')
-Healthmetrics @parent
+Health Metrics @parent
 @stop
 
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div aria-label="breadcrumb" class="card-breadcrumb">
-        <h1>Healthmetrics</h1>
+        <h1>Health Metrics</h1>
     </div>
     <div class="separator-breadcrumb border-top"></div>
 </section>
@@ -23,7 +23,7 @@ Healthmetrics @parent
     <div class="clearfix"></div>
     <div class="card" style="width: 88vw;">
         <section class="card-header">
-            <h5 class="card-title d-inline">Healthmetrics</h5>
+            <h5 class="card-title d-inline">Health Metrics</h5>
             <span class="float-right">
                 <a class="btn btn-primary pull-right" href="{{ route('healthmetrics.create') }}">Add New</a>
             </span>

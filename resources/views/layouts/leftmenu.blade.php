@@ -1,7 +1,10 @@
 <div id="menu" role="navigation">
     <div style="text-align: -webkit-center;border-bottom: 2px solid #686868;margin-bottom: 13px;">
         <a href="{{ URL::to('index') }}" class="logo navbar-brand mr-0">
-            <h1 class="text-center" style="height: 51px;width: 62px;place-self: center;"><img src="https://gymmaster.mysoftheaven.com/frontend/assets/images/logo.png" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt=""></h1>
+            @php
+                $setting = DB::table('sitesettings')->first();
+            @endphp
+            <h1 class="text-center" style="height: 51px;width: 62px;place-self: center;margin-top: 22px;"><img style="height: 60px;"  src="{{Storage::url((!empty($setting))?$setting->logo:'')}}" alt=""></h1>
         </a>
     </div>
     <ul class="navigation list-unstyled" id="demo" >

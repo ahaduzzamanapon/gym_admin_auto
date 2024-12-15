@@ -35,7 +35,7 @@ body > .header .navbar {
   background-color: #fff;
   box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
   border-width: 0;
-  /* z-index: 999999999; */
+  z-index: 999999999;
 }
 .navbar-expand-lg .navbar-nav .nav-link {
   padding: 13px 15px 14px 15px;
@@ -62,15 +62,16 @@ body > .header .navbar {
 /*side bar nav */
 .left-aside .sidebar {
   display: block;
-  width: 300px;
-  margin-left: -175px;
-  transition: margin-left 0.3s linear;
-}
-.left-aside .sidebar:hover
-{
+  width: 235px;
+  /* margin-left: -175px; */
   margin-left: 0;
   transition: margin-left 0.3s linear;
 }
+/* .left-aside .sidebar:hover
+{
+  margin-left: 0;
+  transition: margin-left 0.3s linear;
+} */
 
 .content {
   display: block;
@@ -81,7 +82,7 @@ body > .header .navbar {
 /****** 3.LEFT SIDEBAR ******/
 .left-aside {
   width: 240px;
-  background: #ffffff;
+  background: #f1f3fa;
   border-right: 5px solid #EEE; }
 
 .content-header h1 {
@@ -159,7 +160,8 @@ body > .header .navbar {
 .left-aside {
   position: relative;
   top: -70px;
-  z-index: 9999;
+  z-index: 999999999;
+  background: white;
 }
 
 

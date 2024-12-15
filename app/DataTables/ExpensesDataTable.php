@@ -17,8 +17,13 @@ class ExpensesDataTable extends DataTable
     public function dataTable($query)
     {
         $dataTable = new EloquentDataTable($query);
-
-        return $dataTable->addColumn('action', 'expenses.datatables_actions');
+        return $dataTable->editColumn('created_at', function ($row) {
+            return $row->created_at ? $row->created_at->format('Y-m-d H:i A') : null;
+        })
+        ->editColumn('updated_at', function ($row) {
+            return $row->updated_at ? $row->updated_at->format('Y-m-d H:i A') : null;
+        })
+        ->addColumn('action', 'expenses.datatables_actions');
     }
 
     /**
@@ -29,7 +34,11 @@ class ExpensesDataTable extends DataTable
      */
     public function query(Expenses $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->leftJoin('multi_branchs', 'expensess.branch_id', '=', 'multi_branchs.id')
+        ->select([
+            'expensess.*', // Select all member columns
+            'multi_branchs.branch_name'
+        ]);
     }
 
     /**
@@ -41,7 +50,7 @@ class ExpensesDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->minifiedAjax()
+            ->minifiedAjax(url('expenses'))
             ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',
@@ -50,8 +59,6 @@ class ExpensesDataTable extends DataTable
                 'buttons'   => [
                     ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
                 ],
             ]);
@@ -67,6 +74,7 @@ class ExpensesDataTable extends DataTable
         return [
             'id',
             'title',
+            'branch_name',
             'amount',
             'description',
             'created_at' => ['searchable' => false],

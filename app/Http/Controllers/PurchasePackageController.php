@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 
+use App\Models\SiteSetting;
+
 class PurchasePackageController extends AppBaseController
 {
     /**
@@ -164,5 +166,15 @@ class PurchasePackageController extends AppBaseController
         Flash::success('Purchase Package deleted successfully.');
 
         return redirect(route('purchasePackages.index'));
+    }
+    public function invoice($id){
+        /** @var PurchasePackage $purchasePackage */
+        $sale = PurchasePackage::select('purchasepackages.*', 'packages.pack_name as pack_name', 'members.mem_name as member_name')
+            ->join('packages', 'packages.id', '=', 'purchasepackages.package_id')
+            ->join('members', 'members.id', '=', 'purchasepackages.member_id')
+            ->where('purchasepackages.id', $id)
+            ->first();
+        $SiteSetting = SiteSetting::first();
+        return view('purchase_packages.invoice', compact('sale', 'SiteSetting'));
     }
 }

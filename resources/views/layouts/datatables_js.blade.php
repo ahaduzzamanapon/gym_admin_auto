@@ -1,3 +1,12 @@
+<script>
+    $(document).ready(function() {
+        var table = $('.table').DataTable();
+
+        // Clear the search box and redraw the table
+        table.search('').draw();
+    });
+</script>
+
 <!-- Datatables -->
 <script src="{{ asset('vendors/datatables/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('vendors/datatables/js/dataTables.bootstrap4.min.js') }}"></script>

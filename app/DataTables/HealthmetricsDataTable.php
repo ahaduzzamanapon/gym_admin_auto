@@ -49,7 +49,7 @@ class HealthmetricsDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->minifiedAjax()
+            ->minifiedAjax(url('healthmetrics'))
             ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',
@@ -58,8 +58,6 @@ class HealthmetricsDataTable extends DataTable
                 'buttons'   => [
                     ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
                 ],
             ]);
@@ -78,10 +76,20 @@ class HealthmetricsDataTable extends DataTable
             'measurement_date',
             'weight',
             'height',
-            'bmi',
+            'bmi'=>['title' => 'BMI'],
             'body_fat_percentage',
             'muscle_mass',
             'hydration_level',
+            'chest',
+            'waist',
+            'hips',
+            'thighs',
+            'arms',
+            'forearms',
+            'neck',
+            'shoulders',
+            'calves',
+            'resting_heart_rate',
             // 'created_at' => ['searchable' => false],
             // 'updated_at' => ['searchable' => false]
         ];

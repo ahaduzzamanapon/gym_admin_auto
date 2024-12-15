@@ -14,12 +14,18 @@ class CouponDataTable extends DataTable
      * @param mixed $query Results from query() method.
      * @return \Yajra\DataTables\DataTableAbstract
      */
-    public function dataTable($query)
-    {
-        $dataTable = new EloquentDataTable($query);
-
-        return $dataTable->addColumn('action', 'coupons.datatables_actions');
-    }
+    
+        public function dataTable($query)
+        {
+            $dataTable = new EloquentDataTable($query);
+        
+            return $dataTable
+                ->editColumn('expire_date', function ($row) {
+                    return $row->expire_date ? $row->expire_date->format('Y-m-d') : null;
+                })
+                ->addColumn('action', 'coupons.datatables_actions');
+        }
+        
 
     /**
      * Get query source of dataTable.
@@ -41,7 +47,7 @@ class CouponDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->minifiedAjax()
+            ->minifiedAjax(url('coupons'))
             ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',
@@ -50,8 +56,6 @@ class CouponDataTable extends DataTable
                 'buttons'   => [
                     ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
                 ],
             ]);
@@ -71,8 +75,7 @@ class CouponDataTable extends DataTable
             'expire_date',
             'amount',
             'note',
-            'created_at' => ['searchable' => false],
-            'updated_at' => ['searchable' => false]
+           
         ];
     }
 

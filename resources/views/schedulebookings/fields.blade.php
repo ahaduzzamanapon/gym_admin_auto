@@ -1,17 +1,46 @@
 @php
-if(if_can('show_all_data')){
-    $members = DB::table('members')->get();
-}else {
-    $members = DB::table('members')->where('id', Auth::user()->member_id)->get();
-
-}
+$members = DB::table('members')
+    ->join('multi_branchs', 'members.branch_id', '=', 'multi_branchs.id')
+    ->select('members.id', 'members.mem_name', 'multi_branchs.branch_name')
+    ->when(!if_can('show_all_data'), function ($query) {
+        $query->where('members.id', Auth::user()->member_id);
+    })
+    ->get()
+    ->map(function ($member) {
+        return [
+            'id' => $member->id,
+            'name' => $member->mem_name . '->' . $member->branch_name,
+        ];
+    })
+    ->pluck('name', 'id');
+$asset = DB::table('assets_managements')
+        ->join('multi_branchs', 'assets_managements.branch_id', '=', 'multi_branchs.id')
+        ->select('assets_managements.id', 'assets_managements.item_name', 'multi_branchs.branch_name')
+    ->where('assets_managements.asset_for', 'Staff')
+    ->get()
+    ->map(function ($asset) {
+        return [
+            'id' => $asset->id,
+            'name' => $asset->item_name.'->'.$asset->branch_name,
+        ];
+    })
+    ->pluck('name', 'id');
 @endphp
-<!-- Member Id Field -->
+<!-- Member name Field -->
 <div class="form-group">
     <div class="row">
-        {!! Form::label('member_id', 'Member Id:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        {!! Form::label('member_id', 'Member name:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::select('member_id', $members->pluck('mem_name', 'id')->prepend('Select Member', ''), null, ['class' => 'form-control']) !!}
+            {!! Form::select('member_id', $members->prepend('Select Member', ''), null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+<!-- Member name Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('asset_id', 'Asset name:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::select('asset_id', $asset->prepend('Select Asset', ''), null, ['class' => 'form-control']) !!}
         </div>
     </div>
 </div>
@@ -20,9 +49,11 @@ if(if_can('show_all_data')){
 <!-- Booking Date Field -->
 <div class="form-group">
     <div class="row">
-        {!! Form::label('booking_date', 'Booking Date:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
-        <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::date('booking_date', null, ['class' => 'form-control','id'=>'booking_date']) !!}
+        {!! Form::label('booking_date', 'Booking Date Time:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12" style="display: flex;gap: 12px;">
+
+            {!! Form::date('booking_date', (isset($schedulebooking->booking_date)) ? date('Y-m-d', strtotime($schedulebooking->booking_date)) : null, ['class' => 'form-control','id'=>'booking_date','format'=>'Y-m-d']) !!}
+            {!! Form::time('booking_time', null, ['class' => 'form-control','id'=>'booking_time']) !!}
         </div>
     </div>
 </div>
@@ -74,5 +105,5 @@ if(if_can('show_all_data')){
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('schedulebookings.index') }}" class="btn btn-default">Cancel</a>
+    <a href="{{ route('schedulebookings.index') }}" class="btn btn-danger">Cancel</a>
 </div>

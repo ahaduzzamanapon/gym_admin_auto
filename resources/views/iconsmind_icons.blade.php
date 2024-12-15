@@ -4483,9 +4483,9 @@
 
                         </li>
                         <li class="list-inline-item  clr  m-4  clr" data-toggle="tooltip"
-                            data-original-title="im im-icon-File-Edit">
+                            data-original-title="im im-icon-Pen">
                             <div class="iconview m-3  d-flex justify-content-center">
-                                <span class="im  im-icon-File-Edit fs-20"></span>
+                                <span class="im  im-icon-Pen fs-20"></span>
                             </div>
 
                         </li>
@@ -6814,9 +6814,9 @@
 
                         </li>
                         <li class="list-inline-item  clr  m-4  clr" data-toggle="tooltip"
-                            data-original-title="im im-icon-Information">
+                            data-original-title="im im-icon-Eye">
                             <div class="iconview m-3  d-flex justify-content-center">
-                                <span class="im  im-icon-Information fs-20"></span>
+                                <span class="im  im-icon-Eye fs-20"></span>
                             </div>
 
                         </li>

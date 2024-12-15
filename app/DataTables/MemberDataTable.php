@@ -35,10 +35,14 @@ class MemberDataTable extends DataTable
     {
         // Join with groups table and select relevant columns
         return $model->newQuery()
-            ->leftJoin('groups', 'members.group_id', '=', 'groups.id')
+            ->leftJoin('users', 'members.id', '=', 'users.member_id')
+            ->leftJoin('groups', 'users.group_id', '=', 'groups.id')
+            ->leftJoin('multi_branchs', 'members.branch_id', '=', 'multi_branchs.id')
             ->select([
                 'members.*', // Select all member columns
-                'groups.name as group_name' // Include the group name
+                'groups.name as group_name', // Include the group name
+                'multi_branchs.branch_name'
+
             ]);
     }
 
@@ -51,20 +55,18 @@ class MemberDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->minifiedAjax()
+            ->minifiedAjax(url('members'))
             ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
-                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner'],
-                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner'],
-                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner'],
-                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner'],
-                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner'],
+                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
+                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
+                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
                 ],
-            ]);
+        ]);
     }
 
     /**
@@ -75,13 +77,14 @@ class MemberDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id',
-            'mem_name',
+            'member_unique_id' => ['title' => 'Member ID'],
+            'mem_name' => ['title' => 'Name'],
             'group_name' => ['title' => 'Role'],
-            'mem_father',
-            'mem_address',
-            'mem_cell',
-            'mem_email',
+            'mem_father' => ['title' => 'Father Name'],
+            'mem_address'  => ['title' => 'Address'],
+            // 'branch_name' => ['title' => 'Branch'],
+            'mem_cell'     => ['title' => 'Contact'],
+            'mem_email'     => ['title' => 'Email'],
         ];
     }
 
@@ -95,3 +98,4 @@ class MemberDataTable extends DataTable
         return 'members_' . time();
     }
 }
+

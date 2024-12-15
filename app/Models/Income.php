@@ -23,6 +23,7 @@ class Income extends Model
 
     public $fillable = [
         'title',
+        'branch_id',
         'amount',
         'description'
     ];

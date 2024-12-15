@@ -32,7 +32,10 @@ class PurchasePackage extends Model
         'amount',
         'tax',
         'coupon_amount',
-        'gross_amount'
+        'gross_amount',
+        'pay_amount',
+        'due_amount',
+        'status',
     ];
 
     /**
@@ -48,7 +51,10 @@ class PurchasePackage extends Model
         'amount' => 'integer',
         'tax' => 'integer',
         'coupon_amount' => 'integer',
-        'gross_amount' => 'integer'
+        'gross_amount' => 'integer',
+        'pay_amount' => 'integer',
+        'due_amount' => 'integer',
+        'status' => 'integer',
     ];
 
     /**
@@ -60,7 +66,8 @@ class PurchasePackage extends Model
         'member_id' => 'required',
         'package_id' => 'required',
         'amount' => 'required',
-        'gross_amount' => 'required'
+        'gross_amount' => 'required',
+        'pay_amount' => 'required',
     ];
 
     
