@@ -18,7 +18,11 @@ class MemberDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'members.datatables_actions');
+        return $dataTable
+            ->addColumn('group_name', function ($row) {
+                return $row->group_name ?? 'N/A';
+            })
+            ->addColumn('action', 'members.datatables_actions');
     }
 
     /**
@@ -29,7 +33,17 @@ class MemberDataTable extends DataTable
      */
     public function query(Member $model)
     {
-        return $model->newQuery();
+        // Join with groups table and select relevant columns
+        return $model->newQuery()
+            ->leftJoin('users', 'members.id', '=', 'users.member_id')
+            ->leftJoin('groups', 'users.group_id', '=', 'groups.id')
+            ->leftJoin('multi_branchs', 'members.branch_id', '=', 'multi_branchs.id')
+            ->select([
+                'members.*', // Select all member columns
+                'groups.name as group_name', // Include the group name
+                'multi_branchs.branch_name'
+
+            ]);
     }
 
     /**
@@ -41,7 +55,7 @@ class MemberDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->minifiedAjax()
+            ->minifiedAjax(url('members'))
             ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',
@@ -50,11 +64,9 @@ class MemberDataTable extends DataTable
                 'buttons'   => [
                     ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
                 ],
-            ]);
+        ]);
     }
 
     /**
@@ -65,15 +77,14 @@ class MemberDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id',
-            'mem_name',
-            'mem_father',
-            'mem_address',
-            'mem_admission_date',
-            'mem_cell',
-            'mem_email'
-            // 'created_at' => ['searchable' => false],
-            // 'updated_at' => ['searchable' => false]
+            'member_unique_id' => ['title' => 'Member ID'],
+            'mem_name' => ['title' => 'Name'],
+            'group_name' => ['title' => 'Role'],
+            'mem_father' => ['title' => 'Father Name'],
+            'mem_address'  => ['title' => 'Address'],
+            // 'branch_name' => ['title' => 'Branch'],
+            'mem_cell'     => ['title' => 'Contact'],
+            'mem_email'     => ['title' => 'Email'],
         ];
     }
 
@@ -84,6 +95,7 @@ class MemberDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return '$MODEL_NAME_PLURAL_SNAKE_$datatable_' . time();
+        return 'members_' . time();
     }
 }
+

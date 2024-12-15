@@ -2,7 +2,7 @@
 <html lang="en-US">
 
 <head>
-    <title>Josh Login</title>
+    <title>Gym Master Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{ asset('img/favicon.ico')}}" />
     <!--page level css -->

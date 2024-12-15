@@ -24,6 +24,7 @@ class Package extends Model
 
     public $fillable = [
         'pack_name',
+        'branch_id',
         'pack_admission_fee',
         'pack_duration',
         'pack_status'

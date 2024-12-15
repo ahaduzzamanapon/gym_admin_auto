@@ -34,10 +34,10 @@ body {
 .signin-form .active::after,
 .signup-form .active::after {
   content: "";
-  border-bottom: 3px solid #727cf5;
+  border-bottom: 3px solid rgba(0, 189, 91, 0.7803921569);
   width: 17px;
   height: 4px;
-  background-color: #727cf5;
+  background-color: rgba(0, 189, 91, 0.7803921569);
   display: block;
   border-radius: 50px;
 }

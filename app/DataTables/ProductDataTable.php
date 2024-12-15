@@ -29,7 +29,11 @@ class ProductDataTable extends DataTable
      */
     public function query(Product $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->leftJoin('multi_branchs', 'products.branch_id', '=', 'multi_branchs.id')
+        ->select([
+            'products.*', // Select all member columns
+            'multi_branchs.branch_name'
+        ]);
     }
 
     /**
@@ -41,7 +45,7 @@ class ProductDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->minifiedAjax()
+            ->minifiedAjax(url('products'))
             ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',
@@ -50,8 +54,6 @@ class ProductDataTable extends DataTable
                 'buttons'   => [
                     ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
                 ],
             ]);
@@ -67,6 +69,7 @@ class ProductDataTable extends DataTable
         return [
             'id',
             'product_name',
+            'branch_name',
             'product_price',
             'product_qty',
             // 'created_at' => ['searchable' => false],

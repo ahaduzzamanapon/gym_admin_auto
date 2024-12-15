@@ -6,4 +6,4 @@
             {!! Form::email('$FIELD_NAME$', null, ['class' => 'form-control'$SIZE$]) !!}
         </div>
     </div>
-</div
+</div>

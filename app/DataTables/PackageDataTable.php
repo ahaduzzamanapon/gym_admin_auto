@@ -29,7 +29,11 @@ class PackageDataTable extends DataTable
      */
     public function query(Package $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->leftJoin('multi_branchs', 'packages.branch_id', '=', 'multi_branchs.id')
+                                ->select([
+                                    'packages.*', // Select all member columns
+                                    'multi_branchs.branch_name'
+                                ]);
     }
 
     /**
@@ -41,7 +45,7 @@ class PackageDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->minifiedAjax()
+            ->minifiedAjax(url('packages'))
             ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',
@@ -50,8 +54,6 @@ class PackageDataTable extends DataTable
                 'buttons'   => [
                     ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
                 ],
             ]);
@@ -67,6 +69,7 @@ class PackageDataTable extends DataTable
         return [
             'id',
             'pack_name',
+            'branch_name',
             'pack_admission_fee',
             'pack_duration',
             'pack_status'

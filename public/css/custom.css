@@ -35,6 +35,7 @@ body > .header .navbar {
   background-color: #fff;
   box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
   border-width: 0;
+  z-index: 999999999;
 }
 .navbar-expand-lg .navbar-nav .nav-link {
   padding: 13px 15px 14px 15px;
@@ -61,15 +62,15 @@ body > .header .navbar {
 /*side bar nav */
 .left-aside .sidebar {
   display: block;
-  width: 235px;
-  /* margin-left: -175px; */
+  width: 250px;
   margin-left: 0;
   transition: margin-left 0.3s linear;
 }
-.left-aside .sidebar:hover
+/* .left-aside .sidebar:hover
 {
+  margin-left: 0;
   transition: margin-left 0.3s linear;
-}
+} */
 
 .content {
   display: block;
@@ -94,15 +95,15 @@ body > .header .navbar {
 
 #menu li.active > a {
   padding: 11px 20px 11px 17px;
-  color: #727CF5;
-  border-left: 3px solid #727CF5;
+  color: #00bd5bc7;
+  border-left: 3px solid #00bd5bc7;
   transition: none; }
 
 #menu li > a:hover {
-  color:#727CF5;
+  color:#00bd5bc7;
 }
 #menu li.active > a i {
-  color: #727CF5;
+  color: #00bd5bc7;
   font-weight: 700;
 }
 #menu li > a i
@@ -158,7 +159,8 @@ body > .header .navbar {
 .left-aside {
   position: relative;
   top: -70px;
-  z-index: 9999;
+  z-index: 999999999;
+  background: white;
 }
 
 

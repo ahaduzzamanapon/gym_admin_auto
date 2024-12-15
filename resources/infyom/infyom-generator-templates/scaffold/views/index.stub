@@ -21,7 +21,7 @@ $MODEL_NAME_PLURAL_HUMAN$ @parent
     @include('flash::message')
 
     <div class="clearfix"></div>
-    <div class="card">
+    <div class="card" width="88vw;">
         <section class="card-header">
             <h5 class="card-title d-inline">$MODEL_NAME_PLURAL_HUMAN$</h5>
             <span class="float-right">

@@ -24,6 +24,7 @@ class Product extends Model
 
     public $fillable = [
         'product_name',
+        'branch_id',
         'product_price',
         'product_qty',
         'product_img_url'
