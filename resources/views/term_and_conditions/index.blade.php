@@ -2,14 +2,14 @@
 
 {{-- Page title --}}
 @section('title')
-Term And Conditions @parent
+Terms And Conditions @parent
 @stop
 
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div aria-label="breadcrumb" class="card-breadcrumb">
-        <h1>Term And Conditions</h1>
+        <h1>Terms And Conditions</h1>
     </div>
     <div class="separator-breadcrumb border-top"></div>
 </section>
@@ -23,7 +23,7 @@ Term And Conditions @parent
     <div class="clearfix"></div>
     <div class="card">
         <section class="card-header">
-            <h5 class="card-title d-inline">Term And Conditions</h5>
+            <h5 class="card-title d-inline">Terms And Conditions</h5>
             <span class="float-right">
                 <a class="btn btn-primary pull-right" href="{{ route('termAndConditions.create') }}">Add New</a>
             </span>

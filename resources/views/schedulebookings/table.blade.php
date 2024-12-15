@@ -5,7 +5,7 @@
                 <th>Id</th>
         <th>Member name</th>
         <th>Booking Date</th>
-        <th>Booking time</th>
+        <th>Booking Time</th>
         <th>Service Type</th>
         <th>Status</th>
         <th>Note</th>

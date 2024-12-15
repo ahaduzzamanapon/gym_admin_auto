@@ -9,7 +9,7 @@ Site Settings @parent
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div aria-label="breadcrumb" class="card-breadcrumb">
-        <h1>Site Setting</h1>
+        <h1>Site Settings</h1>
     </div>
     <div class="separator-breadcrumb border-top"></div>
 </section>

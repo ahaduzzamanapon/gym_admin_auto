@@ -65,7 +65,7 @@ class SiteSettingController extends AppBaseController
         /** @var SiteSetting $siteSetting */
         $siteSetting = SiteSetting::create($input);
 
-        Flash::success('Site Setting saved successfully.');
+        Flash::success('Site Settings saved successfully.');
 
         return redirect(route('siteSettings.index'));
     }
@@ -83,7 +83,7 @@ class SiteSettingController extends AppBaseController
         $siteSetting = SiteSetting::find($id);
 
         if (empty($siteSetting)) {
-            Flash::error('Site Setting not found');
+            Flash::error('Site Settings not found');
 
             return redirect(route('siteSettings.index'));
         }
@@ -104,7 +104,7 @@ class SiteSettingController extends AppBaseController
         $siteSetting = SiteSetting::find($id);
 
         if (empty($siteSetting)) {
-            Flash::error('Site Setting not found');
+            Flash::error('Site Settings not found');
 
             return redirect(route('siteSettings.index'));
         }
@@ -126,7 +126,7 @@ class SiteSettingController extends AppBaseController
         $siteSetting = SiteSetting::find($id);
 
         if (empty($siteSetting)) {
-            Flash::error('Site Setting not found');
+            Flash::error('Site Settings not found');
 
             return redirect(route('siteSettings.index'));
         }
@@ -148,7 +148,7 @@ class SiteSettingController extends AppBaseController
         $siteSetting->fill($input);
         $siteSetting->save();
 
-        Flash::success('Site Setting updated successfully.');
+        Flash::success('Site Settings updated successfully.');
 
         return redirect(route('siteSettings.index'));
     }
@@ -170,7 +170,7 @@ class SiteSettingController extends AppBaseController
 
 
         if (empty($siteSetting)) {
-            Flash::error('Site Setting not found');
+            Flash::error('Site Settings not found');
 
             return redirect(route('siteSettings.index'));
         }
@@ -181,7 +181,7 @@ class SiteSettingController extends AppBaseController
 
         $siteSetting->delete();
 
-        Flash::success('Site Setting deleted successfully.');
+        Flash::success('Site Settings deleted successfully.');
 
         return redirect(route('siteSettings.index'));
     }

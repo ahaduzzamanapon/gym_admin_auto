@@ -78,7 +78,6 @@ class ExpensesDataTable extends DataTable
             'amount',
             'description',
             'created_at' => ['searchable' => false],
-            'updated_at' => ['searchable' => false]
         ];
     }
 

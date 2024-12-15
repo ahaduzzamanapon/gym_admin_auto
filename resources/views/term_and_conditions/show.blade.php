@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Term And Conditions @parent
+Terms And Conditions @parent
 @stop
 
 @section('content')

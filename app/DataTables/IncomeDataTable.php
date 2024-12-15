@@ -79,10 +79,8 @@ class IncomeDataTable extends DataTable
             'amount',
             'description',
             'created_at' => ['searchable' => false],
-            'updated_at' => ['searchable' => false]
         ];
     }
-
     /**
      * Get filename for export.
      *

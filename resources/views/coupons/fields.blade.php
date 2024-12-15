@@ -23,7 +23,7 @@
 <!-- Expire Date Field -->
 <div class="form-group">
     <div class="row">
-        {!! Form::label('expire_date', 'Expire Date:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        {!! Form::label('expire_date', 'Expired Date:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
             {!! Form::date('expire_date', null, ['class' => 'form-control','id'=>'expire_date']) !!}
         </div>

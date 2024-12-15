@@ -159,5 +159,8 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('{name?}', 'JoshController@showView');
 Route::post('contactMassages/store', [ContactMassageController::class, 'store'])->name('contactMassages.store');
+Route::get('icons', function () {
+    return view('icons');
+});
 
 

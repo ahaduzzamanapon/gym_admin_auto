@@ -72,7 +72,7 @@ class CouponDataTable extends DataTable
             'id',
             'title',
             'coupon_code',
-            'expire_date',
+            'expire_date'=>['title'=>'Expired Date'],
             'amount',
             'note',
            

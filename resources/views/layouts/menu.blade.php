@@ -173,7 +173,7 @@
             </li>
             <li {!! Request::is('contactMassages*') ? 'class="active"' : '' !!}>
                 <a href="{{ route('contactMassages.index') }}">
-                    <span class="mm-text ">Contact Massage</span>
+                    <span class="mm-text ">Contact Massages</span>
                 </a>
             </li>
         </ul>
@@ -183,7 +183,7 @@
 @if (if_can('schedule_booking'))
     <li class="{!! Request::is('schedulebookings*') ? 'active' : '' !!}">
         <a href="{{ route('schedulebookings.index') }}">
-            <span class="mm-text ">Schedule bookings</span>
+            <span class="mm-text ">Schedule Bookings</span>
             <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
         </a>
     </li>
@@ -249,7 +249,7 @@
 
 @if (if_can('attendence'))
 
-<li class="{!! (Request::is('attendences*') ? 'active' : '' ) !!}">
+<li class="{!! (Request::is('attendance*') ? 'active' : '' ) !!}">
     <a href="{{ route('attendences.index') }}">
         <span class="mm-text ">Attendences</span>
         <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
@@ -271,7 +271,7 @@
 @if (if_can('site_settings'))
 <li class="{!! (Request::is('termAndConditions*') ? 'active' : '' ) !!}">
     <a href="{{ route('termAndConditions.index') }}">
-        <span class="mm-text ">Term And Conditions</span>
+        <span class="mm-text ">Terms And Conditions</span>
         <span class="menu-icon"><i class="im im-icon-Structure"></i></span>
     </a>
 </li>

@@ -2,13 +2,13 @@
 
 {{-- Page title --}}
 @section('title')
-Site Setting @parent
+Site Settings @parent
 @stop
 
 @section('content')
    <section class="content-header">
     <div aria-label="breadcrumb" class="card-breadcrumb">
-        <h1>{{ __('Edit') }} Site Setting</h1>
+        <h1>{{ __('Edit') }} Site Settings</h1>
     </div>
     <div class="separator-breadcrumb border-top"></div>
     </section>

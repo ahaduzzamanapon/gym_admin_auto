@@ -37,7 +37,7 @@ class TermAndConditionAPIController extends AppBaseController
 
         $termAndConditions = $query->get();
 
-        return $this->sendResponse(TermAndConditionResource::collection($termAndConditions), 'Term And Conditions retrieved successfully');
+        return $this->sendResponse(TermAndConditionResource::collection($termAndConditions), 'Terms And Conditions retrieved successfully');
     }
 
     /**

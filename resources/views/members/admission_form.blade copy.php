@@ -83,7 +83,7 @@
 
 
 
-            <!-- Term And Conditions -->
+            <!-- Terms And Conditions -->
             <div class="mb-4">
                 <div class="row">
                     @foreach ($TermAndCondition as $key => $termAndCondition)

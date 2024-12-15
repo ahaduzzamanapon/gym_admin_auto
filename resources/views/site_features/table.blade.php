@@ -4,10 +4,10 @@
             <tr>
                 <th>Id</th>
         <th>Title</th>
-        <th>image</th>
+        <th>Image</th>
         <th>Description</th>
         <th>Created At</th>
-        <th>Updated At</th>
+        <th style="white-space: nowrap">Updated At</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>

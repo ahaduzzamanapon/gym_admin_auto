@@ -2,13 +2,13 @@
 
 {{-- Page title --}}
 @section('title')
-Schedulebooking @parent
+Schedule Booking @parent
 @stop
 
 @section('content')
    <section class="content-header">
     <div aria-label="breadcrumb" class="card-breadcrumb">
-        <h1>{{ __('Edit') }} Schedulebooking</h1>
+        <h1>{{ __('Edit') }} Schedule Booking</h1>
     </div>
     <div class="separator-breadcrumb border-top"></div>
     </section>

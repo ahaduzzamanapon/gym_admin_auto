@@ -10,7 +10,7 @@
         <th>Title</th>
         <th>Small Banner Text</th>
         <th>Big Banner Text</th>
-        <th>Fotter Text</th>
+        <th>Footer Text</th>
       
                 <th colspan="3">Action</th>
             </tr>
