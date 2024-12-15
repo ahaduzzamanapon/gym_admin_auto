@@ -66,11 +66,11 @@ body > .header .navbar {
   margin-left: 0;
   transition: margin-left 0.3s linear;
 }
-/* .left-aside .sidebar:hover
+.left-aside .sidebar:hover
 {
   margin-left: 0;
   transition: margin-left 0.3s linear;
-} */
+}
 
 .content {
   display: block;
@@ -159,8 +159,7 @@ body > .header .navbar {
 .left-aside {
   position: relative;
   top: -70px;
-  z-index: 999999999;
-  background: white;
+  z-index: 9999;
 }
 
 
