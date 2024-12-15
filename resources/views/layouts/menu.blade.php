@@ -96,7 +96,7 @@
         @if(if_can('assetsCategory'))
             <li {!! (Request::is('assetsCategories*') ? 'class="active"' : '' ) !!}>
                 <a href="{{ route('assetsCategories.index') }}">
-                    <span class="mm-text ">Assets Category</span>
+                    <span class="mm-text ">Assets Categories</span>
                 </a>
             </li>
         @endif

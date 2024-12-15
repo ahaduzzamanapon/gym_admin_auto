@@ -59,7 +59,7 @@
                 <!-- Submit Field -->
                 <div class="form-group col-sm-12">
                     {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
-                    <a href="{{ route('features.index') }}" class="btn btn-default">Cancel</a>
+                    <a href="{{ route('features.index') }}" class="btn btn-danger">Cancel</a>
                 </div>
 
 

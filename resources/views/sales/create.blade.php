@@ -39,6 +39,7 @@ Add Sale @parent
                 <div class="form-group col-md-4">
                     <label for="payment_method">Payment Method</label>
                     <select id="payment_method" name="payment_method" class="form-control" required>
+                        <option value="">Select Payment Method</option>
                         <option value="cash">Cash</option>
                         <option value="card">Card</option>
                     </select>
@@ -46,16 +47,17 @@ Add Sale @parent
                 <div class="form-group col-md-4">
                     <label for="status">Payment Status</label>
                     <select id="status" name="status" class="form-control" required>
+                        <option value="">Select Status</option>
                         <option value="pending">Pending</option>
                         <option value="completed">Completed</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="payment_note">Payment note</label>
+                    <label for="payment_note">Payment Note</label>
                     <input type="text" name="payment_note" class="form-control" required>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="payment_note">Tax (%)</label>
+                    <label for="payment_note">Vat (%)</label>
                     <input type="text" name="tax" id="tax" value="0" class="form-control" required>
                 </div>
             </div>

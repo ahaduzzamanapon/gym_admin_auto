@@ -6,7 +6,7 @@
                 <th>Item Name</th>
                 <th>Branch Name</th>
                 <th>Category</th>
-                <th>Asset for</th>
+                <th>Asset For</th>
                 <th>Item Description</th>
                 <th>Location</th>
                 <th>Status</th>

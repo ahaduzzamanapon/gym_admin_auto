@@ -9,7 +9,7 @@ Assets Categories @parent
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div aria-label="breadcrumb" class="card-breadcrumb">
-        <h1>Assets Category</h1>
+        <h1>Assets Categories</h1>
     </div>
     <div class="separator-breadcrumb border-top"></div>
 </section>

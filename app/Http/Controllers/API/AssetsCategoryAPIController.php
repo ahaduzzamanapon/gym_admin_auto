@@ -55,7 +55,7 @@ class AssetsCategoryAPIController extends AppBaseController
         /** @var AssetsCategory $assetsCategory */
         $assetsCategory = AssetsCategory::create($input);
 
-        return $this->sendResponse(new AssetsCategoryResource($assetsCategory), 'Assets Category saved successfully');
+        return $this->sendResponse(new AssetsCategoryResource($assetsCategory), 'Assets Categories saved successfully');
     }
 
     /**
@@ -72,10 +72,10 @@ class AssetsCategoryAPIController extends AppBaseController
         $assetsCategory = AssetsCategory::find($id);
 
         if (empty($assetsCategory)) {
-            return $this->sendError('Assets Category not found');
+            return $this->sendError('Assets Categories not found');
         }
 
-        return $this->sendResponse(new AssetsCategoryResource($assetsCategory), 'Assets Category retrieved successfully');
+        return $this->sendResponse(new AssetsCategoryResource($assetsCategory), 'Assets Categories retrieved successfully');
     }
 
     /**
@@ -93,7 +93,7 @@ class AssetsCategoryAPIController extends AppBaseController
         $assetsCategory = AssetsCategory::find($id);
 
         if (empty($assetsCategory)) {
-            return $this->sendError('Assets Category not found');
+            return $this->sendError('Assets Categories not found');
         }
 
         $assetsCategory->fill($request->all());
@@ -118,11 +118,11 @@ class AssetsCategoryAPIController extends AppBaseController
         $assetsCategory = AssetsCategory::find($id);
 
         if (empty($assetsCategory)) {
-            return $this->sendError('Assets Category not found');
+            return $this->sendError('Assets Categories not found');
         }
 
         $assetsCategory->delete();
 
-        return $this->sendSuccess('Assets Category deleted successfully');
+        return $this->sendSuccess('Assets Categories deleted successfully');
     }
 }

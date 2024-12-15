@@ -10,11 +10,11 @@ $packages = DB::table('packages')->get();
 <div class="row">
     <div class="form-group col-md-4">
         {!! Form::label('member_id', 'Member Name:',['class'=>'control-label']) !!}
-        {!! Form::select('member_id', $members->pluck('mem_name', 'id'), null, ['class' => 'form-control']) !!}
+        {!! Form::select('member_id', $members->pluck('mem_name', 'id')->prepend('Select Member', ''), null, ['class' => 'form-control','required'=>'required']) !!}
     </div>
     <div class="form-group col-md-4">
         {!! Form::label('package_id', 'Package Id:',['class'=>'control-label']) !!}
-        {!! Form::select('package_id', $packages->pluck('pack_name', 'id')->prepend('Select Package', '')  ,null, ['class' => 'form-control']) !!}
+        {!! Form::select('package_id', $packages->pluck('pack_name', 'id')->prepend('Select Package', '')  ,null, ['class' => 'form-control','required'=>'required']) !!}
     </div>
     <div class="form-group col-md-4">
         {!! Form::label('amount', 'Amount:',['class'=>'control-label']) !!}
@@ -27,7 +27,7 @@ $packages = DB::table('packages')->get();
         {!! Form::number('tax', null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group col-md-4">
-        {!! Form::label('coupons_id', 'Coupons code:', ['class' => 'control-label']) !!}
+        {!! Form::label('coupons_id', 'Coupon Code:', ['class' => 'control-label']) !!}
         {!! Form::text('coupons_id', null, ['class' => 'form-control', 'id' => 'coupons_id']) !!}
         <span class="text-danger" id="coupons_id_error"></span>
         <span class="text-success" id="coupons_id_success"></span>
@@ -50,12 +50,12 @@ $packages = DB::table('packages')->get();
     </div>
     <div class="form-group col-md-4">
         {!! Form::label('status', 'Status:',['class'=>'control-label']) !!}
-        {!! Form::select('status', ['1' => 'Pending','2' => 'Due','3' => 'Full Paid'], null, ['class' => 'form-control','readonly']) !!}
+        {!! Form::select('status', ['' => 'Select Status','1' => 'Pending','2' => 'Due','3' => 'Full Paid'], null, ['class' => 'form-control','readonly','required'=>'required']) !!}
     </div>
 </div>
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('purchasePackages.index') }}" class="btn btn-default">Cancel</a>
+    <a href="{{ route('purchasePackages.index') }}" class="btn btn-danger">Cancel</a>
 </div>
 
 

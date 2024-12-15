@@ -18,7 +18,13 @@ class IncomeDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'incomes.datatables_actions');
+        return $dataTable->editColumn('created_at', function ($row) {
+            return $row->created_at ? $row->created_at->format('Y-m-d H:i A') : null;
+        })
+        ->editColumn('updated_at', function ($row) {
+            return $row->updated_at ? $row->updated_at->format('Y-m-d H:i A') : null;
+        })
+        ->addColumn('action', 'incomes.datatables_actions');
     }
 
     /**

@@ -18,7 +18,6 @@ Add Meal Chart @parent
         <div class="card-body">
             <form action="{{ route('meal_plans.store')}}" method="POST">
                 @csrf
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -39,7 +38,7 @@ Add Meal Chart @parent
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Meal Name</th>
+                                        <th style="display:none">Meal Name</th>
                                         <th>Meal Time</th>
                                         <th>Food Items</th>
                                         <th>Quantity</th>
@@ -53,15 +52,15 @@ Add Meal Chart @parent
                                     @endphp
                                     @foreach ($day_array as $day)
                                         <!-- Day Row -->
-                                        <tr>
-                                            <td colspan="5" class="bg-light font-weight-bold text-center">
+                                        <tr >
+                                            <td colspan="4" class="bg-light font-weight-bold text-center">
                                                 {{ $day }}
                                             </td>
                                         </tr>
                                         <!-- Meal Time Rows -->
                                         @foreach ($meal_time as $time)
                                         <tr>
-                                            <td>
+                                            <td style="display:none">
                                                 <div class="form-group">
                                                     <input type="text" name="meal_name_f[]" value="{{ $day }}" class="form-control" readonly>
                                                 </div>

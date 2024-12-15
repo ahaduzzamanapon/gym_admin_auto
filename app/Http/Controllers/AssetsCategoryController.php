@@ -52,7 +52,7 @@ class AssetsCategoryController extends AppBaseController
         /** @var AssetsCategory $assetsCategory */
         $assetsCategory = AssetsCategory::create($input);
 
-        Flash::success('Assets Category saved successfully.');
+        Flash::success('Assets Categories saved successfully.');
 
         return redirect(route('assetsCategories.index'));
     }
@@ -70,7 +70,7 @@ class AssetsCategoryController extends AppBaseController
         $assetsCategory = AssetsCategory::find($id);
 
         if (empty($assetsCategory)) {
-            Flash::error('Assets Category not found');
+            Flash::error('Assets Categories not found');
 
             return redirect(route('assetsCategories.index'));
         }
@@ -91,7 +91,7 @@ class AssetsCategoryController extends AppBaseController
         $assetsCategory = AssetsCategory::find($id);
 
         if (empty($assetsCategory)) {
-            Flash::error('Assets Category not found');
+            Flash::error('Assets Categories not found');
 
             return redirect(route('assetsCategories.index'));
         }
@@ -113,7 +113,7 @@ class AssetsCategoryController extends AppBaseController
         $assetsCategory = AssetsCategory::find($id);
 
         if (empty($assetsCategory)) {
-            Flash::error('Assets Category not found');
+            Flash::error('Assets Categories not found');
 
             return redirect(route('assetsCategories.index'));
         }
@@ -121,7 +121,7 @@ class AssetsCategoryController extends AppBaseController
         $assetsCategory->fill($request->all());
         $assetsCategory->save();
 
-        Flash::success('Assets Category updated successfully.');
+        Flash::success('Assets Categories updated successfully.');
 
         return redirect(route('assetsCategories.index'));
     }
@@ -141,14 +141,14 @@ class AssetsCategoryController extends AppBaseController
         $assetsCategory = AssetsCategory::find($id);
 
         if (empty($assetsCategory)) {
-            Flash::error('Assets Category not found');
+            Flash::error('Assets Categories not found');
 
             return redirect(route('assetsCategories.index'));
         }
 
         $assetsCategory->delete();
 
-        Flash::success('Assets Category deleted successfully.');
+        Flash::success('Assets Categories deleted successfully.');
 
         return redirect(route('assetsCategories.index'));
     }

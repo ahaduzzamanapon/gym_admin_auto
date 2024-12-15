@@ -3,9 +3,9 @@
         <thead>
             <tr>
                 <th>Id</th>
-        <th>Member name</th>
-        <th>Package name</th>
-        <th>Coupons code</th>
+        <th>Member Name</th>
+        <th>Package Name</th>
+        <th>Coupon Code</th>
         <th>Amount</th>
         <th>Tax</th>
         <th>Coupon Amount</th>
