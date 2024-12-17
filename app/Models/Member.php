@@ -140,7 +140,6 @@ class Member extends Model
      */
     public static $rules = [
         'mem_name' => 'required',
-        'mem_father' => 'required',
         'mem_address' => 'required',
         'mem_admission_date' => 'required',
         'mem_cell' => 'required',

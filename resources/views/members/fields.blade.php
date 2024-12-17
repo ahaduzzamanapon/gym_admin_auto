@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-3 col-lg-3 col-12">
             <label for="mem_name" class="control-label">
-                Mem Name: <span class="text-danger">*</span>
+                Member Name: <span class="text-danger">*</span>
             </label>
         </div>
         <div class="col-md-9 col-lg-9 col-12">
@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-md-3 col-lg-3 col-12">
             <label for="mem_father" class="control-label">
-                Mem Father: <span class="text-danger">*</span>
+                Member Father:
             </label>
         </div>
         <div class="col-md-9 col-lg-9 col-12">
@@ -35,7 +35,7 @@
 <!-- Mem Mother Field -->
 <div class="form-group">
     <div class="row">
-        {!! Form::label('mem_mother', 'Mem Mother:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
+        {!! Form::label('mem_mother', 'Member Mother:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
             {!! Form::text('mem_mother', null, ['class' => 'form-control', 'placeholder' => 'Enter Member Mother Name']) !!}
             @error('mem_mother')
@@ -73,7 +73,7 @@
     <div class="row">
         <div class="col-md-3 col-lg-3 col-12">
             <label for="mem_address" class="control-label">
-                Mem Address: <span class="text-danger">*</span>
+                Member Address: <span class="text-danger">*</span>
             </label>
         </div>
         <div class="col-md-9 col-lg-9 col-12">
@@ -90,7 +90,7 @@
     <div class="row">
         <div class="col-md-3 col-lg-3 col-12">
             <label for="mem_admission_date" class="control-label">
-                Mem Admission Date: <span class="text-danger">*</span>
+                Member Admission Date: <span class="text-danger">*</span>
             </label>
         </div>
         <div class="col-md-3 col-lg-3 col-12">
@@ -107,7 +107,7 @@
     <div class="row">
         <div class="col-md-3 col-lg-3 col-12">
             <label for="mem_cell" class="control-label">
-                Mem Cell: <span class="text-danger">*</span>
+                Member Cell: <span class="text-danger">*</span>
             </label>
         </div>
         <div class="col-md-9 col-lg-9 col-12">
@@ -124,7 +124,7 @@
     <div class="row">
         <div class="col-md-3 col-lg-3 col-12">
             <label for="mem_email" class="control-label">
-                Mem Email: <span class="text-danger">*</span>
+                Member Email: <span class="text-danger">*</span>
             </label>
         </div>
         <div class="col-md-9 col-lg-9 col-12">
@@ -139,7 +139,7 @@
 <!-- Mem Type Field -->
 <div class="form-group">
     <div class="row">
-        {!! Form::label('mem_type', 'Mem Type:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
+        {!! Form::label('mem_type', 'Member Type:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
             {!! Form::select('mem_type', ['member' => 'Member', 'staff' => 'Staff'], null, ['class' => 'form-control']) !!}
             @error('mem_type')
@@ -152,7 +152,7 @@
 <!-- Mem punch id Field -->
 <div class="form-group">
     <div class="row">
-        {!! Form::label('punch_id', 'Mem Punch Id:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        {!! Form::label('punch_id', 'Member Punch Id:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
             {!! Form::text('punch_id', null, ['class' => 'form-control','placeholder' => 'Enter Member Punch Id']) !!}
         </div>
@@ -161,7 +161,7 @@
 <!-- Mem Img Url Field -->
 <div class="form-group">
     <div class="row">
-        {!! Form::label('mem_img_url', 'Mem Img Url:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        {!! Form::label('mem_img_url', 'Member Img Url:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
             {!! Form::file('mem_img_url', null, ['class' => 'form-control']) !!}
         </div>

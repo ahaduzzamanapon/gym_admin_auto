@@ -22,10 +22,17 @@
 </tr>
 
 
-<tr>
-    <th scopre="row">{!! Form::label('pack_status', 'Pack Status:') !!}</th>
-    <td>{{ $package->pack_status }}</td>
+<tr>     
+    <th scope="row">{!! Form::label('pack_status', 'Pack Status:') !!}</th>     
+    <td>
+        @if ($package->pack_status == 1)
+            Active
+        @elseif ($package->pack_status == 2)
+            Inactive
+        @endif
+    </td> 
 </tr>
+
 
 
 <tr>

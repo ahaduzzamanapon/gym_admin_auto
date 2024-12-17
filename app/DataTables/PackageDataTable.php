@@ -18,8 +18,13 @@ class PackageDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'packages.datatables_actions');
+        return $dataTable
+            ->editColumn('pack_status', function ($package) {
+                return $package->pack_status == 1 ? 'Active' : 'Inactive';
+            })
+            ->addColumn('action', 'packages.datatables_actions');
     }
+
 
     /**
      * Get query source of dataTable.
