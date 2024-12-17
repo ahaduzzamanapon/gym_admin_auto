@@ -72,6 +72,15 @@
             </a>
         </li>
         @endif
+
+        @if(if_can('requisition_list'))
+        <li {!! (Request::is('requisitions*') ? 'class="active"' : '' ) !!}>
+            <a href="{{ route('requisitions.index') }}">
+                <span class="mm-text ">Requisitions</span>
+            </a>
+        </li>
+        @endif
+
         @if(if_can('manage_product'))
         <li {!! (Request::is('sales') ? 'class="active"' : '' ) !!}>
             <a href="{{ route('sales.index') }}">
