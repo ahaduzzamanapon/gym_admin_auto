@@ -34,12 +34,15 @@ class PackageDataTable extends DataTable
      */
     public function query(Package $model)
     {
-        return $model->newQuery()->leftJoin('multi_branchs', 'packages.branch_id', '=', 'multi_branchs.id')
-                                ->select([
-                                    'packages.*', // Select all member columns
-                                    'multi_branchs.branch_name'
-                                ]);
+        return $model->newQuery()
+                    ->leftJoin('multi_branchs', 'packages.branch_id', '=', 'multi_branchs.id')
+                    ->select([
+                        'packages.*', // Select all columns from the packages table
+                        'multi_branchs.branch_name as branch_name' // Alias branch_name
+                    ]);
     }
+    
+    
 
     /**
      * Optional method if you want to use html builder.
@@ -74,12 +77,10 @@ class PackageDataTable extends DataTable
         return [
             'id',
             'pack_name',
-            'branch_name',
+            'branch_name'=> ['searchable' => false],
             'pack_admission_fee',
             'pack_duration',
             'pack_status'
-            // 'created_at' => ['searchable' => false],
-            // 'updated_at' => ['searchable' => false]
         ];
     }
 

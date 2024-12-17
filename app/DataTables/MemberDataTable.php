@@ -62,9 +62,8 @@ class MemberDataTable extends DataTable
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
-                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
+                    ['extend' => 'excel', 'className' => 'btn btn-default btn-sm no-corner',],
+                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
                 ],
         ]);
     }
@@ -79,10 +78,10 @@ class MemberDataTable extends DataTable
         return [
             'member_unique_id' => ['title' => 'Member ID'],
             'mem_name' => ['title' => 'Name'],
+            'branch_name' => ['title' => 'Branch Name', 'searchable' => false],
             'group_name' => ['title' => 'Role'],
             'mem_father' => ['title' => 'Father Name'],
             'mem_address'  => ['title' => 'Address'],
-            // 'branch_name' => ['title' => 'Branch'],
             'mem_cell'     => ['title' => 'Contact'],
             'mem_email'     => ['title' => 'Email'],
         ];

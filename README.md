@@ -16,3 +16,4 @@ A simple admin panel for Laravel 9.x
 You can configure the admin panel by publishing the configuration file:
 
 # gym_admin_auto
+git status
