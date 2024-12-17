@@ -26,7 +26,7 @@ class SchedulebookingController extends AppBaseController
             $schedulebookings = Schedulebooking::select('schedulebookings.*','schedulebookings.id as schedulebooking_id', 'members.mem_name as mem_name', 'assets_managements.item_name as item_name')
             ->join('members', 'members.id', '=', 'schedulebookings.member_id')
             ->join('assets_managements', 'assets_managements.id', '=', 'schedulebookings.asset_id')
-            ->paginate(10);
+            ->get();
         }else{
             $schedulebookings = Schedulebooking::select('schedulebookings.*','schedulebookings.id as schedulebooking_id', 'members.mem_name as mem_name', 'assets_managements.item_name as item_name')
             ->join('members', 'members.id', '=', 'schedulebookings.member_id')

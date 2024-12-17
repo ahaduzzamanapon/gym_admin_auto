@@ -33,10 +33,10 @@ Notices @parent
             @include('notices.table')
         </div>
     </div>
-    <div class="text-center">
+    {{--<div class="text-center">
         
         @include('adminlte-templates::common.paginate', ['records' => $notices])
 
-    </div>
+    </div>--}}
 </div>
 @endsection

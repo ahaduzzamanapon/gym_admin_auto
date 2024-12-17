@@ -32,10 +32,10 @@ Terms And Conditions @parent
             @include('term_and_conditions.table')
         </div>
     </div>
-    <div class="text-center">
+    {{--<div class="text-center">
         
         @include('adminlte-templates::common.paginate', ['records' => $termAndConditions])
 
-    </div>
+    </div>--}}
 </div>
 @endsection

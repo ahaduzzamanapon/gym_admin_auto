@@ -22,7 +22,7 @@ class MultiBranchController extends AppBaseController
     public function index(Request $request)
     {
         /** @var MultiBranch $multiBranches */
-        $multiBranches = MultiBranch::paginate(10);
+        $multiBranches = MultiBranch::all();
 
         return view('multi_branches.index')
             ->with('multiBranches', $multiBranches);

@@ -22,7 +22,7 @@ class TermAndConditionController extends AppBaseController
     public function index(Request $request)
     {
         /** @var TermAndCondition $termAndConditions */
-        $termAndConditions = TermAndCondition::paginate(10);
+        $termAndConditions = TermAndCondition::all();
 
         return view('term_and_conditions.index')
             ->with('termAndConditions', $termAndConditions);

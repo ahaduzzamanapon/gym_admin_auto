@@ -25,7 +25,7 @@ class AssetsManagementController extends AppBaseController
         /** @var AssetsManagement $assetsManagements */
         $assetsManagements = AssetsManagement::join('multi_branchs', 'assets_managements.branch_id', '=', 'multi_branchs.id')
         ->select('assets_managements.*', 'multi_branchs.branch_name as branch_name')
-        ->paginate(10);
+        ->get();
 
         return view('assets_managements.index')
             ->with('assetsManagements', $assetsManagements);
