@@ -46,7 +46,7 @@ Account Report @parent
                             <label for="">To date</label>
                             <input type="date" name="to_date" id="to_date" class="form-control">
                         </div>
-                        <div class="form-group col-md-3 d-none">
+                        <div class="form-group col-md-3">
                             <label for="">Type</label>
                             <select name="member_type" id="member_type" class="form-control" onchange="get_member()">
                                 <option value="">Please Select Member Type</option>
@@ -85,6 +85,8 @@ Account Report @parent
                                     <div class="row p-2" style="display: flex;flex-wrap: wrap;gap: 8px;">
                                         <a href="#" onclick="fetchAccountReportIncome('daily')" class="btn btn-primary">Daily Income</a>
                                         <a href="#" onclick="fetchAccountReportIncome('con')" class="btn btn-primary">Date Between Income</a>
+                                        <a href="#" onclick="fetchAccountReportIncome('daily','member')" class="btn btn-primary">Daily Income Member Wise</a>
+                                        <a href="#" onclick="fetchAccountReportIncome('con','member')" class="btn btn-primary">Date Between Income Member Wise</a>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -99,7 +101,7 @@ Account Report @parent
                     </div>
 
                 </div>
-                <div class="col-md-4 d-none">
+                <div class="col-md-4">
                     <div class="box_m">
                         <table class="table table-bordered">
                             <thead>
@@ -175,7 +177,7 @@ Account Report @parent
         });
     }
 
-    function fetchAccountReportIncome(status) {
+    function fetchAccountReportIncome(status,type=null) {
         const fromDate = $('#from_date').val();
         let toDate = $('#to_date').val();
         
@@ -202,7 +204,16 @@ Account Report @parent
         //     return;
         // }
 
-        // const selectedMemberIds = get_checked_member_id();
+        memberIds='';
+        if (type == 'member') {
+             memberIds = get_checked_member_id();
+            if (memberIds.length === 0) {
+                alert('Please select member');
+                return;
+            }
+        }else{
+             memberIds = [];
+        }
 
         $.ajax({
             url: "{{ route('account_report.getAccountReportIncome') }}",
@@ -213,6 +224,7 @@ Account Report @parent
                 to_date: toDate,
                 branch_id: branchId,
                 status: status,
+                selectedMemberIds: memberIds,
             },
             dataType: 'json',
         }).done(function(response) {

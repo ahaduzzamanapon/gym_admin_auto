@@ -18,6 +18,7 @@ class CreateRequisitionsTable extends Migration
             $table->string('Title');
             $table->integer('member_id');
             $table->integer('product_id');
+            $table->integer('qty');
             $table->integer('status');
             $table->timestamps();
         });

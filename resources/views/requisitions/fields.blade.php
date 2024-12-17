@@ -1,3 +1,19 @@
+
+@php
+if(if_can('show_all_data')){
+    if(if_can('see_all_branch')){
+        $members = DB::table('members')->get();
+    }else{
+        $members = DB::table('members')->where('branch_id', get_branch() )->get();
+    }
+}else {
+    $members = DB::table('members')->where('id', Auth::user()->member_id)->get();
+}
+$products = DB::table('products')->get();
+@endphp
+
+
+
 <!-- Title Field -->
 <div class="form-group">
     <div class="row">
@@ -9,15 +25,7 @@
 </div>
 
 
-@php
-if(if_can('show_all_data')){
-    $members = DB::table('members')->get();
-}else {
-    $members = DB::table('members')->where('id', Auth::user()->member_id)->get();
 
-}
-$products = DB::table('products')->get();
-@endphp
 
 <!-- Member name Field -->
 <div class="form-group">
@@ -36,20 +44,31 @@ $products = DB::table('products')->get();
 <!-- Product Id Field -->
 <div class="form-group">
     <div class="row">
-        {!! Form::label('product_id', 'Product Id:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        {!! Form::label('product_id', 'Product Name:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
             {!! Form::select('product_id', $products->pluck('product_name', 'id')->prepend('Select Product', ''), null, ['class' => 'form-control']) !!}
         </div>
     </div>
 </div>
+<!-- Title Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('qty', 'Quantity:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::number('qty', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+
 
 
 <!-- Status Field -->
+
 <div class="form-group" style="display: @if(if_can('show_all_data')) block @else none @endif;">
     <div class="row">
         {!! Form::label('status', 'Status:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::select('status', ['1' => 'Pending', '2' => 'Approved', '3' => 'Rejected'], null, ['class' => 'form-control']) !!}
+            {!! Form::select('status', ['1' => 'Pending', '2' => 'Approved', '3' => 'Rejected', '4' => 'Delivered'], null, ['class' => 'form-control']) !!}
             
         </div>
     </div>

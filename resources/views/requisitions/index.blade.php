@@ -32,10 +32,5 @@ Requisitions @parent
             @include('requisitions.table')
         </div>
     </div>
-    <div class="text-center">
-        
-        @include('adminlte-templates::common.paginate', ['records' => $requisitions])
-
-    </div>
 </div>
 @endsection

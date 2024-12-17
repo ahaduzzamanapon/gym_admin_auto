@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateRequisitionRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Requisition;
 use Illuminate\Http\Request;
+use App\Models\Product;
+
 use Flash;
 use Response;
 
@@ -23,16 +25,19 @@ class RequisitionController extends AppBaseController
     {
         /** @var Requisition $requisitions */
         if(if_can('show_all_data')){
-            $requisitions = Requisition::select('requisitions.*', 'products.product_name', 'members.mem_name as member_name')
+            $query = Requisition::select('requisitions.*', 'products.product_name', 'members.mem_name as member_name')
                 ->join('products', 'products.id', '=', 'requisitions.product_id')
-                ->join('members', 'members.id', '=', 'requisitions.member_id')
-                ->paginate(10);
+                ->join('members', 'members.id', '=', 'requisitions.member_id');
+            if (!if_can('see_all_branch')) {
+                $query->where('members.branch_id', get_branch());
+            }
+            $requisitions = $query->get();
         }else{
             $requisitions = Requisition::select('requisitions.*', 'products.product_name', 'members.mem_name as member_name')
                 ->join('products', 'products.id', '=', 'requisitions.product_id')
                 ->join('members', 'members.id', '=', 'requisitions.member_id')
                 ->where('members.id', auth()->user()->member_id)
-                ->paginate(10);
+                ->get();
         }
 
         return view('requisitions.index')
@@ -133,6 +138,15 @@ class RequisitionController extends AppBaseController
 
         $requisition->fill($request->all());
         $requisition->save();
+
+       // dd();
+
+        if ($request->all()['status'] == 4) {
+            $requisition = Requisition::find($id);
+            $product =Product::find($requisition->product_id);
+            $product->product_qty = $product->product_qty - $requisition->qty;
+            $product->save();
+        }
 
         Flash::success('Requisition updated successfully.');
 
