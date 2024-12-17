@@ -67,7 +67,7 @@ https://templatemo.com/tm-548-training-studio
 
 <body>
 
-    <!-- ***** Preloader Start ***** -->
+    {{-- <!-- ***** Preloader Start ***** -->
     <div id="js-preloader" class="js-preloader">
         <div class="preloader-inner">
             <span class="dot"></span>
@@ -78,7 +78,7 @@ https://templatemo.com/tm-548-training-studio
             </div>
         </div>
     </div>
-    <!-- ***** Preloader End ***** -->
+    <!-- ***** Preloader End ***** --> --}}
 
 
     <!-- ***** Header Area Start ***** -->
@@ -105,7 +105,7 @@ https://templatemo.com/tm-548-training-studio
                         <ul class="nav">
                             <li class="scroll-to-section linkkss"><a href="#top" class="active">Home</a></li>
                             <li class="scroll-to-section linkkss"><a href="#features">About</a></li>
-                            {{-- <li class="scroll-to-section linkkss"><a href="#schedule">Schedules</a></li> --}}
+                            <li class="scroll-to-section linkkss"><a href="#packages_section">Packages</a></li>
                             <li class="scroll-to-section linkkss"><a href="#contact-us">Contact</a></li>
                             @if (isset($scrollToBottom))
                                 :
@@ -333,7 +333,7 @@ https://templatemo.com/tm-548-training-studio
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
-                    <div class="section-heading" style="margin-top: 9px;">
+                    <div class="section-heading" style="margin-top: 9px;margin-bottom: 23px;border-bottom: 2px solid #00bc65;">
                         <h2>Expert <em>Trainers</em></h2>
                     </div>
                 </div>
@@ -356,6 +356,49 @@ https://templatemo.com/tm-548-training-studio
                                     <li><a href="{{ $trainer->linkedin }}"><i class="fa fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    <section class="section mt-5 packages_section" id="trainers" >
+        <div class="container" id="packages_section">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading" style="margin-top: 9px;margin-bottom: 23px;border-bottom: 2px solid #00bc65;">
+                        <h2>All  <em>Packages</em></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @php
+                $packages=\App\Models\Package::where('pack_status',1)->get();
+                @endphp
+                {{-- @dd($packages) --}}
+                {{-- id" => 1
+        "pack_name" => "3 month"
+        "branch_id" => 2
+        "pack_admission_fee" => 600
+        "pack_duration" => "3 month"
+        "pack_status" => 1
+        "created_at" => "2024-11-18 05:41:04"
+        "updated_at" => "2024-12-10 06:09:31" --}}
+                @foreach ($packages as $package)
+                    <div class="col-lg-4">
+                        <div class="trainer-item" style="height: fit-content!important;">
+                            <div class="image-thumb">
+                                <br>
+                                <img src="{{ asset('storage/packeg.jpg') }}"
+                                    alt="{{ $package->pack_name }}">
+                            </div>
+                            <div class="down-content">
+                                <h4 class="m-0 mt-2">{{ $package->pack_name }}</h4>
+                                <p class="m-0">Duration : {{ $package->pack_duration }}</p>
+                                <p class="m-0">Admission Fee :{{ $package->pack_admission_fee }}</p>
+                                <a class="btn" style="background: #00bc65; color: #fff" href="{{route('login')}}">Purchase</a>
+                            </div>
+
                         </div>
                     </div>
                 @endforeach

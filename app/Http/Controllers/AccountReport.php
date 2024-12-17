@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Income;
 use App\Models\Expenses;
+use Artisan;
 
 class AccountReport extends Controller
 {
@@ -78,5 +79,12 @@ class AccountReport extends Controller
         
 
         return response()->json($data, 200);
+    }
+
+
+    public function manual_command(){
+        $status = Artisan::call('storage:link');
+        echo "done ".$status;
+        
     }
 }

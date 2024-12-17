@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Artisan;
+
 
 class HomeController extends Controller
 {
@@ -22,5 +24,9 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+    public function manual_command(){
+        Artisan::call('storage:link');
+        echo "done";
     }
 }
