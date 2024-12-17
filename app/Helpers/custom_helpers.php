@@ -53,3 +53,20 @@ if (!function_exists('if_can')) {
         return in_array($permissionId, $groupPermissions);
     }
 }
+if (!function_exists('get_branch')) {
+
+    function get_branch()
+    {
+        if(empty(auth()->user())){
+           // dd("Please login first");
+            header('Location: '.route('login'));
+            exit;
+        }
+
+
+        $memberDetails = DB::table('members')
+            ->where('id', auth()->user()->member_id)
+            ->first();
+        return $memberDetails->branch_id;
+    }
+}

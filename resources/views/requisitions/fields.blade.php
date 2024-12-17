@@ -16,7 +16,6 @@ if(if_can('show_all_data')){
     $members = DB::table('members')->where('id', Auth::user()->member_id)->get();
 
 }
-
 $products = DB::table('products')->get();
 @endphp
 

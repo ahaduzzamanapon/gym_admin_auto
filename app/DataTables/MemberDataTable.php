@@ -34,16 +34,18 @@ class MemberDataTable extends DataTable
     public function query(Member $model)
     {
         // Join with groups table and select relevant columns
-        return $model->newQuery()
+        $query = $model->newQuery()
             ->leftJoin('users', 'members.id', '=', 'users.member_id')
             ->leftJoin('groups', 'users.group_id', '=', 'groups.id')
-            ->leftJoin('multi_branchs', 'members.branch_id', '=', 'multi_branchs.id')
-            ->select([
-                'members.*', // Select all member columns
-                'groups.name as group_name', // Include the group name
-                'multi_branchs.branch_name'
-
-            ]);
+            ->leftJoin('multi_branchs', 'members.branch_id', '=', 'multi_branchs.id');
+        if (!if_can('see_all_branch')) {
+            $query->where('members.branch_id', get_branch());
+        }
+        return $query->select([
+            'members.*',
+            'groups.name as group_name',
+            'multi_branchs.branch_name'
+        ]);
     }
 
     /**
