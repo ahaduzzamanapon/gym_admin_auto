@@ -10,6 +10,9 @@ use App\Models\Member;
 use App\Models\AdmissionQuestions;
 use App\Models\SiteSetting;
 use App\Models\TermAndCondition;
+use App\Models\MultiBranch;
+use App\Models\Healthmetrics;
+
 
 use App\Models\User;
 use Flash;
@@ -197,9 +200,7 @@ class MemberController extends AppBaseController
             'email' =>                   $input['mem_email'],
             'group_id' =>                    $input['group_id'],
         ]);
-
         Flash::success('Member updated successfully.');
-
         return redirect(route('members.index'));
     }
 
@@ -323,8 +324,35 @@ class MemberController extends AppBaseController
                 $status = false;
             }
         }
-
+        if ($status == true) {
+            $data_helth=[
+                'member_id'=> $member->id,
+                'measurement_date'=> date('Y-m-d'),
+                'weight'=> $request->weight,
+                'height'=> $request->height,
+                'bmi'=> $request->bmi,
+                'body_fat_percentage'=> '',
+                'muscle_mass'=> '',
+                'hydration_level'=> '',
+                'chest'=> '',
+                'waist'=> $request->waist,
+                'hips'=> '',
+                'thighs'=> '',
+                'arms'=> '',
+                'forearms'=> '',
+                'neck'=> '',
+                'shoulders'=> '',
+                'calves'=> '',
+                'resting_heart_rate'=> $request->pulse_rate,
+            ];
+            Healthmetrics::create($data_helth);
+        }
         return response()->json(['status' =>$status, 'massage' =>$massage]);
     }
-
+    public function getBranches()
+    {
+        $branches = MultiBranch::pluck('branch_name'); // Adjust table/model if necessary
+        return response()->json($branches);
+    }
+    
 }

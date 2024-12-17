@@ -161,6 +161,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('account_report/getAccountReportExpense', [AccountReport::class, 'getAccountReportExpense'])->name('account_report.getAccountReportExpense');
         Route::get('/manual_command', [AccountReport::class, 'manual_command'])->name('manual_command');
 
+        //member
+        Route::get('get-branches', [MemberController::class, 'getBranches']);
 
 });
 

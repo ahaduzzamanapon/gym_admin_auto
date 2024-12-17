@@ -6,6 +6,18 @@ Edit Meal Chart @parent
 @stop
 
 @section('content')
+<style>
+    .meal-time-row {
+      display: none; /* Hide meal-time rows initially */
+    }
+    .expandable-day {
+      cursor: pointer;
+    }
+    .rotate {
+        transform: rotate(90deg); /* Rotate the arrow icon */
+        transition: transform 0.3s ease-in-out; /* Smooth transition */
+    }
+</style>
 <section class="content-header">
     <div aria-label="breadcrumb" class="card-breadcrumb">
         <h1>Edit Meal Chart</h1>
@@ -24,7 +36,7 @@ Edit Meal Chart @parent
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Meal Name</label>
-                            <input type="text" name="meal_name" value="{{ $mealPlan->meal_name }}" class="form-control" placeholder="Enter customer name">
+                            <input type="text" name="meal_name" value="{{ $mealPlan->meal_name }}" class="form-control" placeholder="Enter meal name">
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -51,51 +63,50 @@ Edit Meal Chart @parent
                                     @php
                                         $day_array = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
                                         $meal_time = ['Breakfast', 'Lunch', 'Snack', 'Dinner'];
-                                    $sl=0;
+                                        $sl = 0;
                                     @endphp
                                     @foreach ($day_array as $day)
                                         <!-- Day Row -->
-                                        <tr>
-                                            <td colspan="5" class="bg-light font-weight-bold text-center">
-                                                {{ $day }}
+                                        <tr class="expandable-day">
+                                            <td colspan="5" class="font-weight-bold">
+                                                {{ $day }} <span class="navigation"><i class="im im-icon-Arrow-Forward2 fs-20"></i></span>
                                             </td>
                                         </tr>
                                         <!-- Meal Time Rows -->
                                         @foreach ($meal_time as $time)
-                                        <tr>
-                                            <td>
-                                                <div class="form-group">
-                                                    <input type="text" name="meal_name_f[]" value="{{$foodplans[$sl]->meal_name}}" class="form-control" readonly>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group">
-                                                    <input type="text" name="meal_time[]" value="{{ $foodplans[$sl]->meal_time }}" class="form-control" readonly>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group">
-                                                    <input type="text" name="food_items[]" value="{{ $foodplans[$sl]->food_items }}" class="form-control" placeholder="Enter food items">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group">
-                                                    <input type="number" name="quantity[]" value="{{ $foodplans[$sl]->quantity }}" class="form-control" placeholder="Enter quantity">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group">
-                                                    <input type="number" name="calories[]" value="{{ $foodplans[$sl]->calories }}" class="form-control" placeholder="Enter calories">
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        @php
-                                            $sl++;
-                                        @endphp
+                                            <tr class="meal-time-row">
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input type="text" name="meal_name_f[]" value="{{ $foodplans[$sl]->meal_name }}" class="form-control" readonly>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input type="text" name="meal_time[]" value="{{ $foodplans[$sl]->meal_time }}" class="form-control" readonly>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input type="text" name="food_items[]" value="{{ $foodplans[$sl]->food_items }}" class="form-control" placeholder="Enter food items">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input type="number" name="quantity[]" value="{{ $foodplans[$sl]->quantity }}" class="form-control" placeholder="Enter quantity">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input type="number" name="calories[]" value="{{ $foodplans[$sl]->calories }}" class="form-control" placeholder="Enter calories">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @php
+                                                $sl++;
+                                            @endphp
                                         @endforeach
                                     @endforeach
                                 </tbody>
-                                
                             </table>
                         </div>
                     </div>
@@ -108,4 +119,18 @@ Edit Meal Chart @parent
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+      $('.expandable-day').on('click', function() {
+        $(this).nextUntil('.expandable-day').toggle(); 
+        var arrowIcon = $(this).find('.navigation i');
+        if (arrowIcon.hasClass('im-icon-Arrow-Forward2')) {
+            arrowIcon.removeClass('im-icon-Arrow-Forward2').addClass('im-icon-Arrow-Down2').toggleClass('rotate');
+        } else {
+            arrowIcon.removeClass('im-icon-Arrow-Down2').addClass('im-icon-Arrow-Forward2').toggleClass('rotate');
+        }
+      });
+    });
+</script>
 @endsection
