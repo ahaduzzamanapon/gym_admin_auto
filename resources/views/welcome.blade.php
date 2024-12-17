@@ -395,7 +395,7 @@ https://templatemo.com/tm-548-training-studio
                             <div class="down-content">
                                 <h4 class="m-0 mt-2">{{ $package->pack_name }}</h4>
                                 <p class="m-0">Duration : {{ $package->pack_duration }}</p>
-                                <p class="m-0">Admission Fee :{{ $package->pack_admission_fee }}</p>
+                                <p class="m-0">Package Fee :{{ $package->pack_admission_fee }}</p>
                                 <a class="btn" style="background: #00bc65; color: #fff" href="{{route('login')}}">Purchase</a>
                             </div>
 
