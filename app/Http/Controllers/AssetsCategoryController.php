@@ -22,7 +22,7 @@ class AssetsCategoryController extends AppBaseController
     public function index(Request $request)
     {
         /** @var AssetsCategory $assetsCategories */
-        $assetsCategories = AssetsCategory::paginate(10);
+        $assetsCategories = AssetsCategory::all();
 
         return view('assets_categories.index')
             ->with('assetsCategories', $assetsCategories);

@@ -1,4 +1,15 @@
 <div class="table-responsive">
+    <style>
+        .pagination {
+            justify-content: flex-end;
+        }
+        .dataTables_filter {
+            text-align: -webkit-right;
+        }
+        .dataTables_wrapper {
+            overflow-x:  hidden;
+        }
+    </style>
     <table class="table" id="assetsCategories-table">
         <thead>
             <tr>
@@ -7,7 +18,7 @@
         <th>Description</th>
         <th>Created At</th>
         <th>Updated At</th>
-                <th colspan="3">Action</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -33,3 +44,25 @@
         </tbody>
     </table>
 </div>
+
+@section('footer_scripts')
+
+<!-- Datatables -->
+<script src="{{ asset('vendors/datatables/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('vendors/datatables/js/dataTables.bootstrap4.min.js') }}"></script>   
+<script>
+    $(document).ready(function() {
+        let table = $('.table').DataTable({
+            searching: true,
+            paging: true,
+            lengthChange: true,
+            pageLength: 10,
+            info: true,
+            responsive: true,
+            export: true,
+        });
+        table.search('').draw();
+    });
+</script>
+@endsection
+
