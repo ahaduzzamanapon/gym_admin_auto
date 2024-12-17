@@ -79,6 +79,7 @@ class PurchasePackageController extends AppBaseController
         $income=new Income();
         $income->title=$title;
         $income->branch_id=$member_details->branch_id;
+        $income->member_id=$member_details->id;
         $income->amount=$purchasePackages_data->pay_amount;
         $income->description=$description;
         $income->save();

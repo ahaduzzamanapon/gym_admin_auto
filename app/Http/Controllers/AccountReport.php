@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Income;
 use App\Models\Expenses;
+use App\Models\Member;
 use Artisan;
 
 class AccountReport extends Controller
@@ -19,15 +20,23 @@ class AccountReport extends Controller
         $to_date=$request->input('to_date');
         $branch_id=$request->input('branch_id');
         $status=$request->input('status');
-        if ($status=='con') {
+        $selectedMemberIds=$request->input('selectedMemberIds');
+        if (!empty($selectedMemberIds)) {
+            $selectedMembers = Member::whereIn('id', $selectedMemberIds)->pluck('id')->toArray();
+        }
+        // dd($selectedMembers);
+
+        if ($status == 'con') {
             $title='Income report from '.$from_date.' to '.$to_date;
         }else{
             $title='Income report for '.$from_date;
         }
-
         $incomeData = Income::join('multi_branchs', 'incomes.branch_id', '=', 'multi_branchs.id')
             ->whereDate('incomes.created_at', '>=', $from_date)
             ->whereDate('incomes.created_at', '<=', $to_date);
+            if ($selectedMemberIds) {
+                $incomeData->whereIn('incomes.member_id', $selectedMembers);
+            }
             
         if ($branch_id) {
             $incomeData->where('multi_branchs.id', $branch_id);

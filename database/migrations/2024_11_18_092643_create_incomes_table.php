@@ -17,6 +17,7 @@ class CreateIncomesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->integer('branch_id');
+            $table->integer('member_id');
             $table->integer('amount');
             $table->text('description');
             $table->timestamps();

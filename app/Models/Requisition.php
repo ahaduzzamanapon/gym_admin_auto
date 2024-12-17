@@ -26,6 +26,7 @@ class Requisition extends Model
         'Title',
         'member_id',
         'product_id',
+        'qty',
         'status'
     ];
 
@@ -50,7 +51,8 @@ class Requisition extends Model
     public static $rules = [
         'Title' => 'required',
         'member_id' => 'required',
-        'product_id' => 'required'
+        'product_id' => 'required',
+        'qty' => 'required'
     ];
 
     

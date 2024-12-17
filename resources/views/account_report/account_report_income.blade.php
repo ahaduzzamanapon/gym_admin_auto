@@ -47,6 +47,8 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php $total=0; @endphp
+                            @if(isset($incomeData) && count($incomeData)>0)
                             @foreach ($incomeData as $key => $attendence)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
@@ -56,8 +58,20 @@
                                     <td>{{ $attendence->description }}</td>
                                     <td>{{ $attendence->created_at }}</td>
                                 </tr>
+                                @php $total+=$attendence->amount; @endphp
                             @endforeach
+                            @else
+                            <tr>
+                                <td colspan="6">No Data Found</td>
+                            </tr>
+                            @endif
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3">Total</td>
+                                <td colspan="1">{{$total}}</td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
