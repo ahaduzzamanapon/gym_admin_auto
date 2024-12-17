@@ -22,7 +22,7 @@ class AdmissionQuestionsController extends AppBaseController
     public function index(Request $request)
     {
         /** @var AdmissionQuestions $admissionQuestions */
-        $admissionQuestions = AdmissionQuestions::paginate(10);
+        $admissionQuestions = AdmissionQuestions::all();
 
         return view('admission_questions.index')
             ->with('admissionQuestions', $admissionQuestions);

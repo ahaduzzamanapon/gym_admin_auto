@@ -22,7 +22,7 @@ class WorkoutCategoryController extends AppBaseController
     public function index(Request $request)
     {
         /** @var WorkoutCategory $workoutCategories */
-        $workoutCategories = WorkoutCategory::paginate(10);
+        $workoutCategories = WorkoutCategory::all();
 
         return view('workout_categories.index')
             ->with('workoutCategories', $workoutCategories);

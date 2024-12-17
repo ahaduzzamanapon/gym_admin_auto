@@ -42,7 +42,7 @@ Dashboard @parent
 
         <div class="col-md-6 col-xl-3 col-12 mb-20">
             <div class="  bg-white dashboard-col pl-15 pb-15 pt-15">
-                <i class="im im-icon-Administrator im-icon-set float-right bg-primary"></i>
+                <i class="im im-icon-Business-Mens im-icon-set float-right bg-primary"></i>
                 <h3>{{ $total ? $total : 0 }}</h3>
                 <p>Total Members</p>
                 <!-- <div class="progress meter mr-15">
@@ -55,21 +55,21 @@ Dashboard @parent
         </div>
         <div class="col-md-6 col-xl-3 col-12  mb-20">
             <div class="bg-white dashboard-col pl-15 pb-15 pt-15">
-                <i class="im im-icon-Business-Mens im-icon-set float-right bg-success"></i>
+                <i class="im im-icon-Checked-User im-icon-set float-right bg-success"></i>
                 <h3>{{ $active ? $active : 0 }}</h3>
                 <p class="text">Active Members</p>
             </div>
         </div>
         <div class="col-md-6 col-xl-3 col-12  mb-20">
             <div class="bg-white dashboard-col pl-15 pb-15 pt-15">
-                <i class="im im-icon-Business-ManWoman im-icon-set float-right bg-primary"></i>
+                <i class="im im-icon-Lock-User im-icon-set float-right bg-primary"></i>
                 <h3>{{ $total - $active }}</h3>
                 <p class="text">Inactive Members</p>
             </div>
         </div>
         <div class="col-md-6 col-xl-3 col-12  mb-20">
             <div class="bg-white dashboard-col pl-15 pb-15 pt-15">
-                <i class="im im-icon-Female-2 im-icon-set float-right bg-success"></i>
+                <i class="im im-icon-Male im-icon-set float-right bg-success"></i>
                 <h3>{{ $gender->male }}</h3>
                 <p class="text">Male Members</p>
             </div>
@@ -110,7 +110,7 @@ Dashboard @parent
 
         <div class="col-md-6 col-xl-3 col-12 mb-20">
             <div class="  bg-white dashboard-col pl-15 pb-15 pt-15">
-                <i class="im im-icon-Add-Cart im-icon-set float-right bg-primary"></i>
+                <i class="im im-icon-Money-Bag im-icon-set float-right bg-primary"></i>
                 <h3>{{ $income->amount ? $income->amount : 0 }}</h3>
                 <p>Total Incomes</p>
                 <!-- <div class="progress meter mr-15">
@@ -123,7 +123,7 @@ Dashboard @parent
         </div>
         <div class="col-md-6 col-xl-3 col-12  mb-20">
             <div class="bg-white dashboard-col pl-15 pb-15 pt-15">
-                <i class="im im-icon-Explode im-icon-set float-right bg-success"></i>
+                <i class="im im-icon-Money-2 im-icon-set float-right bg-success"></i>
                 <h3>{{ $expenses->amount ? $expenses->amount : 0 }}</h3>
                 <p class="text">Total expenses</p>
             </div>
@@ -131,7 +131,7 @@ Dashboard @parent
 
         <div class="col-md-6 col-xl-3 col-12  mb-20">
             <div class="bg-white dashboard-col pl-15 pb-15 pt-15">
-                <i class="im im-icon-Eye-Scan im-icon-set float-right bg-success"></i>
+                <i class="im im-icon-Receipt-3 im-icon-set float-right bg-success"></i>
                 <h3>{{ $due->amount ? $due->amount : 0 }}</h3>
                 <p class="text">Total Due</p>
             </div>
@@ -139,14 +139,14 @@ Dashboard @parent
 
         <div class="col-md-6 col-xl-3 col-12  mb-20">
             <div class="bg-white dashboard-col pl-15 pb-15 pt-15">
-                <i class="im im-icon-Add-Cart im-icon-set float-right bg-primary"></i>
+                <i class="im im-icon-Coin im-icon-set float-right bg-primary"></i>
                 <h3>{{ $daily_inc->amount ? $daily_inc->amount : 0 }}</h3>
                 <p class="text">Daily Incomes</p>
             </div>
         </div>
         <div class="col-md-6 col-xl-3 col-12  mb-20">
             <div class="bg-white dashboard-col pl-15 pb-15 pt-15">
-                <i class="im im-icon-Explode im-icon-set float-right bg-success"></i>
+                <i class="im im-icon-Dollar-Sign2 im-icon-set float-right bg-success"></i>
                 <h3>{{ $daily_exp->amount ? $daily_exp->amount : 0 }}</h3>
                 <p class="text">Daily Expenses</p>
             </div>

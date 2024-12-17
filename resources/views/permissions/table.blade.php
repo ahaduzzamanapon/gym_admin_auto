@@ -1,4 +1,5 @@
 <div class="table-responsive">
+    
     <table class="table" id="permissions-table">
         <thead>
             <tr>

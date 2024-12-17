@@ -32,10 +32,10 @@ Multi Branches @parent
             @include('multi_branches.table')
         </div>
     </div>
-    <div class="text-center">
+    {{--<div class="text-center">
         
         @include('adminlte-templates::common.paginate', ['records' => $multiBranches])
 
-    </div>
+    </div>--}}
 </div>
 @endsection

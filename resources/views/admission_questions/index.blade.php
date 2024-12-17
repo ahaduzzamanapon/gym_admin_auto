@@ -32,10 +32,10 @@ Admission Questions @parent
             @include('admission_questions.table')
         </div>
     </div>
-    <div class="text-center">
+    {{--<div class="text-center">
         
         @include('adminlte-templates::common.paginate', ['records' => $admissionQuestions])
 
-    </div>
+    </div>--}}
 </div>
 @endsection

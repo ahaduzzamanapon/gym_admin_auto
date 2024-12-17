@@ -22,7 +22,7 @@ class NoticeController extends AppBaseController
     public function index(Request $request)
     {
         /** @var Notice $notices */
-        $notices = Notice::paginate(10);
+        $notices = Notice::all();
 
         return view('notices.index')
             ->with('notices', $notices);

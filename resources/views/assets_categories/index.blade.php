@@ -32,10 +32,10 @@ Assets Categories @parent
             @include('assets_categories.table')
         </div>
     </div>
-    <div class="text-center">
+    {{--<div class="text-center">
         
         @include('adminlte-templates::common.paginate', ['records' => $assetsCategories])
 
-    </div>
+    </div>--}}
 </div>
 @endsection
