@@ -85,6 +85,7 @@ class HealthmetricsController extends AppBaseController
     {
         /** @var Healthmetrics $healthmetrics */
         $healthmetrics = Healthmetrics::find($id);
+        $healthmetrics->measurement_date = $healthmetrics->measurement_date->format('Y-m-d');
 
         if (empty($healthmetrics)) {
             Flash::error('Healthmetrics not found');

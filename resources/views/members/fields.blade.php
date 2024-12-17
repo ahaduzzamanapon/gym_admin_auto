@@ -15,6 +15,22 @@
     </div>
 </div>
 
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-3 col-lg-3 col-12">
+            <label for="mem_name" class="control-label">
+                Member id: <span class="text-danger">*</span>
+            </label>
+        </div>
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::text('member_unique_id', null, ['class' => 'form-control', 'placeholder' => 'Enter Member Name']) !!}
+            @error('member_unique_id')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+    </div>
+</div>
+
 <!-- Mem Father Field -->
 <div class="form-group">
     <div class="row">

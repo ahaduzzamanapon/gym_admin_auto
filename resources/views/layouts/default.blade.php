@@ -144,14 +144,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
- 
-    {{-- <script>
-        var $jq = jQuery.noConflict();
-        $jq(document).ready(function() {
-            $jq('#member_id').chosen();
-            $jq('#product_id').chosen();
-        });
-    </script> --}}
+
 
     @php
         $member = DB::table('members')->find(Auth::user()->member_id);

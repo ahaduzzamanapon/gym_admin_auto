@@ -140,11 +140,11 @@ class Member extends Model
      */
     public static $rules = [
         'mem_name' => 'required',
+        'member_unique_id' => 'unique:members,member_unique_id',
         'mem_address' => 'required',
         'mem_admission_date' => 'required',
         'mem_cell' => 'required',
         'mem_email' => 'required'
     ];
-
     
 }

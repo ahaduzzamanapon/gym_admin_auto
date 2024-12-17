@@ -11,8 +11,9 @@ Edit Meal Chart @parent
       display: none; /* Hide meal-time rows initially */
     }
     .expandable-day {
-      cursor: pointer;
-    }
+    cursor: pointer;
+   
+}
     .rotate {
         transform: rotate(90deg); /* Rotate the arrow icon */
         transition: transform 0.3s ease-in-out; /* Smooth transition */
@@ -52,7 +53,6 @@ Edit Meal Chart @parent
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Meal Name</th>
                                         <th>Meal Time</th>
                                         <th>Food Items</th>
                                         <th>Quantity</th>
@@ -77,11 +77,8 @@ Edit Meal Chart @parent
                                             <tr class="meal-time-row">
                                                 <td>
                                                     <div class="form-group">
-                                                        <input type="text" name="meal_name_f[]" value="{{ $foodplans[$sl]->meal_name }}" class="form-control" readonly>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group">
+                                                        <input type="hidden" name="meal_name_f[]" value="{{ $foodplans[$sl]->meal_name }}" class="form-control" readonly>
+
                                                         <input type="text" name="meal_time[]" value="{{ $foodplans[$sl]->meal_time }}" class="form-control" readonly>
                                                     </div>
                                                 </td>

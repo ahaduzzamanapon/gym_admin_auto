@@ -80,3 +80,12 @@ $products = DB::table('products')->get();
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
     <a href="{{ route('requisitions.index') }}" class="btn btn-danger">Cancel</a>
 </div>
+
+
+ <script>
+        var $jq = jQuery.noConflict();
+        $jq(document).ready(function() {
+            $jq('#member_id').chosen();
+            $jq('#product_id').chosen();
+        });
+</script>

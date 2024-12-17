@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Income;
 use App\Models\Expenses;
 use App\Models\Member;
+use App\Models\PurchasePackage;
 use Artisan;
 
 class AccountReport extends Controller
@@ -95,5 +96,42 @@ class AccountReport extends Controller
         $status = Artisan::call('storage:link');
         echo "done ".$status;
         
+    }
+
+    public function fetchAccountReportDeu(Request $request)
+    {
+        $from_date=$request->input('from_date');
+        $to_date=$request->input('to_date');
+        $selectedMemberIds=$request->input('selectedMemberIds');
+        if (!empty($selectedMemberIds)) {
+            $selectedMembers = Member::whereIn('id', $selectedMemberIds)->pluck('id')->toArray();
+        }
+        $title='Due report from '.$from_date.' to '.$to_date;
+       
+        $purchasePackages = PurchasePackage::select('purchasepackages.*', 'packages.pack_name as pack_name', 'members.mem_name as member_name','multi_branchs.branch_name')
+            ->join('packages', 'packages.id', '=', 'purchasepackages.package_id')
+            ->join('members', 'members.id', '=', 'purchasepackages.member_id')
+            ->join('multi_branchs', 'members.branch_id', '=', 'multi_branchs.id')
+            ->whereIn('members.id', $selectedMembers)
+            ->where('purchasepackages.due_amount', '>', 0)
+            ->whereDate('purchasepackages.created_at', '>=', $from_date)
+            ->whereDate('purchasepackages.created_at', '<=', $to_date);
+       
+        
+        $purchasePackages = $purchasePackages->get();
+        // dd($purchasePackages);
+
+
+
+
+        
+        $data=[
+            'title'=>$title,
+            'from_date'=>$from_date,
+            'to_date'=>$to_date,
+            'status'=>true,
+            'view'=>view('account_report.account_report_deu',compact('purchasePackages','title','from_date','to_date'))->render()
+        ];
+        return response()->json($data, 200);
     }
 }

@@ -12,7 +12,7 @@ Add Meal Chart @parent
     }
     .expandable-day {
       cursor: pointer;
-    }
+  }
     .rotate {
         transform: rotate(90deg); /* Rotate the arrow icon */
         transition: transform 0.3s ease-in-out; /* Smooth transition */
@@ -50,7 +50,6 @@ Add Meal Chart @parent
                             <table class="table table-bordered">
                                 <thead>
                                   <tr>
-                                    <th style="display:none">Meal Name</th>
                                     <th>Meal Time</th>
                                     <th>Food Items</th>
                                     <th>Quantity</th>
@@ -72,13 +71,10 @@ Add Meal Chart @parent
                                     <!-- Meal Time Rows -->
                                     @foreach ($meal_time as $time)
                                       <tr class="meal-time-row">
-                                        <td style="display:none">
-                                          <div class="form-group">
-                                            <input type="text" name="meal_name_f[]" value="{{ $day }}" class="form-control" readonly>
-                                          </div>
-                                        </td>
+                                       
                                         <td>
                                           <div class="form-group">
+                                            <input type="hidden" name="meal_name_f[]" value="{{ $day }}" class="form-control" readonly>
                                             <input type="text" name="meal_time[]" value="{{ $time }}" class="form-control" readonly>
                                           </div>
                                         </td>

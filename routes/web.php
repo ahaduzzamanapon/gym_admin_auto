@@ -158,6 +158,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('account_report', [AccountReport::class, 'index'])->name('account_report.index');
         Route::post('account_report/getAccountReportIncome', [AccountReport::class, 'getAccountReportIncome'])->name('account_report.getAccountReportIncome');
+        Route::post('account_report/fetchAccountReportDeu', [AccountReport::class, 'fetchAccountReportDeu'])->name('account_report.fetchAccountReportDeu');
         Route::post('account_report/getAccountReportExpense', [AccountReport::class, 'getAccountReportExpense'])->name('account_report.getAccountReportExpense');
         Route::get('/manual_command', [AccountReport::class, 'manual_command'])->name('manual_command');
 

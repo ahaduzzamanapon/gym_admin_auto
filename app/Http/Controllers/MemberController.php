@@ -328,14 +328,14 @@ class MemberController extends AppBaseController
             $data_helth=[
                 'member_id'=> $member->id,
                 'measurement_date'=> date('Y-m-d'),
-                'weight'=> $request->weight,
-                'height'=> $request->height,
-                'bmi'=> $request->bmi,
+                'weight'=> isset($request->weight) ? $request->weight : 0,
+                'height'=> isset($request->height) ? $request->height : 0,
+                'bmi'=> isset($request->bmi) ? $request->bmi : 0,
                 'body_fat_percentage'=> '',
                 'muscle_mass'=> '',
                 'hydration_level'=> '',
                 'chest'=> '',
-                'waist'=> $request->waist,
+                'waist'=> isset($request->waist) ? $request->waist : 0,
                 'hips'=> '',
                 'thighs'=> '',
                 'arms'=> '',
@@ -343,7 +343,7 @@ class MemberController extends AppBaseController
                 'neck'=> '',
                 'shoulders'=> '',
                 'calves'=> '',
-                'resting_heart_rate'=> $request->pulse_rate,
+                'resting_heart_rate'=> isset($request->pulse_rate) ? $request->pulse_rate :0,
             ];
             Healthmetrics::create($data_helth);
         }

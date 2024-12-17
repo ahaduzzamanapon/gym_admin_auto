@@ -24,7 +24,15 @@
     <div class="row">
         {!! Form::label('measurement_date', 'Measurement Date:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::date('measurement_date', null, ['class' => 'form-control', 'id' => 'measurement_date']) !!}
+            @php
+            if (isset($healthmetric)) {
+                $measurement_date = $healthmetric->measurement_date;
+            }else
+            {
+                $measurement_date = date('Y-m-d');
+            }
+            @endphp
+            {!! Form::date('measurement_date', date('Y-m-d', strtotime($measurement_date) ), ['class' => 'form-control', 'id' => 'measurement_date']) !!}
             @error('measurement_date')
                 <span class="text-danger">{{ $message }}</span>
             @enderror

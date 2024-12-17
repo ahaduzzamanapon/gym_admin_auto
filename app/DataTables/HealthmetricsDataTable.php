@@ -18,9 +18,11 @@ class HealthmetricsDataTable extends DataTable
     public function dataTable($query)
     {
         $dataTable = new EloquentDataTable($query);
-
         // Add a custom 'action' column (or modify as needed)
-        return $dataTable->addColumn('action', 'healthmetrics.datatables_actions');
+        return $dataTable->editColumn('measurement_date', function ($row) {
+            return $row->measurement_date ? $row->measurement_date->format('Y-m-d') : null;
+        })
+        ->addColumn('action', 'healthmetrics.datatables_actions');
     }
 
     /**

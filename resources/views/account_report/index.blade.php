@@ -57,9 +57,13 @@ Account Report @parent
                         <div class="form-group col-md-3">
                             <label for="">Branch</label>
                             <select name="branch_id" id="branch_id" class="form-control" onchange="get_member()">
-                                <option value="">Please Select Branch Type</option>
                                 @php
-                                $multi_branchs = DB::table('multi_branchs')->get();
+                                if(if_can('see_all_branch')){
+                                    $multi_branchs = DB::table('multi_branchs')->get();
+                                echo '<option value="">Please Select Branch Type</option>';
+                                }else{
+                                    $multi_branchs = DB::table('multi_branchs')->where('id', get_branch() )->get();
+                                }
                                 @endphp
                                 @foreach ($multi_branchs as $multi_branch)
                                 <option value="{{ $multi_branch->id }}">{{ $multi_branch->branch_name }}</option>
@@ -87,6 +91,7 @@ Account Report @parent
                                         <a href="#" onclick="fetchAccountReportIncome('con')" class="btn btn-primary">Date Between Income</a>
                                         <a href="#" onclick="fetchAccountReportIncome('daily','member')" class="btn btn-primary">Daily Income Member Wise</a>
                                         <a href="#" onclick="fetchAccountReportIncome('con','member')" class="btn btn-primary">Date Between Income Member Wise</a>
+                                        <a href="#" onclick="fetchAccountReportDeu()" class="btn btn-primary">Deu Report</a>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -224,6 +229,51 @@ Account Report @parent
                 to_date: toDate,
                 branch_id: branchId,
                 status: status,
+                selectedMemberIds: memberIds,
+            },
+            dataType: 'json',
+        }).done(function(response) {
+            const reportWindow = window.open();
+            reportWindow.document.write(response.view);
+        }).fail(function(response) {
+            const errorWindow = window.open();
+            errorWindow.document.write(response);
+        });
+    }
+    function fetchAccountReportDeu() {
+        const fromDate = $('#from_date').val();
+        let toDate = $('#to_date').val();
+        if (!fromDate) {
+            alert('Please select Start date');
+            return;
+        }
+        if (!toDate) {
+            toDate= fromDate;
+        }
+        
+       
+        
+        const branchId = $('#branch_id').val();
+        // if (!branchId) {
+        //     alert('Please select a branch');
+        //     return;
+        // }
+
+             memberIds = get_checked_member_id();
+            if (memberIds.length === 0) {
+                alert('Please select member');
+                return;
+            }
+        
+
+        $.ajax({
+            url: "{{ route('account_report.fetchAccountReportDeu') }}",
+            type: "POST",
+            data: {
+                _token: "{{ csrf_token() }}",
+                from_date: fromDate,
+                to_date: toDate,
+                branch_id: branchId,
                 selectedMemberIds: memberIds,
             },
             dataType: 'json',
