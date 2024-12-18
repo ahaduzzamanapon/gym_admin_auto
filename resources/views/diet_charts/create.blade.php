@@ -25,7 +25,12 @@ Add Diet Chart @parent
                             <label>Member Name</label>
                             <select name="member_name" class="form-control" id="member_name">
                                 @php
-                                    $members = DB::table('members')->where('mem_type', 'member')->get();
+                                    $members = DB::table('members')
+                                        ->where('mem_type', 'member')
+                                        ->whereNotIn('id', function($query) {
+                                            $query->select('member_id')->from('gym_diet_charts');
+                                        })
+                                        ->get();
                                 @endphp
                                  <option value="">Select Member Name</option>
                                 @foreach ($members as $member)
