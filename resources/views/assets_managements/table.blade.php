@@ -19,6 +19,7 @@
                 <th>Branch Name</th>
                 <th>Category</th>
                 <th>Asset For</th>
+                <th>Item Quantity</th>
                 <th>Item Description</th>
                 <th>Location</th>
                 <th>Status</th>
@@ -35,6 +36,7 @@
             <td>{{ $assetsManagement->branch_name }}</td>
             <td>{{ $assetsManagement->assets_category_name }}</td>
             <td>{{ $assetsManagement->asset_for }}</td>
+            <td>{{ $assetsManagement->item_quantity }}</td>
             <td>{{ $assetsManagement->item_description }}</td>
             <td>{{ $assetsManagement->location }}</td>
             <td>{{ $assetsManagement->status }}</td>
