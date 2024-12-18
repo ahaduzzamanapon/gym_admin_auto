@@ -52,7 +52,6 @@ Add Meal Chart @parent
                                   <tr>
                                     <th>Meal Time</th>
                                     <th>Food Items</th>
-                                    <th>Quantity</th>
                                     <th>Calories</th>
                                   </tr>
                                 </thead>
@@ -81,13 +80,10 @@ Add Meal Chart @parent
                                         <td>
                                           <div class="form-group">
                                             <input type="text" name="food_items[]" value="{{ $day }} {{ $time }}" class="form-control" placeholder="Enter food items">
+                                            <input type="hidden" name="quantity[]" value="{{rand(1, 5)}}" class="form-control" placeholder="Enter quantity">
                                           </div>
                                         </td>
-                                        <td>
-                                          <div class="form-group">
-                                            <input type="number" name="quantity[]" value="{{rand(1, 5)}}" class="form-control" placeholder="Enter quantity">
-                                          </div>
-                                        </td>
+                                        
                                         <td>
                                           <div class="form-group">
                                             <input type="number" name="calories[]" value="{{rand(100, 500)}}" class="form-control" placeholder="Enter calories">

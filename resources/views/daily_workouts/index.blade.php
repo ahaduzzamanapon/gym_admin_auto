@@ -54,7 +54,7 @@ Daily Workouts @parent
                   
                 </div>
             </div>
-            <div class="col-md-12"  style="border: 1px solid black;">
+            <div class="col-md-12"  style="border: 1px solid black;display: none" id="tableArea">
                 <a onclick="print_w()" class="btn btn-primary">Print</a>
                 <div id="daily_workouts_table">
                 </div>
@@ -72,6 +72,7 @@ Daily Workouts @parent
             return;
         }
        
+        $('#tableArea').show();
         $.ajax({
             type: "GET",
             url: "{{ route('dailyWorkouts.getDailyWorkouts') }}",
@@ -95,13 +96,10 @@ Daily Workouts @parent
                             <div style="width: 100%;text-align: center;display: flex;flex-direction: row;">
                                 <div class="col-md-6" style="display: flex;flex-direction: column;">
                                     <span><b>Name:</b> ${memberDetails.mem_name}</span>
-                                    <span><b>Gender:</b> ${memberDetails.mem_gender}</span>
-                                    <span><b>Date:</b> ${day}</span>
-
                                 </div>
                                 <div class="col-md-6" style="display: flex;flex-direction: column;">
-                                    <span><b>Total Reputation:</b> ${totalReputation}</span>
-                                    <span><b>Total Sets:</b> ${totalSets}</span>
+                                    <span><b>Gender:</b> ${memberDetails.mem_gender}</span>
+                                    <span><b>Date:</b> ${day}</span>
                                 </div>
                             </div>
                             <div class="col-md-12">

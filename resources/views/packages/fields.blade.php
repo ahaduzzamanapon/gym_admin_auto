@@ -57,7 +57,7 @@ $multi_branchs = DB::table('multi_branchs')->get();
     <div class="row">
         {!! Form::label('pack_image', 'Pack Image:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::file('pack_image', ['class' => 'form-control']) !!}
+            {!! Form::file('pack_image', ['class' => 'form-control', 'accept' => 'image/*']) !!}
         </div>
     </div>
 </div>

@@ -36,7 +36,7 @@ Edit Meal Chart @parent
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Meal Name</label>
+                            <label>Meal Plan</label>
                             <input type="text" name="meal_name" value="{{ $mealPlan->meal_name }}" class="form-control" placeholder="Enter meal name">
                         </div>
                     </div>
@@ -55,7 +55,6 @@ Edit Meal Chart @parent
                                     <tr>
                                         <th>Meal Time</th>
                                         <th>Food Items</th>
-                                        <th>Quantity</th>
                                         <th>Calories</th>
                                     </tr>
                                 </thead>
@@ -85,13 +84,10 @@ Edit Meal Chart @parent
                                                 <td>
                                                     <div class="form-group">
                                                         <input type="text" name="food_items[]" value="{{ $foodplans[$sl]->food_items }}" class="form-control" placeholder="Enter food items">
+                                                        <input type="hidden" name="quantity[]" value="{{ $foodplans[$sl]->quantity }}" class="form-control" placeholder="Enter quantity">
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <input type="number" name="quantity[]" value="{{ $foodplans[$sl]->quantity }}" class="form-control" placeholder="Enter quantity">
-                                                    </div>
-                                                </td>
+                                               
                                                 <td>
                                                     <div class="form-group">
                                                         <input type="number" name="calories[]" value="{{ $foodplans[$sl]->calories }}" class="form-control" placeholder="Enter calories">
