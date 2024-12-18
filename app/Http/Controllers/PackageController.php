@@ -47,6 +47,15 @@ class PackageController extends AppBaseController
     {
         $input = $request->all();
 
+        if ($request->hasFile('pack_image')) {
+            $path = storage_path('app/public/images/pack_image');
+            if (!File::exists($path)) {
+                File::makeDirectory($path, 0775, true, true);
+            }
+            $file = $request->file('pack_image');
+            $input['pack_image'] = $file->store('images/pack_image', 'public');
+        }
+
         /** @var Package $package */
         $package = Package::create($input);
 
@@ -109,6 +118,7 @@ class PackageController extends AppBaseController
     {
         /** @var Package $package */
         $package = Package::find($id);
+        $input = $request->all();
 
         if (empty($package)) {
             Flash::error('Package not found');
@@ -116,7 +126,18 @@ class PackageController extends AppBaseController
             return redirect(route('packages.index'));
         }
 
-        $package->fill($request->all());
+        if ($request->hasFile('pack_image')) {
+            $path = storage_path('app/public/images/pack_image');
+            if (!File::exists($path)) {
+                File::makeDirectory($path, 0775, true, true);
+            }
+            $file = $request->file('pack_image');
+            $input['pack_image'] = $file->store('images/pack_image', 'public');
+        }else{
+            unset($input['pack_image']);
+        }
+
+        $package->fill($input);
         $package->save();
 
         Flash::success('Package updated successfully.');

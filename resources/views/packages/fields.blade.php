@@ -51,7 +51,16 @@ $multi_branchs = DB::table('multi_branchs')->get();
             {!! Form::select('pack_status', ['2' => 'Inactive', '1' => 'Active'], null, ['class' => 'form-control', 'required']) !!}
         </div>
     </div>
-</>
+</div>
+<!-- Pack Image Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('pack_image', 'Pack Image:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::file('pack_image', ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
 
 
 <!-- Submit Field -->

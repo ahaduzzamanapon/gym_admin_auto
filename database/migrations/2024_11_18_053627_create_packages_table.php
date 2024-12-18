@@ -17,6 +17,7 @@ class CreatePackagesTable extends Migration
             $table->increments('id');
             $table->string('pack_name');
             $table->integer('branch_id');
+            $table->text('pack_image');
             $table->integer('pack_admission_fee');
             $table->string('pack_duration');
             $table->smallInteger('pack_status');
