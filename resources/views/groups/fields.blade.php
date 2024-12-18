@@ -21,7 +21,7 @@
 
 
 <div class="form-group">
-    <div class="row"> 
+    <div class="row">
         <label class="col-md-3 col-lg-3 col-12 control-label">Permissions</label>
         <div class="col-md-9 col-lg-9 col-12" style="display: flex;flex-wrap: wrap;gap: 10px;">
             @php

@@ -6,7 +6,7 @@
         .dataTables_filter {
             text-align: -webkit-right;
         }
-.dataTables_filter label {
+        .dataTables_filter label {
             display: flex;
             width: fit-content;
         }
@@ -15,14 +15,14 @@
         <thead>
             <tr>
                 <th>Id</th>
-        <th>Member name</th>
-        <th>Booking Date</th>
-        <th>Booking Time</th>
-        <th>Service Type</th>
-        <th>Status</th>
-        <th>Note</th>
-        <th>Created At</th>
-        <th>Updated At</th>
+                <th>Member Name</th>
+                <th>Booking Date</th>
+                <th>Booking Time</th>
+                <th>Service Type</th>
+                <th>Status</th>
+                <th>Note</th>
+                <th>Created At</th>
+                <th>Updated At</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -64,7 +64,7 @@
 
 <!-- Datatables -->
 <script src="{{ asset('vendors/datatables/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('vendors/datatables/js/dataTables.bootstrap4.min.js') }}"></script>   
+<script src="{{ asset('vendors/datatables/js/dataTables.bootstrap4.min.js') }}"></script>
 <script>
     $(document).ready(function() {
         let table = $('.table').DataTable({

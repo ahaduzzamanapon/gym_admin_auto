@@ -42,7 +42,7 @@
     {{-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
-    
+
 
 
     <style>
@@ -90,7 +90,7 @@
                             <i class="im im-icon-Boy fs-16"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-notifications table-striped" aria-labelledby="navbarDropdown">
-                          
+
                             <li class="dropdown-footer">
                                 @if (!empty(Auth::user()) && Auth::user()->member_id != null)
                                     <a class="dropdown-item"
@@ -174,7 +174,7 @@
     <script src="{{ asset('vendors/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
 
-  
+
 
 
     <script>
@@ -205,7 +205,7 @@
         function checkWidth() {
             var ww = $(window).width();
             console.log(ww);
-                       
+
             if(ww < 767) {
                 $('.sidebar-res').css('margin-left', '');
             }

@@ -463,3 +463,23 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
+=======
+<!-- group Img Url Field -->
+<div class="form-group">
+    <div class="row">
+        <label for="branch_id" class="control-label col-md-3 col-lg-3 col-12">
+            Branch: <span class="text-danger">*</span>
+        </label>
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::select('branch_id', $multi_branchs->pluck('branch_name', 'id')->prepend('Select Branch', ''), null, ['class' => 'form-control', 'required' => 'required']) !!}
+        </div>
+    </div>
+</div>
+
+<!-- Submit and Cancel Buttons -->
+<div class="form-group col-sm-12">
+    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+    <a href="{{ route('members.index') }}" class="btn btn-danger">Cancel</a>
+</div>
+>>>>>>> fde8df95633cc0b447727c3ae7ea53ebee84cf40

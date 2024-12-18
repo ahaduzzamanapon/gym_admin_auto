@@ -32,7 +32,7 @@
                 <span class="mm-text ">Diet Charts</span>
             </a>
         </li>
-        
+
     </ul>
 </li>
 @endif
@@ -88,7 +88,7 @@
             </a>
         </li>
         @endif
- 
+
     </ul>
 </li>
 @endif
@@ -198,7 +198,7 @@
 @if (if_can('schedule_booking'))
     <li class="{!! Request::is('schedulebookings*') ? 'active' : '' !!}">
         <a href="{{ route('schedulebookings.index') }}">
-            <span class="mm-text ">Schedule bookings</span>
+            <span class="mm-text ">Schedule Bookings</span>
             <span class="menu-icon"><i class="align-self-center fa-1x fas fa-calendar-alt"></i></span>
         </a>
     </li>

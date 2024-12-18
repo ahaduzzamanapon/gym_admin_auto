@@ -8,7 +8,7 @@ Term And Condition @parent
 @section('content')
     <section class="content-header">
     <div aria-label="breadcrumb" class="card-breadcrumb">
-        <h1>{{ __('Create New') }} Term And Condition</h1>
+        <h1>{{ __('Create New') }} Terms And Conditions</h1>
     </div>
     <div class="separator-breadcrumb border-top"></div>
     </section>

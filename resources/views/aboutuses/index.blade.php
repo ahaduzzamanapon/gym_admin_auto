@@ -9,7 +9,7 @@ About us @parent
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div aria-label="breadcrumb" class="card-breadcrumb">
-        <h1>About us</h1>
+        <h1>About Us</h1>
     </div>
     <div class="separator-breadcrumb border-top"></div>
 </section>
@@ -23,7 +23,7 @@ About us @parent
     <div class="clearfix"></div>
     <div class="card">
         <section class="card-header">
-            <h5 class="card-title d-inline">About us</h5>
+            <h5 class="card-title d-inline">About Us</h5>
             <span class="float-right">
                 {{-- <a class="btn btn-primary pull-right" href="{{ route('aboutuses.create') }}">Add New</a> --}}
             </span>
@@ -33,7 +33,7 @@ About us @parent
         </div>
     </div>
     <div class="text-center">
-        
+
         @include('adminlte-templates::common.paginate', ['records' => $aboutuses])
 
     </div>
