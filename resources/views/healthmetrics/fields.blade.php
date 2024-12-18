@@ -77,11 +77,11 @@
 <!-- BMI Field -->
 <div class="form-group">
     <div class="row">
-        {!! Form::label('bmi', 'Bmi:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
+        {!! Form::label('bmi', 'BMI:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
             {!! Form::text('bmi', null, [
                 'class' => 'form-control',
-                'placeholder' => 'BMI will be calculated',
+                'placeholder' => 'BMI Will Be Calculated',
                 'id' => 'bmi',
                 'readonly',
             ]) !!}
@@ -99,7 +99,7 @@
         <div class="col-md-9 col-lg-9 col-12">
             {!! Form::text('bmi_status', null, [
                 'class' => 'form-control',
-                'placeholder' => 'BMI Status will be displayed',
+                'placeholder' => 'BMI Status Will Be Displayed',
                 'id' => 'bmi_status',
                 'readonly',
             ]) !!}

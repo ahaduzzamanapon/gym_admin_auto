@@ -19,7 +19,7 @@
     <div class="row">
         <div class="col-md-3 col-lg-3 col-12">
             <label for="mem_name" class="control-label">
-                Member id: <span class="text-danger">*</span>
+                Member Id: <span class="text-danger">*</span>
             </label>
         </div>
         <div class="col-md-9 col-lg-9 col-12">
@@ -204,7 +204,7 @@ $multi_branchs = DB::table('multi_branchs')->get();
     <div class="row">
         <label for="branch_id" class="control-label col-md-3 col-lg-3 col-12">
             Branch: <span class="text-danger">*</span>
-        </label>       
+        </label>
         <div class="col-md-9 col-lg-9 col-12">
             {!! Form::select('branch_id', $multi_branchs->pluck('branch_name', 'id')->prepend('Select Branch', ''), null, ['class' => 'form-control', 'required' => 'required']) !!}
         </div>

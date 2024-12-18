@@ -147,9 +147,9 @@ Add Diet Chart @parent
                                 @foreach ($meal_plans as $meal_plan)
                                     <option value="{{ $meal_plan->id }}">{{ $meal_plan->meal_name }}</option>
                                 @endforeach
-                               
+
                             </select>
-                           
+
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -229,14 +229,14 @@ Add Diet Chart @parent
                                         @endforeach
                                     @endforeach
                                 </tbody>
-                                
+
                             </table>
                         </div>
                     </div> --}}
                 </div>
-                <div class="col-md-12" style="text-align-last: right;">
+                <div class="col-md-12" style="">
                     <button type="submit" class="btn btn-success">Submit</button>
-                    <a href="{{ route('diet_charts.index') }}" class="btn btn-secondary">Cancel</a>
+                    <a href="{{ route('diet_charts.index') }}" class="btn btn-danger">Cancel</a>
                 </div>
             </form>
         </div>

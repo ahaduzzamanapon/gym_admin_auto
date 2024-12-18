@@ -8,12 +8,12 @@ Attendences @parent
 @section('content')
 
 <style>
-.box_m {
-    box-shadow: 0px 0px 6px 2px #bfbfbf;
-    padding: 0px;
-    height: 61vh;
-    overflow-y: scroll;
-}
+    .box_m {
+        box-shadow: 0px 0px 6px 2px #bfbfbf;
+        padding: 0px;
+        height: 61vh;
+        overflow-y: scroll;
+    }
 </style>
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -35,7 +35,7 @@ Attendences @parent
             <h5 class="card-title d-inline">Attendences</h5>
             <div class="float-right">
                 <span id="loader">
-                    
+
                 </span>
                 <a class="btn btn-primary pull-right" href="{{ route('upload.upload_excel_page_attendance') }}">Upload Attendance</a>
             </div>
@@ -45,11 +45,11 @@ Attendences @parent
                 <div class="col-md-8">
                     <div class="row">
                         <div class="form-group col-md-3">
-                            <label for="">From date/First Date</label>
+                            <label for="">From Date/First Date</label>
                             <input type="date" name="from_date" id="from_date" class="form-control">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="">To date</label>
+                            <label for="">To Date</label>
                             <input type="date" name="to_date" id="to_date" class="form-control">
                         </div>
                         <div class="form-group col-md-3">
@@ -95,18 +95,18 @@ Attendences @parent
                                     <div class="row p-2" style="display: flex;flex-wrap: wrap;gap: 8px;">
                                         <a href="#" onclick="getDailyAttendence('All')" class="btn btn-primary">Daily Attendance</a>
                                         <a href="#" onclick="getDailyAttendence('Present')" class="btn btn-primary">Daily Present</a>
-                                        <a href="#" onclick="getDailyAttendence('Absent')" class="btn btn-primary">Daily absent</a>
+                                        <a href="#" onclick="getDailyAttendence('Absent')" class="btn btn-primary">Daily Absent</a>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     <div class="row p-2" style="display: flex;flex-wrap: wrap;gap: 8px;">
                                         {{-- <a href="#" class="btn btn-primary">Continue Attendance</a>
                                         <a href="#" class="btn btn-primary">Continue Present</a>
-                                        <a href="#" class="btn btn-primary">Continue absent</a> --}}
-                                        <h1>Coming soon</h1>
+                                        <a href="#" class="btn btn-primary">Continue Absent</a> --}}
+                                        <h1>Coming Soon</h1>
                                     </div>
                                 </div>
-                               
+
                             </div>
                         </div>
                     </div>
@@ -118,7 +118,7 @@ Attendences @parent
                             <thead>
                                 <tr class="bg-primary text-white">
                                     <th width="7%" style="white-space: nowrap"><input type="checkbox" name="" id="select_all">Select</th>
-                                   
+
                                     <th>Name</th>
                                 </tr>
                             </thead>
@@ -142,7 +142,7 @@ Attendences @parent
                 member_id.push($(this).val());
             }
         });
-        
+
         return member_id;
     }
 
@@ -177,7 +177,7 @@ Attendences @parent
             success: function(response) {
                 $('#loader').html('<div class="alert alert-success">Attendence Processed Successfully </div>');
                 $('#process_attendence').removeAttr('disabled');
-                
+
             },
             error: function() {
                 $('#loader').html('<div class="alert alert-danger">Something went wrong. Please try again.</div>');
@@ -207,7 +207,7 @@ Attendences @parent
                    html += '<tr><td><input type="checkbox" class="member_id_c" value="'+member[i].id+'"></td><td>'+member[i].mem_name+' ('+member[i].member_unique_id+')</td></tr>';
                }
                $('.table tbody').html(html);
-               
+
             },
             error: function() {
                 $('#loader').html('<div class="alert alert-danger">Something went wrong. Please try again.</div>');

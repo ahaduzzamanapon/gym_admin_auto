@@ -34,7 +34,7 @@ Add Meal Chart @parent
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Meal Plan</label>
-                            <input type="text" name="meal_name" class="form-control" placeholder="Enter meal name">
+                            <input type="text" name="meal_name" class="form-control" placeholder="Enter Meal Name">
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -101,9 +101,9 @@ Add Meal Chart @parent
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12" style="text-align-last: right;">
+                <div class="col-md-12" style="">
                     <button type="submit" class="btn btn-success">Submit</button>
-                    <a href="{{ route('meal_plans.index') }}" class="btn btn-secondary">Cancel</a>
+                    <a href="{{ route('meal_plans.index') }}" class="btn btn-danger">Cancel</a>
                 </div>
             </form>
         </div>

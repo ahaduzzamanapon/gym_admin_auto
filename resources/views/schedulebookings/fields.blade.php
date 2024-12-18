@@ -29,7 +29,7 @@ $asset = DB::table('assets_managements')
 <!-- Member name Field -->
 <div class="form-group">
     <div class="row">
-        {!! Form::label('member_id', 'Member name:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        {!! Form::label('member_id', 'Member Name:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
             {!! Form::select('member_id', $members->prepend('Select Member', ''), null, ['class' => 'form-control']) !!}
         </div>
@@ -38,7 +38,7 @@ $asset = DB::table('assets_managements')
 <!-- Member name Field -->
 <div class="form-group">
     <div class="row">
-        {!! Form::label('asset_id', 'Asset name:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        {!! Form::label('asset_id', 'Asset Name:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
             {!! Form::select('asset_id', $asset->prepend('Select Asset', ''), null, ['class' => 'form-control']) !!}
         </div>
