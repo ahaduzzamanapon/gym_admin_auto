@@ -27,6 +27,7 @@ class AssetsManagement extends Model
         'assets_categories_id',
         'branch_id',
         'asset_for',
+        'item_quantity',
         'item_description',
         'location',
         'status'

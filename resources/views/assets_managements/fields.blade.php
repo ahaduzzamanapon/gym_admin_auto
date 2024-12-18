@@ -8,6 +8,8 @@
     </div>
 </div>
 
+
+
 @php
 $assets_categorys = DB::table('assets_categorys')->get();
 @endphp
@@ -41,6 +43,16 @@ $multi_branchs = DB::table('multi_branchs')->get();
         {!! Form::label('asset_for', 'Asset For:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
             {!! Form::select('asset_for', ['' => 'Select Asset For', 'Staff' => 'Staff','Member' => 'Member'], null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+
+<!-- Item Quantity Field -->
+<div class="form-group">
+    <div class="row">
+        {!! Form::label('item_quantity', 'Item Quantity:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        <div class="col-md-9 col-lg-9 col-12">
+            {!! Form::text('item_quantity', null, ['class' => 'form-control']) !!}
         </div>
     </div>
 </div>
