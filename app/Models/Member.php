@@ -21,51 +21,6 @@ class Member extends Model
 {
 
     public $table = 'members';
-    
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     public $fillable = [
         'id',
@@ -140,7 +95,7 @@ class Member extends Model
      */
     public static $rules = [
         'mem_name' => 'required',
-        'member_unique_id' => 'unique:members,member_unique_id',
+        // 'member_unique_id' => 'unique:members,member_unique_id',
         'mem_address' => 'required',
         'mem_admission_date' => 'required',
         'mem_cell' => 'required',

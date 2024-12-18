@@ -1,218 +1,465 @@
-<!-- Mem Name Field -->
-<div class="form-group">
+<div class="container">
     <div class="row">
-        <div class="col-md-3 col-lg-3 col-12">
-            <label for="mem_name" class="control-label">
-                Member Name: <span class="text-danger">*</span>
-            </label>
-        </div>
-        <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::text('mem_name', null, ['class' => 'form-control', 'placeholder' => 'Enter Member Name']) !!}
-            @error('mem_name')
-                <span class="text-danger">{{ $message }}</span>
-            @enderror
-        </div>
-    </div>
-</div>
+    {{-- manndatory --}}
 
-<div class="form-group">
-    <div class="row">
-        <div class="col-md-3 col-lg-3 col-12">
-            <label for="mem_name" class="control-label">
-                Member id: <span class="text-danger">*</span>
-            </label>
-        </div>
-        <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::text('member_unique_id', null, ['class' => 'form-control', 'placeholder' => 'Enter Member Name']) !!}
-            @error('member_unique_id')
-                <span class="text-danger">{{ $message }}</span>
-            @enderror
-        </div>
-    </div>
-</div>
-
-<!-- Mem Father Field -->
-<div class="form-group">
-    <div class="row">
-        <div class="col-md-3 col-lg-3 col-12">
-            <label for="mem_father" class="control-label">
-                Member Father:
-            </label>
-        </div>
-        <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::text('mem_father', null, ['class' => 'form-control', 'placeholder' => 'Enter Member Father Name']) !!}
-            @error('mem_father')
-                <span class="text-danger">{{ $message }}</span>
-            @enderror
-        </div>
-    </div>
-</div>
-
-<!-- Mem Mother Field -->
-<div class="form-group">
-    <div class="row">
-        {!! Form::label('mem_mother', 'Member Mother:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
-        <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::text('mem_mother', null, ['class' => 'form-control', 'placeholder' => 'Enter Member Mother Name']) !!}
-            @error('mem_mother')
-                <span class="text-danger">{{ $message }}</span>
-            @enderror
-        </div>
-    </div>
-</div>
-<!-- Mem Gender Field -->
-<div class="form-group">
-    <div class="row">
-        {!! Form::label('gender', 'Gender:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
-        <div class="col-md-9 col-lg-9 col-12">
-            <div class="form-check form-check-inline">
-                {!! Form::radio('mem_gender', 'Male', false, ['class' => 'form-check-input', 'id' => 'genderMale']) !!}
-                {!! Form::label('genderMale', 'Male', ['class' => 'form-check-label']) !!}
+        <!-- Member ID 1 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('member_unique_id', 'Member ID:', ['class' => 'control-label']) !!}
+                {!! Form::text('member_unique_id', null, ['class' => 'form-control','required','placeholder' => 'Enter Member ID']) !!}
+                @error('member_unique_id')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
-            <div class="form-check form-check-inline">
-                {!! Form::radio('mem_gender', 'Female', false, ['class' => 'form-check-input', 'id' => 'genderFemale']) !!}
-                {!! Form::label('genderFemale', 'Female', ['class' => 'form-check-label']) !!}
+        </div>
+
+        <!-- Member Name2 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('mem_name', 'Member Name:', ['class' => 'control-label']) !!}
+                {!! Form::text('mem_name', null, ['class' => 'form-control','required', 'placeholder' => 'Enter Member Name']) !!}
+                @error('mem_name')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
-            <div class="form-check form-check-inline">
-                {!! Form::radio('mem_gender', 'other', false, ['class' => 'form-check-input', 'id' => 'genderOther']) !!}
-                {!! Form::label('genderOther', 'Other', ['class' => 'form-check-label']) !!}
+        </div>
+
+        <!-- Gender5 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('mem_gender', 'Gender:', ['class' => 'control-label']) !!}
+                <div style="display: flex;flex-direction: row;gap: 11px;align-items: center;">
+                    <div class="form-check">
+                        {!! Form::radio('mem_gender', 'Male', false, ['class' => 'form-check-input', 'id' => 'genderMale']) !!}
+                        {!! Form::label('genderMale', 'Male', ['class' => 'form-check-label']) !!}
+                    </div>
+                    <div class="form-check">
+                        {!! Form::radio('mem_gender', 'Female', false, ['class' => 'form-check-input', 'id' => 'genderFemale']) !!}
+                        {!! Form::label('genderFemale', 'Female', ['class' => 'form-check-label']) !!}
+                    </div>
+                    <div class="form-check">
+                        {!! Form::radio('mem_gender', 'Other', false, ['class' => 'form-check-input', 'id' => 'genderOther']) !!}
+                        {!! Form::label('genderOther', 'Other', ['class' => 'form-check-label']) !!}
+                    </div>
+                </div>
+                @error('mem_gender')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
-            @error('mem_gender')
-                <span class="text-danger">{{ $message }}</span>
-            @enderror
         </div>
-    </div>
-</div>
 
-<!-- Mem Address Field -->
-<div class="form-group">
-    <div class="row">
-        <div class="col-md-3 col-lg-3 col-12">
-            <label for="mem_address" class="control-label">
-                Member Address: <span class="text-danger">*</span>
-            </label>
+        <!-- Address6 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('mem_address', 'Address:', ['class' => 'control-label']) !!}
+                {!! Form::text('mem_address', null, ['class' => 'form-control','required', 'placeholder' => 'Enter Address']) !!}
+                @error('mem_address')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
         </div>
-        <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::text('mem_address', null, ['class' => 'form-control', 'placeholder' => 'Enter Member Address']) !!}
-            @error('mem_address')
-                <span class="text-danger">{{ $message }}</span>
-            @enderror
-        </div>
-    </div>
-</div>
 
-<!-- Mem Admission Date Field -->
-<div class="form-group">
-    <div class="row">
-        <div class="col-md-3 col-lg-3 col-12">
-            <label for="mem_admission_date" class="control-label">
-                Member Admission Date: <span class="text-danger">*</span>
-            </label>
-        </div>
-        <div class="col-md-3 col-lg-3 col-12">
-            {!! Form::date('mem_admission_date', isset($member) && $member->mem_admission_date ? date('Y-m-d', strtotime($member->mem_admission_date)) : null, ['class' => 'form-control', 'id' => 'mem_admission_date']) !!}
-            @error('mem_admission_date')
-                <span class="text-danger">{{ $message }}</span>
-            @enderror
-        </div>
-    </div>
-</div>
 
-<!-- Mem Cell Field -->
-<div class="form-group">
-    <div class="row">
-        <div class="col-md-3 col-lg-3 col-12">
-            <label for="mem_cell" class="control-label">
-                Member Cell: <span class="text-danger">*</span>
-            </label>
+        {{-- Mem Type Field 35 --}}
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('mem_type', 'Member Type:', ['class' => 'control-label']) !!}
+                {!! Form::select('mem_type', ['member' => 'Member', 'staff' => 'Staff'], null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    @error('mem_type')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+            </div>
         </div>
-        <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::text('mem_cell', null, ['class' => 'form-control', 'placeholder' => 'Enter Member Cell']) !!}
-            @error('mem_cell')
-                <span class="text-danger">{{ $message }}</span>
-            @enderror
-        </div>
-    </div>
-</div>
 
-<!-- Mem Email Field -->
-<div class="form-group">
-    <div class="row">
-        <div class="col-md-3 col-lg-3 col-12">
-            <label for="mem_email" class="control-label">
-                Member Email: <span class="text-danger">*</span>
-            </label>
+        <!-- Mem punch id Field 36 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('punch_id', 'Member Punch Id:',['class'=>'control-label']) !!}
+                {!! Form::text('punch_id', null, ['class' => 'form-control','placeholder' => 'Enter Member Punch Id']) !!}
+                @error('punch_id')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
         </div>
-        <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::email('mem_email', null, ['class' => 'form-control', 'placeholder' => 'Enter Member Email']) !!}
-            @error('mem_email')
-                <span class="text-danger">{{ $message }}</span>
-            @enderror
-        </div>
-    </div>
-</div>
 
-<!-- Mem Type Field -->
-<div class="form-group">
-    <div class="row">
-        {!! Form::label('mem_type', 'Member Type:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
-        <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::select('mem_type', ['member' => 'Member', 'staff' => 'Staff'], null, ['class' => 'form-control']) !!}
-            @error('mem_type')
-                <span class="text-danger">{{ $message }}</span>
-            @enderror
+        <!-- Mem Img Url Field 37 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('mem_img_url', 'Member Image:',['class'=>'control-label']) !!}
+                {!! Form::file('mem_img_url', null, ['class' => 'form-control']) !!}
+            </div>
         </div>
-    </div>
-</div>
 
-<!-- Mem punch id Field -->
-<div class="form-group">
-    <div class="row">
-        {!! Form::label('punch_id', 'Member Punch Id:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
-        <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::text('punch_id', null, ['class' => 'form-control','placeholder' => 'Enter Member Punch Id']) !!}
+                
+        @php
+        $groups = DB::table('groups')->get();
+        $multi_branchs = DB::table('multi_branchs')->get();
+        @endphp
+        <!-- group Field 38 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('group_id', 'Group:',['class'=>'control-label']) !!}
+                {!! Form::select('group_id', $groups->pluck('name', 'id')->prepend('Select Group', ''), null, ['required','class' => 'form-control']) !!}
+                
+            </div>
         </div>
-    </div>
-</div>
-<!-- Mem Img Url Field -->
-<div class="form-group">
-    <div class="row">
-        {!! Form::label('mem_img_url', 'Member Img Url:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
-        <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::file('mem_img_url', null, ['class' => 'form-control']) !!}
+        <!-- branch Field 39 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="branch_id" class="control-label">
+                    Branch: <span class="text-danger">*</span>
+                </label>       
+               {!! Form::select('branch_id', $multi_branchs->pluck('branch_name', 'id')->prepend('Select Branch', ''), null, ['class' => 'form-control', 'required' => 'required']) !!}
+            </div>
         </div>
-    </div>
-</div>
 
-@php
-$groups = DB::table('groups')->get();
-$multi_branchs = DB::table('multi_branchs')->get();
-// dd($member);
-@endphp
+        
+        <!-- Admission7 Date -->
+        <div class="col-md-3">
+            <div class="form-group">
+                @php $admissionDate= isset($member) ? date('Y-m-d', strtotime($member->mem_admission_date)) : date('Y-m-d'); @endphp
+                {!! Form::label('mem_admission_date', 'Admission Date:', ['class' => 'control-label']) !!}
+                {!! Form::date('mem_admission_date', $admissionDate, ['required','class' => 'form-control']) !!}
+                @error('mem_admission_date')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
 
-<!-- group Img Url Field -->
-<div class="form-group">
+        <!-- Date of Birth8 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('date_of_birth', 'Date of Birth:', ['class' => 'control-label']) !!}
+                {!! Form::date('date_of_birth', null, ['required','class' => 'form-control']) !!}
+                @error('date_of_birth')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+        <!-- Cell9 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('mem_cell', 'Cell Number:', ['class' => 'control-label']) !!}
+                {!! Form::text('mem_cell', null, ['class' => 'form-control','required', 'placeholder' => 'Enter Cell Number']) !!}
+                @error('mem_cell')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+        <!-- Email10 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('mem_email', 'Email:', ['class' => 'control-label']) !!}
+                {!! Form::email('mem_email', null, ['class' => 'form-control','required', 'placeholder' => 'Enter Email']) !!}
+                @error('mem_email')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+        <!-- Height11 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('height', 'Height (cm):', ['class' => 'control-label']) !!}
+                {!! Form::text('height', null, ['class' => 'form-control', 'placeholder' => 'Enter Height']) !!}
+                @error('height')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+        <!-- Weight12 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('weight', 'Weight (kg):', ['class' => 'control-label']) !!}
+                {!! Form::text('weight', null, ['class' => 'form-control', 'placeholder' => 'Enter Weight']) !!}
+                @error('weight')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+        <!-- BMI13 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('bmi', 'BMI:', ['class' => 'control-label']) !!}
+                {!! Form::text('bmi', null, ['class' => 'form-control', 'placeholder' => 'Enter BMI']) !!}
+                @error('bmi')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+        
+
+
+        {{-- manndatory end --}}
+
+    </div>
     <div class="row">
-        {!! Form::label('group_id', 'Group:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
-        <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::select('group_id', $groups->pluck('name', 'id')->prepend('Select Group', ''), null, ['class' => 'form-control']) !!}
+            
+
+        <!-- Father Name3 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('mem_father', 'Father\'s Name:', ['class' => 'control-label']) !!}
+                {!! Form::text('mem_father', null, ['class' => 'form-control', 'placeholder' => 'Enter Father\'s Name']) !!}
+                @error('mem_father')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+        <!-- Mother Name4 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('mem_mother', 'Mother\'s Name:', ['class' => 'control-label']) !!}
+                {!! Form::text('mem_mother', null, ['class' => 'form-control', 'placeholder' => 'Enter Mother\'s Name']) !!}
+                @error('mem_mother')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+        <!-- Waist14 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('waist', 'Waist (cm):', ['class' => 'control-label']) !!}
+                {!! Form::text('waist', null, ['class' => 'form-control', 'placeholder' => 'Enter Waist Size']) !!}
+                @error('waist')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+        <!-- Blood Group15 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('blood_group', 'Blood Group:', ['class' => 'control-label']) !!}
+                {!! Form::select('blood_group', ['A+' => 'A+', 'B+' => 'B+', 'O+' => 'O+', 'AB+' => 'AB+', 'A-' => 'A-', 'B-' => 'B-', 'O-' => 'O-', 'AB-' => 'AB-'], null, ['class' => 'form-control', 'placeholder' => 'Select Blood Group']) !!}
+                @error('blood_group')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+        <!-- Blood Pressure16 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('blood_pressure', 'Blood Pressure:', ['class' => 'control-label']) !!}
+                {!! Form::text('blood_pressure', null, ['class' => 'form-control', 'placeholder' => 'Enter Blood Pressure']) !!}
+                @error('blood_pressure')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+        <!-- Profession17 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('profession', 'Profession:', ['class' => 'control-label']) !!}
+                {!! Form::text('profession', null, ['class' => 'form-control', 'placeholder' => 'Enter Profession']) !!}
+                @error('profession')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+        <!-- Office Address18 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('office_address', 'Office Address:', ['class' => 'control-label']) !!}
+                {!! Form::text('office_address', null, ['class' => 'form-control', 'placeholder' => 'Enter Office Address']) !!}
+                @error('office_address')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+        <!-- Push Up Count19 -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('push_up_count', 'Push Up Count:', ['class' => 'control-label']) !!}
+                {!! Form::text('push_up_count', null, ['class' => 'form-control', 'placeholder' => 'Enter Push Up Count']) !!}
+                @error('push_up_count')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+               <!-- Exercise Goal 20 -->
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('exercise_goal', 'Exercise Goal:', ['class' => 'control-label']) !!}
+                    {!! Form::text('exercise_goal', null, ['class' => 'form-control', 'placeholder' => 'Enter Exercise Goal']) !!}
+                    @error('exercise_goal')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+    
+            <!-- Current Diet Routine 21 -->
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('current_diet_routine', 'Current Diet Routine:', ['class' => 'control-label']) !!}
+                    {!! Form::textarea('current_diet_routine', null, ['class' => 'form-control', 'rows' => 2, 'placeholder' => 'Describe Diet Routine']) !!}
+                    @error('current_diet_routine')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+    
+            <!-- Sassoon Exercise Time 22 -->
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('sassoon_exercise_time', 'Exercise Time:', ['class' => 'control-label']) !!}
+                    {!! Form::text('sassoon_exercise_time', null, ['class' => 'form-control', 'placeholder' => 'Enter Exercise Time']) !!}
+                    @error('sassoon_exercise_time')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+    
+            <!-- Sleep Time 23 -->
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('sleep_time', 'Sleep Time:', ['class' => 'control-label']) !!}
+                    {!! Form::text('sleep_time', null, ['class' => 'form-control', 'placeholder' => 'Enter Sleep Time']) !!}
+                    @error('sleep_time')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+    
+            <!-- Wake Up Time 24 -->
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('wake_up_time', 'Wake Up Time:', ['class' => 'control-label']) !!}
+                    {!! Form::text('wake_up_time', null, ['class' => 'form-control', 'placeholder' => 'Enter Wake Up Time']) !!}
+                    @error('wake_up_time')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+    
+            <!-- Work Time 25 -->
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('work_time', 'Work Time:', ['class' => 'control-label']) !!}
+                    {!! Form::text('work_time', null, ['class' => 'form-control', 'placeholder' => 'Enter Work Time']) !!}
+                    @error('work_time')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+    
+            <!-- Exercise History 26 -->
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('exercise_history', 'Exercise History:', ['class' => 'control-label']) !!}
+                    {!! Form::textarea('exercise_history', null, ['class' => 'form-control', 'rows' => 2, 'placeholder' => 'Describe Exercise History']) !!}
+                    @error('exercise_history')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+    
+            <!-- Medicine History 27 -->
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('medicine_history', 'Medicine History:', ['class' => 'control-label']) !!}
+                    {!! Form::textarea('medicine_history', null, ['class' => 'form-control', 'rows' => 2, 'placeholder' => 'Describe Medicine History']) !!}
+                    @error('medicine_history')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+    
+            <!-- Injury or Health Issue 28 -->
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('injury_or_health_issue', 'Injury or Health Issue:', ['class' => 'control-label']) !!}
+                    {!! Form::textarea('injury_or_health_issue', null, ['class' => 'form-control', 'rows' => 2, 'placeholder' => 'Describe Injuries or Health Issues']) !!}
+                    @error('injury_or_health_issue')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+    
+            <!-- Like or Dislike Exercise 29 -->
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('like_or_dislike_exercise', 'Like/Dislike Exercise:', ['class' => 'control-label']) !!}
+                    {!! Form::textarea('like_or_dislike_exercise', null, ['class' => 'form-control', 'rows' => 2, 'placeholder' => 'Describe Preferences for Exercise']) !!}
+                    @error('like_or_dislike_exercise')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+    
+            <!-- Like or Dislike Food 30 -->
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('like_or_dislike_food', 'Like/Dislike Food:', ['class' => 'control-label']) !!}
+                    {!! Form::textarea('like_or_dislike_food', null, ['class' => 'form-control', 'rows' => 2, 'placeholder' => 'Describe Preferences for Food']) !!}
+                    @error('like_or_dislike_food')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+    
+            <!-- Pull Up Count 31 -->
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('pull_up_count', 'Pull Up Count:', ['class' => 'control-label']) !!}
+                    {!! Form::text('pull_up_count', null, ['class' => 'form-control', 'placeholder' => 'Enter Pull Up Count']) !!}
+                    @error('pull_up_count')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+    
+            <!-- Lift Count (Kg) 32 -->
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('lift_count_kg', 'Lift Count (Kg):', ['class' => 'control-label']) !!}
+                    {!! Form::text('lift_count_kg', null, ['class' => 'form-control', 'placeholder' => 'Enter Lift Count (Kg)']) !!}
+                    @error('lift_count_kg')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+    
+            <!-- Question  33-->
+            {{-- <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('question', 'Question:', ['class' => 'control-label']) !!}
+                    {!! Form::textarea('question', null, ['class' => 'form-control', 'rows' => 2, 'placeholder' => 'Enter Question']) !!}
+                    @error('question')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div> --}}
+    
+            <!-- Terms and Conditions 34 -->
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('term_con', 'Terms & Conditions:', ['class' => 'control-label']) !!}
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="term_con" value="yes" id="term_con" required {{ isset($member->term_con) && $member->term_con == 'yes' ? 'checked' : '' }}>
+                        <label class="form-check-label" for="term_con">I agree to the terms and conditions</label>
+                    </div>
+                    @error('term_con')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+            <!-- Submit and Cancel Buttons -->
+        <div class="form-group col-sm-12">
+            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+            <a href="{{ route('members.index') }}" class="btn btn-danger">Cancel</a>
         </div>
     </div>
-</div>
-<!-- group Img Url Field -->
-<div class="form-group">
-    <div class="row">
-        <label for="branch_id" class="control-label col-md-3 col-lg-3 col-12">
-            Branch: <span class="text-danger">*</span>
-        </label>       
-        <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::select('branch_id', $multi_branchs->pluck('branch_name', 'id')->prepend('Select Branch', ''), null, ['class' => 'form-control', 'required' => 'required']) !!}
-        </div>
-    </div>
-</div>
-
-<!-- Submit and Cancel Buttons -->
-<div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('members.index') }}" class="btn btn-danger">Cancel</a>
 </div>
