@@ -6,8 +6,9 @@
         .dataTables_filter {
             text-align: -webkit-right;
         }
-        .dataTables_wrapper {
-            overflow-x:  hidden;
+.dataTables_filter label {
+            display: flex;
+            width: fit-content;
         }
     </style>
     <table class="table" id="purchasePackages-table">
@@ -18,7 +19,7 @@
         <th>Package Name</th>
         <th>Coupon Code</th>
         <th>Amount</th>
-        <th>Tax</th>
+        <th>Vat</th>
         <th>Coupon Amount</th>
         <th>Gross Amount</th>
         <th>Pay Amount</th>

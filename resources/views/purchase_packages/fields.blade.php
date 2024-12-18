@@ -44,7 +44,7 @@ $packages = DB::table('packages')->get();
 </div>
 <div class="row">
     <div class="form-group col-md-4">
-        {!! Form::label('tax', 'Tax Percentage:',['class'=>'control-label']) !!}
+        {!! Form::label('tax', 'Vat Percentage:',['class'=>'control-label']) !!}
         {!! Form::number('tax', 0, ['class' => 'form-control', 'required']) !!}
     </div>
     <div class="form-group col-md-4">

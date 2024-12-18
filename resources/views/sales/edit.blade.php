@@ -54,7 +54,7 @@ Add Sale @parent
                     <input value="{{ $sale->payment_note }}" type="text" name="payment_note" class="form-control" required>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="payment_note">Tax (%)</label>
+                    <label for="payment_note">Vat (%)</label>
                     <input value="{{ $sale->tax }}" type="text" name="tax" id="tax"  class="form-control" required>
                 </div>
             </div>
@@ -104,7 +104,7 @@ Add Sale @parent
                             <td><input type="number" id="sub_total" name="sub_total" value="{{ $sale->subtotal }}" class="form-control sub_total" min="0" required readonly></td>
                         </tr>
                         <tr>
-                            <td colspan="3" class="text-right">Tax</td>
+                            <td colspan="3" class="text-right">Vat</td>
                             <td><input type="number" id="tax_amount" name="tax_amount" value="0" class="form-control tax_amount" min="0" required readonly></td>
                         </tr>
 

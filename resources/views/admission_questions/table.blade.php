@@ -6,8 +6,9 @@
         .dataTables_filter {
             text-align: -webkit-right;
         }
-        .dataTables_wrapper {
-            overflow-x:  hidden;
+.dataTables_filter label {
+            display: flex;
+            width: fit-content;
         }
     </style>
     <table class="table" id="admissionQuestions-table">

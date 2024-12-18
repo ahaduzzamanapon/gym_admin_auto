@@ -58,7 +58,7 @@
 
 
 @if(if_can('store_management'))
-<li {!! (Request::is('products*') || Request::is('requisitions*')  ? 'class="menu-dropdown mm-active active"': "class='menu-dropdown'" ) !!}>
+<li {!! (Request::is('products*') || Request::is('requisitions*') || Request::is('sales*') ? 'class="menu-dropdown mm-active active"': "class='menu-dropdown'" ) !!}>
     <a href="#">
         <span class="mm-text ">Store Manage</span>
         <span class="menu-icon "> <i class="im im-icon-Shop"></i></span>
@@ -82,7 +82,7 @@
         @endif
 
         @if(if_can('manage_product'))
-        <li {!! (Request::is('sales') ? 'class="active"' : '' ) !!}>
+        <li {!! (Request::is('sales*') ? 'class="active"' : '' ) !!}>
             <a href="{{ route('sales.index') }}">
                 <span class="mm-text ">Sales Product</span>
             </a>
@@ -94,7 +94,7 @@
 @endif
 
 @if(if_can('manage_inventory'))
-<li {!! (Request::is('assetsManagements*') ? 'class="menu-dropdown mm-active active"': "class='menu-dropdown'" ) !!}>
+<li {!! (Request::is('assetsManagements*') || Request::is('assetsCategories*') ? 'class="menu-dropdown mm-active active"': "class='menu-dropdown'" ) !!}>
     <a href="#">
         <span class="mm-text ">Inventory</span>
         <span class="menu-icon "><i class="align-self-center fa-1x fas fa-dolly-flatbed"></i></span>
@@ -286,10 +286,11 @@
 @if (if_can('site_settings'))
 <li class="{!! (Request::is('termAndConditions*') ? 'active' : '' ) !!}">
     <a href="{{ route('termAndConditions.index') }}">
-        <span class="mm-text ">Term And Conditions</span>
+        <span class="mm-text ">Terms And Conditions</span>
         <span class="menu-icon"><i class="align-self-center fa-1x fas fa-user-shield"></i></span>
     </a>
 </li>
+
 @endif
 
 @if (if_can('site_settings'))

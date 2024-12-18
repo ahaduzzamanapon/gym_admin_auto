@@ -124,7 +124,7 @@
            
             <tr>
                 <td></td>
-                <td>Tax</td>
+                <td>Vat</td>
                 <td>{{ $sale->tax }}%</td>
                 <td>{{ number_format($sale->subtotal * ($sale->tax / 100), 2) }}</td>
             </tr>

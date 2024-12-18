@@ -106,7 +106,7 @@ Add Sale @parent
                             <td><input type="number" id="sub_total" name="sub_total" value="0" class="form-control sub_total" min="0" required readonly></td>
                         </tr>
                         <tr>
-                            <td colspan="3" class="text-right">Tax</td>
+                            <td colspan="3" class="text-right">Vat</td>
                             <td><input type="number" id="tax_amount" name="tax_amount" value="0" class="form-control tax_amount" min="0" required readonly></td>
                         </tr>
 
