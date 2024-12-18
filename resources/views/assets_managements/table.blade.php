@@ -23,8 +23,7 @@
                 <th>Item Description</th>
                 <th>Location</th>
                 <th>Status</th>
-                <th>Created At</th>
-                <th>Updated At</th>
+            
                 <th>Action</th>
             </tr>
         </thead>
@@ -40,8 +39,7 @@
             <td>{{ $assetsManagement->item_description }}</td>
             <td>{{ $assetsManagement->location }}</td>
             <td>{{ $assetsManagement->status }}</td>
-            <td>{{ $assetsManagement->created_at }}</td>
-            <td>{{ $assetsManagement->updated_at }}</td>
+          
                 <td>
                     {!! Form::open(['route' => ['assetsManagements.destroy', $assetsManagement->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
