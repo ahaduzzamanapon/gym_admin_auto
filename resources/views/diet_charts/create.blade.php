@@ -25,8 +25,14 @@ Add Diet Chart @parent
                             <label>Member Name</label>
                             <select name="member_name" class="form-control" id="member_name">
                                 @php
-                                    $members = DB::table('members')->get();
+                                    $members = DB::table('members')
+                                        ->where('mem_type', 'member')
+                                        ->whereNotIn('id', function($query) {
+                                            $query->select('member_id')->from('gym_diet_charts');
+                                        })
+                                        ->get();
                                 @endphp
+                                 <option value="">Select Member Name</option>
                                 @foreach ($members as $member)
                                     <option value="{{ $member->mem_name }},{{ $member->id }}">{{ $member->mem_name }}</option>
                                 @endforeach
@@ -37,14 +43,15 @@ Add Diet Chart @parent
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Age</label>
-                            <input type="number" name="age" class="form-control"  required>
+                            <input type="number" name="age" class="form-control" id='age'  required>
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Gender</label>
-                            <select name="gender" class="form-control" required>
+                            <select name="gender" id="gender" class="form-control" required>
+                                <option value="">Select Gender</option>
                                 <option value="Male" >Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Other">Other</option>
@@ -55,28 +62,28 @@ Add Diet Chart @parent
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Height (cm)</label>
-                            <input type="number" name="height" class="form-control"  step="0.01" required>
+                            <input type="number" id="height" name="height" class="form-control"  step="0.01" required>
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Weight (kg)</label>
-                            <input type="number" name="weight" class="form-control"  step="0.01" required>
+                            <input type="number" id="weight" name="weight" class="form-control"  step="0.01" required>
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Body Fat Percentage (%)</label>
-                            <input type="number" name="body_fat_percentage" class="form-control"  step="0.01">
+                            <input type="number" id="body_fat_percentage" name="body_fat_percentage" class="form-control"  step="0.01">
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Target</label>
-                            <select name="goal" class="form-control" required>
+                            <select name="goal" id="goal" class="form-control" required>
                                 <option value="" >Select Target</option>
                                 <option value="Weight Loss">Weight Loss</option>
                                 <option value="Muscle Gain">Muscle Gain</option>
@@ -89,7 +96,7 @@ Add Diet Chart @parent
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Meal Preference</label>
-                            <select name="meal_preference" class="form-control" required>
+                            <select name="meal_preference" id class="form-control" required>
                                 <option value="" >Select Meal Preference</option>
 
                                 <option value="Vegetarian" >Vegetarian</option>
@@ -104,41 +111,41 @@ Add Diet Chart @parent
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Caloric Requirement (kcal)</label>
-                            <input type="number" name="caloric_requirement" class="form-control"  required>
+                            <input type="number" id="caloric_requirement" name="caloric_requirement" class="form-control"  required>
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Protein (grams)</label>
-                            <input type="number" name="protein_grams" class="form-control"  step="0.01">
+                            <input type="number" id="protein_grams" name="protein_grams" class="form-control"  step="0.01">
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Carbohydrates (grams)</label>
-                            <input type="number" name="carbs_grams" class="form-control"  step="0.01">
+                            <input type="number" id="carbs_grams" name="carbs_grams" class="form-control"  step="0.01">
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Fats (grams)</label>
-                            <input type="number" name="fats_grams" class="form-control" step="0.01">
+                            <input type="number" id name="fats_grams" class="form-control" step="0.01">
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Water Intake (liters)</label>
-                            <input type="number" name="water_intake" class="form-control" step="0.01">
+                            <input type="number" id="water_intake" name="water_intake" class="form-control" step="0.01">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Meal Plan</label>
-                            <select name="meal_plan_id" class="form-control" required>
+                            <select name="meal_plan_id" id="meal_plan_id" class="form-control" required>
 
                                 <option value="" >Select Meal Plan</option>
                                 @php
@@ -155,24 +162,24 @@ Add Diet Chart @parent
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>From date</label>
-                            <input type="date" name="from_date" class="form-control" >
+                            <input type="date" id="date" name="from_date" class="form-control" >
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>To date</label>
-                            <input type="date" name="to_date" class="form-control">
+                            <input type="date" name="to_date" id="to_date" class="form-control">
                         </div>
                     </div>
 
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Special Instructions</label>
-                            <textarea name="special_instructions" class="form-control"></textarea>
+                            <textarea name="special_instructions" id="special_instructions" class="form-control"></textarea>
                         </div>
                     </div>
 
-                    {{-- <div class="col-md-12">u
+                    {{-- <div class="col-md-12">
                         <h1>Meal Plan</h1>
                         <div class="row">
                             <table class="table table-bordered">
@@ -242,4 +249,57 @@ Add Diet Chart @parent
         </div>
     </div>
 </div>
+
+<script>
+
+    $('#member_name').change(function() {
+        user_id =$(this).val().split(',');
+        $.ajax({
+            url: "{{ route('diet_charts.get_data_by_user_id') }}",
+            type: "POST",
+            data: {
+                '_token': '{{ csrf_token() }}',
+                'user_id': user_id[1],
+            },
+            success: function(data) {
+                data.forEach(element => {
+                    memberAge = calculateAge(element.date_of_birth);
+                    $('#age').val(memberAge);
+                    $('#gender').val(element.mem_gender);
+                    $('#height').val(element.height);
+                    $('#weight').val(element.weight);
+
+                })
+            }
+        });
+
+    });
+
+
+
+    function calculateAge(birthDate) {
+         // Convert the birthDate to a JavaScript Date object
+        const birth = new Date(birthDate);
+        
+        // Get the current date
+        const today = new Date();
+        
+        // Calculate the age difference in years
+        let age = today.getFullYear() - birth.getFullYear();
+        
+        // Adjust if the birthday hasn't occurred yet this year
+        const monthDifference = today.getMonth() - birth.getMonth();
+        const dayDifference = today.getDate() - birth.getDate();
+        if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+            age--;
+        }
+        
+        return age;
+    }
+
+
+
+</script>
+
+
 @endsection

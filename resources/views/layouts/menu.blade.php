@@ -318,20 +318,31 @@
     </a>
 </li>
 @endif
-@if (if_can('site_settings'))
-<li class="{!! (Request::is('workoutCategories*') ? 'active' : '' ) !!}">
-    <a href="{{ route('workoutCategories.index') }}">
-        <span class="mm-text ">Workout Categories</span>
-        <span class="menu-icon"><i class="align-self-center fa-1x fas fa-list"></i></span>
-    </a>
-</li>
-@endif
 
 
-<li class="{!! (Request::is('dailyWorkouts*') ? 'active' : '' ) !!}">
-    <a href="{{ route('dailyWorkouts.index') }}">
-        <span class="mm-text ">Daily Workouts</span>
-        <span class="menu-icon"><i class="align-self-center fa-1x fas fa-user-check"></i></span>
+
+<li {!! (Request::is('workoutCategories*') || Request::is('dailyWorkouts*') ? 'class="menu-dropdown mm-active active"': "class='menu-dropdown'" ) !!}>
+    <a href="#">
+        <span class="mm-text ">Exercise</span>
+        <span class="menu-icon "><i class="align-self-center fa-1x fas fa-diagnoses"></i></span>
+        <span class="im im-icon-Arrow-Right imicon"></span>
     </a>
+    <ul class="sub-menu list-unstyled">    
+        @if (if_can('site_settings'))
+        <li class="{!! (Request::is('workoutCategories*') ? 'active' : '' ) !!}">
+            <a href="{{ route('workoutCategories.index') }}">
+                <span class="mm-text ">Workout Categories</span>
+                <span class="menu-icon"><i class="align-self-center fa-1x fas fa-list"></i></span>
+            </a>
+        </li>
+        @endif
+
+        <li class="{!! (Request::is('dailyWorkouts*') ? 'active' : '' ) !!}">
+            <a href="{{ route('dailyWorkouts.index') }}">
+                <span class="mm-text ">Daily Workouts</span>
+                <span class="menu-icon"><i class="align-self-center fa-1x fas fa-user-check"></i></span>
+            </a>
+        </li>
+    </ul>
 </li>
 

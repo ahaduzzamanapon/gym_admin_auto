@@ -112,6 +112,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('diet_charts', GymDietChartController::class);
     Route::resource('meal_plans', MealPlanController::class);
+    route::post('get_data_by_user_id', 'GymDietChartController@getDataByUserId')->name('diet_charts.get_data_by_user_id');
 
 
 

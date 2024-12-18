@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\GymDietChart;
 use App\Models\GymMealPlan;
+use DB;
 
 
 class GymDietChartController extends Controller
@@ -28,7 +29,7 @@ class GymDietChartController extends Controller
     {
         return view('diet_charts.create');
     }
-    
+ 
     public function store(Request $request)
     {
 
@@ -120,6 +121,13 @@ class GymDietChartController extends Controller
         $dietChart_id=$dietChart->id;
         return view('diet_charts.show', compact('dietChart'));
     }
+
+
+
+    public function getDataByUserId(){
+        return DB::table('members')->where('id',$_POST['user_id'])->where('mem_type', 'member')->get();
+    }
+    
 
 
     
