@@ -38,15 +38,15 @@ class AccountReport extends Controller
             if ($selectedMemberIds) {
                 $incomeData->whereIn('incomes.member_id', $selectedMembers);
             }
-            
+
         if ($branch_id) {
             $incomeData->where('multi_branchs.id', $branch_id);
         }
-        
+
         $incomeData = $incomeData->get();
 
 
-        
+
         $data=[
             'title'=>$title,
             'from_date'=>$from_date,
@@ -54,7 +54,7 @@ class AccountReport extends Controller
             'status'=>true,
             'view'=>view('account_report.account_report_income',compact('incomeData','title','from_date','to_date','branch_id','status'))->render()
         ];
-        
+
 
         return response()->json($data, 200);
     }
@@ -73,11 +73,11 @@ class AccountReport extends Controller
         $incomeData = Expenses::join('multi_branchs', 'expensess.branch_id', '=', 'multi_branchs.id')
             ->whereDate('expensess.created_at', '>=', $from_date)
             ->whereDate('expensess.created_at', '<=', $to_date);
-            
+
         if ($branch_id) {
             $incomeData->where('multi_branchs.id', $branch_id);
         }
-        
+
         $incomeData = $incomeData->get();
         $data=[
             'title'=>$title,
@@ -86,7 +86,7 @@ class AccountReport extends Controller
             'status'=>true,
             'view'=>view('account_report.account_report_expense',compact('incomeData','title','from_date','to_date','branch_id','status'))->render()
         ];
-        
+
 
         return response()->json($data, 200);
     }
@@ -95,7 +95,7 @@ class AccountReport extends Controller
     public function manual_command(){
         $status = Artisan::call('storage:link');
         echo "done ".$status;
-        
+
     }
 
     public function fetchAccountReportDeu(Request $request)
@@ -107,24 +107,29 @@ class AccountReport extends Controller
             $selectedMembers = Member::whereIn('id', $selectedMemberIds)->pluck('id')->toArray();
         }
         $title='Due report from '.$from_date.' to '.$to_date;
-       
+
         $purchasePackages = PurchasePackage::select('purchasepackages.*', 'packages.pack_name as pack_name', 'members.mem_name as member_name','multi_branchs.branch_name')
             ->join('packages', 'packages.id', '=', 'purchasepackages.package_id')
             ->join('members', 'members.id', '=', 'purchasepackages.member_id')
             ->join('multi_branchs', 'members.branch_id', '=', 'multi_branchs.id')
             ->whereIn('members.id', $selectedMembers)
-            ->where('purchasepackages.due_amount', '>', 0)
-            ->whereDate('purchasepackages.created_at', '>=', $from_date)
-            ->whereDate('purchasepackages.created_at', '<=', $to_date);
-       
-        
+            ->where('purchasepackages.due_amount', '>', 0);
+            if (!empty($from_date) && !empty($to_date)) {
+                $purchasePackages->whereDate('purchasepackages.created_at', '>=', $from_date);
+                $purchasePackages->whereDate('purchasepackages.created_at', '<=', $to_date);
+            }
+            if (!empty($from_date) && empty($to_date)) {
+                $purchasePackages->whereDate('purchasepackages.created_at', '>=', $from_date);
+                $purchasePackages->whereDate('purchasepackages.created_at', '<=', $from_date);
+            }
+
         $purchasePackages = $purchasePackages->get();
         // dd($purchasePackages);
 
 
 
 
-        
+
         $data=[
             'title'=>$title,
             'from_date'=>$from_date,

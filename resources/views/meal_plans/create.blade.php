@@ -33,7 +33,7 @@ Add Meal Chart @parent
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Meal Name</label>
+                            <label>Meal Plan</label>
                             <input type="text" name="meal_name" class="form-control" placeholder="Enter meal name">
                         </div>
                     </div>
@@ -71,7 +71,7 @@ Add Meal Chart @parent
                                     <!-- Meal Time Rows -->
                                     @foreach ($meal_time as $time)
                                       <tr class="meal-time-row">
-                                       
+
                                         <td>
                                           <div class="form-group">
                                             <input type="hidden" name="meal_name_f[]" value="{{ $day }}" class="form-control" readonly>
@@ -113,7 +113,7 @@ Add Meal Chart @parent
 <script>
     $(document).ready(function() {
       $('.expandable-day').on('click', function() {
-        $(this).nextUntil('.expandable-day').toggle(); 
+        $(this).nextUntil('.expandable-day').toggle();
         var arrowIcon = $(this).find('.navigation i');
         if (arrowIcon.hasClass('im-icon-Arrow-Forward2')) {
             arrowIcon.removeClass('im-icon-Arrow-Forward2').addClass('im-icon-Arrow-Down2').toggleClass('rotate');
