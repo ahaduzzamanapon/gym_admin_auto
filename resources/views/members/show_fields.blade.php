@@ -154,13 +154,18 @@
                     <tr> <th>Question</th> <th>Answer</th> </tr>
             </thead>
             <tbody>
-
-                @foreach (json_decode($member->question, true) as $questionId => $answer)
+                @if(is_array(json_decode($member->question, true)) || is_object(json_decode($member->question, true)))
+                    @foreach (json_decode($member->question, true) as $questionId => $answer)
+                        <tr>
+                            <td>{{ $questions->firstWhere('id', $questionId)->questions ?? 'N/A' }}</td>
+                            <td>{{ $answer }}</td>
+                        </tr>
+                    @endforeach
+                @else
                     <tr>
-                        <td>{{ $questions->firstWhere('id', $questionId)->questions }}</td>
-                        <td>{{ $answer }}</td>
+                        <td colspan="2">No questions available</td>
                     </tr>
-                @endforeach
+                @endif
             </tbody>
         </table>
     </td>

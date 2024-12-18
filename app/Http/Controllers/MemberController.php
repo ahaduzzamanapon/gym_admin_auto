@@ -92,6 +92,29 @@ class MemberController extends AppBaseController
         );
         Flash::success('Member saved successfully.');
 
+
+        $data_helth=[
+            'member_id'=> $input['user_id'],
+            'measurement_date'=> date('Y-m-d'),
+            'weight'=> isset($request->weight) ? $request->weight : 0,
+            'height'=> isset($request->height) ? $request->height : 0,
+            'bmi'=> isset($request->bmi) ? $request->bmi : 0,
+            'body_fat_percentage'=> '',
+            'muscle_mass'=> '',
+            'hydration_level'=> '',
+            'chest'=> '',
+            'waist'=> isset($request->waist) ? $request->waist : 0,
+            'hips'=> '',
+            'thighs'=> '',
+            'arms'=> '',
+            'forearms'=> '',
+            'neck'=> '',
+            'shoulders'=> '',
+            'calves'=> '',
+            'resting_heart_rate'=> isset($request->pulse_rate) ? $request->pulse_rate :0,
+        ];
+        Healthmetrics::create($data_helth);
+
         return redirect(route('members.index'));
     }
 
@@ -200,6 +223,31 @@ class MemberController extends AppBaseController
             'email' =>                   $input['mem_email'],
             'group_id' =>                    $input['group_id'],
         ]);
+
+
+
+        $data_helth=[
+            'measurement_date'=> date('Y-m-d'),
+            'weight'=> isset($request->weight) ? $request->weight : 0,
+            'height'=> isset($request->height) ? $request->height : 0,
+            'bmi'=> isset($request->bmi) ? $request->bmi : 0,
+            'body_fat_percentage'=> '',
+            'muscle_mass'=> '',
+            'hydration_level'=> '',
+            'chest'=> '',
+            'waist'=> isset($request->waist) ? $request->waist : 0,
+            'hips'=> '',
+            'thighs'=> '',
+            'arms'=> '',
+            'forearms'=> '',
+            'neck'=> '',
+            'shoulders'=> '',
+            'calves'=> '',
+            'resting_heart_rate'=> isset($request->pulse_rate) ? $request->pulse_rate :0,
+        ];
+        Healthmetrics::where('member_id', $id)->update($data_helth);
+        
+       
         Flash::success('Member updated successfully.');
         return redirect(route('members.index'));
     }
