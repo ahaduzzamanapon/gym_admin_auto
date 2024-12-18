@@ -70,7 +70,7 @@ Account Report @parent
                                 @endforeach
                             </select>
                         </div>
-                       
+
                     </div>
                     <div class="row">
                         <div class="container mt-5">
@@ -100,7 +100,7 @@ Account Report @parent
                                         <a href="#" onclick="fetchAccountReportExpense('con')" class="btn btn-primary">Date Between Expenses</a>
                                     </div>
                                 </div>
-                               
+
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@ Account Report @parent
                             <thead>
                                 <tr class="bg-primary text-white">
                                     <th width="7%" style="white-space: nowrap"><input type="checkbox" name="" id="select_all">Select</th>
-                                   
+
                                     <th>Name</th>
                                 </tr>
                             </thead>
@@ -136,7 +136,7 @@ Account Report @parent
                 member_id.push($(this).val());
             }
         });
-        
+
         return member_id;
     }
 
@@ -175,7 +175,7 @@ Account Report @parent
                    html += '<tr><td><input type="checkbox" class="member_id_c" value="'+member[i].id+'"></td><td>'+member[i].mem_name+' ('+member[i].member_unique_id+')</td></tr>';
                }
                $('.table tbody').html(html);
-               
+
             },
             error: function() {
             }
@@ -185,7 +185,7 @@ Account Report @parent
     function fetchAccountReportIncome(status,type=null) {
         const fromDate = $('#from_date').val();
         let toDate = $('#to_date').val();
-        
+
         if (status === 'con') {
             if (!fromDate) {
                 alert('Please select a Start date');
@@ -202,7 +202,7 @@ Account Report @parent
             }
             toDate = fromDate;
         }
-        
+
         const branchId = $('#branch_id').val();
         // if (!branchId) {
         //     alert('Please select a branch');
@@ -243,28 +243,28 @@ Account Report @parent
     function fetchAccountReportDeu() {
         const fromDate = $('#from_date').val();
         let toDate = $('#to_date').val();
-        if (!fromDate) {
+        /* if (!fromDate) {
             alert('Please select Start date');
             return;
         }
         if (!toDate) {
             toDate= fromDate;
-        }
-        
-       
-        
+        } */
+
+
+
         const branchId = $('#branch_id').val();
         // if (!branchId) {
         //     alert('Please select a branch');
         //     return;
         // }
 
-             memberIds = get_checked_member_id();
-            if (memberIds.length === 0) {
-                alert('Please select member');
-                return;
-            }
-        
+        memberIds = get_checked_member_id();
+        if (memberIds.length === 0) {
+            alert('Please select member');
+            return;
+        }
+
 
         $.ajax({
             url: "{{ route('account_report.fetchAccountReportDeu') }}",
@@ -288,7 +288,7 @@ Account Report @parent
     function fetchAccountReportExpense(status) {
         const fromDate = $('#from_date').val();
         let toDate = $('#to_date').val();
-        
+
         if (status === 'con') {
             if (!fromDate) {
                 alert('Please select a Start date');
@@ -305,7 +305,7 @@ Account Report @parent
             }
             toDate = fromDate;
         }
-        
+
         const branchId = $('#branch_id').val();
         // if (!branchId) {
         //     alert('Please select a branch');

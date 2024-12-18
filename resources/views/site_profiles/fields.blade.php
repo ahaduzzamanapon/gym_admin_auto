@@ -27,8 +27,7 @@
         <div class="col-md-9 col-lg-9 col-12">{!! Form::file('banner_image') !!}
         </div>
     </div>
-</div <div class="clearfix">
-</div>
+</div> <div class="clearfix"> </div>
 
 
 <!-- Banner Video Field -->
