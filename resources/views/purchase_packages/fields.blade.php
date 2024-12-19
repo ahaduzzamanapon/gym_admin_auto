@@ -73,6 +73,10 @@ $packages = DB::table('packages')->get();
         {!! Form::label('status', 'Status:',['class'=>'control-label']) !!}
         {!! Form::select('status', ['' => 'Select Status','1' => 'Pending','2' => 'Due','3' => 'Full Paid'], null, ['class' => 'form-control','readonly','required'=>'required']) !!}
     </div>
+    <div class="form-group col-md-4">
+        {!! Form::label('expired_date', 'Expired Date:',['class'=>'control-label']) !!}
+        {!! Form::date('expired_date', null, ['class' => 'form-control','readonly','required'=>'required']) !!}
+    </div>
 </div>
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
@@ -132,8 +136,10 @@ $packages = DB::table('packages')->get();
                 success: function(response) {
                     if (response.status == true) {
                         $('#amount').val(response.data['pack_admission_fee']);
+                        $('#expired_date').val(response.expire_date);
                     }else{
                         $('#amount').val(0);
+                        $('#expired_date').val('');
                     }
                     calculate()
                 }

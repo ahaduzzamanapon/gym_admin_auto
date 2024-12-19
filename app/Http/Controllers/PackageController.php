@@ -177,10 +177,12 @@ class PackageController extends AppBaseController
         //dd($data);
         $Package = Package::where('id', $data['package_id'])
             ->first();
+        $expire_date = date('Y-m-d', strtotime($Package->expire_date . '+'.$Package->pack_duration.' month'));
         if ($Package instanceof Package) {
             return response()->json([
                 'status' => true,
                 'data' => $Package,
+                'expire_date' => $expire_date,
             ]);    
         }else{
             return response()->json([

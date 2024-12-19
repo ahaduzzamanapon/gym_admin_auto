@@ -86,7 +86,10 @@ class UploadController extends Controller
     public function upload_excel_attendance(Request $request)
     {
         $import = new YourDataImport();
-        Excel::import($import, $request->file('file'));
+        $file = $request->file('file');
+        $filename = $file->getClientOriginalName();
+        $file->storeAs('public/excel', $filename);
+        Excel::import($import, storage_path('app/public/excel/' . $filename));
         $data = $import->getData();
         if (count($data) === 0) {
             Flash::error('Excel file is empty');
@@ -96,8 +99,8 @@ class UploadController extends Controller
         foreach ($data as $key => $row) {
             //dd($row);
             $punch = new Punch_model();
-            $punch->punch_id = $row['punch_id'];
-            $punch->punch_time =date('Y-m-d H:i:s', strtotime($row['time'])) ;
+            $punch->punch_id = $row['No.'];
+            $punch->punch_time =date('Y-m-d H:i:s', strtotime($row['Date/Time'])) ;
             $punch->process_status = '0';
             $punch->save();
         }

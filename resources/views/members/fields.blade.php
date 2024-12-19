@@ -125,6 +125,16 @@
                 @enderror
             </div>
         </div>
+        <!-- Admission7 Date -->
+        <div class="col-md-3">
+            <div class="form-group">
+                {!! Form::label('mem_admission_fees', 'Admission Fees:', ['class' => 'control-label']) !!}
+                {!! Form::number('mem_admission_fees', null, ['required','class' => 'form-control']) !!}
+                @error('mem_admission_fees')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
 
         <!-- Date of Birth8 -->
         <div class="col-md-3">

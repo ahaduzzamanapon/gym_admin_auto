@@ -25,6 +25,7 @@ class CreatePurchasepackagesTable extends Migration
             $table->integer('pay_amount');
             $table->integer('due_amount');
             $table->integer('status')->comment('1 for pending, 2 for due, 3 for fully payment');
+            $table->date('expired_date')->nullable();
             $table->timestamps();
         });
     }

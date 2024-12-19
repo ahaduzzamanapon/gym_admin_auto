@@ -22,6 +22,7 @@ class CreateMembersTable extends Migration
             $table->string('mem_gender')->nullable();
             $table->string('mem_address')->nullable();
             $table->date('mem_admission_date')->nullable();
+            $table->string('mem_admission_fees')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('mem_cell')->nullable();
             $table->text('mem_email')->nullable();

@@ -16,6 +16,8 @@ Member @parent
        @include('adminlte-templates::common.errors')
        <div class="card">
            <div class="card-body">
+            @include('flash::message')
+
                 {!! Form::model($member, ['route' => ['members.update', $member->id], 'method' => 'patch','class' => 'form-horizontal']) !!}
 
                     @include('members.fields')

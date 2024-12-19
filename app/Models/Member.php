@@ -31,6 +31,7 @@ class Member extends Model
         'mem_gender',
         'mem_address',
         'mem_admission_date',
+        'mem_admission_fees',
         'date_of_birth',
         'mem_cell',
         'mem_email',

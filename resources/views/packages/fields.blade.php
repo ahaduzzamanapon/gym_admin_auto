@@ -35,9 +35,9 @@ $multi_branchs = DB::table('multi_branchs')->get();
 <!-- Pack Duration Field -->
 <div class="form-group">
     <div class="row">
-        {!! Form::label('pack_duration', 'Pack Duration:',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
+        {!! Form::label('pack_duration', 'Pack Duration (Month):',['class'=>'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::text('pack_duration', null, ['class' => 'form-control', 'required']) !!}
+            {!! Form::number('pack_duration', null, ['class' => 'form-control', 'required']) !!}
         </div>
     </div>
 </div>

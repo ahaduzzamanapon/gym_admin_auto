@@ -53,6 +53,7 @@ class MemberController extends AppBaseController
      */
     public function create()
     {
+
         return view('members.create');
     }
 
@@ -77,7 +78,18 @@ class MemberController extends AppBaseController
             $input['mem_img_url'] = $file->store('images/members', 'public');
         }
         $member_unique_id='MEM'.time();
-        $input['member_unique_id']=$member_unique_id;
+        // $input['member_unique_id']=$member_unique_id;
+
+        $member_unique_id=$input['member_unique_id'];
+
+        $member = Member::where('member_unique_id', $member_unique_id)->first();
+        if ($member) {
+            Flash::error('Member id already exists');
+            return redirect(route('members.create'));
+        }
+
+
+
         /** @var Member $member */
         $member = Member::create($input);
         $input['user_id'] = $member->id;

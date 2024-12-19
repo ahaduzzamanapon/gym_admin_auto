@@ -148,6 +148,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         //PurchasePackageController
         Route::get('purchase_packages/{purchasePackage}/invoice', [PurchasePackageController::class, 'invoice'])->name('purchasePackages.invoice');
+        Route::get('purchase_packages/{purchasePackage}/renew', [PurchasePackageController::class, 'renew'])->name('purchasePackages.renew');
 
 
         Route::get('members_admission_form', [MemberController::class, 'admission_form'])->name('members.admission_form');

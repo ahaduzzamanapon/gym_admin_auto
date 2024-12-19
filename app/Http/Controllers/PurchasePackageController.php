@@ -9,6 +9,7 @@ use App\Models\PurchasePackage;
 use App\Models\Member;
 use App\Models\MultiBranch;
 use App\Models\Income;
+use App\Models\Package;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -66,7 +67,7 @@ class PurchasePackageController extends AppBaseController
     {
         $input = $request->all();
         $purchasePackage = PurchasePackage::create($input);
-        $purchasePackages_data = PurchasePackage::select('purchasepackages.*', 'packages.pack_name as pack_name', 'members.mem_name as member_name', 'members.member_unique_id as member_unique_id')
+        $purchasePackages_data = PurchasePackage::select('purchasepackages.*', 'packages.pack_name as pack_name','packages.pack_duration', 'members.mem_name as member_name', 'members.member_unique_id as member_unique_id')
             ->join('packages', 'packages.id', '=', 'purchasepackages.package_id')
             ->join('members', 'members.id', '=', 'purchasepackages.member_id')
             ->where('purchasepackages.id',$purchasePackage->id)
@@ -191,5 +192,33 @@ class PurchasePackageController extends AppBaseController
             ->first();
         $SiteSetting = SiteSetting::first();
         return view('purchase_packages.invoice', compact('sale', 'SiteSetting'));
+    }
+    public function renew($id){
+        /** @var PurchasePackage $purchasePackage */
+        $purchasePackage = PurchasePackage::find($id);
+        if (empty($purchasePackage)) {
+            Flash::error('Purchase Package not found');
+
+            return redirect(route('purchasePackages.index'));
+        }
+        $member=Member::where('id',$purchasePackage->member_id)->first();
+        $package=Package::where('id',$purchasePackage->package_id)->first();
+        $expired_date = date('Y-m-d', strtotime($package->expired_date . '+'.$package->pack_duration.' month'));
+        $purchasePackage->expired_date=$expired_date;
+        $purchasePackage->save();
+        $title=$member->mem_name.' Renewed a Package '.$package->pack_name;"";
+        $member_details=Member::where('id',$member->id)->first();
+        $branch_details=MultiBranch::where('id',$member_details->branch_id)->first();
+        $branch_name=$branch_details->branch_name;
+        $description=$member_details->mem_name.' ( '.$member_details->member_unique_id.' ) '.' Renewed a Package '.$package->pack_name.' in '.$branch_name;
+        $income=new Income();
+        $income->title=$title;
+        $income->branch_id=$member_details->branch_id;
+        $income->member_id=$member_details->id;
+        $income->amount=$package->pack_admission_fee;
+        $income->description=$description;
+        $income->save();
+        Flash::success('Purchase Package Renewed successfully.');
+        return redirect(route('purchasePackages.index'));
     }
 }

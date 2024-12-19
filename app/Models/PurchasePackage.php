@@ -36,6 +36,7 @@ class PurchasePackage extends Model
         'pay_amount',
         'due_amount',
         'status',
+        'expired_date',
     ];
 
     /**

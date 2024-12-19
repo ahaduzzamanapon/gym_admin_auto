@@ -16,6 +16,8 @@ Member @parent
         {{-- @include('adminlte-templates::common.errors') --}}
         <div class="card">
             <div class="card-body">
+                @include('flash::message')
+
                 {!! Form::open(['route' => 'members.store','class' => 'form-horizontal', 'files' => true]) !!}
                     @include('members.fields')
                 {!! Form::close() !!}
