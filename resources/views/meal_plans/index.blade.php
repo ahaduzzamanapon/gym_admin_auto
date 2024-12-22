@@ -49,14 +49,14 @@ Meal Charts @parent
                             <td>
                                 @if(if_can('member_manage'))
 
-                                <a href="{{ route('meal_plans.edit', $dietChart->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="{{ route('meal_plans.edit', $dietChart->id) }}" class="btn btn-warning btn-sm"><i class="im im-icon-Pen"></i>Edit</a>
+                                <a href="{{ route('meal_plans.print', $dietChart->id) }}" class="btn btn-info btn-sm" target="_blank"><i class="im im-icon-Printer"></i>Print</a>
                                 <form action="{{ route('meal_plans.destroy', $dietChart->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"><i class="im im-icon-Remove"></i>Delete</button>
                                 </form>
                                 @endif
-                                {{-- //<a href="{{ route('meal_plans.show',$dietChart->id) }}" class="btn btn-info btn-sm">View Details</a> --}}
                             </td>
                         </tr>
                     @endforeach

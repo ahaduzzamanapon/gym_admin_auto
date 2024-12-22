@@ -24,16 +24,11 @@ class SiteTrainerController extends AppBaseController
     {
         /** @var SiteTrainer $siteTrainers */
         $siteTrainers = SiteTrainer::paginate(10);
-
         return view('site_trainers.index')
             ->with('siteTrainers', $siteTrainers);
     }
 
-    /**
-     * Show the form for creating a new SiteTrainer.
-     *
-     * @return Response
-     */
+
     public function create()
     {
         return view('site_trainers.create');

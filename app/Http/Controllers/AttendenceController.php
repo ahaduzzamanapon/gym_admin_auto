@@ -48,7 +48,7 @@ class AttendenceController extends AppBaseController
                     $attendance = Attendence::find($prev_data->id);
                     $attendance->date = date('Y-m-d', strtotime($date));
                     $attendance->member_id = $value->id;
-                    $attendance->member_type = $value->mem_type;
+                    $attendance->member_type = $value->mem_type==null?'':$value->mem_type;
                     $attendance->in_time = $in_time;
                     $attendance->out_time = $out_time;
                     $attendance->attendence_status = 'Present';
@@ -58,7 +58,7 @@ class AttendenceController extends AppBaseController
                     $attendance = new Attendence();
                     $attendance->date = date('Y-m-d', strtotime($date));
                     $attendance->member_id = $value->id;
-                    $attendance->member_type = $value->mem_type;
+                    $attendance->member_type = $value->mem_type==null?'':$value->mem_type;
                     $attendance->in_time = $in_time;
                     $attendance->out_time = $out_time;
                     $attendance->attendence_status = 'Present';
@@ -70,7 +70,7 @@ class AttendenceController extends AppBaseController
                     $attendance = new Attendence();
                     $attendance->date = date('Y-m-d', strtotime($date));
                     $attendance->member_id = $value->id;
-                    $attendance->member_type = $value->mem_type;
+                    $attendance->member_type = $value->mem_type==null?'':$value->mem_type;
                     $attendance->in_time = null;
                     $attendance->out_time = null;
                     $attendance->attendence_status = 'Absent';

@@ -7,6 +7,7 @@
         <th>Email</th>
         <th>Subject</th>
         <th>Message</th>
+        <th>Phone</th>
         <th>Created At</th>
         <th>Updated At</th>
                 <th colspan="3">Action</th>
@@ -20,6 +21,7 @@
             <td>{{ $contactMassage->email }}</td>
             <td>{{ $contactMassage->subject }}</td>
             <td>{{ $contactMassage->message }}</td>
+            <td>{{ $contactMassage->phone }}</td>
             <td>{{ $contactMassage->created_at }}</td>
             <td>{{ $contactMassage->updated_at }}</td>
                 <td>
