@@ -26,9 +26,10 @@ class DailyWorkouts extends Model
 
 
     public $fillable = [
-        'member_id',
-        'day',
-        'duration',
+        // 'member_id',
+        // 'day',
+        // 'duration',
+        'daily_work_out_details_id',
         'workout_category',
         'exercise_name',
         'reputation',
@@ -44,9 +45,7 @@ class DailyWorkouts extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'member_id' => 'integer',
-        'day' => 'string',
-        'duration' => 'string',
+        'daily_work_out_details_id' => 'integer',
         'workout_category' => 'integer',
         'exercise_name' => 'string',
         'reputation' => 'string',
@@ -60,8 +59,8 @@ class DailyWorkouts extends Model
      * @var array
      */
     public static $rules = [
-        'member_id' => 'required',
-        'day' => 'required',
+        // 'day' => 'required',
+        // 'daily_work_out_details_id' => 'required',
         'workout_category' => 'required',
         'exercise_name' => 'required',
         'reputation' => 'required',

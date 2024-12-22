@@ -17,9 +17,7 @@ Daily Workouts @parent
         <div class="card">
             <div class="card-body">
                 {!! Form::open(['route' => 'dailyWorkouts.store','class' => 'form-horizontal']) !!}
-
                     @include('daily_workouts.create_fields')
-
                 {!! Form::close() !!}
             </div>
         </div>
