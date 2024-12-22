@@ -119,6 +119,7 @@
     </header>
     <div class="wrapper">
 
+
         <!-- Left side column. contains the logo and sidebar -->
         <aside class="left-aside" style="min-height: 100vh;height: 100vh;">
             <!-- sidebar: style can be found in sidebar-->

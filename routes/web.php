@@ -18,6 +18,7 @@ use App\Http\Controllers\SalesProductController;
 use App\Http\Controllers\PurchasePackageController;
 use App\Http\Controllers\DailyWorkoutsController;
 use App\Http\Controllers\AccountReport;
+use App\Http\Controllers\MealPlanController;
 
 
 include 'web_builder.php';
@@ -111,7 +112,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::resource('diet_charts', GymDietChartController::class);
+    Route::get('diet_charts/{dietChart}/print', [GymDietChartController::class, 'print_diet_chart'])->name('diet_charts.print');
     Route::resource('meal_plans', MealPlanController::class);
+    Route::get('meal_plans/{mealPlan}/print', [MealPlanController::class, 'print_meal_plan'])->name('meal_plans.print');
     route::post('get_data_by_user_id', 'GymDietChartController@getDataByUserId')->name('diet_charts.get_data_by_user_id');
 
 

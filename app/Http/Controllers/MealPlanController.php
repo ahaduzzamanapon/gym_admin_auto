@@ -102,4 +102,12 @@ class MealPlanController extends Controller
         $foodplans = FoodPlan::where('meal_plan_id', $mealPlan_id)->get();
         return view('meal_plans.show', compact('mealPlan','foodplans'));
     }
+    public function print_meal_plan(MealPlan $mealPlan)
+    {
+        $mealPlan_id=$mealPlan->id;
+        $mealPlan = MealPlan::find($mealPlan_id);
+        $foodplans = FoodPlan::where('meal_plan_id', $mealPlan_id)->get();
+        return view('meal_plans.print_meal_plan', compact('mealPlan','foodplans'));
+    }
+   
 }

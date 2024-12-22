@@ -62,6 +62,7 @@ Diet Charts @parent
                                 </form>
                                 @endif
                                 <a href="{{ route('diet_charts.show',$dietChart->id) }}" class="btn btn-info btn-sm">View Details</a>
+                                <a href="{{ route('diet_charts.print',$dietChart->id) }}" class="btn btn-info btn-sm"><i class="im im-icon-Printer"></i>Print</a>
                             </td>
                         </tr>
                     @endforeach

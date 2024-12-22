@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\GymDietChart;
 use App\Models\GymMealPlan;
+use App\Models\MealPlan;
+use App\Models\FoodPlan;
 use DB;
 
 
@@ -128,8 +130,12 @@ class GymDietChartController extends Controller
         return DB::table('members')->where('id',$_POST['user_id'])->where('mem_type', 'member')->get();
     }
     
-
-
-    
-    
+    public function print_diet_chart($dietChart)
+    {
+        $dietChart = GymDietChart::find($dietChart);
+        $mealPlan_id=$dietChart->meal_plan_id;
+        $mealPlan = MealPlan::find($mealPlan_id);
+        $foodplans = FoodPlan::where('meal_plan_id', $mealPlan_id)->get();
+        return view('diet_charts.print_diet_chart', compact('dietChart','mealPlan','foodplans'));
+    }
 }
