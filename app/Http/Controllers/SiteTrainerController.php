@@ -64,7 +64,7 @@ class SiteTrainerController extends AppBaseController
 
         Flash::success('Site Trainer saved successfully.');
 
-        return redirect->back();
+        return redirect(route('siteTrainers.index'));
     }
 
     /**

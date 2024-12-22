@@ -4,7 +4,7 @@
             @php
                 $setting = DB::table('sitesettings')->first();
             @endphp
-            <h1 class="text-center" style="height: 51px;width: 62px;place-self: center;margin-top: 22px;"><img style="height: 60px;"  src="{{Storage::url((!empty($setting))?$setting->logo:'')}}" alt=""></h1>
+            <h1 class="text-center" style="display: inline;"><img style="height: 60px;"  src="{{Storage::url((!empty($setting))?$setting->logo:'')}}" alt=""></h1>
         </a>
     </div>
     <ul class="navigation list-unstyled" id="demo">

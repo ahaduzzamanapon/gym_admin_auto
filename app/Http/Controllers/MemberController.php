@@ -15,6 +15,7 @@ use App\Models\Healthmetrics;
 
 
 use App\Models\User;
+use App\Models\Income;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
@@ -102,9 +103,18 @@ class MemberController extends AppBaseController
                 'password' =>                    Hash::make('12345678'),
             ]
         );
+
+        $member_details=Member::where('id',$member->id)->first();
+        $title=$member_details->mem_name.' Admission Fee';
+        $description='Member Admission Fee';
+        $income=new Income();
+        $income->title=$title;
+        $income->branch_id=$member_details->branch_id;
+        $income->member_id=$member_details->id;
+        $income->amount=$member_details->mem_admission_fees;
+        $income->description=$description;
+        $income->save();
         Flash::success('Member saved successfully.');
-
-
         $data_helth=[
             'member_id'=> $input['user_id'],
             'measurement_date'=> date('Y-m-d'),
