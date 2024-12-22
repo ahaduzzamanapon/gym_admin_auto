@@ -33,24 +33,74 @@ Daily Workouts @parent
         <div class="card-body">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-4">
+                    <table class="table">
+                        <thead>
+                            <tr class='text-center'>
+                                <td>sl no.</td>
+                                <td>Member name</td>
+                                <td>Day</td>
+                                <td>Duration</td>
+                                <td>Action</td>
+                            </tr>
+                        </thead>
+                        @php
+                            $i =1;
+                            $infos = DB::table('daily_work_out_details')
+                                        ->join('members','members.id','=','daily_work_out_details.member_id')
+                                        ->select('members.mem_name', 'daily_work_out_details.*')
+                                        ->get()->all();
+                        @endphp
+                        <tbody>
+                            @foreach($infos as $row)
+                            <tr class='text-center'>
+                                <td>{{ $i++}}</td>
+                                <td>{{ $row->mem_name}}</td>
+                                <td>{{ $row->day}}</td>
+                                <td>{{ $row->duration}}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="{{route('dailyWorkouts.details',[$row->member_id])}}" class="btn btn-outline-primary btn-xs">
+                                            <i class="im im-icon-Eye" data-placement="top" title="View"></i>
+                                        </a>
+                                        <a href="" class="btn btn-outline-primary btn-xs">
+                                            <i class="im im-icon-Pen" data-toggle="tooltip" data-placement="top" title="Edit"></i>
+                                        </a>
+                                        <button 
+                                            type="submit" 
+                                            class="btn btn-outline-danger btn-xs" 
+                                            onclick="return confirm('Are you sure?')
+                                        "><i class="im im-icon-Remove" data-toggle="tooltip" data-placement="top" title="Delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+
+
+
+
+
+                    <!-- <div class="col-md-4">
                         <div class="form-group">
                             <label for="member" class="control-label">Member</label>
-                            <select name="member_id" id="member_id" class="form-control">
+                             <select name="member_id" id="member_id" class="form-control">
                                 <option value="">Select Member</option>
                                 @foreach($members as $member)
                                 <option value="{{ $member->id }}">{{ $member->mem_name }}->{{ $member->branch_name }}</option>
                                 @endforeach
-                            </select>
-                        </div>
-                    </div>
+                            </select> -->
+                        <!-- </div> -->
+                    <!-- </div> -->
                    
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <div class="form-group">
                             <label for="member" class="control-label">.</label><br>
                             <a  class="btn btn-primary" onclick="getDailyWorkouts()" >Get</a>
                         </div>
-                    </div>
+                    </div> -->
                   
                 </div>
             </div>

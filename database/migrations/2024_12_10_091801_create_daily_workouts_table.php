@@ -15,9 +15,9 @@ class CreateDailyWorkoutsTable extends Migration
     {
         Schema::create('daily_workouts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('member_id');
-            $table->string('day');
-            $table->string('duration');
+            $table->integer('daily_work_out_details_id');
+            // $table->string('day');
+            // $table->string('duration');
             $table->integer('workout_category');
             $table->string('exercise_name');
             $table->string('reputation');

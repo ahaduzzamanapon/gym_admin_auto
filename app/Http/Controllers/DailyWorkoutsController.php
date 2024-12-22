@@ -6,11 +6,13 @@ use App\Http\Requests\CreateDailyWorkoutsRequest;
 use App\Http\Requests\UpdateDailyWorkoutsRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Models\DailyWorkouts;
+use App\Models\DailyWorkOutDetails;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
 use App\Models\WorkoutCategory;
 use App\Models\Member;
+use DB;
 
 
 
@@ -64,31 +66,43 @@ class DailyWorkoutsController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateDailyWorkoutsRequest $request)
-    {
-        $input = $request->all();
-        $member_id=$input['member_id'];
-        $exercise_name=$input['exercise_name'];
-        $reputation=$input['reputation'];
-        $sets=$input['sets'];
-        $duration_minutes=$input['duration_minutes'];
-        $workout_category=$input['workout_category'];
-        $day=$input['day'];
-        $duration=$input['duration'];
-        foreach ($input['exercise_name'] as $key => $value) {
-            $data_array = array(
-                'member_id' => $member_id,
-                'day' => $day,
-                'duration' => $duration,
-                'workout_category' => $workout_category[$key],
-                'exercise_name' => $exercise_name[$key],
-                'reputation' => $reputation[$key],
-                'sets' => $sets[$key],
-                'duration_minutes' => $duration_minutes[$key],
-                'create_by' => auth()->user()->member_id
-            );
-            DailyWorkouts::create($data_array);
+    public function store(CreateDailyWorkoutsRequest $request){
+        $input            = $request->all();
+        $member_id        =$input['member_id'];
+        $exercise_name    =$input['exercise_name'];
+        $reputation       =$input['reputation'];
+        $sets             =$input['sets'];
+        $duration_minutes =$input['duration_minutes'];
+        $workout_category =$input['workout_category'];
+        $day              =$input['day'];
+        $duration         =$input['duration'];
+
+        $work_out_infos= array(
+            'member_id'=> $member_id,
+            'day'      => $day,
+            'duration' => $duration,
+        );
+
+        $infos = DailyWorkOutDetails::create($work_out_infos);
+        if($infos){
+            $lastId = $infos->id;
+            foreach ($input['exercise_name'] as $key => $value) {
+
+                $data_array = array(
+                    'daily_work_out_details_id'=>$lastId,
+                    'workout_category'=> $workout_category[$key],
+                    'exercise_name'   => $exercise_name[$key],
+                    'reputation'      => $reputation[$key],
+                    'sets'            => $sets[$key],
+                    'duration_minutes'=> $duration_minutes[$key],
+                    'create_by'       => auth()->user()->member_id
+                );
+
+                DailyWorkouts::create($data_array);
+                
+            }
         }
+
         Flash::success('Daily Workouts saved successfully.');
         return redirect(route('dailyWorkouts.index'));
     }
@@ -221,5 +235,17 @@ class DailyWorkoutsController extends AppBaseController
             ];
             return response()->json($data, 200);
         }
+    }
+
+    public function details(Request $request){
+        $member_id = $request->members_id;
+        $infos = DB::table('daily_work_out_details')
+        ->join('members','members.id','=','daily_work_out_details.member_id')
+        ->join('daily_workouts','daily_workouts.daily_work_out_details_id','=','daily_work_out_details.id')
+        ->where('daily_work_out_details.member_id',$member_id)
+        ->select('daily_work_out_details.*','members.mem_name','daily_workouts.*')
+        ->get();
+
+         return view('daily_workouts.work_out_details')->with('dailyWorkoutsDetails', $infos);
     }
 }
