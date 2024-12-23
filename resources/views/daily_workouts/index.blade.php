@@ -66,7 +66,7 @@ Daily Workouts @parent
                                         <a href="{{route('dailyWorkouts.details',[$row->daily_work_out_id])}}" class="btn btn-outline-primary btn-xs">
                                             <i class="im im-icon-Eye" data-placement="top" title="View"></i>
                                         </a>
-                                        <a href="{{route('dailyWorkouts.print',[$row->daily_work_out_id])}}" class="btn btn-outline-primary btn-xs">
+                                        <a href="{{route('dailyWorkouts.print',[$row->daily_work_out_id])}}" class="btn btn-outline-primary btn-xs" target="_blank">
                                             <i class="im im-icon-Printer" data-placement="top" title="Print"></i>
                                         </a>
                                         <a  href="{{route('dailyWorkouts.update_info',[$row->daily_work_out_id])}}"
