@@ -31,19 +31,25 @@ Daily Workouts Details @parent
        
 <div class="row">
     <div class="col-md-4">
-        <span>Name: </span>
+        <span>Name: {{ $dailyWorkoutsDetails[0]->mem_name}} </span>
     </div>
     <div class="col-md-4">
-        <span>Sl. No: </span>
+        <span>Sl. No:  {{ $dailyWorkoutsDetails[0]->mem_name}} </span>
     </div>
 </div>
 
 <div class="row mt-3">
     <div class="col-md-4">
-        <span>Age: </span>
+@php
+    $date1 = \Carbon\Carbon::now(); // Today's date
+    $date2 = \Carbon\Carbon::parse($dailyWorkoutsDetails[0]->date_of_birth); // Date of birth
+    $age = $date1->diffInYears($date2); // Difference in years
+@endphp
+
+<p>Age: {{ $age}}</p>
     </div>
     <div class="col-md-4">
-        <span>Sex: </span>
+        <span>Sex:  {{ $dailyWorkoutsDetails[0]->mem_gender}} </span>
     </div>
     <div class="col-md-4">
         <span>Date: @php  echo date('Y-m-d') @endphp </span>
@@ -52,7 +58,7 @@ Daily Workouts Details @parent
 
 <div class="row mt-3">
     <div class="col-md-4">
-        <span>Duration: </span>
+        <span>Duration:  {{ $dailyWorkoutsDetails[0]->duration}} </span>
     </div>
 </div>
 
