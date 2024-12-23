@@ -316,11 +316,7 @@ class DailyWorkoutsController extends AppBaseController
                 DailyWorkouts::create($data_array);
             }
         }
-
         Flash::success('Daily Workouts update successfully.');
         return redirect(route('dailyWorkouts.index'));
    }
-
-
-
 }
