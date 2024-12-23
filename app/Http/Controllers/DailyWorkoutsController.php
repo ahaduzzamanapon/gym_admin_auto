@@ -305,6 +305,7 @@ class DailyWorkoutsController extends AppBaseController
             DailyWorkouts::where('daily_work_out_details_id', $request->info_id)->delete();
             foreach ($exercise_name as $key => $value) {
                 $data_array = array(
+                    'daily_work_out_details_id' => $request->info_id,
                     'workout_category'  => $workout_category[$key],
                     'exercise_name'     => $exercise_name[$key],
                     'reputation'        => $reputation[$key],
