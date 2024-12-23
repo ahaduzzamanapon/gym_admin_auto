@@ -235,12 +235,10 @@ class DailyWorkoutsController extends AppBaseController
     }
 
     public function details(Request $request){
-        $member_id = $request->id;
-        dd($request->id);
         $infos = DB::table('daily_work_out_details')
         ->join('members','members.id','=','daily_work_out_details.member_id')
         ->join('daily_workouts','daily_workouts.daily_work_out_details_id','=','daily_work_out_details.id')
-        ->where('daily_work_out_details.member_id',$member_id)
+        ->where('daily_work_out_details.id',$request->id)
         ->select('daily_work_out_details.*','members.member_unique_id','members.mem_name','members.date_of_birth','members.mem_gender','daily_workouts.*')
         ->get();
         return view('daily_workouts.work_out_details')->with('dailyWorkoutsDetails', $infos);
