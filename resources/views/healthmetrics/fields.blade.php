@@ -1,20 +1,10 @@
 <!-- Member name Field -->
 
-@php
-    $members = DB::table('members')->get();
-@endphp
+
 
 <div class="form-group">
     <div class="row">
-        {!! Form::label('member_id', 'Member:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
-        <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::select('member_id', $members->pluck('mem_name', 'id')->prepend('Select Member', ''), null, [
-                'class' => 'form-control',
-            ]) !!}
-            @error('member_id')
-                <span class="text-danger">{{ $message }}</span>
-            @enderror
-        </div>
+            @include('componant.member_select')
     </div>
 </div>
 

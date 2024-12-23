@@ -1,38 +1,9 @@
 
 @php
-    if(if_can('show_all_data')){
-        $members = DB::table('members')
-            ->leftJoin('multi_branchs', 'members.branch_id', '=', 'multi_branchs.id')
-            ->select('members.*', 'multi_branchs.branch_name')
-            ->get()
-            ->map(function ($member) {
-            return [
-                'id' => $member->id,
-                'mem_name' => $member->mem_name . '->' . $member->branch_name,
-            ];
-        })
-        ->pluck('mem_name', 'id');
-    }else {
-        $members = DB::table('members')
-            ->leftJoin('multi_branchs', 'members.branch_id', '=', 'multi_branchs.id')
-            ->select('members.*', 'multi_branchs.branch_name')
-            ->where('members.id', Auth::user()->member_id)
-            ->get()
-            ->map(function ($member) {
-            return [
-                'id' => $member->id,
-                'mem_name' => $member->mem_name . '->' . $member->branch_name,
-            ];
-        })
-        ->pluck('mem_name', 'id');
-    }
 $packages = DB::table('packages')->get();
 @endphp
 <div class="row">
-    <div class="form-group col-md-4">
-        {!! Form::label('member_id', 'Member Name:',['class'=>'control-label']) !!}
-        {!! Form::select('member_id', $members->prepend('Select Member', ''), null, ['class' => 'form-control','required'=>'required']) !!}
-    </div>
+    @include('componant.member_select')
     <div class="form-group col-md-4">
         {!! Form::label('package_id', 'Package Id:',['class'=>'control-label']) !!}
         {!! Form::select('package_id', $packages->pluck('pack_name', 'id')->prepend('Select Package', '')  ,null, ['class' => 'form-control','required'=>'required']) !!}

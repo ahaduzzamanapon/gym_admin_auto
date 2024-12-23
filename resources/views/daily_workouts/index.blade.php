@@ -48,7 +48,7 @@ Daily Workouts @parent
                             $i =1;
                             $infos = DB::table('daily_work_out_details')
                                         ->join('members','members.id','=','daily_work_out_details.member_id')
-                                        ->select('members.mem_name', 'daily_work_out_details.*')
+                                        ->select('members.mem_name', 'daily_work_out_details.*','daily_work_out_details.id as daily_work_out_id')
                                         ->get()->all();
                              if(count($infos) == 0){
                                 echo "<tr><td colspan='5' class='text-center'><b>No data found</b></td></tr>";

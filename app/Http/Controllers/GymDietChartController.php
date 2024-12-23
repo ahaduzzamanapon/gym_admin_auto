@@ -65,7 +65,6 @@ class GymDietChartController extends Controller
             'special_instructions' => $request->special_instructions,
         );
         $dietChart=GymDietChart::create($data_array);
-       
         return redirect()->route('diet_charts.index')->with('success', 'Diet chart created successfully!');
     }
     

@@ -2,7 +2,7 @@
     <table class="table" id="contactMassages-table">
         <thead>
             <tr>
-                <th>Id</th>
+        <th>Id</th>
         <th>Name</th>
         <th>Email</th>
         <th>Subject</th>

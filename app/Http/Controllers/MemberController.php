@@ -12,6 +12,7 @@ use App\Models\SiteSetting;
 use App\Models\TermAndCondition;
 use App\Models\MultiBranch;
 use App\Models\Healthmetrics;
+use App\Models\PurchasePackage;
 
 
 use App\Models\User;
@@ -69,6 +70,50 @@ class MemberController extends AppBaseController
     {
 
         $input = $request->all();
+
+        // dd($input);
+        $package_id = $input['package_id'];
+        $amount = $input['amount'];
+        $tax = $input['tax'];
+        $coupons_id = $input['coupons_id'];
+        $coupon_amount = $input['coupon_amount'];
+        $gross_amount = $input['gross_amount'];
+        $pay_amount = $input['pay_amount'];
+        $due_amount = $input['due_amount'];
+        $status = $input['status'];
+        $expired_date = $input['expired_date'];
+        unset($input['package_id']);
+        unset($input['amount']);
+        unset($input['tax']);
+        unset($input['coupons_id']);
+        unset($input['coupon_amount']);
+        unset($input['gross_amount']);
+        unset($input['pay_amount']);
+        unset($input['due_amount']);
+        unset($input['status']);
+        unset($input['expired_date']);
+        if (isset($input['package_switch'])) {
+            $package_switch=true;
+        }else{
+            $package_switch=false;
+        }
+        unset($input['package_switch']);
+        
+
+        // package_id
+        // amount
+        // tax
+        // coupons_id
+        // coupon_amount
+        // gross_amount
+        // pay_amount
+        // due_amount
+        // status
+        // expired_date
+
+
+
+
         // dd($input);
         if ($request->hasFile('mem_img_url')) {
             $path = storage_path('app/public/images/members');
@@ -88,6 +133,16 @@ class MemberController extends AppBaseController
             Flash::error('Member id already exists');
             return redirect(route('members.create'));
         }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -136,6 +191,43 @@ class MemberController extends AppBaseController
             'resting_heart_rate'=> isset($request->pulse_rate) ? $request->pulse_rate :0,
         ];
         Healthmetrics::create($data_helth);
+
+
+
+
+        if (isset($package_switch) && $package_switch==true) {
+            $pack_data=[
+                'member_id'=>$input['user_id'],
+                'package_id'=>$package_id,
+                'amount'=>$amount,
+                'tax'=>$tax,
+                'coupons_id'=>$coupons_id,
+                'coupon_amount'=>$coupon_amount,
+                'gross_amount'=>$gross_amount,
+                'pay_amount'=>$pay_amount,
+                'due_amount'=>$due_amount,
+                'status'=>$status,
+                'expired_date'=>$expired_date
+            ];
+            $purchasePackage = PurchasePackage::create($pack_data);
+            $purchasePackages_data = PurchasePackage::select('purchasepackages.*', 'packages.pack_name as pack_name','packages.pack_duration', 'members.mem_name as member_name', 'members.member_unique_id as member_unique_id')
+            ->join('packages', 'packages.id', '=', 'purchasepackages.package_id')
+            ->join('members', 'members.id', '=', 'purchasepackages.member_id')
+            ->where('purchasepackages.id',$purchasePackage->id)
+            ->first();
+            $title=$purchasePackages_data->member_name.' Purchased a Package '.$purchasePackages_data->pack_name;"";
+            $member_details=Member::where('id',$purchasePackages_data->member_id)->first();
+            $branch_details=MultiBranch::where('id',$member_details->branch_id)->first();
+            $branch_name=$branch_details->branch_name;
+            $description=$member_details->mem_name.' ( '.$member_details->member_unique_id.' ) '.' Purchased a Package '.$purchasePackages_data->pack_name.' in '.$branch_name;
+            $income=new Income();
+            $income->title=$title;
+            $income->branch_id=$member_details->branch_id;
+            $income->member_id=$member_details->id;
+            $income->amount=$purchasePackages_data->pay_amount;
+            $income->description=$description;
+            $income->save();
+        }
 
         return redirect(route('members.index'));
     }
