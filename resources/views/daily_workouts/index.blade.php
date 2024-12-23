@@ -63,14 +63,17 @@ Daily Workouts @parent
                                 <td>{{ $row->duration}}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{route('dailyWorkouts.details',[$row->id])}}" class="btn btn-outline-primary btn-xs">
+                                        <a href="{{route('dailyWorkouts.details',[$row->daily_work_out_id])}}" class="btn btn-outline-primary btn-xs">
                                             <i class="im im-icon-Eye" data-placement="top" title="View"></i>
                                         </a>
-                                        <a  href="{{route('dailyWorkouts.update_info',[$row->id])}}"
+                                        <a href="{{route('dailyWorkouts.print',[$row->daily_work_out_id])}}" class="btn btn-outline-primary btn-xs">
+                                            <i class="im im-icon-Printer" data-placement="top" title="Print"></i>
+                                        </a>
+                                        <a  href="{{route('dailyWorkouts.update_info',[$row->daily_work_out_id])}}"
                                             class="btn btn-outline-primary btn-xs">
                                             <i class="im im-icon-Pen" data-toggle="tooltip" data-placement="top" title="Edit"></i>
                                         </a>
-                                        <a  href="{{route('dailyWorkouts.delete_info',[$row->id])}}"
+                                        <a  href="{{route('dailyWorkouts.delete_info',[$row->daily_work_out_id])}}"
                                             class="btn btn-outline-danger btn-xs">
                                         <i class="im im-icon-Remove" data-toggle="tooltip" data-placement="top" title="Delete"></i>
                         </a>
