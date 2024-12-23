@@ -302,16 +302,17 @@ class DailyWorkoutsController extends AppBaseController
 
         $infos = DailyWorkOutDetails::where('id', $request->info_id)->update($work_out_infos);
         if ($infos) {
+            DailyWorkouts::where('daily_work_out_details_id', $request->info_id)->delete();
             foreach ($exercise_name as $key => $value) {
-            $data_array = array(
-                'workout_category'  => $workout_category[$key],
-                'exercise_name'     => $exercise_name[$key],
-                'reputation'        => $reputation[$key],
-                'sets'              => $sets[$key],
-                'duration_minutes'  => $duration_minutes[$key],
-                'create_by'         => auth()->user()->member_id
-            );
-                DailyWorkouts::where('daily_work_out_details_id', $request->info_id)->update($data_array);
+                $data_array = array(
+                    'workout_category'  => $workout_category[$key],
+                    'exercise_name'     => $exercise_name[$key],
+                    'reputation'        => $reputation[$key],
+                    'sets'              => $sets[$key],
+                    'duration_minutes'  => $duration_minutes[$key],
+                    'create_by'         => auth()->user()->member_id
+                );
+                DailyWorkouts::create($data_array);
             }
         }
 

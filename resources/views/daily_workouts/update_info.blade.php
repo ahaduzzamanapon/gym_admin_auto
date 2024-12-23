@@ -143,8 +143,6 @@ Daily Workouts Update @parent
         // Loop through the dailyWorkouts array and append rows
         dailyWorkouts.forEach(function (workoutGroup) {
             console.log(workoutGroup);
-            // return false;    
-            
             var newRow = `
                 <tr>
                     <td>
@@ -173,7 +171,6 @@ Daily Workouts Update @parent
         });
     });
 
-    // Add Row Function
     function addRow() {
         var newRow = `
             <tr>
@@ -198,7 +195,6 @@ Daily Workouts Update @parent
         $('#myTable tbody').append(newRow);
     }
 
-    // Remove Row Function
     function removeRow(element) {
         $(element).closest('tr').remove();
     }
