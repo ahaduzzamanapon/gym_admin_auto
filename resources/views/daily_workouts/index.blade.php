@@ -32,10 +32,12 @@ Daily Workouts @parent
         </section>
         <div class="card-body">
             <div class="col-md-12">
+                <a onclick="print_all()" class="btn btn-primary">Print</a></a>
                 <div class="row">
                     <table class="table">
                         <thead>
                             <tr class='text-center'>
+                                <td>Select for print</td>
                                 <td>sl no.</td>
                                 <td>Member name</td>
                                 <td>Day</td>
@@ -56,7 +58,9 @@ Daily Workouts @parent
                         @endphp
                         <tbody>
                             @foreach($infos as $row)
+
                             <tr class='text-center'>
+                                <td><input type="checkbox" name="ids[]" class="ids" value="{{ $row->daily_work_out_id}}"></td>
                                 <td>{{ $i++}}</td>
                                 <td>{{ $row->mem_name}}</td>
                                 <td>{{ $row->day}}</td>
@@ -229,6 +233,25 @@ Daily Workouts @parent
             printWindow.document.close();
             printWindow.print();
         }
+</script>
+
+<script>
+    function print_all() {
+        var ids = [];
+        $('.ids').each(function() {
+            if ($(this).is(":checked")) {
+                var id = $(this).val();
+                ids.push(id);
+            }
+        })
+        if (ids.length == 0) {
+            alert('Select at least one');
+            return;
+        }
+        var urlss="{{ route('dailyWorkouts.print', ['id' => ':id']) }}";
+        urlss = urlss.replace(':id', ids.join(","));
+        window.open(urlss, '_blank');
+    }
 </script>
 @endsection
 
