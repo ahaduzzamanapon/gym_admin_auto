@@ -13,17 +13,24 @@
 
     }
     .daily_workouts_box {
-      width: 620px;
-      height: 877px;
+      width: 510px;
+      height: 750px;
       border: 1px solid #000;
       padding: 5px;
+    }
+    td, th {
+      padding: 1px!important;
     }
   </style>
   </head>
   <body>
-    <div style="display: flex;flex-wrap: wrap;height: 1754px;width: 1240px;">
+    <div style="display: flex;flex-wrap: wrap;">
+        @php
+        $mot=0;
+        @endphp
         @foreach($ids as $id)
         @php
+        $mot+=1;
         $dailyWorkoutsdetails = DB::table('daily_work_out_details')->where('id', $id)->first();
         $member_details = DB::table('members')->where('id', $dailyWorkoutsdetails->member_id)->first();
         $dailyWorkouts = DB::table('daily_workouts')
@@ -81,6 +88,12 @@
                 </table>
             </div>
         </div>
+            @if($mot==4)
+            <div style="page-break-after: always;"></div>
+                @php
+                $mot=0;
+                @endphp
+            @endif
         @endforEach
     </div>
     <script>

@@ -275,6 +275,7 @@ class DailyWorkoutsController extends AppBaseController
 
 
     public function print_daily_work_out($id){
+        // $id='8,8,8,8,8';
         $ids = explode(',', $id);
         return view('daily_workouts.print_daily_work_out', compact('ids'));
     }
