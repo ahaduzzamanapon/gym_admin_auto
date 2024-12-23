@@ -138,15 +138,16 @@ class DailyWorkoutsController extends AppBaseController
     public function edit($id)
     {
         /** @var DailyWorkouts $dailyWorkouts */
-        $dailyWorkouts = DailyWorkouts::find($id);
-
+        $dailyWorkoutsdetails = DailyWorkOutDetails::find($id);
+        $dailyWorkouts          = DailyWorkouts::where('daily_work_out_details_id',$dailyWorkoutsdetails->id)->get()->all();
+        $workoutCategories = WorkoutCategory::paginate(10);
+        $member = Member::paginate(10);
+        return view('daily_workouts.create')->with('workoutCategories', $workoutCategories)->with('member', $member);
         if (empty($dailyWorkouts)) {
             Flash::error('Daily Workouts not found');
-
             return redirect(route('dailyWorkouts.index'));
         }
-
-        return view('daily_workouts.edit')->with('dailyWorkouts', $dailyWorkouts);
+        return view('daily_workouts.edit')->with('dailyWorkouts', $dailyWorkouts)->with('dailyWorkoutsdetails', $dailyWorkoutsdetails)->with('workoutCategories', $workoutCategories)->with('member', $member);
     }
 
     /**
@@ -219,10 +220,6 @@ class DailyWorkoutsController extends AppBaseController
             foreach ($dailyWorkouts as $key => $value) {
                 $day[$value->day][]=$value;
             }
-
-
-
-
         if (empty($dailyWorkouts)) {
             return response()->json(['message' => 'No data found'], 404);
         }else{
@@ -238,14 +235,41 @@ class DailyWorkoutsController extends AppBaseController
     }
 
     public function details(Request $request){
-        $member_id = $request->members_id;
+        $member_id = $request->id;
+        dd($request->id);
         $infos = DB::table('daily_work_out_details')
         ->join('members','members.id','=','daily_work_out_details.member_id')
         ->join('daily_workouts','daily_workouts.daily_work_out_details_id','=','daily_work_out_details.id')
         ->where('daily_work_out_details.member_id',$member_id)
-        ->select('daily_work_out_details.*','members.mem_name','daily_workouts.*')
+        ->select('daily_work_out_details.*','members.member_unique_id','members.mem_name','members.date_of_birth','members.mem_gender','daily_workouts.*')
         ->get();
+        return view('daily_workouts.work_out_details')->with('dailyWorkoutsDetails', $infos);
+    }
 
-         return view('daily_workouts.work_out_details')->with('dailyWorkoutsDetails', $infos);
+
+    public function daily_work_out_delete($id){
+        $member_id = $id;
+        if (DB::table('daily_work_out_details')->where('id', $member_id)->delete()) {
+
+            DB::table('daily_workouts')->where('daily_work_out_details_id', $member_id)->delete();
+
+            Flash::success('Daily Workouts deleted successfully.');
+
+            return redirect(route('dailyWorkouts.index'));
+        }
+    }
+
+    public function daily_work_out_update(Request $request,$id){
+        $dailyWorkoutsdetails   = DailyWorkOutDetails::find($id);
+        $dailyWorkouts          = DailyWorkouts::where('daily_work_out_details_id',$dailyWorkoutsdetails->id)->get()->all();
+        // dd($dailyWorkouts);
+        $workoutCategories = WorkoutCategory::paginate(10);
+        $member = Member::paginate(10);
+        return view('daily_workouts.update_info', [
+            'dailyWorkouts'        => $dailyWorkouts,
+            'dailyWorkoutsdetails' => $dailyWorkoutsdetails,
+            'workoutCategories'    => $workoutCategories,
+            'member'               => $member
+        ]);
     }
 }

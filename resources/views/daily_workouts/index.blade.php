@@ -44,11 +44,15 @@ Daily Workouts @parent
                             </tr>
                         </thead>
                         @php
+                           
                             $i =1;
                             $infos = DB::table('daily_work_out_details')
                                         ->join('members','members.id','=','daily_work_out_details.member_id')
                                         ->select('members.mem_name', 'daily_work_out_details.*','daily_work_out_details.id as daily_work_out_id')
                                         ->get()->all();
+                             if(count($infos) == 0){
+                                echo "<tr><td colspan='5' class='text-center'><b>No data found</b></td></tr>";
+                            }            
                         @endphp
                         <tbody>
                             @foreach($infos as $row)
@@ -59,22 +63,17 @@ Daily Workouts @parent
                                 <td>{{ $row->duration}}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{route('dailyWorkouts.details',[$row->member_id])}}" class="btn btn-outline-primary btn-xs">
+                                        <a href="{{route('dailyWorkouts.details',[$row->id])}}" class="btn btn-outline-primary btn-xs">
                                             <i class="im im-icon-Eye" data-placement="top" title="View"></i>
                                         </a>
-                                        <a href="{{route('dailyWorkouts.print',[$row->daily_work_out_id])}}" class="btn btn-outline-primary btn-xs">
-                                            <i class="im im-icon-Printer" data-placement="top" title="Print"></i>
-                                        </a>
-                                        <a href="" class="btn btn-outline-primary btn-xs">
+                                        <a  href="{{route('dailyWorkouts.update_info',[$row->id])}}"
+                                            class="btn btn-outline-primary btn-xs">
                                             <i class="im im-icon-Pen" data-toggle="tooltip" data-placement="top" title="Edit"></i>
                                         </a>
-                                        <button 
-                                            type="submit" 
-                                            class="btn btn-outline-danger btn-xs" 
-                                            onclick="return confirm('Are you sure?')
-                                        "><i class="im im-icon-Remove" data-toggle="tooltip" data-placement="top" title="Delete"></i>
-                                        </button>
-                                        
+                                        <a  href="{{route('dailyWorkouts.delete_info',[$row->id])}}"
+                                            class="btn btn-outline-danger btn-xs">
+                                        <i class="im im-icon-Remove" data-toggle="tooltip" data-placement="top" title="Delete"></i>
+                        </a>
                                     </div>
                                 </td>
                             </tr>
@@ -118,6 +117,14 @@ Daily Workouts @parent
     </div>
 </div>
 <script>
+
+
+
+
+
+
+
+
     function getDailyWorkouts() {
         $('#daily_workouts_table').html('');
         var member_id = document.getElementById('member_id').value;
