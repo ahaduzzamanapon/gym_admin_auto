@@ -279,16 +279,17 @@ class DailyWorkoutsController extends AppBaseController
     }
 
    public function update_data(Request $request){
-
         $input            = $request->all();
         $member_id        = $input['member_id'];
+        $day              = $input['day'];
+        $duration         = $input['duration'];
+        
         $exercise_name    = $input['exercise_name'];
         $reputation       = $input['reputation'];
         $sets             = $input['sets'];
         $duration_minutes = $input['duration_minutes'];
         $workout_category = $input['workout_category'];
-        $day              = $input['day'];
-        $duration         = $input['duration'];
+
 
         $work_out_infos = array(
             'member_id' => $member_id,
@@ -298,9 +299,7 @@ class DailyWorkoutsController extends AppBaseController
 
         $infos = DailyWorkOutDetails::where('id', $request->info_id)->update($work_out_infos);
         if ($infos) {
-            $lastId = $request->info_id;
-            foreach ($input['exercise_name'] as $key => $value) {
-
+            foreach ($exercise_name as $key => $value) {
             $data_array = array(
                 'workout_category'  => $workout_category[$key],
                 'exercise_name'     => $exercise_name[$key],
@@ -309,10 +308,7 @@ class DailyWorkoutsController extends AppBaseController
                 'duration_minutes'  => $duration_minutes[$key],
                 'create_by'         => auth()->user()->member_id
             );
-
-            DailyWorkouts::where('daily_work_out_details_id', $lastId)
-                ->where('exercise_name', $exercise_name[$key])
-                ->update($data_array);
+                DailyWorkouts::where('daily_work_out_details_id', $request->info_id)->update($data_array);
             }
         }
 
