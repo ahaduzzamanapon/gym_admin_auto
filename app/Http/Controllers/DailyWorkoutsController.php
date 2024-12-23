@@ -272,4 +272,14 @@ class DailyWorkoutsController extends AppBaseController
             'member'               => $member
         ]);
     }
+
+
+    public function print_daily_work_out($id){
+        $dailyWorkoutsdetails   = DailyWorkOutDetails::find($id);
+        $dailyWorkouts          = DailyWorkouts::where('daily_work_out_details_id',$dailyWorkoutsdetails->id)->get()->all();
+        return view('daily_workouts.print_daily_work_out',compact('dailyWorkouts','dailyWorkoutsdetails'));        
+    }
+
+
+
 }
