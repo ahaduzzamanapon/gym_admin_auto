@@ -161,6 +161,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('daily_work_out_details/{id}/', [DailyWorkoutsController::class, 'details'])->name('dailyWorkouts.details');
         Route::get('daily_work_out_update/{id}', [DailyWorkoutsController::class, 'daily_work_out_update'])->name('dailyWorkouts.update_info');
         Route::get('daily_work_out_delete/{id}', [DailyWorkoutsController::class, 'daily_work_out_delete'])->name('dailyWorkouts.delete_info');
+        Route::post('daily_work_out_update', [DailyWorkoutsController::class, 'update_data'])->name('dailyWorkouts.update_data');
 
 
         // account_report

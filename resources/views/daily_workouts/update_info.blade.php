@@ -36,12 +36,12 @@ Daily Workouts Update @parent
 
 
 
-                {!! Form::open(['route' => 'dailyWorkouts.store','class' => 'form-horizontal']) !!}
-                    
+                {!! Form::open(['route' => ['dailyWorkouts.update_data'],'class' => 'form-horizontal']) !!}
                     <!-- Member Id Field -->
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-4">
+                                 {!! Form::hidden('info_id',$dailyWorkoutsdetails->id , ['class' => 'control-label']) !!}
                                 <div class="form-group">
                                     {!! Form::label('member_id', 'Member Id:', ['class' => 'control-label']) !!}
                                     {!! Form::select('member_id', $members->prepend('Select Member', ''), $dailyWorkoutsdetails->member_id, ['class' => 'form-control', 'required' => 'required']) !!}
@@ -73,9 +73,6 @@ Daily Workouts Update @parent
                             </div> --}}
                         </div>
                     </div>
-                        @php
-                            dd($dailyWorkouts);
-                        @endphp 
 
                     <h3>Exercise</h3>
 
@@ -89,30 +86,8 @@ Daily Workouts Update @parent
                             <th><a class="btn btn-primary" onclick="addRow()">Add</a></th>
                         </thead>
                         <tbody>
-
-                            <tr>
-                                <td>
-                                    <select name="workout_category[]" id="" class="form-control" required>
-                                        <option value="">Select Category</option>
-                                        @foreach ($workoutCategories as $workoutCategory)
-                                            <option value="{{ $workoutCategory->id }}">{{ $workoutCategory->title }}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                                <td><input type="text" name="exercise_name[]" class="form-control" required></td>
-                                <td><input type="text" name="reputation[]"    class="form-control" required></td>
-                                <td><input type="text" name="sets[]"          class="form-control" required></td>
-                                <td><input type="text" name="duration_minutes[]" class="form-control" required></td>
-                                <td>
-                                    <a class="btn btn-danger" onclick="removeRow(this)">-</a>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
-
-
-
-
                     <!-- Submit Field -->
                     <div class="form-group col-sm-12">
                         {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
@@ -153,6 +128,79 @@ Daily Workouts Update @parent
     function removeRow(button) {
         var row = button.parentNode.parentNode;
         row.parentNode.removeChild(row);
+    }
+</script>
+
+<script>
+    var dailyWorkouts = <?php echo json_encode($dailyWorkouts); ?>;
+    console.log(dailyWorkouts); // Use the array in JavaScript
+</script>
+
+
+
+<script>
+    $(document).ready(function () {
+        // Loop through the dailyWorkouts array and append rows
+        dailyWorkouts.forEach(function (workoutGroup) {
+            console.log(workoutGroup);
+            // return false;    
+            
+            var newRow = `
+                <tr>
+                    <td>
+                        <select name="workout_category[]" class="form-control  workout-category-select" required>
+                            <option value="">Select Category</option>
+                            @foreach ($workoutCategories as $workoutCategory)
+                                <option value="{{ $workoutCategory->id}}" >{{ $workoutCategory->title }}</option>
+                            @endforeach
+                        </select>
+                    </td>
+                    <td><input type="text" name="exercise_name[]" class="form-control" value="${workoutGroup.exercise_name}" required></td>
+                    <td><input type="text" name="reputation[]" class="form-control" value="${workoutGroup.reputation}" required></td>
+                    <td><input type="text" name="sets[]" class="form-control" value="${workoutGroup.sets}" required></td>
+                    <td><input type="text" name="duration_minutes[]" class="form-control" value="${workoutGroup.duration_minutes}" required></td>
+                    <td>
+                        <a class="btn btn-danger" onclick="removeRow(this)">-</a>
+                    </td>
+                </tr>
+            `;
+            $('#myTable tbody').append(newRow);
+            const lastAddedRow = $('#myTable tbody tr:last');
+            const workoutCategorySelect = lastAddedRow.find('.workout-category-select');
+            if (workoutGroup.workout_category) {
+                workoutCategorySelect.val(workoutGroup.workout_category);
+            }
+        });
+    });
+
+    // Add Row Function
+    function addRow() {
+        var newRow = `
+            <tr>
+                <td>
+                    <select name="workout_category[]" class="form-control  workout-category-select" required>
+                        <option value="">Select Category</option>
+                        @foreach ($workoutCategories as $workoutCategory)
+                            <option id ='category' value="{{ $workoutCategory->id }}">{{ $workoutCategory->title }}</option>
+                        @endforeach
+                    </select>
+                </td>
+                <td><input type="text" name="exercise_name[]" class="form-control" required></td>
+                <td><input type="text" name="reputation[]" class="form-control" required></td>
+                <td><input type="text" name="sets[]" class="form-control" required></td>
+                <td><input type="text" name="duration_minutes[]" class="form-control" required></td>
+                <td>
+                    <a class="btn btn-danger" onclick="removeRow(this)">-</a>
+                </td>
+            </tr>
+        `;
+        
+        $('#myTable tbody').append(newRow);
+    }
+
+    // Remove Row Function
+    function removeRow(element) {
+        $(element).closest('tr').remove();
     }
 </script>
 

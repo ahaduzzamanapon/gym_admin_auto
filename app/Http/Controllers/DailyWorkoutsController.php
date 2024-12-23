@@ -235,12 +235,10 @@ class DailyWorkoutsController extends AppBaseController
     // }
 
     public function details(Request $request){
-        $member_id = $request->id;
-        dd($request->id);
         $infos = DB::table('daily_work_out_details')
         ->join('members','members.id','=','daily_work_out_details.member_id')
         ->join('daily_workouts','daily_workouts.daily_work_out_details_id','=','daily_work_out_details.id')
-        ->where('daily_work_out_details.member_id',$member_id)
+        ->where('daily_work_out_details.id',$request->id)
         ->select('daily_work_out_details.*','members.member_unique_id','members.mem_name','members.date_of_birth','members.mem_gender','daily_workouts.*')
         ->get();
         return view('daily_workouts.work_out_details')->with('dailyWorkoutsDetails', $infos);
@@ -282,4 +280,45 @@ class DailyWorkoutsController extends AppBaseController
         }
         return view('daily_workouts.print_daily_work_out', compact('ids'));
     }
+
+   public function update_data(Request $request){
+        $input            = $request->all();
+        $member_id        = $input['member_id'];
+        $day              = $input['day'];
+        $duration         = $input['duration'];
+        
+        $exercise_name    = $input['exercise_name'];
+        $reputation       = $input['reputation'];
+        $sets             = $input['sets'];
+        $duration_minutes = $input['duration_minutes'];
+        $workout_category = $input['workout_category'];
+
+
+        $work_out_infos = array(
+            'member_id' => $member_id,
+            'day'       => $day,
+            'duration'  => $duration,
+        );
+
+        $infos = DailyWorkOutDetails::where('id', $request->info_id)->update($work_out_infos);
+        if ($infos) {
+            foreach ($exercise_name as $key => $value) {
+            $data_array = array(
+                'workout_category'  => $workout_category[$key],
+                'exercise_name'     => $exercise_name[$key],
+                'reputation'        => $reputation[$key],
+                'sets'              => $sets[$key],
+                'duration_minutes'  => $duration_minutes[$key],
+                'create_by'         => auth()->user()->member_id
+            );
+                DailyWorkouts::where('daily_work_out_details_id', $request->info_id)->update($data_array);
+            }
+        }
+
+        Flash::success('Daily Workouts update successfully.');
+        return redirect(route('dailyWorkouts.index'));
+   }
+
+
+
 }
