@@ -203,36 +203,36 @@ class DailyWorkoutsController extends AppBaseController
 
         return redirect(route('dailyWorkouts.index'));
     }
-    public function getDailyWorkouts(Request $request){
-        $member_id=$request->member_id;
-        $dailyWorkouts = DailyWorkouts::join('members', 'daily_workouts.member_id', '=', 'members.id')
-            ->join('workout_categorys', 'daily_workouts.workout_category', '=', 'workout_categorys.id')
-            ->where('daily_workouts.member_id', $member_id)
-            ->select(
-                'daily_workouts.*',
-                'members.mem_name as member_name',
-                'workout_categorys.title as workout_category_name'
-            )
-            ->orderBy('workout_category_name', 'asc')
-            ->get();
+    // public function getDailyWorkouts(Request $request){
+    //     $member_id=$request->member_id;
+    //     $dailyWorkouts = DailyWorkouts::join('members', 'daily_workouts.member_id', '=', 'members.id')
+    //         ->join('workout_categorys', 'daily_workouts.workout_category', '=', 'workout_categorys.id')
+    //         ->where('daily_workouts.member_id', $member_id)
+    //         ->select(
+    //             'daily_workouts.*',
+    //             'members.mem_name as member_name',
+    //             'workout_categorys.title as workout_category_name'
+    //         )
+    //         ->orderBy('workout_category_name', 'asc')
+    //         ->get();
 
-            $day=[];
-            foreach ($dailyWorkouts as $key => $value) {
-                $day[$value->day][]=$value;
-            }
-        if (empty($dailyWorkouts)) {
-            return response()->json(['message' => 'No data found'], 404);
-        }else{
-            $member_details=Member::find($member_id);
-            $create_by=Member::find($dailyWorkouts[0]->create_by);
-            $data=[
-                'dailyWorkouts' => $day,
-                'member_details' => $member_details,
-                'create_by' => $create_by
-            ];
-            return response()->json($data, 200);
-        }
-    }
+    //         $day=[];
+    //         foreach ($dailyWorkouts as $key => $value) {
+    //             $day[$value->day][]=$value;
+    //         }
+    //     if (empty($dailyWorkouts)) {
+    //         return response()->json(['message' => 'No data found'], 404);
+    //     }else{
+    //         $member_details=Member::find($member_id);
+    //         $create_by=Member::find($dailyWorkouts[0]->create_by);
+    //         $data=[
+    //             'dailyWorkouts' => $day,
+    //             'member_details' => $member_details,
+    //             'create_by' => $create_by
+    //         ];
+    //         return response()->json($data, 200);
+    //     }
+    // }
 
     public function details(Request $request){
         $infos = DB::table('daily_work_out_details')
@@ -273,9 +273,9 @@ class DailyWorkoutsController extends AppBaseController
 
 
     public function print_daily_work_out($id){
-        $dailyWorkoutsdetails   = DailyWorkOutDetails::find($id);
-        $dailyWorkouts          = DailyWorkouts::where('daily_work_out_details_id',$dailyWorkoutsdetails->id)->get()->all();
-        return view('daily_workouts.print_daily_work_out',compact('dailyWorkouts','dailyWorkoutsdetails'));        
+        // $id='8,8,8,8,8';
+        $ids = explode(',', $id);
+        return view('daily_workouts.print_daily_work_out', compact('ids'));
     }
 
    public function update_data(Request $request){

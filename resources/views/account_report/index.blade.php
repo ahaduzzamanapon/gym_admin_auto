@@ -91,7 +91,7 @@ Account Report @parent
                                         <a href="#" onclick="fetchAccountReportIncome('con')" class="btn btn-primary">Date Between Income</a>
                                         <a href="#" onclick="fetchAccountReportIncome('daily','member')" class="btn btn-primary">Daily Income Member Wise</a>
                                         <a href="#" onclick="fetchAccountReportIncome('con','member')" class="btn btn-primary">Date Between Income Member Wise</a>
-                                        <a href="#" onclick="fetchAccountReportDeu()" class="btn btn-primary">Deu Report</a>
+                                        <a href="#" onclick="fetchAccountReportDeu()" class="btn btn-primary">Due Report</a>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
