@@ -158,6 +158,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('member_admission_store', [MemberController::class, 'member_admission_store'])->name('admission.store');
         Route::get('get_dailyWorkouts', [DailyWorkoutsController::class, 'getDailyWorkouts'])->name('dailyWorkouts.getDailyWorkouts');
         Route::get('daily_work_out_details/{members_id}/', [DailyWorkoutsController::class, 'details'])->name('dailyWorkouts.details');
+        Route::get('daily_work_out_details/{members_id}/', [DailyWorkoutsController::class, 'details'])->name('dailyWorkouts.print');
 
 
         // account_report

@@ -47,7 +47,7 @@ Daily Workouts @parent
                             $i =1;
                             $infos = DB::table('daily_work_out_details')
                                         ->join('members','members.id','=','daily_work_out_details.member_id')
-                                        ->select('members.mem_name', 'daily_work_out_details.*')
+                                        ->select('members.mem_name', 'daily_work_out_details.*','daily_work_out_details.id as daily_work_out_id')
                                         ->get()->all();
                         @endphp
                         <tbody>
@@ -62,6 +62,9 @@ Daily Workouts @parent
                                         <a href="{{route('dailyWorkouts.details',[$row->member_id])}}" class="btn btn-outline-primary btn-xs">
                                             <i class="im im-icon-Eye" data-placement="top" title="View"></i>
                                         </a>
+                                        <a href="{{route('dailyWorkouts.print',[$row->daily_work_out_id])}}" class="btn btn-outline-primary btn-xs">
+                                            <i class="im im-icon-Printer" data-placement="top" title="Print"></i>
+                                        </a>
                                         <a href="" class="btn btn-outline-primary btn-xs">
                                             <i class="im im-icon-Pen" data-toggle="tooltip" data-placement="top" title="Edit"></i>
                                         </a>
@@ -71,6 +74,7 @@ Daily Workouts @parent
                                             onclick="return confirm('Are you sure?')
                                         "><i class="im im-icon-Remove" data-toggle="tooltip" data-placement="top" title="Delete"></i>
                                         </button>
+                                        
                                     </div>
                                 </td>
                             </tr>
