@@ -134,6 +134,12 @@ class MemberController extends AppBaseController
             return redirect(route('members.create'));
         }
 
+        $member = Member::where('mem_email', $input['mem_email'])->first();
+        if ($member) {
+            Flash::error('Member email already exists');
+            return redirect(route('members.create'));
+        }
+
 
 
 

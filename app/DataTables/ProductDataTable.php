@@ -68,7 +68,7 @@ class ProductDataTable extends DataTable
         return [
             'id',
             'product_name',
-            'branch_name',
+            'branch_name'=> ['searchable' => false],
             'product_price',
             'product_qty',
             // 'created_at' => ['searchable' => false],

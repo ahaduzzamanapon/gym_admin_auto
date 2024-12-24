@@ -29,6 +29,7 @@
             })
             ->pluck('mem_name', 'id');
         }
+        $members->prepend('Select Member', '');
     }else {
         $members = DB::table('members')
             ->leftJoin('multi_branchs', 'members.branch_id', '=', 'multi_branchs.id')
@@ -46,9 +47,9 @@
     }
 @endphp
 
-<div class="form-group col-md-4">
+<div class="form-group col-md-4" style="display: @if(if_can('show_all_data')) block @else none @endif;">
     {!! Form::label('member_id', 'Member Name:',['class'=>'control-label']) !!}
-    {!! Form::select('member_id', $members->prepend('Select Member', ''), null, ['class' => 'form-control','required'=>'required']) !!}
+    {!! Form::select('member_id', $members, null, ['class' => 'form-control','required'=>'required']) !!}
 </div>
 
 

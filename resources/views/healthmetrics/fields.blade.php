@@ -54,9 +54,9 @@
 <!-- Height Field -->
 <div class="form-group">
     <div class="row">
-        {!! Form::label('height', 'Height:', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
+        {!! Form::label('height', 'Height (CM):', ['class' => 'col-md-3 col-lg-3 col-12 control-label']) !!}
         <div class="col-md-9 col-lg-9 col-12">
-            {!! Form::text('height', null, ['class' => 'form-control', 'placeholder' => 'Enter Height', 'id' => 'height']) !!}
+            {!! Form::number('height', null, ['class' => 'form-control', 'placeholder' => 'Enter Height', 'id' => 'height']) !!}
             @error('height')
                 <span class="text-danger">{{ $message }}</span>
             @enderror
@@ -299,7 +299,8 @@
 <script>
     function calculateBMI() {
         const weight = parseFloat(document.getElementById('weight').value); // Get weight value
-        const height = parseFloat(document.getElementById('height').value); // Get height value
+        const height_cm = parseFloat(document.getElementById('height').value); // Get height value
+        height = height_cm / 100; // Convert height to meters
         const statusField = document.getElementById('bmi_status'); // Get the status field
 
         if (!isNaN(weight) && !isNaN(height) && height > 0) {

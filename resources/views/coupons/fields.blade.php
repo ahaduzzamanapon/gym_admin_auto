@@ -19,6 +19,13 @@
     </div>
 </div>
 
+<script>
+    // Automatically convert input to lowercase
+    document.getElementById('coupon_code').addEventListener('input', function () {
+        this.value = this.value.toLowerCase();
+    });
+</script>
+
 
 <!-- Expire Date Field -->
 <div class="form-group">
@@ -68,3 +75,6 @@
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
     <a href="{{ route('coupons.index') }}" class="btn btn-danger">Cancel</a>
 </div>
+
+
+

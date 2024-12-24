@@ -727,6 +727,25 @@
         }
         
     }
+    
+    function calculateBMI() {
+        const weight = parseFloat(document.getElementById('weight').value); // Get weight value
+        const height_cm = parseFloat(document.getElementById('height').value); // Get height value
+        height = height_cm / 100; // Convert height to meters
+
+        if (!isNaN(weight) && !isNaN(height) && height > 0) {
+            const bmi = weight / (height * height); // BMI formula
+            document.getElementById('bmi').value = bmi.toFixed(2); // Display BMI with 2 decimal places
+
+           
+        } else {
+            document.getElementById('bmi').value = ''; // Clear BMI field if inputs are invalid
+        }
+    }
+
+    // Attach event listeners to the height and weight fields
+    document.getElementById('weight').addEventListener('input', calculateBMI);
+    document.getElementById('height').addEventListener('input', calculateBMI);
 </script>
 
 

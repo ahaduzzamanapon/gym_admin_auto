@@ -32,6 +32,7 @@ class PurchasePackageController extends AppBaseController
             $purchasePackages = PurchasePackage::select('purchasepackages.*', 'packages.pack_name as pack_name', 'members.mem_name as member_name')
             ->join('packages', 'packages.id', '=', 'purchasepackages.package_id')
             ->join('members', 'members.id', '=', 'purchasepackages.member_id')
+            ->orderBy('purchasepackages.id', 'desc')
             ->get();
         }else
         {
@@ -39,6 +40,7 @@ class PurchasePackageController extends AppBaseController
             ->join('packages', 'packages.id', '=', 'purchasepackages.package_id')
             ->join('members', 'members.id', '=', 'purchasepackages.member_id')
             ->where('members.id', auth()->user()->member_id)
+            ->orderBy('purchasepackages.id', 'desc')
             ->get();
         }
 

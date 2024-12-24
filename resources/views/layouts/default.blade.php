@@ -78,7 +78,7 @@
             <!-- Header Navbar: style can be found in header-->
             <!-- Sidebar toggle button-->
             <!-- Sidebar toggle button-->
-            <h3 style="display: flex;width: -webkit-fill-available;place-content: center;font-size: x-large;">
+            <h3 style="display: flex;width: -webkit-fill-available;place-content: center;font-size: x-large;width: -moz-available;">
                 {{ !empty($setting) ? $setting->name : 'Gym Master' }} -
                 {{ !empty($setting) ? $setting->slogan : 'Gym Master' }} </h3>
 

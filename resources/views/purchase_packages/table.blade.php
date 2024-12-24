@@ -66,10 +66,10 @@
                     <td>
                         {!! Form::open(['route' => ['purchasePackages.destroy', $purchasePackage->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
-                            <a href="{{ route('purchasePackages.show', [$purchasePackage->id]) }}"
+                            {{-- <a href="{{ route('purchasePackages.show', [$purchasePackage->id]) }}"
                                 class='btn btn-outline-primary btn-xs'>
                                 <i class="im im-icon-Eye" data-placement="top" title="View"></i>
-                            </a>
+                            </a> --}}
                             <a href="{{ route('purchasePackages.edit', [$purchasePackage->id]) }}"
                                 class='btn btn-outline-primary btn-xs'>
                                 <i class="im im-icon-Pen" data-toggle="tooltip" data-placement="top" title="Edit"></i>

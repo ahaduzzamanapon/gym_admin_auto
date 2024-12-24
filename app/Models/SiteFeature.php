@@ -46,7 +46,7 @@ class SiteFeature extends Model
      */
     public static $rules = [
         'title' => 'required',
-        'image' => 'required',
+        // 'image' => 'required',
         'description' => 'required'
     ];
 

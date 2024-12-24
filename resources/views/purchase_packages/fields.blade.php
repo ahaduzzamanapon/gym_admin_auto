@@ -1,6 +1,6 @@
 
 @php
-$packages = DB::table('packages')->get();
+$packages = DB::table('packages')->where('pack_status',1)->get();
 @endphp
 <div class="row">
     @include('componant.member_select')
@@ -10,13 +10,13 @@ $packages = DB::table('packages')->get();
     </div>
     <div class="form-group col-md-4">
         {!! Form::label('amount', 'Amount:',['class'=>'control-label']) !!}
-        {!! Form::number('amount', 0, ['class' => 'form-control']) !!}
+        {!! Form::number('amount', null, ['class' => 'form-control']) !!}
     </div>
 </div>
 <div class="row">
     <div class="form-group col-md-4">
         {!! Form::label('tax', 'Vat Percentage:',['class'=>'control-label']) !!}
-        {!! Form::number('tax', 0, ['class' => 'form-control', 'required']) !!}
+        {!! Form::number('tax', null, ['class' => 'form-control', 'required']) !!}
     </div>
     <div class="form-group col-md-4">
         {!! Form::label('coupons_id', 'Coupon Code:', ['class' => 'control-label']) !!}
@@ -26,7 +26,7 @@ $packages = DB::table('packages')->get();
     </div>
     <div class="form-group col-md-4">
         {!! Form::label('coupon_amount', 'Coupon Amount:',['class'=>'control-label']) !!}
-        {!! Form::number('coupon_amount', 0, ['class' => 'form-control']) !!}
+        {!! Form::number('coupon_amount', null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group col-md-4">
         {!! Form::label('gross_amount', 'Gross Amount:',['class'=>'control-label']) !!}
@@ -34,11 +34,11 @@ $packages = DB::table('packages')->get();
     </div>
     <div class="form-group col-md-4">
         {!! Form::label('pay_amount', 'Pay Amount:',['class'=>'control-label']) !!}
-        {!! Form::number('pay_amount', 0, ['class' => 'form-control']) !!}
+        {!! Form::number('pay_amount', null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group col-md-4">
         {!! Form::label('due_amount', 'Due Amount:',['class'=>'control-label']) !!}
-        {!! Form::number('due_amount', 0, ['class' => 'form-control']) !!}
+        {!! Form::number('due_amount', null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group col-md-4">
         {!! Form::label('status', 'Status:',['class'=>'control-label']) !!}
@@ -54,6 +54,7 @@ $packages = DB::table('packages')->get();
     <a href="{{ route('purchasePackages.index') }}" class="btn btn-danger">Cancel</a>
 </div>
 
+@section('footer_scripts')
 
 <script>
     $(document).ready(function() {
@@ -169,3 +170,4 @@ $packages = DB::table('packages')->get();
         calculate()
     })
 </script>
+@stop

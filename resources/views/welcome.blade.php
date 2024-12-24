@@ -351,9 +351,9 @@ https://templatemo.com/tm-548-training-studio
                                 <h4>{{ $trainer->trainer_name }}</h4>
                                 <p>{{ $trainer->description }}</p>
                                 <ul class="social-icons">
-                                    <li><a href="{{ $trainer->facebook_link }}"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="{{ $trainer->twitter }}"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="{{ $trainer->linkedin }}"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="{{ $trainer->facebook_link }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="{{ $trainer->twitter }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="{{ $trainer->linkedin }}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
                         </div>
