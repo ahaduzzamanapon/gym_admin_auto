@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Http\Requests\CreateDailyWorkoutsRequest;
 use App\Http\Requests\UpdateDailyWorkoutsRequest;
 use App\Http\Controllers\AppBaseController;
@@ -13,8 +11,6 @@ use Response;
 use App\Models\WorkoutCategory;
 use App\Models\Member;
 use DB;
-
-
 
 class DailyWorkoutsController extends AppBaseController
 {
@@ -42,11 +38,8 @@ class DailyWorkoutsController extends AppBaseController
                             ->where('members.id',auth()->user()->member_id)
                             ->get();
         }
-        
-
         return view('daily_workouts.index')->with('members', $member);
     }
-
     /**
      * Show the form for creating a new DailyWorkouts.
      *
@@ -54,6 +47,8 @@ class DailyWorkoutsController extends AppBaseController
      */
     public function create()
     {
+        
+
         $workoutCategories = WorkoutCategory::paginate(10);
         $member = Member::paginate(10);
         return view('daily_workouts.create')->with('workoutCategories', $workoutCategories)->with('member', $member);

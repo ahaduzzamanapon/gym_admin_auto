@@ -20,7 +20,7 @@ Member @parent
 
                 {!! Form::model($member, ['route' => ['members.update', $member->id], 'method' => 'patch','class' => 'form-horizontal']) !!}
 
-                    @include('members.fields')
+                    @include('members.fields_edit')
 
                 {!! Form::close() !!}
            </div>
